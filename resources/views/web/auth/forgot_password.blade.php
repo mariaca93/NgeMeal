@@ -62,7 +62,7 @@
                                                 placeholder="{{ trans('labels.email') }}">
                                         </div>
                                         @error('email')
-                                            <span class="text-danger mt-1">{{ $message }}</span>
+                                            <span class="text-light mt-1">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>

@@ -19,7 +19,7 @@
                                             </label>
                                             <input type="text" class="form-control" name="email" value="{{ @$getsettings->email == '' ? old('email') : @$getsettings->email }}" placeholder="{{ trans('labels.email') }}">
                                             @error('email')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -29,35 +29,35 @@
                                             </label>
                                             <input type="text" class="form-control" name="mobile" value="{{ @$getsettings->mobile == '' ? old('mobile') : @$getsettings->mobile }}" placeholder="{{ trans('labels.mobile') }}">
                                             @error('mobile')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.address') }}
-                                                <span class="text-danger">*</span></label>
+                                                <span class="text-light">*</span></label>
                                             <input type="text" class="form-control" name="address" id="address" value="{{ @$getsettings->address == '' ? old('address') : @$getsettings->address }}">
                                             @error('address')
-                                                <span class="text-danger">{{ $message }}</span><br>
+                                                <span class="text-light">{{ $message }}</span><br>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.latitude') }}
-                                                <span class="text-danger">*</span></label>
+                                                <span class="text-light">*</span></label>
                                             <input type="text" placeholder="{{ trans('labels.latitude') }}" value="{{ @$getsettings->lat == '' ? old('lat') : @$getsettings->lat }}"
                                                 class="form-control" name="lat" id="lat" readonly>
                                             @error('lat')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.longitude') }}
-                                                <span class="text-danger">*</span></label>
+                                                <span class="text-light">*</span></label>
                                             <input type="text" placeholder="{{ trans('labels.longitude') }}" value="{{ @$getsettings->lang == '' ? old('lang') : @$getsettings->lang }}"
                                                 class="form-control" name="lang" id="lang" readonly>
                                             @error('lang')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -69,7 +69,7 @@
                                             <label class="col-form-label" for="">{{ trans('labels.facebook_link') }}</label>
                                             <input type="text" class="form-control" name="fb" id="fb" value="{{ @$getsettings->fb == '' ? old('fb') : @$getsettings->fb }}" placeholder="{{ trans('labels.facebook_link') }}">
                                             @error('fb')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -78,7 +78,7 @@
                                             <label class="col-form-label" for="">{{ trans('labels.youtube_link') }}</label>
                                             <input type="text" class="form-control" name="youtube" id="youtube" value="{{ @$getsettings->youtube == '' ? old('youtube') : @$getsettings->youtube }}" placeholder="{{ trans('labels.youtube_link') }}">
                                             @error('youtube')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -87,7 +87,7 @@
                                             <label class="col-form-label" for="">{{ trans('labels.instagram_link') }}</label>
                                             <input type="text" class="form-control" name="insta" id="insta" value="{{ @$getsettings->insta == '' ? old('insta') : @$getsettings->insta }}" placeholder="{{ trans('labels.instagram_link') }}">
                                             @error('insta')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -112,20 +112,20 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.map_key') }}
-                                                <span class="text-danger">*</span></label>
+                                                <span class="text-light">*</span></label>
                                             <input type="text" class="form-control" name="map" id="map" value="{{ @$getsettings->map == '' ? old('map') : @$getsettings->map }}" placeholder="{{ trans('labels.map_key') }}">
                                             @error('map')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.firebase_key') }} <span
-                                                    class="text-danger">*</span></label>
+                                                    class="text-light">*</span></label>
                                             <input type="text" class="form-control" name="firebase" id="firebase" value="{{ @$getsettings->firebase == '' ? old('firebase') : @$getsettings->firebase }}" placeholder="{{ trans('labels.firebase_key') }}">
                                             @error('firebase')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -412,7 +412,7 @@
                                                     (GMT+14:00) Kiritimati</option>
                                             </select>
                                             @error('timezone')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -439,14 +439,14 @@
                                             <label class="col-form-label" for="">{{ trans('labels.og_title') }}</label>
                                             <input type="text" class="form-control" placeholder="{{ trans('labels.og_title') }}" name="og_title" id="og_title" value="{{ @$getsettings->og_title == '' ? old('og_title') : @$getsettings->og_title }}">
                                             @error('og_title')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.og_image') }} (1200x650) </label>
                                             <input type="file" class="form-control" name="og_image" id="og_image">
                                             @error('image')
-                                                <span class="text-danger">{{ $message }}</span><br>
+                                                <span class="text-light">{{ $message }}</span><br>
                                             @enderror
                                             <img src="{{ Helper::image_path(@$getsettings->og_image) }}" class="img-fluid rounded hw-50 mt-1">
                                         </div>
@@ -456,7 +456,7 @@
                                             <label class="col-form-label" for="">{{ trans('labels.og_description') }}</label>
                                             <textarea class="form-control" name="og_description" placeholder="{{ trans('labels.og_description') }}" id="og_description" rows="6">{{ @$getsettings->og_description == '' ? old('og_description') : @$getsettings->og_description }}</textarea>
                                             @error('og_description')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -485,7 +485,7 @@
                                             <input type="text" placeholder="{{ trans('labels.currency') }}" value="{{ @$getsettings->currency == '' ? old('currency') : @$getsettings->currency }}"
                                                 class="form-control" name="currency" id="currency">
                                             @error('currency')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -510,7 +510,7 @@
                                                         for="inlineRadio2">{{ trans('labels.right') }}</label>
                                                 </div>
                                                 @error('currency')
-                                                    <span class="text-danger">{{ $message }}</span>
+                                                    <span class="text-light">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
@@ -518,55 +518,55 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.referral_amount') }} <span
-                                                    class="text-danger">*</span></label>
+                                                    class="text-light">*</span></label>
                                             <input type="text" placeholder="{{ trans('labels.referral_amount') }}" value="{{ @$getsettings->referral_amount == '' ? old('referral_amount') : @$getsettings->referral_amount }}"
                                                 class="form-control" name="referral_amount" id="referral_amount">
                                             @error('referral_amount')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.max_order_qty') }} <span
-                                                    class="text-danger">*</span></label>
+                                                    class="text-light">*</span></label>
                                             <input type="text" placeholder="{{ trans('labels.max_order_qty') }}" value="{{ @$getsettings->max_order_qty == '' ? old('max_order_qty') : @$getsettings->max_order_qty }}"
                                                 class="form-control" name="max_order_qty" id="max_order_qty">
                                             @error('max_order_qty')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.min_amount') }}
-                                                <span class="text-danger">*</span></label>
+                                                <span class="text-light">*</span></label>
                                             <input type="text" placeholder="{{ trans('labels.min_amount') }}" value="{{ @$getsettings->min_order_amount == '' ? old('min_order_amount') : @$getsettings->min_order_amount }}"
                                                 class="form-control" name="min_order_amount" id="min_order_amount">
                                             @error('min_order_amount')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.max_amount') }}
-                                                <span class="text-danger">*</span></label>
+                                                <span class="text-light">*</span></label>
                                             <input type="text" placeholder="{{ trans('labels.max_amount') }}" value="{{ @$getsettings->max_order_amount == '' ? old('max_order_amount') : @$getsettings->max_order_amount }}"
                                                 class="form-control" name="max_order_amount" id="max_order_amount">
                                             @error('max_order_amount')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.delivery_charge_per_km') }}
-                                                <span class="text-danger">*</span></label>
+                                                <span class="text-light">*</span></label>
                                             <input type="text" placeholder="{{ trans('labels.delivery_charge_per_km') }}" value="{{ @$getsettings->delivery_charge == '' ? old('delivery_charge') : @$getsettings->delivery_charge }}"
                                                 class="form-control" name="delivery_charge" id="delivery_charge">
                                             @error('delivery_charge')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -607,7 +607,7 @@
                                             <label class="col-form-label" for="">{{ trans('labels.title_for_title_bar') }}</label>
                                             <input type="text" class="form-control" name="title" id="title" value="{{ @$getsettings->title == '' ? old('title') : @$getsettings->title }}" placeholder="{{ trans('labels.title_for_title_bar') }}">
                                             @error('title')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -616,7 +616,7 @@
                                             <label class="col-form-label" for="">{{ trans('labels.short_title') }} </label>
                                             <input type="text" class="form-control" name="short_title" id="short_title" value="{{ @$getsettings->short_title == '' ? old('short_title') : @$getsettings->short_title }}" placeholder="{{ trans('labels.short_title') }}">
                                             @error('short_title')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -625,7 +625,7 @@
                                             <label class="col-form-label" for="">{{ trans('labels.copyright') }} </label>
                                             <input type="text" class="form-control" name="copyright" id="copyright" value="{{ @$getsettings->copyright == '' ? old('copyright') : @$getsettings->copyright }}" placeholder="{{ trans('labels.copyright') }}">
                                             @error('copyright')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -635,14 +635,14 @@
                                             <label class="col-form-label" for="">{{ trans('labels.mobile_app_title') }}</label>
                                             <input type="text" class="form-control" placeholder="{{ trans('labels.mobile_app_title') }}" name="mobile_app_title" id="mobile_app_title" value="{{ @$getsettings->mobile_app_title == '' ? old('mobile_app_title') : @$getsettings->mobile_app_title }}">
                                             @error('mobile_app_title')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.mobile_app_description') }}</label>
                                             <textarea class="form-control" name="mobile_app_description" placeholder="{{ trans('labels.mobile_app_description') }}" id="mobile_app_description" rows="5">{{ @$getsettings->mobile_app_description == '' ? old('mobile_app_description') : @$getsettings->mobile_app_description }}</textarea>
                                             @error('mobile_app_description')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -651,7 +651,7 @@
                                             <label class="col-form-label" for="">{{ trans('labels.mobile_app_image') }} (650X750) </label>
                                             <input type="file" class="form-control" name="mobile_app_image" id="mobile_app_image">
                                             @error('image')
-                                                <span class="text-danger">{{ $message }}</span><br>
+                                                <span class="text-light">{{ $message }}</span><br>
                                             @enderror
                                             <img src="{{ Helper::image_path(@$getsettings->mobile_app_image) }}" class="img-fluid rounded hw-50 mt-1">
                                         </div>
@@ -659,7 +659,7 @@
                                             <label class="col-form-label" for="">{{ trans('labels.bg_image') }} (1920X300) </label>
                                             <input type="file" class="form-control" name="mobile_app_bg_image">
                                             @error('image')
-                                                <span class="text-danger">{{ $message }}</span><br>
+                                                <span class="text-light">{{ $message }}</span><br>
                                             @enderror
                                             <img src="{{ Helper::image_path(@$getsettings->mobile_app_bg_image) }}" class="img-fluid rounded hw-50 mt-1">
                                         </div>
@@ -670,7 +670,7 @@
                                             <label class="col-form-label" for="">{{ trans('labels.logo') }} (250X250) </label>
                                             <input type="file" class="form-control" name="logo" id="logo">
                                             @error('logo')
-                                                <span class="text-danger">{{ $message }}</span><br>
+                                                <span class="text-light">{{ $message }}</span><br>
                                             @enderror
                                             <img src="{{ Helper::image_path(@$getsettings->logo) }}" class="img-fluid rounded hw-50 mt-1">
                                         </div>
@@ -680,7 +680,7 @@
                                             <label class="col-form-label" for="">{{ trans('labels.Favicon') }} (16X16) </label>
                                             <input type="file" class="form-control" name="favicon" id="favicon">
                                             @error('favicon')
-                                                <span class="text-danger">{{ $message }}</span><br>
+                                                <span class="text-light">{{ $message }}</span><br>
                                             @enderror
                                             <img src="{{ Helper::image_path(@$getsettings->favicon) }}" class="img-fluid rounded hw-50 mt-1">
                                         </div>
@@ -690,7 +690,7 @@
                                             <label class="col-form-label" for="">{{ trans('labels.auth_bg_image') }} (1920X1280) </label>
                                             <input type="file" class="form-control" name="auth_bg_image" id="auth_bg_image">
                                             @error('auth_bg_image')
-                                                <span class="text-danger">{{ $message }}</span><br>
+                                                <span class="text-light">{{ $message }}</span><br>
                                             @enderror
                                             <img src="{{ Helper::image_path(@$getsettings->auth_bg_image) }}" class="img-fluid rounded hw-50 mt-1">
                                         </div>
@@ -700,7 +700,7 @@
                                             <label class="col-form-label" for="">{{ trans('labels.breadcrumb_bg_image') }} (1920X300) </label>
                                             <input type="file" class="form-control" name="breadcrumb_bg_image" id="breadcrumb_bg_image">
                                             @error('breadcrumb_bg_image')
-                                                <span class="text-danger">{{ $message }}</span><br>
+                                                <span class="text-light">{{ $message }}</span><br>
                                             @enderror
                                             <img src="{{ Helper::image_path(@$getsettings->breadcrumb_bg_image) }}" class="img-fluid rounded hw-50 mt-1">
                                         </div>
@@ -710,7 +710,7 @@
                                             <label class="col-form-label" for="">{{ trans('labels.booknow_bg_image') }} (1920X550) </label>
                                             <input type="file" class="form-control" name="booknow_bg_image">
                                             @error('booknow_bg_image')
-                                                <span class="text-danger">{{ $message }}</span><br>
+                                                <span class="text-light">{{ $message }}</span><br>
                                             @enderror
                                             <img src="{{ Helper::image_path(@$getsettings->booknow_bg_image) }}" class="img-fluid rounded hw-50 mt-1">
                                         </div>
@@ -720,7 +720,7 @@
                                             <label class="col-form-label" for="">{{ trans('labels.reviews_bg_image') }} (1920X550) </label>
                                             <input type="file" class="form-control" name="reviews_bg_image">
                                             @error('reviews_bg_image')
-                                                <span class="text-danger">{{ $message }}</span><br>
+                                                <span class="text-light">{{ $message }}</span><br>
                                             @enderror
                                             <img src="{{ Helper::image_path(@$getsettings->reviews_bg_image) }}" class="img-fluid rounded hw-50 mt-1">
                                         </div>
@@ -731,14 +731,14 @@
                                             <label class="col-form-label" for="">{{ trans('labels.footer_title') }}</label>
                                             <input type="text" class="form-control" placeholder="{{ trans('labels.footer_title') }}" name="footer_title" id="footer_title" value="{{ @$getsettings->footer_title == '' ? old('footer_title') : @$getsettings->footer_title }}">
                                             @error('footer_title')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.footer_description') }}</label>
                                             <textarea class="form-control" name="footer_description" placeholder="{{ trans('labels.footer_description') }}" id="footer_description" rows="5">{{ @$getsettings->footer_description == '' ? old('footer_description') : @$getsettings->footer_description }}</textarea>
                                             @error('footer_description')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -747,7 +747,7 @@
                                             <label class="col-form-label" for="">{{ trans('labels.footer_logo') }} (250X250) </label>
                                             <input type="file" class="form-control" name="footer_logo" id="footer_logo">
                                             @error('footer_logo')
-                                                <span class="text-danger">{{ $message }}</span><br>
+                                                <span class="text-light">{{ $message }}</span><br>
                                             @enderror
                                             <img src="{{ Helper::image_path(@$getsettings->footer_logo) }}" class="img-fluid rounded hw-50 mt-1">
                                         </div>
@@ -755,7 +755,7 @@
                                             <label class="col-form-label" for="">{{ trans('labels.footer_bg_image') }} (1920X650) </label>
                                             <input type="file" class="form-control" name="footer_bg_image" id="footer_bg_image">
                                             @error('footer_bg_image')
-                                                <span class="text-danger">{{ $message }}</span><br>
+                                                <span class="text-light">{{ $message }}</span><br>
                                             @enderror
                                             <img src="{{ Helper::image_path(@$getsettings->footer_bg_image) }}" class="img-fluid rounded hw-50 mt-1">
                                         </div>
@@ -848,7 +848,7 @@
                                             <label class="col-form-label" for="">{{ trans('labels.ios_app_link') }}</label>
                                             <input type="text" class="form-control" name="ios" id="ios" value="{{ @$getsettings->ios == '' ? old('ios') : @$getsettings->ios }}" placeholder="{{ trans('labels.ios_app_link') }}">
                                             @error('ios')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -857,7 +857,7 @@
                                             <label class="col-form-label" for="">{{ trans('labels.android_app_link') }}</label>
                                             <input type="text" class="form-control" name="android" id="android" value="{{ @$getsettings->android == '' ? old('android') : @$getsettings->android }}" placeholder="{{ trans('labels.android_app_link') }}">
                                             @error('android')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -866,7 +866,7 @@
                                             <label class="col-form-label" for="">{{ trans('labels.app_bottom_image') }} (1440 x 1600) </label>
                                             <input type="file" class="form-control" name="app_bottom_image" id="app_bottom_image">
                                             @error('image')
-                                                <span class="text-danger">{{ $message }}</span><br>
+                                                <span class="text-light">{{ $message }}</span><br>
                                             @enderror
                                             <img src="{{ Helper::image_path(@$getsettings->app_bottom_image) }}" class="img-fluid rounded hw-50 mt-1">
                                         </div>
@@ -894,7 +894,7 @@
                                             <label class="col-form-label" for="">{{ trans('labels.about_content') }} </label>
                                             <textarea class="form-control" name="about_content" id="ckeditor" rows="5">{{ @$getsettings->about_content == '' ? old('about_content') : @$getsettings->about_content }}</textarea>
                                             @error('about_content')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>

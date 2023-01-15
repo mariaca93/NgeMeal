@@ -31,48 +31,54 @@ class CheckoutController extends Controller
     }
     public function isopenclose(Request $request)
     {
-        if(@helper::appdata()->timezone != ""){
-            date_default_timezone_set(helper::appdata()->timezone);
-        }
-        $admin = User::first();
-        $date = date('Y/m/d h:i:sa');
-        $isopenclose=Time::where('day','=',date('l', strtotime($date)))->first();
-        $current_time = DateTime::createFromFormat('H:i a', date("h:i a"));
-        $open_time = DateTime::createFromFormat('H:i a', $isopenclose->open_time);
-        $close_time = DateTime::createFromFormat('H:i a', $isopenclose->close_time);
-        $break_start = DateTime::createFromFormat('H:i a', $isopenclose->break_start);
-        $break_end = DateTime::createFromFormat('H:i a', $isopenclose->break_end);
-        if ($admin->is_online == 1 && $isopenclose->always_close == "2" &&  ( ($current_time > $open_time && $current_time < $break_start) || ($current_time > $break_end && $current_time < $close_time) )   ) {
-            $cartdata = Cart::where('user_id',Auth::user()->id)->get();
-            if($request->qty > helper::appdata()->max_order_qty){
-                $msg = trans('messages.order_qty_less_then').' : '.helper::appdata()->max_order_qty;
-                return response()->json(['status'=>2,'message'=>$msg],200);
-            }elseif(count($cartdata)<=0){
-                return response()->json(['status'=>2,'message'=>trans('messages.cart_is_empty')],200);
-            }elseif($request->order_amount < helper::appdata()->min_order_amount || $request->order_amount > helper::appdata()->max_order_amount ){
-                $msg = trans('messages.order_amount_must_between').' '.helper::currency_format(helper::appdata()->min_order_amount).' and '.helper::currency_format(helper::appdata()->max_order_amount);
-                return response()->json(['status'=>2,'message'=>$msg],200);
-            }else{
+        // if(@helper::appdata()->timezone != ""){
+        //     date_default_timezone_set(helper::appdata()->timezone);
+        // }
+        // $admin = User::first();
+        // $date = date('Y/m/d h:i:sa');
+        // $isopenclose=Time::where('day','=',date('l', strtotime($date)))->first();
+        // $current_time = DateTime::createFromFormat('H:i a', date("h:i a"));
+        // $open_time = DateTime::createFromFormat('H:i a', $isopenclose->open_time);
+        // $close_time = DateTime::createFromFormat('H:i a', $isopenclose->close_time);
+        // $break_start = DateTime::createFromFormat('H:i a', $isopenclose->break_start);
+        // $break_end = DateTime::createFromFormat('H:i a', $isopenclose->break_end);
+        // if ($admin->is_online == 1 && $isopenclose->always_close == "2" &&  ( ($current_time > $open_time && $current_time < $break_start) || ($current_time > $break_end && $current_time < $close_time) )   ) {
+        //     $cartdata = Cart::where('user_id',Auth::user()->id)->get();
+        //     if($request->qty > helper::appdata()->max_order_qty){
+        //         $msg = trans('messages.order_qty_less_then').' : '.helper::appdata()->max_order_qty;
+        //         return response()->json(['status'=>2,'message'=>$msg],200);
+        //     }elseif(count($cartdata)<=0){
+        //         return response()->json(['status'=>2,'message'=>trans('messages.cart_is_empty')],200);
+        //     }elseif($request->order_amount < helper::appdata()->min_order_amount || $request->order_amount > helper::appdata()->max_order_amount ){
+        //         $msg = trans('messages.order_amount_must_between').' '.helper::currency_format(helper::appdata()->min_order_amount).' and '.helper::currency_format(helper::appdata()->max_order_amount);
+        //         return response()->json(['status'=>2,'message'=>$msg],200);
+        //     }else{
                 return response()->json(['status'=>1,'message'=>trans('messages.success')],200);
-            }
-        } else {
-           return response()->json(['status'=>0,'message'=>trans('messages.restaurant_closed')],200);
-        }
+        //     }
+        // } else {
+        //    return response()->json(['status'=>0,'message'=>trans('messages.restaurant_closed')],200);
+        // }
     }
     public function checkdeliveryzone(Request $request)
     {
-        if($request->lat == ""){
-            return response()->json(["status"=>0,"message"=>trans('messages.select_address')],200);
-        }
-        if($request->lang == ""){
-            return response()->json(["status"=>0,"message"=>trans('messages.select_address')],200);
-        }
-        $checkzone = helper::checkzone($request->lat,$request->lang);
-        if(!$checkzone){
-            return response()->json(['status'=>2,'message'=>trans('messages.delivery_not_available')],200);
-        }else{
-            return response()->json(['status'=>1,'message'=>trans('messages.success')],200);
-        }
+        return response()->json(["status"=>0,"message"=>trans('messages.select_address')],200);
+        // if($request->lat == ""){
+        //     return response()->json(["status"=>0,"message"=>trans('messages.select_address')],200);
+        // }
+        // if($request->lang == ""){
+        //     return response()->json(["status"=>0,"message"=>trans('messages.select_address')],200);
+        // }
+        // $client = new \GuzzleHttp\Client();
+        // $geocoder = \Spatie\Geocoder\Geocoder::setup($client);
+        // $geocoder->setApiKey(config('geocoder.key'));
+        // $alamat = $geocoder->getAddressForCoordinates($request->lat, $request->lang);
+        // $checkzone = Str::contains($alamat['formatted_address'], 'Jakarta');
+
+        // if(!$checkzone){
+        //     return response()->json(['status'=>2,'message'=>trans('messages.delivery_not_available')],200);
+        // }else{
+        //     return response()->json(['status'=>1,'message'=>trans('messages.success')],200);
+        // }
     }
     public function holduser(Request $request)
     {
@@ -119,9 +125,11 @@ class CheckoutController extends Controller
                     $area = "";
                 } else {
                     if($request->address_type == ""){
+                        error_log("address type required");
                         return response()->json(["status"=>0,"message"=>trans('messages.address_type_required')],200);
                     }
                     if($request->address == ""){
+                        error_log("address required");
                         return response()->json(["status"=>0,"message"=>trans('messages.address_required')],200);
                     }
                     if($request->lat == ""){
@@ -229,15 +237,15 @@ class CheckoutController extends Controller
                     if($checkuser->is_notification == 1){
                         $title = trans('labels.order_placed');
                         $body = "Your Order ".$order_number." has been placed.";
-                        $noti = helper::push_notification($checkuser->token,$title,$body,"order",$order->id);
+                        // $noti = helper::push_notification($checkuser->token,$title,$body,"order",$order->id);
                     }
                     $orderdata = Order::where('id',$order->id)->first();
                     $itemdata = OrderDetails::where('order_id',$order->id)->get();
                     if($checkuser->is_mail == 1){   
-                        $invoice_helper = helper::create_order_invoice($checkuser->email,$checkuser->name,$order_number,$orderdata,$itemdata);
+                        // $invoice_helper = helper::create_order_invoice($checkuser->email,$checkuser->name,$order_number,$orderdata,$itemdata);
                     }
-                    $admindata = User::select('id','name','email','mobile')->where('type',1)->first();
-                    $admin_invoice = helper::create_order_invoice($admindata->email,$checkuser->name,$order_number,$orderdata,$itemdata);
+                    // $admindata = User::select('id','name','email','mobile')->where('type',1)->first();
+                    // $admin_invoice = helper::create_order_invoice($admindata->email,$checkuser->name,$order_number,$orderdata,$itemdata);
                     session()->forget('discount_data');
                     session()->forget('order_type');
                     return response()->json(['status'=>1,'message'=>trans('messages.success'),'order_id'=>$order_number],200);

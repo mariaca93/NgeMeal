@@ -30,7 +30,7 @@
             </div>
             @if ($transaction_type == 2)
                 <small
-                    class="walleterror text-danger d-none">{{ trans('messages.insufficient_wallet') }}</small>
+                    class="walleterror text-light d-none">{{ trans('messages.insufficient_wallet') }}</small>
             @endif
         </label>
         @if ($transaction_type == 4)

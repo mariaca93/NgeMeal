@@ -54,15 +54,15 @@
                                 <div class="row justify-content-between mb-1">
                                     <div class="col-auto">
                                         <span
-                                            class="green_color"><?php echo e($getitemdata['cuisine_info']->cuisine_name); ?></span>
+                                            class="white_color"><?php echo e($getitemdata['cuisine_info']->cuisine_name); ?></span>
                                     </div>
                                     <div class="col-auto">
                                         <?php if($getitemdata->tax > 0): ?>
-                                            <span class="text-danger float-end">+ <?php echo e($getitemdata->tax); ?>%
+                                            <span class="text-light float-end">+ <?php echo e($getitemdata->tax); ?>%
                                                 <?php echo e(trans('labels.additional_taxes')); ?></span>
                                         <?php else: ?>
                                             <span
-                                                class="text-danger float-end"><?php echo e(trans('labels.inclusive_taxes')); ?></span>
+                                                class="text-light float-end"><?php echo e(trans('labels.inclusive_taxes')); ?></span>
                                         <?php endif; ?>
                                     </div>
                                 </div>

@@ -12,12 +12,12 @@
                             <div class="row">
                                     <div class="col-md-6">
                             <div class="form-group">
-                                <label class="col-form-label" for="">{{trans('labels.addons_name')}} <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="">{{trans('labels.addons_name')}} <span class="text-light">*</span> </label>
                                     <input type="text" class="form-control" name="name" id="addons_name" placeholder="{{trans('labels.addons_name')}}" value="{{old('name')}}">
-                                    @error('name') <span class="text-danger">{{$message}}</span> @enderror
+                                    @error('name') <span class="text-light">{{$message}}</span> @enderror
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label" for="">{{trans('labels.type')}} <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="">{{trans('labels.type')}} <span class="text-light">*</span> </label>
                                 <!-- <label class="radio-inline me-3"><input type="radio" name="type" value="1" onclick="get_price(this)"  {{old('type')==1 ? 'checked' : ''}}> {{trans('labels.free')}}</label>
                                 <label class="radio-inline me-3"><input type="radio" name="type" value="2" onclick="get_price(this)"  {{old('type')==2 ? 'checked' : ''}}> {{trans('labels.paid')}}</label>
                                  -->
@@ -31,12 +31,12 @@
                                         <label class="form-check-label text-nowrap" for="paid">{{trans('labels.paid')}}</label>
                                     </div>
                                 </div>
-                                @error('type') <br><span class="text-danger">{{$message}}</span> @enderror
+                                @error('type') <br><span class="text-light">{{$message}}</span> @enderror
                             </div>
                             <div class="form-group" id="price_row">
-                                <label class="col-form-label" for="">{{trans('labels.price')}} <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="">{{trans('labels.price')}} <span class="text-light">*</span> </label>
                                     <input type="text" class="form-control" name="price" id="price" placeholder="{{trans('labels.price')}}" value="{{old('price')}}">
-                                    @error('price') <span class="text-danger">{{$message}}</span> @enderror
+                                    @error('price') <span class="text-light">{{$message}}</span> @enderror
                             </div>
                              </div>
 </div>

@@ -46,18 +46,18 @@
                                                 <input type="hidden" name="country" id="country" value="91">
                                                 <input type="tel" id="mobile" name="mobile" class="form-control custom-input rounded mb-3" placeholder="{{trans('labels.mobile')}}" value="{{old('mobile')}}">
                                             </div>
-                                            @error('mobile')<div class="text-danger">{{ $message }}</div>@enderror
+                                            @error('mobile')<div class="text-light">{{ $message }}</div>@enderror
                                         </div>
                                     @else
                                         <div class="form-group">
                                             <label class="text-white form-label">{{trans('labels.email')}}</label>
                                             <input type="email" name="email" class="form-control custom-input mb-3" placeholder="{{trans('labels.email')}}" @if (env('Environment') == 'sendbox') value="user@gmail.com" @endif>
-                                            @error('email')<span class="text-danger">{{ $message }}</span>@enderror
+                                            @error('email')<span class="text-light">{{ $message }}</span>@enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="text-white form-label">{{trans('labels.password')}}</label>
                                             <input type="password" name="password" class="form-control custom-input mb-3" placeholder="{{trans('labels.password')}}" @if (env('Environment') == 'sendbox') value="123456" @endif>
-                                            @error('password')<span class="text-danger">{{ $message }}</span>@enderror
+                                            @error('password')<span class="text-light">{{ $message }}</span>@enderror
                                         </div>
                                         <div class="form-group d-flex justify-content-end">
                                             <a href="{{ URL::to('forgot-password') }}" class="text-primary fw-bold float-end">{{trans('labels.forgot_password_q')}}</a>

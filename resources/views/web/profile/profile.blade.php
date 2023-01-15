@@ -43,12 +43,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                @error('profile_image') <small class="text-danger">{{$message}}</small> @enderror
+                                @error('profile_image') <small class="text-light">{{$message}}</small> @enderror
                             </div>
                             <div class="form-group mb-3">
                                 <label for="" class="form-label mb-0">{{ trans('labels.full_name') }}</label>
                                 <input type="text" class="form-control" name="name" placeholder="{{trans('labels.full_name')}}" value="{{Auth::user()->name}}">
-                                @error('name') <small class="text-danger">{{$message}}</small> @enderror
+                                @error('name') <small class="text-light">{{$message}}</small> @enderror
                             </div>
                             <div class="form-group mb-3">
                                 <label for="" class="form-label mb-0">{{ trans('labels.email') }}</label>

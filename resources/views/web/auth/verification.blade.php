@@ -48,9 +48,9 @@
                                 </div>
                                 <div class="m-3">
                                     <input type="text" name="otp" class="form-control rounded" placeholder="{{trans('labels.otp')}}" @if (env('Environment') == 'sendbox') value="{{session()->get('verification_otp')}}" readonly @else value="{{old('otp')}}" @endif>
-                                    @error('otp')<span class="text-danger">{{ $message }}</span>@enderror
+                                    @error('otp')<span class="text-light">{{ $message }}</span>@enderror
                                     @if(session()->has('otp_error'))
-                                        <span class="text-danger">{{session()->get('otp_error')}}</span>
+                                        <span class="text-light">{{session()->get('otp_error')}}</span>
                                     @endif
                                 </div>
                                 <div class="m-3 d-grid">

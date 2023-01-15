@@ -12,29 +12,29 @@
                             <div class="row">
                                 <div class="col-md-6">
                             <div class="form-group ">
-                                <label class="col-form-label" for="">{{trans('labels.name')}} <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="">{{trans('labels.name')}} <span class="text-light">*</span> </label>
                                     <input type="text" class="form-control" name="name" id="name" placeholder="{{trans('labels.name')}}" value="{{$getdriverdata->name}}">
-                                    @error('name') <span class="text-danger">{{$message}}</span> @enderror
+                                    @error('name') <span class="text-light">{{$message}}</span> @enderror
                             </div>
                             </div>
                             <div class="col-md-6">
                             <div class="form-group ">
-                                <label class="col-form-label" for="">{{trans('labels.email')}} <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="">{{trans('labels.email')}} <span class="text-light">*</span> </label>
                                     <input type="text" class="form-control" name="email" id="email" placeholder="{{trans('labels.email')}}" value="{{$getdriverdata->email}}">
-                                    @error('email') <span class="text-danger">{{$message}}</span> @enderror
+                                    @error('email') <span class="text-light">{{$message}}</span> @enderror
                             </div>
                             </div>
                             <div class="col-md-6">
                             <div class="form-group ">
-                                <label class="col-form-label" for="">{{trans('labels.mobile')}} <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="">{{trans('labels.mobile')}} <span class="text-light">*</span> </label>
                                     <input type="text" class="form-control" name="mobile" id="mobile" placeholder="{{trans('labels.mobile')}}" value="{{$getdriverdata->mobile}}">
-                                    @error('mobile') <span class="text-danger">{{$message}}</span> @enderror
+                                    @error('mobile') <span class="text-light">{{$message}}</span> @enderror
                             </div>
                             </div>
                             <div class="col-md-6">
 
                             <div class="form-group">
-                                <label class="col-form-label" for="">{{trans('labels.identity_type')}} <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="">{{trans('labels.identity_type')}} <span class="text-light">*</span> </label>
 
                                     <select id="identity_type" name="identity_type" class="form-select" aria-label="">
                                         <option value="" selected disabled>{{ trans('labels.select') }}</option>
@@ -45,23 +45,23 @@
                                         <option value="Other" {{ $getdriverdata->identity_type == "Other" ? 'selected' : '' }}> {{ trans('labels.other') }} </option>
                                     </select>
 
-                                @error('identity_type') <span class="text-danger">{{$message}}</span> @enderror
+                                @error('identity_type') <span class="text-light">{{$message}}</span> @enderror
                             </div>
 
 
                             </div>
                             <div class="col-md-6">
                             <div class="form-group ">
-                                <label class="col-form-label" for="">{{trans('labels.identity_number')}} <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="">{{trans('labels.identity_number')}} <span class="text-light">*</span> </label>
                                     <input type="tel" class="form-control" name="identity_number" value="{{$getdriverdata->identity_number}}" id="identity_number" placeholder="{{trans('labels.identity_number')}}">
-                                    @error('identity_number') <span class="text-danger">{{$message}}</span> @enderror
+                                    @error('identity_number') <span class="text-light">{{$message}}</span> @enderror
                             </div>
                             </div>
                             <div class="col-md-6">
                             <div class="form-group ">
-                                <label class="col-form-label" for="">{{trans('labels.identity_image')}} <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="">{{trans('labels.identity_image')}} <span class="text-light">*</span> </label>
                                     <input type="file" class="form-control" name="image" id="image">
-                                    @error('image') <span class="text-danger">{{$message}}</span><br> @enderror
+                                    @error('image') <span class="text-light">{{$message}}</span><br> @enderror
                                     <img src="{{Helper::image_path($getdriverdata->identity_image)}}" alt="" class="img-fluid rounded hw-50 mt-1">
                             </div>
                             </div>

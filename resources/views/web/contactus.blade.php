@@ -70,21 +70,21 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <input type="text" class="form-control" name="fname" placeholder="{{ trans('messages.first_name') }}">
-                                            @error('fname') <small class="text-danger">{{ $message }}</small> @enderror
+                                            @error('fname') <small class="text-light">{{ $message }}</small> @enderror
                                         </div>
                                         <div class="col-6">
                                             <input type="text" class="form-control" name="lname" placeholder="{{ trans('messages.last_name') }}">
-                                            @error('lname') <small class="text-danger">{{ $message }}</small> @enderror
+                                            @error('lname') <small class="text-light">{{ $message }}</small> @enderror
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mb-3 form-group">
                                     <input type="email" class="form-control" name="email" placeholder="{{ trans('labels.email') }}">
-                                    @error('email') <small class="text-danger">{{ $message }}</small> @enderror
+                                    @error('email') <small class="text-light">{{ $message }}</small> @enderror
                                 </div>
                                 <div class="mb-3 form-group">
                                     <textarea class="form-control" rows="2" name="message" placeholder="{{ trans('labels.message') }}"></textarea>
-                                    @error('message') <small class="text-danger">{{ $message }}</small> @enderror
+                                    @error('message') <small class="text-light">{{ $message }}</small> @enderror
                                 </div>
                                 <div class="d-flex">
                                     <button type="submit" name="submit" class="btn btn-primary w-100">{{ trans('labels.save') }}</button>

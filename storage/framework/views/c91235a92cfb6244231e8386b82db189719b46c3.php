@@ -64,36 +64,32 @@
 <?php endif; ?>
 <!-- Promotional topbanners End Here -->
 <!-- Cuisine Section Start Here -->
-<!-- <button id="find-me">Show my location</button><br />
-<p id="status"></p>
-<a id="map-link" target="_blank"></a> -->
 
-<form  hidden name="formSubmit" method="GET" action="<?php echo e(URL::to('home')); ?>">
+<form hidden name="formSubmit" method="GET" action="<?php echo e(URL::to('home')); ?>">
     <input hidden name="longitude" id="longitude" value="">
     <input hidden name="latitude" id="latitude" value="">
 <button hidden id="btnSubmit" type="submit"></button>
 </form>
 
 <script>
-    window.onload = function() {
+    geoFindMe();
+    setTimeout(function() {
+
         if(document.cookie.indexOf('weather') == -1 ){
-            geoFindMe();
+            var lat = document.getElementById('latitude').value;
+            var long = document.getElementById('longitude').value;
+            document.cookie = 'weather=loaded';
+            var text = "Allow location access for weather reccomendation?";
+            if (confirm(text) == true) {
+                document.getElementById('btnSubmit').click();
+            }
         }
-    };
-
+    },5000);
     function geoFindMe() {
-        const status = document.querySelector('#status');
-        const mapLink = document.querySelector('#map-link');
-
-        mapLink.href = '';
-        mapLink.textContent = '';
 
         function success(position) {
             const latitude  = position.coords.latitude;
             const longitude = position.coords.longitude;
-            status.textContent = '';
-            mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
-            mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
             console.log("lat nya" + latitude);
             console.log("long nya " +longitude);
             
@@ -132,8 +128,8 @@
                     <div class="cuisine-wrapper mx-2">
                         <a href="<?php echo e(URL::to('/menu/?cuisine=' . $cuisinedata->slug)); ?>">
                             <div class="cat rounded-circle">
-                                <img src="<?php echo e(Helper::image_path($cuisinedata->image)); ?>" class="rounded-circle" alt="cuisine">
-                            </div>
+                                <img src="<?php echo e(url('/admin-assets/images/cuisines/'.$cuisinedata->image)); ?>" class="rounded-circle" alt="cuisine">
+                            </div> 
                         </a>
                         <p class="text-center my-2"><?php echo e($cuisinedata->cuisine_name); ?></p>
                     </div>
@@ -459,6 +455,100 @@
 <!-- Blog Section End Here -->
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('scripts'); ?>
+<script
+        src="https://maps.googleapis.com/maps/api/js?libraries=places&<?php echo e(@Helper::appdata()->map != 'map_key' ? 'key=' . @Helper::appdata()->map : ''); ?>">
+    </script>
+
+    <script>
+        var geocoder;
+        var map;
+        var marker;
+        var infowindow = new google.maps.InfoWindow({
+            size: new google.maps.Size(150, 50)
+        });
+
+        function initialize() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((showPosition) => {
+                    geocoder = new google.maps.Geocoder();
+                    create_map(showPosition.coords.latitude, showPosition.coords.longitude)
+                    // to-change-marker-on-typing-address --> START
+                    var input = document.getElementById('address');
+                    var autocomplete = new google.maps.places.Autocomplete(input);
+                    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+                        var place = autocomplete.getPlace();
+                        $('#lat').val(place.geometry.location.lat());
+                        $('#lang').val(place.geometry.location.lng());
+                        create_map(place.geometry.location.lat(), place.geometry.location.lng());
+                    });
+                    // to-change-marker-on-typing-address --> END
+                }, (showError) => {
+                    $('#mymap').hide();
+                    $('#address').hide();
+                });
+            } else {
+                $('.err').html("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function create_map(lat, lang) {
+            var latlng = new google.maps.LatLng(lat, lang);
+            var default_address = $('#address').val();
+            var mapOptions = {
+                zoom: 15,
+                center: latlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+            map = new google.maps.Map(document.getElementById('mymap'), mapOptions);
+            google.maps.event.addListener(map, 'click', function() {
+                infowindow.close();
+            });
+            marker = new google.maps.Marker({
+                map: map,
+                draggable: true,
+                position: latlng
+            });
+            if ("<?php echo e(env('Environment')); ?>" != "sendbox") {
+                google.maps.event.addListener(marker, 'dragend', function() {
+                    $('#lat').val(this.getPosition().lat());
+                    $('#lang').val(this.getPosition().lng());
+                    geocodePosition(marker.getPosition());
+                });
+                google.maps.event.addListener(map, 'dragend', function() {
+                    $('#lat').val(this.getCenter().lat());
+                    $('#lang').val(this.getCenter().lng());
+                    marker.setPosition(this.getCenter());
+                    geocodePosition(this.getCenter());
+                });
+                google.maps.event.addListener(marker, 'click', function() {
+                    marker.setPosition(this.getPosition());
+                    geocodePosition(this.getPosition());
+                    $('#lat').val(this.getPosition().lat());
+                    $('#lang').val(this.getPosition().lng());
+                });
+                google.maps.event.trigger(marker, 'click');
+            }
+        }
+
+        function geocodePosition(pos) {
+            geocoder.geocode({
+                latLng: pos
+            }, function(responses) {
+                if (responses && responses.length > 0) {
+                    marker.formatted_address = responses[0].formatted_address;
+                    $('#address').val(marker.formatted_address);
+                } else {
+                    marker.formatted_address = 'Cannot determine address at this location.';
+                }
+                default_address = marker.formatted_address
+                infowindow.setContent(marker.formatted_address + "<br>coordinates: " + marker.getPosition()
+                    .toUrlValue(6));
+                infowindow.open(map, marker);
+            });
+        }
+        google.maps.event.addDomListener(window, "load", initialize);
+    </script>
+
     <!-- JS For Promotional Banner Section 1 -->
     <script>
         $(document).ready(function() {

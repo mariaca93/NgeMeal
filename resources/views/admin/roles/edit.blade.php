@@ -12,13 +12,13 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="col-form-label" for="">{{ trans('labels.role_name') }} <span class="text-danger">*</span></label>
+                                        <label class="col-form-label" for="">{{ trans('labels.role_name') }} <span class="text-light">*</span></label>
                                         <input type="text" class="form-control" name="name" placeholder="{{ trans('labels.role_name') }}" value="{{$data->name}}">
-                                        @error('name') <span class="text-danger">{{$message}}</span> @enderror
+                                        @error('name') <span class="text-light">{{$message}}</span> @enderror
                                     </div>
                                     @php $modules = explode(',',$data->modules); @endphp
                                     <div class="form-group">
-                                        <label class="col-form-label" for="">{{ trans('labels.system_modules') }} <span class="text-danger">*</span></label>
+                                        <label class="col-form-label" for="">{{ trans('labels.system_modules') }} <span class="text-light">*</span></label>
                                         <div class="row mb-0">
                                             <div class="col-lg-4 col-md-6 py-2">
                                                 <label class="cursor-pointer" for="checkbox0">
@@ -213,7 +213,7 @@
                                                 </label>
                                             </div>
                                             @endif
-                                            @error('modules') <br><span class="text-danger">{{$message}}</span> @enderror
+                                            @error('modules') <br><span class="text-light">{{$message}}</span> @enderror
                                         </div>
                                     </div>
                                 </div>

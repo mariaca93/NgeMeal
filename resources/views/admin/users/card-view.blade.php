@@ -20,7 +20,7 @@
                                 <i class="fa fa-check"></i><small>{{trans('labels.status')}}</small>
                             </a>
                         @else
-                            <a class="btn btn-sm d-grid text-danger" @if(env('Environment')=='sendbox') onclick="myFunction()" @else onclick="StatusUpdate('{{$users->id}}','1','{{URL::to('admin/users/status')}}')" @endif>
+                            <a class="btn btn-sm d-grid text-light" @if(env('Environment')=='sendbox') onclick="myFunction()" @else onclick="StatusUpdate('{{$users->id}}','1','{{URL::to('admin/users/status')}}')" @endif>
                                 <i class="fa fa-close"></i><small>{{trans('labels.status')}}</small>
                             </a>
                         @endif

@@ -31,7 +31,7 @@
                         <div class="row justify-content-between mb-2">
                             <div class="col-auto">
                                 <p class="title">{{ trans('labels.my_wallet') }} :- <small
-                                        class="green_color">{{ Helper::currency_format(Auth::user()->wallet) }}</small></p>
+                                        class="white_color">{{ Helper::currency_format(Auth::user()->wallet) }}</small></p>
                             </div>
                             <div class="col-auto"><a href="{{ route('add-money') }}"
                                     class="btn btn-sm btn-outline-primary"><i class="fa-solid fa-plus"></i>
@@ -97,7 +97,7 @@
                                                         @endif
                                                     </td>
                                                     <td
-                                                        class="fs-7 {{ in_array($tdata->transaction_type, [2, 3, 4, 5, 6, 7, 8]) == true ? 'text-success' : 'text-danger' }}">
+                                                        class="fs-7 {{ in_array($tdata->transaction_type, [2, 3, 4, 5, 6, 7, 8]) == true ? 'text-success' : 'text-light' }}">
                                                         {{ Helper::currency_format($tdata->amount) }}</td>
                                                 </tr>
                                             @endforeach

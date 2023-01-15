@@ -23,7 +23,7 @@
                                                 <div class="form-group">
                                                     <label for="cuisine_id"
                                                         class="col-form-label">{{ trans('labels.cuisine') }} <span 
-                                                            class="text-danger">*</span> </label>
+                                                            class="text-light">*</span> </label>
                                                     <select name="cuisine_id" class="form-select" id="cuisine_id"
                                                         data-url="{{ URL::to('admin/item/subcuisines') }}">
                                                         <option value="" selected>{{ trans('labels.select') }}
@@ -35,7 +35,7 @@
                                                             </option>
                                                         @endforeach
                                                         @error('get_cuisine_id')
-                                                            <span class="text-danger">{{ $message }}</span>
+                                                            <span class="text-light">{{ $message }}</span>
                                                         @enderror
                                                     </select>
                                                 </div>
@@ -54,7 +54,7 @@
                                                         @endforeach
                                                     </select>
                                                     @error('subcuisine_id')
-                                                        <span class="text-danger">{{ $message }}</span>
+                                                        <span class="text-light">{{ $message }}</span>
                                                     @enderror
                                                 </div>
                                             </div>
@@ -64,12 +64,12 @@
                                         <div class="form-group">
                                             <label for="getitem_name"
                                                 class="col-form-label">{{ trans('labels.name') }} <span
-                                                    class="text-danger">*</span> </label>
+                                                    class="text-light">*</span> </label>
                                             <input type="text" class="form-control" id="getitem_name" name="item_name"
                                                 placeholder="{{ trans('labels.name') }}"
                                                 value="{{ $getitem->item_name }}">
                                             @error('getitem_name')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -93,7 +93,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="item_type" class="col-form-label">{{ trans('labels.item_type') }}
-                                                <span class="text-danger">*</span> </label>
+                                                <span class="text-light">*</span> </label>
                                             <div class="col-md-12">
                                                 <div class="form-check-inline">
                                                     <input class="form-check-input me-0" type="radio" name="item_type"
@@ -110,7 +110,7 @@
                                                         for="nonveg">{{ trans('labels.nonveg') }}</label>
                                                 </div>
                                                 @error('item_type')
-                                                    <br><span class="text-danger">{{ $message }}</span>
+                                                    <br><span class="text-light">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
@@ -121,7 +121,7 @@
                                         <div class="form-group">
                                             <label for="has_variation"
                                                 class="col-form-label">{{ trans('labels.item_has_variation') }} <span
-                                                    class="text-danger">*</span> </label>
+                                                    class="text-light">*</span> </label>
                                             <div class="col-md-12">
                                                 <div class="form-check-inline">
                                                     <input class="form-check-input me-0 has_variation" type="radio"
@@ -138,7 +138,7 @@
                                                         for="yes">{{ trans('labels.yes') }}</label>
                                                 </div>
                                                 @error('has_variation')
-                                                    <br><span class="text-danger">{{ $message }}</span>
+                                                    <br><span class="text-light">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
@@ -148,11 +148,11 @@
                                     <div class="col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <label for="price" class="col-form-label">{{ trans('labels.price') }}
-                                                <span class="text-danger">*</span> </label>
+                                                <span class="text-light">*</span> </label>
                                             <input type="text" class="form-control" name="price" id="price"
                                                 placeholder="{{ trans('labels.price') }}" value="{{ $getitem->price }}">
                                             @error('price')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -162,12 +162,12 @@
                                     <div class="col-md-12 px-0">
                                         <div class="form-group">
                                             <label for="attribute" class="col-form-label">{{ trans('labels.attribute') }}
-                                                <span class="text-danger">*</span> </label>
+                                                <span class="text-light">*</span> </label>
                                             <input type="text" class="form-control attribute" name="attribute"
                                                 id="attribute" placeholder="{{ trans('messages.enter_attribute') }}"
                                                 value="{{ $getitem->attribute }}">
                                             @error('attribute')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -180,14 +180,14 @@
                                                 <div class="form-group">
                                                     <label for="variation"
                                                         class="col-form-label">{{ trans('labels.variation') }} <span
-                                                            class="text-danger">*</span> </label>
+                                                            class="text-light">*</span> </label>
                                                     <input type="text" class="form-control variation"
                                                         name="variation[{{ $ky }}]" id="variation"
                                                         placeholder="{{ trans('labels.variation') }}" required=""
                                                         value="{{ $variation->variation }}">
                                                     @if ($errors->has('variation.' . $ky))
                                                         <span
-                                                            class="text-danger">{{ $errors->first('variation.' . $ky) }}</span>
+                                                            class="text-light">{{ $errors->first('variation.' . $ky) }}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -195,14 +195,14 @@
                                                 <div class="form-group">
                                                     <label for="product_price"
                                                         class="col-form-label">{{ trans('labels.product_price') }} <span
-                                                            class="text-danger">*</span> </label>
+                                                            class="text-light">*</span> </label>
                                                     <input type="text" class="form-control product_price"
                                                         id="product_price" name="product_price[{{ $ky }}]"
                                                         placeholder="{{ trans('labels.product_price') }}" required=""
                                                         value="{{ $variation->product_price }}">
                                                     @if ($errors->has('product_price.' . $ky))
                                                         <span
-                                                            class="text-danger">{{ $errors->first('product_price.' . $ky) }}</span>
+                                                            class="text-light">{{ $errors->first('product_price.' . $ky) }}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -210,14 +210,14 @@
                                                 <div class="form-group">
                                                     <label for="sale_price"
                                                         class="col-form-label">{{ trans('labels.sale_price') }} <span
-                                                            class="text-danger">*</span> </label>
+                                                            class="text-light">*</span> </label>
                                                     <input type="text" class="form-control sale_price" id="sale_price"
                                                         name="sale_price[{{ $ky }}]"
                                                         placeholder="{{ trans('labels.sale_price') }}" required=""
                                                         value="{{ $variation->sale_price }}">
                                                     @if ($errors->has('sale_price.' . $ky))
                                                         <span
-                                                            class="text-danger">{{ $errors->first('sale_price.' . $ky) }}</span>
+                                                            class="text-light">{{ $errors->first('sale_price.' . $ky) }}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -254,12 +254,12 @@
                                                 <div class="form-group">
                                                     <label for="preparation_time"
                                                         class="col-form-label">{{ trans('labels.preparation_time') }}
-                                                        <span class="text-danger">*</span> </label>
+                                                        <span class="text-light">*</span> </label>
                                                     <input type="text" class="form-control" name="preparation_time"
                                                         id="preparation_time" value="{{ $getitem->preparation_time }}"
                                                         placeholder="{{ trans('labels.preparation_time') }}">
                                                     @error('preparation_time')
-                                                        <span class="text-danger">{{ $message }}</span>
+                                                        <span class="text-light">{{ $message }}</span>
                                                     @enderror
                                                 </div>
                                             </div>
@@ -337,7 +337,7 @@
                     <span id="emsg"></span>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>{{ trans('labels.images') }} (500x250) <span class="text-danger">*</span></label>
+                            <label>{{ trans('labels.images') }} (500x250) <span class="text-light">*</span></label>
                             <input type="file" class="form-control" name="image" id="image" accept="image/*">
                         </div>
                         <div class="galleryim"></div>
@@ -369,7 +369,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label class="col-form-label">{{ trans('labels.images') }} (500x250) <span
-                                    class="text-danger">*</span></label>
+                                    class="text-light">*</span></label>
                             <input type="file" multiple="true" class="form-control" name="file[]" id="file"
                                 accept="image/*" required="">
                         </div>

@@ -34,9 +34,6 @@
                                 <label class="btn btn-secondary">
                                     <input type="radio" name="options" id="byIngredient" autocomplete="off"> Ingredient
                                 </label>
-                                <label class="btn btn-secondary" style="border-bottom-right-radius: 0;border-top-right-radius: 0">
-                                    <input type="radio" name="options" id="byWeather" autocomplete="off"> Weather
-                                </label>
                             </div>
                             <input type="text" class="form-control rounded" name="itemname" id="item_input"
                                 placeholder="{{ trans('labels.search_here') }}"
@@ -91,8 +88,6 @@
                         var input = document.getElementById("ingredient_input_chosen");
                         $(input).attr("style", "width: 500px");
                         $('#ingredient_input').chosen();
-                        break;
-                    case "byWeather" :
                         break;
                 }
             });

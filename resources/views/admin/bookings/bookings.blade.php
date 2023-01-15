@@ -35,7 +35,7 @@
                                     @elseif($booking->status == 2)
                                         <span class="text-success">{{trans('labels.accepted')}}</span>
                                     @elseif($booking->status == 3)
-                                        <span class="text-danger">{{trans('labels.rejected')}}</span>
+                                        <span class="text-light">{{trans('labels.rejected')}}</span>
                                     @else
                                         --
                                     @endif
@@ -67,7 +67,7 @@
                     <div class="form-group">
                         <label for="cuisine_id" class="col-form-label">{{ trans('labels.table_number') }}</label>
                         <input type="tel" class="form-control" name="table_number" placeholder="{{trans('labels.table_number')}}" id="table_number" required="required">
-                        <span class="table_error text-danger"></span>
+                        <span class="table_error text-light"></span>
                     </div>
                 </div>
                 <div class="modal-footer">

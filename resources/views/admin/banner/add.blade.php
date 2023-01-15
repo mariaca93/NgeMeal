@@ -37,11 +37,11 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.image') }}
-                                                {{ $img_size }} <span class="text-danger">*</span> </label>
+                                                {{ $img_size }} <span class="text-light">*</span> </label>
 
                                             <input type="file" class="form-control" name="image" accept="image/*">
                                             @error('image')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
 
                                         </div>
@@ -59,7 +59,7 @@
 
                                         </div>
                                         <div class="form-group 1 gravity @if (old('type') == 1) @else dn @endif">
-                                            <label class="col-form-label" for="">{{ trans('labels.cuisine') }} <span class="text-danger">*</span> </label>
+                                            <label class="col-form-label" for="">{{ trans('labels.cuisine') }} <span class="text-light">*</span> </label>
 
                                             <select name="cuisine_id" class="form-select selectpicker" data-live-search="true"
                                                 id="cuisine_id">
@@ -72,12 +72,12 @@
                                                 @endforeach
                                             </select>
                                             @error('cuisine_id')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
 
                                         </div>
                                         <div class="form-group 2 gravity @if (old('type') == 2) @else dn @endif">
-                                            <label class="col-form-label" for="">{{ trans('labels.item') }} <span class="text-danger">*</span> </label>
+                                            <label class="col-form-label" for="">{{ trans('labels.item') }} <span class="text-light">*</span> </label>
 
                                             <select name="item_id" class="form-select selectpicker" data-live-search="true"
                                                 id="item_id">
@@ -87,7 +87,7 @@
                                                 @endforeach
                                             </select>
                                             @error('item_id')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
 
                                         </div>

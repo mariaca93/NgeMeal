@@ -36,7 +36,7 @@
                                 <input type="password" class="form-control" name="old_password"
                                     placeholder="{{ trans('labels.old_password') }}" value="{{ old('old_password') }}">
                                 @error('old_password')
-                                    <small class="text-danger">{{ $message }}</small>
+                                    <small class="text-light">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="form-group mb-3">
@@ -44,7 +44,7 @@
                                 <input type="password" class="form-control" name="new_password"
                                     placeholder="{{ trans('labels.new_password') }}" value="{{ old('new_password') }}">
                                 @error('new_password')
-                                    <small class="text-danger">{{ $message }}</small>
+                                    <small class="text-light">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="form-group mb-3">
@@ -54,7 +54,7 @@
                                     placeholder="{{ trans('labels.confirm_password') }}"
                                     value="{{ old('confirm_password') }}">
                                 @error('confirm_password')
-                                    <small class="text-danger">{{ $message }}</small>
+                                    <small class="text-light">{{ $message }}</small>
                                 @enderror
                             </div>
                             <button @if (env('Environment') == 'sendbox') type="button" onclick="myFunction()" @else type="submit" @endif

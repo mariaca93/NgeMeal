@@ -13,14 +13,14 @@
                                 <label class="col-lg-12 col-form-label" for="">{{trans('labels.name')}} </label>
                                 <div class="col-lg-12">
                                     <input type="text" class="form-control" name="name" value="{{old('name')}}" placeholder="{{trans('labels.name')}}" required>
-                                    @error('name') <span class="text-danger">{{$message}}</span> @enderror
+                                    @error('name') <span class="text-light">{{$message}}</span> @enderror
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-12 col-form-label" for="">{{trans('labels.coordinates')}} </label>
                                 <div class="col-lg-12">
                                     <textarea class="form-control" name="coordinates" id="coordinates" rows="6" placeholder="{{trans('labels.enter_coordinates')}}" readonly required></textarea>
-                                    @error('coordinates') <span class="text-danger">{{$message}}</span> @enderror
+                                    @error('coordinates') <span class="text-light">{{$message}}</span> @enderror
                                 </div>
                             </div>
                             <div class="form-group">

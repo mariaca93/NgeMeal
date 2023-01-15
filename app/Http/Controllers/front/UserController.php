@@ -35,20 +35,20 @@ class UserController extends Controller
         $email = "";
         $password = "";
         $login_type = "";
-        $google_id = "";
-        $facebook_id = "";
-        if(session()->has('social_login')){
-            if(session()->get('social_login')['google_id'] != ""){
-                $login_type = "google";
-                $google_id = session()->get('social_login')['google_id'];
-                $email = session()->get('social_login')['email'];
-            }
-            if(session()->get('social_login')['facebook_id'] != ""){
-                $login_type = "facebook";
-                $facebook_id = session()->get('social_login')['facebook_id'];
-                $email = session()->get('social_login')['email'];
-            }
-        }else{
+        // $google_id = "";
+        // $facebook_id = "";
+        // if(session()->has('social_login')){
+        //     if(session()->get('social_login')['google_id'] != ""){
+        //         $login_type = "google";
+        //         $google_id = session()->get('social_login')['google_id'];
+        //         $email = session()->get('social_login')['email'];
+        //     }
+        //     if(session()->get('social_login')['facebook_id'] != ""){
+        //         $login_type = "facebook";
+        //         $facebook_id = session()->get('social_login')['facebook_id'];
+        //         $email = session()->get('social_login')['email'];
+        //     }
+        // }else{
             $email = $request->email;
             $data = $request->validate([
                 'password' => 'required',
@@ -60,20 +60,20 @@ class UserController extends Controller
             ]);
             $login_type = "email";
             $password = Hash::make($request->password);
-        }
-        $otp = rand(100000, 999999);
-        $checkreferral = User::select('id', 'name', 'referral_code', 'wallet', 'email', 'token')->where('referral_code', $request->referral_code)->where('is_available',1)->first();
-        if ($request->has('referral_code') && $request->referral_code != "") {
-            if(empty($checkreferral)){
-                return redirect()->back()->with('error', trans('messages.invalid_referral_code'));
-            }
-        }
+        // }
+        // $otp = rand(100000, 999999);
+        // $checkreferral = User::select('id', 'name', 'referral_code', 'wallet', 'email', 'token')->where('referral_code', $request->referral_code)->where('is_available',1)->first();
+        // if ($request->has('referral_code') && $request->referral_code != "") {
+        //     if(empty($checkreferral)){
+        //         return redirect()->back()->with('error', trans('messages.invalid_referral_code'));
+        //     }
+        // }
         $checkmobile = User::where('mobile', '+'.$request->country.''.$request->mobile)->first();
         if(!empty($checkmobile)){
             return redirect()->back()->with('error', trans('messages.mobile_exist'));
         }
-        $verification = helper::verificationemail($email, $otp);
-        if ($verification == 1) {
+        // $verification = helper::verificationemail($email, $otp);
+        // if ($verification == 1) {
             $user = new User;
             $user->name = $request->name;
             $user->mobile = '+'.$request->country.''.$request->mobile;
@@ -81,27 +81,29 @@ class UserController extends Controller
             $user->profile_image = 'unknown.png';
             $user->password = $password;
             $user->login_type = $login_type;
-            $user->google_id = $google_id;
-            $user->facebook_id = $facebook_id;
-            $user->referral_code = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz'), 0, 10);
-            $user->otp = $otp;
+            // $user->google_id = $google_id;
+            // $user->facebook_id = $facebook_id;
+            // $user->referral_code = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz'), 0, 10);
+            // $user->otp = $otp;
             $user->type = 2;
             $user->is_available = 1;
-            if ($request->has('referral_code') && $request->referral_code != "" && !empty($checkreferral)) {
-                $user->user_id = $checkreferral->id;
-                $user->referral_amount = helper::appdata()->referral_amount;
-            }
+            // if ($request->has('referral_code') && $request->referral_code != "" && !empty($checkreferral)) {
+            //     $user->user_id = $checkreferral->id;
+            //     $user->referral_amount = helper::appdata()->referral_amount;
+            // }
+            $user->token = "f-LadU5sQKSINz_D7JgVtW:APA91bGpXy0_4bDKavbGoc0xZeFLddyeIYETg33UVxBfBc-JQtNSyxRq8AykHCHIK2hhIPbz6uzA9pTSGJ8UaaKGyOXnCYidXmESus79gIbuwTpcgn-1eNIFFTocaOqXvQUwqOxoTbBK";
+            $user->remember_token = "0dEuopnHovMOfHbA82q9ohAvX2zWfXZnZCGYo93JiFpkuyeJ9Os4jtfSosOj";
             $user->is_verified = 2;
             $user->save();
-            session()->forget('social_login');
+            // session()->forget('social_login');
             session()->put('verification_email',$email);
-            if (env('Environment') == 'sendbox') {
-                session()->put('verification_otp',$otp);
-            }
-            return redirect(route('verification'))->with('success', trans('messages.success'));
-        } else {
-            return redirect()->back()->with('error', trans('messages.email_error'));
-        }
+            // if (env('Environment') == 'sendbox') {
+            //     session()->put('verification_otp',$otp);
+            // }
+            return redirect(route('login'))->with('success', trans('messages.success'));
+        // } else {
+        //     return redirect()->back()->with('error', trans('messages.email_error'));
+        // }
     }
     public function verification(Request $request)
     {

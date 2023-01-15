@@ -42,7 +42,7 @@
                                         placeholder="{{ trans('messages.amount_required') }}">
                                 </div>
                                 <small
-                                    class="amounterror text-danger d-none">{{ trans('messages.amount_required') }}</small>
+                                    class="amounterror text-light d-none">{{ trans('messages.amount_required') }}</small>
                             </div>
                         </div>
                         <div class="payment-option mb-3">

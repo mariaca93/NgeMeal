@@ -35,14 +35,14 @@
                             <label for="reservation_date" class="form-label">{{ trans('labels.date') }}</label>
                             <input class="form-control" type="date" name="date" min="<?php echo date('Y-m-d')?>" value="{{old('date')}}" id="reservation_date"> 
                             @error('date')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-light">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-lg-2 col-sm-6 col-12 form-group mb-3">
                             <label for="reservation_time" class="form-label">{{ trans('labels.time') }}</label>
                             <input class="form-control" type="time" name="time" value="{{old('time')}}" id="reservation_time"> 
                             @error('time')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-light">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-lg-4 col-sm-6 col-12 form-group mb-3">
@@ -50,7 +50,7 @@
                             <input class="form-control" type="text" name="guests" value="{{old('guests')}}" id="reservation_guest" 
                                 placeholder="{{ trans('labels.number_guest') }}">
                             @error('guests')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-light">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-lg-4 col-sm-6 col-12 form-group mb-3">
@@ -59,7 +59,7 @@
                             <input class="form-control" type="text" name="reservation_type" value="{{old('reservation_type')}}" id="reservation_type" 
                                 placeholder="{{ trans('labels.reservation_type') }}">
                             @error('reservation_type')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-light">{{ $message }}</span>
                             @enderror
                         </div>
                     </div>
@@ -74,21 +74,21 @@
                             <input class="form-control" type="text" name="name" value="{{old('name')}}" id="reservation_name"
                                 placeholder="{{ trans('labels.full_name') }}">
                             @error('name')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-light">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-12 form-group mb-3">
                             <label for="reservation_email" class="form-label">{{ trans('labels.email') }}</label>
                             <input class="form-control" type="email" name="email" value="{{old('email')}}" id="reservation_email" placeholder="{{ trans('labels.email') }}">
                             @error('email')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-light">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-12 form-group mb-3">
                             <label for="reservation_mobile" class="form-label">{{ trans('labels.mobile') }}</label>
                             <input class="form-control" type="tel" name="mobile" value="{{old('mobile')}}" id="reservation_mobile" placeholder="{{ trans('labels.mobile') }}">
                             @error('mobile')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-light">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-12 form-group mb-3">

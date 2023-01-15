@@ -17,7 +17,7 @@
                                         <input type="text" class="form-control" name="name"
                                             value="{{ $zonedata->name }}" placeholder="{{ trans('labels.name') }}" required>
                                         @error('name')
-                                            <span class="text-danger">{{ $message }}</span>
+                                            <span class="text-light">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
@@ -28,7 +28,7 @@
                                         <textarea class="form-control" name="coordinates" id="coordinates" rows="6"
                                             placeholder="{{ trans('labels.enter_coordinates') }}" readonly required>{{ $zonedata->coordinates }}</textarea>
                                         @error('coordinates')
-                                            <span class="text-danger">{{ $message }}</span>
+                                            <span class="text-light">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>

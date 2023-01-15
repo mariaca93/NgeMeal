@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="<?php echo e(asset('admin-assets/assets/css/sweetalert/sweetalert2.min.css')); ?>"><!-- Sweetalert CSS -->
     <link rel="stylesheet" href="<?php echo e(asset('web-assets/css/style.css')); ?>"><!-- Custom CSS -->
     <link rel="stylesheet" href="<?php echo e(asset('web-assets/css/responsive.css')); ?>"><!-- Media Query Resposive CSS -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script> 
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>" />
     <style>
         .breadcrumb-sec{
@@ -161,7 +162,6 @@
     </script>
     <script src="<?php echo e(asset('web-assets/js/common.js')); ?>"></script><!-- web-common-js -->
     <?php echo $__env->yieldContent('scripts'); ?>
-    <script>setWeatherCookie()</script>
 </body>
 </html>
 <?php /**PATH /Users/user/Downloads/NgeMeal-master/resources/views/web/layout/default.blade.php ENDPATH**/ ?>

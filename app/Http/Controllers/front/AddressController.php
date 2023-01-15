@@ -34,7 +34,12 @@ class AddressController extends Controller
             'lang.required_with' => trans('messages.select_address'),
             'house_no.required' => trans('messages.house_no_required'),
         ]);
-        $checkzone = helper::checkzone($request->lat,$request->lang);
+        $client = new \GuzzleHttp\Client();
+        $geocoder = \Spatie\Geocoder\Geocoder::setup($client);
+        $geocoder->setApiKey(config('geocoder.key'));
+        $alamat = $geocoder->getAddressForCoordinates($request->lat, $request->lang);
+        $checkzone = Str::contains($alamat['formatted_address'], 'Jakarta');
+
         if(!$checkzone){
             return redirect()->back()->with('error',trans('messages.delivery_not_available'));
         }else{
@@ -79,7 +84,12 @@ class AddressController extends Controller
         ]);
         $checkaddress = Address::find($request->id);
         if(!empty($checkaddress)){
-            $checkzone = helper::checkzone($request->lat,$request->lang);
+            $client = new \GuzzleHttp\Client();
+            $geocoder = \Spatie\Geocoder\Geocoder::setup($client);
+            $geocoder->setApiKey(config('geocoder.key'));
+            $alamat = $geocoder->getAddressForCoordinates($request->lat, $request->lang);
+            $checkzone = Str::contains($alamat['formatted_address'], 'Jakarta');
+
             if(!$checkzone){
                 return redirect()->back()->with('error',trans('messages.delivery_not_available'));
             }else{

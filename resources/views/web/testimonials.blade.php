@@ -98,7 +98,7 @@
                                                 <label for="{{$i}}"><i class="fa-solid fa-star" aria-hidden="true"></i></label>
                                             @endfor
                                             @error('ratting')
-                                                <span class="text-danger"> <br> {{ $message }} </span>
+                                                <span class="text-light"> <br> {{ $message }} </span>
                                             @enderror
                                         </div>
                                         <input type="hidden" name="ratting" id="ratting" value="1">
@@ -106,7 +106,7 @@
                                     <div class="form-group col-lg-12">
                                         <textarea name="message" rows="4" class="form-control" placeholder="Message" required></textarea>
                                         @error('message')
-                                            <span class="text-danger"> {{ $message }} </span>
+                                            <span class="text-light"> {{ $message }} </span>
                                         @enderror
                                     </div>
                                 </div>

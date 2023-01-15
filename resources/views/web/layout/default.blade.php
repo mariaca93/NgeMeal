@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="{{asset('admin-assets/assets/css/sweetalert/sweetalert2.min.css') }}"><!-- Sweetalert CSS -->
     <link rel="stylesheet" href="{{asset('web-assets/css/style.css') }}"><!-- Custom CSS -->
     <link rel="stylesheet" href="{{asset('web-assets/css/responsive.css') }}"><!-- Media Query Resposive CSS -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script> 
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <style>
         .breadcrumb-sec{
@@ -161,6 +162,5 @@
     </script>
     <script src="{{asset('web-assets/js/common.js') }}"></script><!-- web-common-js -->
     @yield('scripts')
-    <script>setWeatherCookie()</script>
 </body>
 </html>

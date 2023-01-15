@@ -11,7 +11,7 @@
                                 @csrf
                                 <textarea class="form-control" id="ckeditor" name="privacypolicy">{{ @$getprivacypolicy->privacypolicy_content }}</textarea>
                                 @error('privacypolicy')
-                                    <span class="text-danger">{{ $message }}</span><br>
+                                    <span class="text-light">{{ $message }}</span><br>
                                 @enderror
                                 <div class="form-group text-end">
                                     <a href="{{URL::to('admin/home')}}" class="btn btn-outline-danger">{{trans('labels.cancel')}}</a>

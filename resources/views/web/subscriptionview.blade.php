@@ -1,5 +1,5 @@
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-auto mb-3">
-    <div class="card rounded mx-1">
+    <div class="card rounded mx-1 border-light">
         <a href="{{ URL::to('subscription-' . $subscriptiondata->slug) }}">
             <div class="card-image">
                 <img src="{{ asset('admin-assets/images/item/'.$subscriptiondata->image) }}"
@@ -36,16 +36,16 @@
                 @if (Auth::user() && Auth::user()->type == 2)
                     @if ($subscriptiondata->is_cart == 1)
                         <div class="item-quantity">
-                            <button type="button" class="btn btn-sm green_color fw-500" onclick="removefromcart('{{ URL::to('/cart') }}','{{ trans('messages.remove_cartitem_note') }}','{{ trans('labels.goto_cart') }}')">-</button>
-                            <input class="green_color fw-500 item-total-qty-{{$subscriptiondata->slug}}" type="text" value="{{ Helper::get_item_cart($subscriptiondata->id) }}" disabled/>
-                            <a class="btn btn-sm green_color fw-500" onclick="showsubscription('{{ $subscriptiondata->slug }}','{{ URL::to('/show-subscription') }}')">+</a>
+                            <button type="button" class="btn btn-sm pastel_purple_color fw-500" onclick="removefromcart('{{ URL::to('/cart') }}','{{ trans('messages.remove_cartitem_note') }}','{{ trans('labels.goto_cart') }}')">-</button>
+                            <input class="pastel_purple_color fw-500 item-total-qty-{{$subscriptiondata->slug}}" type="text" value="{{ Helper::get_item_cart($subscriptiondata->id) }}" disabled/>
+                            <a class="btn btn-sm pastel_purple_color fw-500" onclick="showsubscription('{{ $subscriptiondata->slug }}','{{ URL::to('/show-subscription') }}')">+</a>
                         </div>
                     @else
-                        <a class="btn btn-sm border green_color fw-500"
+                        <a class="btn btn-sm border pastel_purple_color fw-500"
                         onclick="showsubscription('{{ $subscriptiondata->slug }}','{{ URL::to('/show-subscription') }}')">{{ trans('labels.add') }}</a>
                     @endif
                 @else
-                    <a class="btn btn-sm border green_color fw-500"
+                    <a class="btn btn-sm border pastel_purple_color fw-500"
                         href="{{ URL::to('/login') }}">{{ trans('labels.add') }}</a>
                 @endif
             </div>

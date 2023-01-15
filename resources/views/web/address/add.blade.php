@@ -31,7 +31,7 @@
                         <div class="mb-3">
                             <p class="title mb-0">{{ trans('labels.add_address') }}</p>
                             <p class="text-muted mb-1">*Please allow to access the location to get better experience *</p>
-                            <p class="text-danger err"></p>
+                            <p class="text-light err"></p>
                         </div>
                         <input type="textbox" class="form-control" id="address"
                             @if (env('Environment') == 'sendbox') value="510 Bartoletti Land , Norwoodport , West Virginia" readonly @else value="" @endif>
@@ -47,10 +47,10 @@
                                 @if (env('Environment') == 'sendbox') value="-73.228240" @else value="{{ old('lang') }}" @endif
                                 id="lang" readonly>
                             @error('lat')
-                                <small class="text-danger">{{ $message }}</small> <br>
+                                <small class="text-light">{{ $message }}</small> <br>
                             @enderror
                             @error('lang')
-                                <small class="text-danger">{{ $message }}</small> <br>
+                                <small class="text-light">{{ $message }}</small> <br>
                             @enderror
                             <div class="form-group mb-3">
                                 <label class="form-label mb-0">{{ trans('labels.house_no') }}</label>
@@ -58,7 +58,7 @@
                                     placeholder="{{ trans('messages.enter_house_no') }}"
                                     @if (env('Environment') == 'sendbox') value="510" readonly @else value="{{ old('house_no') }}" @endif>
                                 @error('house_no')
-                                    <small class="text-danger">{{ $message }}</small>
+                                    <small class="text-light">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="form-group mb-3">
@@ -76,7 +76,7 @@
                                     <textarea rows="3" class="form-control" name="address" placeholder="{{ trans('labels.complete_address') }}">{{ old('address') }} </textarea>
                                 @endif
                                 @error('address')
-                                    <small class="text-danger">{{ $message }}</small> <br>
+                                    <small class="text-light">{{ $message }}</small> <br>
                                 @enderror
                                 <span class="text-muted">*{{ trans('labels.address_note') }}*</span>
                             </div>
@@ -109,7 +109,7 @@
                                     </div>
                                 </div>
                                 @error('address_type')
-                                    <small class="text-danger">{{ $message }}</small>
+                                    <small class="text-light">{{ $message }}</small>
                                 @enderror
                             </div>
                             <button type="submit"

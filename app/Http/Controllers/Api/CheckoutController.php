@@ -16,18 +16,23 @@ class CheckoutController extends Controller
 {
     public function checkdeliveryzone(Request $request)
     {
-        if($request->lat == ""){
+        // if($request->lat == ""){
             return response()->json(["status"=>0,"message"=>trans('messages.select_address')],200);
-        }
-        if($request->lang == ""){
-            return response()->json(["status"=>0,"message"=>trans('messages.select_address')],200);
-        }
-        $checkzone = helper::checkzone($request->lat,$request->lang);
-        if(!$checkzone){
-            return response()->json(['status'=>2,'message'=>trans('messages.delivery_not_available')],200);
-        }else{
-            return response()->json(['status'=>1,'message'=>trans('messages.success')],200);
-        }
+        // }
+        // if($request->lang == ""){
+        //     return response()->json(["status"=>0,"message"=>trans('messages.select_address')],200);
+        // }
+        // $client = new \GuzzleHttp\Client();
+        // $geocoder = \Spatie\Geocoder\Geocoder::setup($client);
+        // $geocoder->setApiKey(config('geocoder.key'));
+        // $alamat = $geocoder->getAddressForCoordinates($request->lat, $request->lang);
+        // $checkzone = Str::contains($alamat['formatted_address'], 'Jakarta');
+
+        // if(!$checkzone){
+        //     return response()->json(['status'=>2,'message'=>trans('messages.delivery_not_available')],200);
+        // }else{
+        //     return response()->json(['status'=>1,'message'=>trans('messages.success')],200);
+        // }
     }
     public function paymentmethodlist(Request $request)
     {
@@ -98,6 +103,7 @@ class CheckoutController extends Controller
     }
     public function order(Request $request)
     {
+        error_log("new order");
         date_default_timezone_set(helper::appdata()->timezone);
         if($request->user_id == ""){
             return response()->json(["status"=>0,"message"=>trans('messages.user_required')],200);
@@ -140,6 +146,7 @@ class CheckoutController extends Controller
                     return response()->json(["status"=>0,"message"=>trans('messages.address_type_required')],200);
                 }
                 if($request->address == ""){
+                    error_log("address kosong");
                     return response()->json(["status"=>0,"message"=>trans('messages.address_required')],200);
                 }
                 if($request->lat == ""){

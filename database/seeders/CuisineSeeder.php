@@ -18,45 +18,45 @@ class CuisineSeeder extends Seeder
         DB::table('cuisines')->insert([
             [
                 'cuisine_name' => 'American',
-                'image' => '',
+                'image' => 'american.jpg',
                 'is_available' => 1,
-                'is_deleted' => 0
+                'is_deleted' => 2
             ],
             [
                 'cuisine_name' => 'Chinese',
-                'image' => '',
+                'image' => 'chinese.jpg',
                 'is_available' => 1,
-                'is_deleted' => 0
+                'is_deleted' => 2
             ],
             [
                 'cuisine_name' => 'Indian',
                 'image' => '',
                 'is_available' => 1,
-                'is_deleted' => 0
+                'is_deleted' => 2
             ],
             [
                 'cuisine_name' => 'Indonesian',
                 'image' => '',
                 'is_available' => 1,
-                'is_deleted' => 0
+                'is_deleted' => 2
             ],
             [
                 'cuisine_name' => 'Italian',
                 'image' => '',
                 'is_available' => 1,
-                'is_deleted' => 0
+                'is_deleted' => 2
             ],
             [
                 'cuisine_name' => 'Japanese',
                 'image' => '',
                 'is_available' => 1,
-                'is_deleted' => 0
+                'is_deleted' => 2
             ],
             [
                 'cuisine_name' => 'Korean',
                 'image' => '',
                 'is_available' => 1,
-                'is_deleted' => 0
+                'is_deleted' => 2
             ]
             ]);
     }

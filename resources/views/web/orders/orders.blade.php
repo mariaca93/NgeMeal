@@ -61,7 +61,7 @@
                                         <i class="fs-5 fa-solid fa-xmark"></i>
                                     </div>
                                     <div class="status-card-content px-3">
-                                        <p class="text-danger">{{ trans('labels.cancelled') }}</p>
+                                        <p class="red_color">{{ trans('labels.cancelled') }}</p>
                                         <h5 class="mb-0 fw-600">{{ $totalcancelled }}</h5>
                                     </div>
                                 </a>
@@ -71,7 +71,7 @@
                         <div class="row mb-3">
                             <div class="table-responsive">
                                 <table class="table table-hover">
-                                    <thead class="rounded-top">
+                                    <thead class="rounded-top" style="color:black">
                                         <tr class="bg-light align-middle">
                                             <th class="fs-7 fw-600">{{ trans('labels.order_number') }}</th>
                                             <th class="fs-7 fw-600">{{ trans('labels.date') }}</th>
@@ -82,7 +82,7 @@
                                             <th class="fs-7 fw-600">{{ trans('labels.action') }}</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="rounded-bottom">
+                                    <tbody class="rounded-bottom" style="color:#A99EBE">
                                         @foreach ($getorders as $orderdata)
                                             <tr class="align-middle">
                                                 <td class="fs-7 fw-600">{{ $orderdata->order_number }}</td>
@@ -170,5 +170,5 @@
     </section>
 @endsection
 @section('scripts')
-    <script src="{{ url('/resources/views/web/orders/orders.js')}}"></script>
+    <script src="{{ url('/web-assets/js/orders/orders.js')}}"></script>
 @endsection

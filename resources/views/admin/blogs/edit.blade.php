@@ -23,17 +23,17 @@
                                 <div class="col-md-6">
                             <div class="form-group">
 
-                                <label class="col-form-label" for="">{{trans('labels.title')}} <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="">{{trans('labels.title')}} <span class="text-light">*</span> </label>
                                     <input type="text" class="form-control" name="title" value="{{$blogdata->title}}" placeholder="{{trans('labels.title')}}" >
 
-                                    @error('title') <span class="text-danger">{{$message}}</span> @enderror
+                                    @error('title') <span class="text-light">{{$message}}</span> @enderror
                             </div>
                             <div class="form-group">
 
-                                <label class="col-form-label" for="">{{trans('labels.image')}} (1024x1024) <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="">{{trans('labels.image')}} (1024x1024) <span class="text-light">*</span> </label>
                                     <input type="file" class="form-control" name="image" accept="image/*">
 
-                                    @error('image') <span class="text-danger">{{$message}}</span><br> @enderror
+                                    @error('image') <span class="text-light">{{$message}}</span><br> @enderror
 
                                     <img src="{{Helper::image_path($blogdata->image)}}" alt="" class="img-fluid rounded hw-50 mt-1">
                             </div>
@@ -42,10 +42,10 @@
 
                             <div class="form-group">
 
-                                <label class="col-form-label" for="">{{trans('labels.description')}} <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="">{{trans('labels.description')}} <span class="text-light">*</span> </label>
                                     <textarea class="form-control" name="description" rows="5" placeholder="{{trans('labels.description')}}">{{$blogdata->description}}</textarea>
 
-                                    @error('description') <span class="text-danger">{{$message}}</span> @enderror
+                                    @error('description') <span class="text-light">{{$message}}</span> @enderror
                             </div>
 </div>
                             </div>

@@ -54,15 +54,15 @@
                                 <div class="row justify-content-between mb-1">
                                     <div class="col-auto">
                                         <span
-                                            class="green_color">{{ $getitemdata['cuisine_info']->cuisine_name }}</span>
+                                            class="white_color">{{ $getitemdata['cuisine_info']->cuisine_name }}</span>
                                     </div>
                                     <div class="col-auto">
                                         @if ($getitemdata->tax > 0)
-                                            <span class="text-danger float-end">+ {{ $getitemdata->tax }}%
+                                            <span class="text-light float-end">+ {{ $getitemdata->tax }}%
                                                 {{ trans('labels.additional_taxes') }}</span>
                                         @else
                                             <span
-                                                class="text-danger float-end">{{ trans('labels.inclusive_taxes') }}</span>
+                                                class="text-light float-end">{{ trans('labels.inclusive_taxes') }}</span>
                                         @endif
                                     </div>
                                 </div>

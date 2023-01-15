@@ -14,21 +14,21 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.cuisine') }}
-                                                <span class="text-danger">*</span> </label>
+                                                <span class="text-light">*</span> </label>
                                             <input type="text" class="form-control" name="cuisine_name"
                                                 placeholder="{{ trans('labels.cuisine') }}"
                                                 value="{{ $catdata->cuisine_name }}">
                                             @error('cuisine_name')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.image') }}
-                                                (250x250) <span class="text-danger">*</span> </label>
+                                                (250x250) <span class="text-light">*</span> </label>
                                             <input type="file" class="form-control" name="image" id="image"
                                                 accept="image/*">
                                             @error('image')
-                                                <span class="text-danger">{{ $message }}</span> <br>
+                                                <span class="text-light">{{ $message }}</span> <br>
                                             @enderror
                                             <img src="{{ Helper::image_path($catdata->image) }}" alt=""
                                                 class="img-fluid rounded hw-50 mt-1">

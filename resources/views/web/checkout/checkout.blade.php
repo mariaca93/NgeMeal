@@ -202,5 +202,5 @@
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="https://checkout.flutterwave.com/v3.js"></script>
     <script src="https://js.paystack.co/v1/inline.js"></script>
-    <script src="{{ url('/resources/views/web/checkout/checkout.js')}}"></script>
+    <script src="{{ url('/web-assets/js/checkout/checkout.js')}}"></script>
 @endsection

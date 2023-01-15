@@ -25,8 +25,8 @@ a {
 }
 body {
     font-family: Poppins, sans-serif;
-    color: var(--viola_black);
-    background-color: var(--pale_grey)
+    color: var(--pastel_purple);
+    background-color: var(--pale_black)
 }
 :focus {
     outline: 0 !important
@@ -125,13 +125,15 @@ input::placeholder {
     color: #fff
 }
 :root {
+    --white_fog: #FFFF;
     --secondary: #FFC344;
-    --viola_black: #2D2942;
+    --pastel_purple: #A99EBF;
     --december_sky: #D1D4D7;
     --city_lights: #DDE5E9;
-    --pale_grey: #FAFAFC;
+    --pale_black: #131313;
     --blue_fog: #9CADBC;
     --green: #03A103;
+    --red:#dc3545;
     --light_primary: rgba(248, 38, 71, 0.2)
 }
 .grey_color {
@@ -142,15 +144,24 @@ input::placeholder {
 }
 .dark_color,
 .header-bar .header-top-area .header-top-left ul li a {
-    color: var(--viola_black)
+    color: var(--pastel_purple)
 }
 .green_color {
     color: var(--green)
 }
+.red_color{
+    color:var(--red)
+}
+.white_color {
+    color: #FFFF
+}
+.pastel_purple_color {
+    color: var(--pastel_purple)
+}
 .secondary_color {
     color: var(--secondary) !important
 }
-.bg_green_color {
+.bg_white_color {
     background-color: var(--green) !important
 }
 .border-radius {
@@ -626,7 +637,7 @@ input::placeholder {
     transform: scale(1.1, 1.1)
 }
 .cuisine h1 {
-    color: var(--viola_black)
+    color: var(--white_fog)
 }
 .cuisine .owl-stage-outer .owl-stage .owl-item {
     display: flex;
@@ -653,7 +664,7 @@ input::placeholder {
 }
 .blog-wrapper .blog-heading h1,
 .menu-heading h1 {
-    color: var(--viola_black);
+    color: var(--white_fog);
     text-transform: capitalize
 }
 .blog-wrapper .card,
@@ -693,10 +704,10 @@ input::placeholder {
 .menu .card .card-body .cat-span span {
     font-size: 12px;
     font-weight: 400;
-    color: var(--green)
+    color: var(--pastel_purple)
 }
 .menu .card .item-card-title {
-    color: var(--viola_black);
+    color: var(--pastel_purple);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -710,7 +721,7 @@ input::placeholder {
 .menu .card .item-card-footer span {
     font-size: 1.3rem;
     font-weight: 500;
-    color: var(--viola_black)
+    color: var(--pastel_purple)
 }
 .modalitemdetails .item-type-image {
     margin-top: 6px !important
@@ -825,7 +836,7 @@ input::placeholder {
     padding: 4rem
 }
 .app_download .app_content h1 {
-    color: var(--viola_black);
+    color: var(--pastel_purple);
     font-family: 'Oleo Script', cursive;
     font-size: 5.5rem;
     line-height: 5.5rem;
@@ -850,19 +861,19 @@ input::placeholder {
     font-weight: 600;
     font-size: 64px;
     line-height: 96px;
-    color: var(--viola_black)
+    color: var(--pastel_purple)
 }
 .contact-us .contact-content h1 {
     font-family: 'Oleo Script', cursive;
     font-weight: 400;
-    color: var(--viola_black);
+    color: var(--pastel_purple);
     margin-bottom: 30px;
     font-size: 3.5rem;
     text-align: center
 }
 .footer .left-side h1,
 .footer .left-side p {
-    color: var(--pale_grey)
+    color: var(--pale_black)
 }
 .contact-us .contact-content .left-side,
 .contact-us .contact-content .right-side {
@@ -874,16 +885,16 @@ input::placeholder {
     margin-bottom: .7rem
 }
 .contact-us .contact-content .left-side h3 {
-    color: var(--viola_black);
+    color: var(--pastel_purple);
     font-size: 1.5rem;
     font-weight: 500
 }
 .contact-us .contact-content .left-side a {
-    color: var(--viola_black) !important;
+    color: var(--pastel_purple) !important;
     font-size: 1rem
 }
 .contact-us .contact-content .left-side p {
-    color: var(--viola_black);
+    color: var(--pastel_purple);
     font-size: 1rem;
     margin: 0
 }
@@ -891,7 +902,7 @@ input::placeholder {
     font-weight: 600;
     font-size: 55px;
     line-height: 130%;
-    color: var(--viola_black)
+    color: var(--pastel_purple)
 }
 .contact-us .contact-content .right-side form .form-control,
 .product-quantity input {
@@ -904,7 +915,7 @@ input::placeholder {
 }
 .contact-us .contact-content .right-side form {
     padding: 100px 70px;
-    background: var(--pale_grey);
+    background: var(--pale_black);
     box-shadow: -4px 0 10px 5px rgba(0, 0, 0, .1), 0 -4px 10px 5px rgba(0, 0, 0, .1), 4px 0 10px 5px rgba(0, 0, 0, .1), 0 4px 10px 5px rgba(0, 0, 0, .1);
     border-radius: 10px
 }
@@ -982,7 +993,7 @@ input::placeholder {
     color: var(--bs-primary)
 }
 .quality .quality-wrapper .quality-content h3 {
-    color: var(--viola_black);
+    color: var(--pastel_purple);
     font-size: 18px;
     font-weight: 700
 }
@@ -1188,7 +1199,7 @@ input::placeholder {
     font-size: 40px;
     line-height: 1.2;
     font-weight: 500;
-    color: var(--viola_black)
+    color: var(--pastel_purple)
 }
 .item-content .wishlist .wishlist-btn {
     text-align: center;
@@ -1211,7 +1222,7 @@ input::placeholder {
     align-items: center;
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--viola_black)
+    color: var(--pastel_purple)
 }
 .item-details .item-content .item-detail-wrapper {
     max-height: 340px;
@@ -1223,7 +1234,7 @@ input::placeholder {
     justify-content: center
 }
 .product-quantity .quantity {
-    border: 1px solid var(--viola_black);
+    border: 1px solid var(--pastel_purple);
     border-radius: 19px;
     flex-grow: 0;
     overflow: hidden;
@@ -1245,7 +1256,7 @@ input::placeholder {
 }
 .item-details .item-description h4 {
     font-size: 2rem;
-    color: var(--viola_black)
+    color: var(--pastel_purple)
 }
 .item-details .item-description p {
     color: var(--bs-secondary);
@@ -1332,13 +1343,13 @@ input::placeholder {
     margin: 0;
     font-weight: 600;
     font-size: 18px;
-    color: var(--viola_black)
+    color: var(--pastel_purple)
 }
 .cart-view .summary .bill-details p {
     margin: 0;
     padding: 0;
     font-weight: 600;
-    color: var(--viola_black)
+    color: var(--pastel_purple)
 }
 .cart-view .summary .bill-total span {
     font-size: 16px;
@@ -1351,7 +1362,7 @@ input::placeholder {
     font-weight: 500
 }
 .cart-view .delivery-address a {
-    color: var(--viola_black);
+    color: var(--pastel_purple);
     font-size: 14px
 }
 .order-option {
@@ -1393,7 +1404,7 @@ input::placeholder {
 .home-delivery-img span,
 .take-away-img span {
     text-transform: uppercase;
-    color: var(--viola_black)
+    color: var(--pastel_purple)
 }
 .cart-view .checkout-btn a:focus,
 .cart-view .continue-btn button:focus,
@@ -1417,7 +1428,7 @@ input::placeholder {
     padding: 5px 15px;
     border-radius: 4px;
     border: 1px solid #e5e5e5;
-    color: var(--viola_black)
+    color: var(--pastel_purple)
 }
 .new-address label input[type=radio]:checked~.save-as span {
     border: 1px solid var(--green);
@@ -1438,7 +1449,7 @@ input::placeholder {
 }
 .address-list .address-card .address-icon {
     font-size: 20px;
-    color: var(--viola_black);
+    color: var(--pastel_purple);
     text-align: center;
     padding: 0 .7rem
 }
@@ -1446,7 +1457,7 @@ input::placeholder {
     margin-bottom: 4px;
     font-size: 18px;
     font-weight: 500;
-    color: var(--viola_black);
+    color: var(--pastel_purple);
     line-height: 1.18;
     text-transform: capitalize
 }
@@ -1461,7 +1472,7 @@ input::placeholder {
 }
 .address-list .address-card .address .delivery-time {
     font-size: 14px;
-    color: var(--viola_black);
+    color: var(--pastel_purple);
     font-weight: 500;
     margin: 10px 0 17px
 }
@@ -1479,7 +1490,7 @@ input::placeholder {
     border: 1px solid #e5e5e5;
     display: flex;
     align-items: center;
-    color: var(--viola_black)
+    color: var(--pastel_purple)
 }
 .payment-option .payment-gateway img {
     margin-right: .5rem;
@@ -1520,14 +1531,14 @@ input::placeholder {
     border-radius: 1rem
 }
 .reservation-area form p {
-    color: var(--viola_black);
+    color: var(--pastel_purple);
     font-family: 'Oleo Script';
     font-size: 32px;
     font-weight: 500;
     border-bottom: 1px solid #ccc
 }
 .reservation-area form label {
-    color: var(--viola_black);
+    color: var(--pastel_purple);
     text-transform: capitalize
 }
 #promocodemodal .modal-body {
@@ -1569,7 +1580,7 @@ input::placeholder {
     align-items: center;
     margin: .5rem 0;
     border-radius: 8px;
-    color: var(--viola_black)
+    color: var(--pastel_purple)
 }
 .user-sidebar .active,
 .user-sidebar li a:hover {
@@ -1582,7 +1593,7 @@ input::placeholder {
     font-size: 20px
 }
 .user-content-wrapper .order-status-card {
-    color: var(--viola_black);
+    color: var(--pastel_purple);
     border: 1px solid #dedede;
     padding: 1rem;
     border-radius: .375rem;

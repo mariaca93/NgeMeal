@@ -65,7 +65,7 @@
                                             <input type="text" placeholder="{{ trans('labels.name') }}"
                                                 class="form-control" name="name" value="{{ Auth::user()->name }}" required>
                                             @error('name')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <label>{{ trans('labels.email') }} </label>
@@ -73,7 +73,7 @@
                                             <input type="email" placeholder="{{ trans('labels.email') }}"
                                                 class="form-control" name="email" value="{{ Auth::user()->email }}" required>
                                             @error('email')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <label>{{ trans('labels.mobile') }} </label>
@@ -81,7 +81,7 @@
                                             <input type="text" placeholder="{{ trans('labels.mobile') }}"
                                                 class="form-control" name="mobile" id="mobile" value="{{ Auth::user()->mobile }}" required>
                                             @error('mobile')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -89,7 +89,7 @@
                                         <label>{{ trans('labels.image') }} </label>
                                         <div class="form-group">
                                             <input type="file" class="form-control" name="profile" accept=".jpg,.jpeg,.png">
-                                            @error('profile') <span class="text-danger">{{ $message }}</span> <br> @enderror
+                                            @error('profile') <span class="text-light">{{ $message }}</span> <br> @enderror
                                             <img src="{{ Helper::image_path(Auth::user()->profile_image) }}" class="img-fluid rounded user-profile-image mt-1" alt="">
                                         </div>
                                     </div>
@@ -121,21 +121,21 @@
                                         <div class="form-group">
                                             <input type="password" class="form-control" name="oldpassword" id="oldpassword" placeholder="{{ trans('labels.old_password') }}" value=" " required>
                                             @error('oldpassword')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <label>{{ trans('labels.new_password') }} </label>
                                         <div class="form-group">
                                             <input type="password" class="form-control" name="newpassword" id="newpassword" placeholder="{{ trans('labels.new_password') }}" required>
                                             @error('newpassword')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <label>{{ trans('labels.confirm_password') }} </label>
                                         <div class="form-group">
                                             <input type="password" class="form-control" name="confirmpassword" id="confirmpassword" placeholder="{{ trans('labels.confirm_password') }}" required>
                                             @error('confirmpassword')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -187,7 +187,7 @@
                                     <label for="cuisine_id"
                                         class="col-form-label">{{ trans('labels.order_number') }}</label>
                                     <input type="text" class="form-control" id="order_number" readonly="">
-                                    <span class="id_error text-danger"></span>
+                                    <span class="id_error text-light"></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="cuisine_id"
@@ -204,7 +204,7 @@
                                             @endforeach
                                         @endif
                                     </select>
-                                    <span class="driver_error text-danger"></span>
+                                    <span class="driver_error text-light"></span>
                                 </div>
                             </div>
                             <div class="modal-footer">

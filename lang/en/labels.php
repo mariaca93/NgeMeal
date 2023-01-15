@@ -136,12 +136,12 @@ return [
     "waiting_pickup" => "Waiting pickup",
     "complete" => "Complete",
     //Cuisine
-    "cuisines" => "Categories",
+    "cuisines" => "Cuisines",
     "cuisine" => "Cuisine",
     "cuisine_title" => "Cuisine title",
     "active" => "Active",
     "deactive" => "Deactive",
-    "subcuisines" => "Sub Categories",
+    "subcuisines" => "Sub Cuisines",
     "subcuisine" => "Subcuisine",
     //Item
     "items" => "Products",

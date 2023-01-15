@@ -26,6 +26,12 @@
 
             <script>
                 function getNextItem() {
+
+                    //save current item addone checkboxes to local storage
+                    $id = $(".show-small-img-item[alt='now']").attr('id')
+                    var addonKey = 'sub'+'{{ $getsubscriptiondata->id}}'+'_item'+$id;
+                    localStorage[addonKey]=document.getElementById("item-variation-addon").innerHTML
+
                     //show-img utk show large img
                     //show-small-img utk show image kecil yang di slider dan arrow
 
@@ -46,7 +52,7 @@
                     }
 
                      //2. data yang ditunjukin dbwh jd sesuai dengan data yang ada diatas
-                    $id = $(".show-small-img-item[alt='now']").attr('id')
+
                     var items = {!! json_encode($getsubscriptiondata['items']) !!}
                     generateImages(items[$id])
                     var item_type = document.getElementById("item-type")
@@ -105,16 +111,29 @@
                         }
                     }
 
-                    document.getElementById("form-addon").innerHTML = ""
-                    document.getElementById("addon-name").innerHTML = ""
-                    items[$id]['addons'].forEach(generateAddon)
+                    $('.form-check-addon').remove()
+                    var keyAddon = 'sub'+'{{ $getsubscriptiondata->id}}'+'_item'+$id;
+                    if(localStorage[keyAddon]){
+                        document.getElementById('item-variation-addon').innerHTML=''
+                        document.getElementById('item-variation-addon').innerHTML=localStorage[keyAddon]
+                    }else{
+                        items[$id]['addons'].forEach(generateAddon)
+                    }
+
                     function generateAddon(Addon){
                         var div = document.createElement("div")
-                        div.setAttribute("class", "form-check")
+                        div.setAttribute("class", "form-check form-check-addon")
 
                         var input = document.createElement("input")
                         input.setAttribute("type", "checkbox")
                         input.setAttribute("class", "form-check-input cursor-pointer addons-checkbox")
+                        input.setAttribute("value", Addon["id"])
+                        input.setAttribute("data-addons-id", Addon["id"])
+                        input.setAttribute("data-addons-price", Addon["price"])
+                        input.setAttribute("data-addons-name", Addon["name"])
+                        input.setAttribute("onclick", "getaddons(this)")
+                        input.setAttribute("name", Addon["name"])
+                        input.setAttribute("id", Addon["id"])
 
                         var labelAddon = document.createElement("label")
                         labelAddon.setAttribute("class", "form-check-label cursor-pointer me-3")
@@ -123,14 +142,13 @@
                         priceAddon.setAttribute("class", "text-muted")
 
                         labelAddon.innerHTML = Addon["name"] + " : "
-                        priceAddon.innerHTML = "$" + Addon["price"] + ".00"
+                        priceAddon.innerHTML = "Rp. " + Addon["price"] + ".00"
 
                         labelAddon.appendChild(priceAddon);
                         div.appendChild(input)
                         div.appendChild(labelAddon)
 
-                        document.getElementById("form-addon").appendChild(div)
-
+                        document.getElementById("item-variation-addon").appendChild(div)
                     }
 
                     // console.log($(".show-small-img-item[alt='now']").next().attr('src'))
@@ -142,6 +160,11 @@
                 }
 
                 function getPrevItem() {
+                    //save current item addon checkboxes to local storage
+                    $id = $(".show-small-img-item[alt='now']").attr('id')
+                    var addonKey = 'sub'+'{{ $getsubscriptiondata->id}}'+'_item'+$id;
+                    localStorage[addonKey]=document.getElementById("item-variation-addon").innerHTML
+
                     //show-img utk show large img
                     //show-small-img utk show image kecil yang di slider dan arrow
 
@@ -220,17 +243,30 @@
                             getaddons.remove()
                         }
                     }
+                    $('.form-check-addon').remove()
+                    
+                    var keyAddon = 'sub'+'{{ $getsubscriptiondata->id}}'+'_item'+$id;
+                    if(localStorage[keyAddon]){
+                        document.getElementById('item-variation-addon').innerHTML=''
+                        document.getElementById('item-variation-addon').innerHTML=localStorage[keyAddon]
+                    }else{
+                        items[$id]['addons'].forEach(generateAddon)
+                    }
 
-                    document.getElementById("form-addon").innerHTML = ""
-                    document.getElementById("addon-name").innerHTML = ""
-                    items[$id]['addons'].forEach(generateAddon)
                     function generateAddon(Addon){
                         var div = document.createElement("div")
-                        div.setAttribute("class", "form-check")
+                        div.setAttribute("class", "form-check form-check-addon")
 
                         var input = document.createElement("input")
                         input.setAttribute("type", "checkbox")
                         input.setAttribute("class", "form-check-input cursor-pointer addons-checkbox")
+                        input.setAttribute("value", Addon["id"])
+                        input.setAttribute("data-addons-id", Addon["id"])
+                        input.setAttribute("data-addons-price", Addon["price"])
+                        input.setAttribute("data-addons-name", Addon["name"])
+                        input.setAttribute("onclick", "getaddons(this)")
+                        input.setAttribute("name", Addon["name"])
+                        input.setAttribute("id", Addon["id"])
 
                         var labelAddon = document.createElement("label")
                         labelAddon.setAttribute("class", "form-check-label cursor-pointer me-3")
@@ -239,13 +275,13 @@
                         priceAddon.setAttribute("class", "text-muted")
 
                         labelAddon.innerHTML = Addon["name"] + " : "
-                        priceAddon.innerHTML = "$" + Addon["price"] + ".00"
+                        priceAddon.innerHTML = "Rp." + Addon["price"] + ".00"
 
                         labelAddon.appendChild(priceAddon);
                         div.appendChild(input)
                         div.appendChild(labelAddon)
 
-                        document.getElementById("form-addon").appendChild(div)
+                        document.getElementById("item-variation-addon").appendChild(div)
 
                     }
                     // console.log($(".show-small-img-item[alt='now']").next().attr('src'))
@@ -355,15 +391,15 @@
                                     <div class="row justify-content-between mb-1">
                                         <div class="col-auto">
                                             <span
-                                                class="green_color" id="cuisine-info">{{ $item['cuisine_info']->cuisine_name }}</span>
+                                                class="white_color" id="cuisine-info">{{ $item['cuisine_info']->cuisine_name }}</span>
                                         </div>
                                         <div class="col-auto">
                                             @if ($item->tax > 0)
-                                                <span class="text-danger float-end">+ {{ $item->tax }}%
+                                                <span class="text-light float-end">+ {{ $item->tax }}%
                                                     {{ trans('labels.additional_taxes') }}</span>
                                             @else
                                                 <span
-                                                    class="text-danger float-end">{{ trans('labels.inclusive_taxes') }}</span>
+                                                    class="text-light float-end">{{ trans('labels.inclusive_taxes') }}</span>
                                             @endif
                                         </div>
                                     </div>
@@ -406,13 +442,14 @@
                                                 <div class="item-variation-list" id="item-variation-addon">
                                                     <h5 class="dark_color" id="addon-label" >{{ trans('labels.addons') }}</h5>
                                                     @foreach ($item->addons as $addonsdata)
-                                                        <div class="form-check" id="form-addon" {{ session()->get('direction') == 'rtl' ? 'd-flex' : '' }}">
+                                                        <div class="form-check form-check-addon" id="form-addon" {{ session()->get('direction') == 'rtl' ? 'd-flex' : '' }}">
                                                             <input class="form-check-input cursor-pointer addons-checkbox {{ session()->get('direction') == 'rtl' ? 'ms-0' : '' }}"
                                                                 type="checkbox" value="{!! $addonsdata->id !!}'"
                                                                 data-addons-id="{!! $addonsdata->id !!}"
                                                                 data-addons-price="{!! $addonsdata->price !!}"
                                                                 data-addons-name="{!! $addonsdata->name !!}"
                                                                 onclick="getaddons(this)"
+                                                                name="{!! $addonsdata->name !!}"
                                                                 id="addons{{ $addonsdata->id }}">
                                                                 <!-- id="{{ $item->item_name }}{{ $addonsdata->id }}"> -->
                                                             <label class="form-check-label cursor-pointer me-3"
@@ -455,7 +492,7 @@
                                     <input type="hidden" name="subtotal" id="subtotal" value="{{ $price }}">
                                     <div class="row align-items-center justify-content-center">
                                         <div class="col-md-6 col-sm-6 col-auto">
-                                            @if (Auth::user() && Auth::user()->type == 2)
+                                            @if (Auth::user())
                                                 <a class="btn btn-success btn-lg w-100 m-0 text-uppercase fs-6"
                                                     onclick="addtocart('{{ URL::to('addtocart') }}')">{{ trans('labels.add_to_cart') }}</a>
                                             @else

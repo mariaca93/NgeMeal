@@ -52,7 +52,7 @@
                                         <div class="col-10 address">
                                             <h4 class="d-flex justify-content-between">{{ $address_type_text }}
                                                 <div class="px-3">
-                                                    <a class="text-danger" href="javascript:void(0)" onclick="deleteaddress('{{ $addressdata->id }}','{{ URL::to('/address/delete') }} ') "><i class="fa-solid fa-trash-can"></i></a>
+                                                    <a class="text-light" href="javascript:void(0)" onclick="deleteaddress('{{ $addressdata->id }}','{{ URL::to('/address/delete') }} ') "><i class="fa-solid fa-trash-can"></i></a>
                                                     <a class="text-info me-1" href="{{URL::to('/address-'.$addressdata->id)}}"><i class="fa-solid fa-pen-to-square"></i></a>
                                                 </div>
                                             </h4>

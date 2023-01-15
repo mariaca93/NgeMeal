@@ -55,7 +55,7 @@
                         <div class="col-md-6 text-left">
                             <h4 class="card-title text-left">{{trans('labels.manage_wallet')}}</h4><hr>
                             <input type="hidden" name="id" id="id" value="{{@$getusers->id}}">
-                            <span class="text-danger dn" id="money_error"></span>
+                            <span class="text-light dn" id="money_error"></span>
                             <input type="text" class="form-control mt-2 mb-2" name="money" placeholder="{{trans('labels.amount')}}" id="price">
                             <button class="btn btn-sm btn-success add" data-type="add" data-url="{{URL::to('admin/users/change-wallet')}}"> <i class="fa fa-arrow-up"></i> <small>{{trans('labels.add_money')}}</small></button>
                             <button class="btn btn-sm btn-warning deduct" data-type="deduct" data-url="{{URL::to('admin/users/change-wallet')}}"> <i class="fa fa-arrow-down"></i> <small>{{trans('labels.deduct_money')}}</small></button>

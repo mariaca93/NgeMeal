@@ -13,9 +13,9 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="col-form-label" for="">{{trans('labels.title')}} <span class="text-danger">*</span></label>
+                                        <label class="col-form-label" for="">{{trans('labels.title')}} <span class="text-light">*</span></label>
                                         <input type="text" class="form-control" name="title" placeholder="{{trans('labels.title')}}" >
-                                        @error('title') <span class="text-danger">{{$message}}</span> @enderror
+                                        @error('title') <span class="text-light">{{$message}}</span> @enderror
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label" for="type">{{trans('labels.type')}}</label>
@@ -26,31 +26,31 @@
                                         </select>
                                     </div>
                                     <div class="form-group 1 gravity @if(old('type') == 1) @else dn @endif">
-                                        <label class="col-form-label" for="">{{trans('labels.cuisine')}} <span class="text-danger">*</span></label>
+                                        <label class="col-form-label" for="">{{trans('labels.cuisine')}} <span class="text-light">*</span></label>
                                         <select name="cuisine_id" class="form-select selectpicker" data-live-search="true" id="cuisine_id">
                                             <option value="" selected>{{trans('labels.select')}}</option>
                                             @foreach ($getcuisine as $cuisine)
                                             <option value="{{$cuisine->id}}" {{old('cuisine_id') == $cuisine->id ? 'selected' : '' }}>{{$cuisine->cuisine_name}}</option>
                                             @endforeach
                                         </select>
-                                        @error('cuisine_id') <span class="text-danger">{{$message}}</span> @enderror
+                                        @error('cuisine_id') <span class="text-light">{{$message}}</span> @enderror
                                     </div>
                                     <div class="form-group 2 gravity @if(old('type') == 2) @else dn @endif">
-                                        <label class="col-form-label" for="">{{trans('labels.item')}} <span class="text-danger">*</span></label>
+                                        <label class="col-form-label" for="">{{trans('labels.item')}} <span class="text-light">*</span></label>
                                         <select name="item_id" class="form-select selectpicker" data-live-search="true" id="item_id">
                                             <option value="" selected>{{trans('labels.select')}}</option>
                                             @foreach ($getitem as $item)
                                             <option value="{{$item->id}}" {{old('item_id') == $item->id ? 'selected' : '' }}>{{$item->item_name}}</option>
                                             @endforeach
                                         </select>
-                                        @error('item_id') <span class="text-danger">{{$message}}</span> @enderror
+                                        @error('item_id') <span class="text-light">{{$message}}</span> @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="col-form-label" for="">{{trans('labels.message')}} <span class="text-danger">*</span></label>
+                                        <label class="col-form-label" for="">{{trans('labels.message')}} <span class="text-light">*</span></label>
                                         <textarea class="form-control" name="message" placeholder="{{trans('labels.message')}}" rows="4"></textarea>
-                                        @error('message') <span class="text-danger">{{$message}}</span> @enderror
+                                        @error('message') <span class="text-light">{{$message}}</span> @enderror
                                     </div>
                                 </div>
                             </div>

@@ -20,7 +20,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="cuisine_id"
-                                                        class="col-form-label">{{ trans('labels.cuisine') }} <span class="text-danger">*</span> </label>
+                                                        class="col-form-label">{{ trans('labels.cuisine') }} <span class="text-light">*</span> </label>
                                                     <select name="cuisine_id" class="form-select" id="cuisine_id"
                                                         data-url="{{ URL::to('admin/item/subcuisines') }}">
                                                         <option value="" selected>{{ trans('labels.select') }}
@@ -33,9 +33,9 @@
                                                         @endforeach
                                                     </select>
                                                     @error('cuisine_id')
-                                                        <span class="text-danger">{{ $message }}</span>
+                                                        <span class="text-light">{{ $message }}</span>
                                                     @enderror
-                                                    <span class="emsg text-danger"></span>
+                                                    <span class="emsg text-light"></span>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -47,7 +47,7 @@
                                                         </option>
                                                     </select>
                                                     @error('subcuisine_id')
-                                                        <span class="text-danger">{{ $message }}</span>
+                                                        <span class="text-light">{{ $message }}</span>
                                                     @enderror
                                                 </div>
                                             </div>
@@ -55,10 +55,10 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="col-form-label">{{ trans('labels.name') }} <span class="text-danger">*</span> </label>
+                                            <label class="col-form-label">{{ trans('labels.name') }} <span class="text-light">*</span> </label>
                                             <input type="text" class="form-control" name="item_name" value="{{ old('item_name') }}" placeholder="{{ trans('labels.name') }}">
                                             @error('item_name')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -80,7 +80,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="item_type"
-                                                class="col-form-label">{{ trans('labels.item_type') }} <span class="text-danger">*</span> </label>
+                                                class="col-form-label">{{ trans('labels.item_type') }} <span class="text-light">*</span> </label>
                                             <div class="col-md-12">
                                                 <div class="form-check-inline">
                                                     <input class="form-check-input me-0" type="radio" name="item_type"
@@ -97,7 +97,7 @@
                                                         for="nonveg">{{ trans('labels.nonveg') }}</label>
                                                 </div>
                                                 @error('item_type')
-                                                    <br><span class="text-danger">{{ $message }}</span>
+                                                    <br><span class="text-light">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
@@ -106,7 +106,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="col-form-label">{{ trans('labels.item_has_variation') }} <span class="text-danger">*</span> </label>
+                                            <label class="col-form-label">{{ trans('labels.item_has_variation') }} <span class="text-light">*</span> </label>
                                             <div class="col-md-12">
                                                 <div class="form-check-inline">
                                                     <input class="form-check-input me-0 has_variation" type="radio" name="has_variation" id="no" value="2" checked @if (old('has_variation') == 2) checked @endif>
@@ -117,7 +117,7 @@
                                                     <label class="form-check-label" for="yes">{{ trans('labels.yes') }}</label>
                                                 </div>
                                                 @error('has_variation')
-                                                    <br><span class="text-danger">{{ $message }}</span>
+                                                    <br><span class="text-light">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
@@ -128,11 +128,11 @@
                                     <div class="col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <label for="price"
-                                                class="col-form-label">{{ trans('labels.price') }} <span class="text-danger">*</span> </label>
+                                                class="col-form-label">{{ trans('labels.price') }} <span class="text-light">*</span> </label>
                                             <input type="text" class="form-control" name="price" id="price"
                                                 value="{{ old('price') }}" placeholder="{{ trans('labels.price') }}">
                                             @error('price')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -141,28 +141,28 @@
                                     id="variations">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="col-form-label">{{ trans('labels.attribute') }} <span class="text-danger">*</span></label>
+                                            <label class="col-form-label">{{ trans('labels.attribute') }} <span class="text-light">*</span></label>
                                             <input type="text" class="form-control attribute" name="attribute" value="{{ old('attribute') }}" placeholder="{{ trans('messages.enter_attribute') }}">
                                             @error('attribute')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label class="col-form-label">{{ trans('labels.variation') }}<span class="text-danger">*</span></label>
+                                            <label class="col-form-label">{{ trans('labels.variation') }}<span class="text-light">*</span></label>
                                             <input type="text" class="form-control variation" name="variation[]" placeholder="{{ trans('labels.variation') }}">
                                         </div>
                                     </div>
                                     <div class="col-sm-5">
                                         <div class="form-group">
-                                            <label class="col-form-label">{{ trans('labels.product_price') }}<span class="text-danger">*</span></label>
+                                            <label class="col-form-label">{{ trans('labels.product_price') }}<span class="text-light">*</span></label>
                                             <input type="text" class="form-control product_price"  name="product_price[]" placeholder="{{ trans('labels.product_price') }}">
                                         </div>
                                     </div>
                                     <div class="col-sm-4 d-none">
                                         <div class="form-group">
-                                            <label class="col-form-label">{{ trans('labels.sale_price') }}<span class="text-danger">*</span></label>
+                                            <label class="col-form-label">{{ trans('labels.sale_price') }}<span class="text-light">*</span></label>
                                             <input type="text" class="form-control sale_price"  name="sale_price[]" placeholder="{{ trans('labels.sale_price') }}"
                                                 value="0">
                                         </div>
@@ -177,10 +177,10 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="col-form-label">{{ trans('labels.image') }} (512x512) <span class="text-danger">*</span> </label>
+                                            <label class="col-form-label">{{ trans('labels.image') }} (512x512) <span class="text-light">*</span> </label>
                                             <input type="file" class="form-control" name="image[]" id="image" accept="image/*" multiple>
                                             @error('image')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="gallery"></div>
@@ -189,10 +189,10 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="col-form-label">{{ trans('labels.preparation_time') }} <span class="text-danger">*</span></label>
+                                                    <label class="col-form-label">{{ trans('labels.preparation_time') }} <span class="text-light">*</span></label>
                                                     <input type="text" class="form-control" name="preparation_time" placeholder="{{ trans('labels.preparation_time') }}" value="{{old('preparation_time')}}">
                                                     @error('preparation_time')
-                                                        <span class="text-danger">{{ $message }}</span>
+                                                        <span class="text-light">{{ $message }}</span>
                                                     @enderror
                                                 </div>
                                             </div>

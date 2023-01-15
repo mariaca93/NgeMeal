@@ -23,9 +23,9 @@
                                 <div class="col-md-6">
                             <div class="form-group">
 
-                                <label class="col-form-label" for="name">{{trans('labels.name')}} <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="name">{{trans('labels.name')}} <span class="text-light">*</span> </label>
                                     <input type="text" class="form-control" name="name" value="{{$employeedata->name}}" id="name" placeholder="{{trans('labels.name')}}">
-                                    @error('name') <span class="text-danger">{{ $message }}</span> @enderror
+                                    @error('name') <span class="text-light">{{ $message }}</span> @enderror
 
                             </div>
                             </div>
@@ -33,9 +33,9 @@
 
                             <div class="form-group">
 
-                                <label class="col-form-label" for="mobile">{{trans('labels.mobile')}} <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="mobile">{{trans('labels.mobile')}} <span class="text-light">*</span> </label>
                                     <input type="tel" class="form-control" name="mobile" value="{{$employeedata->mobile}}" id="mobile" placeholder="{{trans('labels.mobile')}}">
-                                    @error('mobile') <span class="text-danger">{{ $message }}</span> @enderror
+                                    @error('mobile') <span class="text-light">{{ $message }}</span> @enderror
 
                             </div>
                             </div>
@@ -43,9 +43,9 @@
 
                             <div class="form-group">
 
-                                <label class="col-form-label" for="email">{{trans('labels.email')}} <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="email">{{trans('labels.email')}} <span class="text-light">*</span> </label>
                                     <input type="email" class="form-control" name="email" value="{{$employeedata->email}}" id="email" placeholder="{{trans('labels.email')}}">
-                                    @error('email') <span class="text-danger">{{ $message }}</span> @enderror
+                                    @error('email') <span class="text-light">{{ $message }}</span> @enderror
 
                             </div>
                             </div>
@@ -53,7 +53,7 @@
 
                             <div class="form-group">
 
-                                <label class="col-form-label" for="role">{{trans('labels.role')}} <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="role">{{trans('labels.role')}} <span class="text-light">*</span> </label>
 
                                     <select class="form-select" name="role" data-live-search="true" id="type">
 
@@ -65,7 +65,7 @@
 
                                         @endforeach
                                     </select>
-                                    @error('role') <span class="text-danger">{{ $message }}</span> @enderror
+                                    @error('role') <span class="text-light">{{ $message }}</span> @enderror
                             </div>
                             </div>
                             </div>

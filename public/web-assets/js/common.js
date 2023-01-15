@@ -518,9 +518,3 @@ function getvaraitions(x) {
     $('.subtotal').text(currency_format(addonstotal + price));
 }
 
-function setWeatherCookie(){
-    if(document.cookie.indexOf('weather') == -1 ){
-        document.cookie = "weather=loaded";
-        setTimeout(document.getElementById('btnSubmit').click(), 20000);
-    }
-}

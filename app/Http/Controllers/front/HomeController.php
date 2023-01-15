@@ -14,6 +14,8 @@ use App\Models\Weather;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+
 class HomeController extends Controller
 {
     public function index(Request $request)
@@ -74,21 +76,36 @@ class HomeController extends Controller
         $basedonweather=[];
         $weathermessage='';
 
+        $sunny = array(0,1,2,3,45,48);
+        $lat = '';
+        $long = '';
         if($request->input('latitude') && $request->input('longitude')){
-            $weather = \MichaelNabil230\Weather\Weather::location(-6,18, 106,82)
+            $lat = $request->input('latitude');
+            $long = $request->input('longitude');
+            Cache::put('lat', $lat, 1800);
+            Cache::put('long', $long, 1800);
+        }
+        else if(Cache::get('lat') || Cache::get('long')){
+            $lat = Cache::get('lat');
+            $long = Cache::get('long');
+        }
+        if($lat!='' && $long!=''){
+            $weather = \MichaelNabil230\Weather\Weather::location($lat, $long)
             ->current()
             ->get();
             error_log('nyampe 1');
             $weathercode = $weather->current_weather->weathercode;
-            $weatheritem = Weather::find(1);
-            if($weatheritem->id==1){
-                $weathermessage = "Our sunny weather reccomendation";
+            if(in_array($weathercode, $sunny)){
+                $weatherid = 1;
+                $weathermessage = "Our Sunny Weather Reccomendation";
             }else{
-                $weathermessage = "Our rainy weather reccomendation";
+                $weatherid = 2;
+                $weathermessage = "Our Rainy Weather Reccomendation";
             }
+
             error_log('nyampe 2');
             $basedonweather = Item::with('cuisine_info','subcuisine_info','variation','item_images')->select('item.*',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
-            ->where('weather_id', $weatheritem->id)
+            ->where('weather_id', $weatherid)
             ->leftJoin('favorite', function($query) use($user_id) {
                 $query->on('favorite.item_id','=','item.id')
                 ->where('favorite.user_id', '=', $user_id);

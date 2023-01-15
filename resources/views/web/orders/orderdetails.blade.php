@@ -147,9 +147,9 @@
                                     $data[] = array("total_price" => $total_price,);
                                 ?>
                                     <tr>
-                                        <td><img src="{{ Helper::image_path($orders->item_image) }}" class="rounded hw-50" alt=""></td>
+                                        <td><img src="{{ URL::to('admin-assets/images/item/'. $orders->item_image) }}" class="rounded hw-50" alt=""></td>
                                         <td>
-                                            <img @if ($orders['item_type']==1) src="{{ Helper::image_path('veg.svg') }}" @else src="{{ Helper::image_path('nonveg.svg') }}" @endif class="item-type-img" alt="">
+                                            <img @if ($orders['item_type']==1) src="{{ Helper::image_path('veg.svg') }}" @else src="{{ Helper::image_path('nonveg.svg') }}" @endif class="item-type-img" alt="" style="width:20px">
                                             {{ $orders->item_name }} @if ($orders->variation != '')
                                             [{{ $orders->variation }}]
                                             @endif <br>
@@ -207,8 +207,8 @@
                                     </li>
                                     @endif
                                     <li class="list-group-item px-0 d-flex justify-content-between">
-                                        <span class="fw-600 green_color"> {{ trans('labels.grand_total') }} </span>
-                                        <span class="fw-600 green_color text-break">{{ Helper::currency_format($orderdata->grand_total) }}</span>
+                                        <span class="fw-600 white_color"> {{ trans('labels.grand_total') }} </span>
+                                        <span class="fw-600 white_color text-break">{{ Helper::currency_format($orderdata->grand_total) }}</span>
                                     </li>
                                 </ul>
                             </div>
@@ -220,5 +220,5 @@
     </section>
 @endsection
 @section('scripts')
-<script src="{{ url('/resources/views/web/orders/orders.js')}}"></script>
+<script src="{{ url('/web-assets/js/orders/orders.js')}}"></script>
 @endsection

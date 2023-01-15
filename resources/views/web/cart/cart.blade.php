@@ -33,7 +33,7 @@
                                 $total_item_qty = 0;
                             @endphp
                             @foreach ($getcartlist as $item)
-                                <span class="text-danger err{{ $item['id'] }}"></span>
+                                <span class="text-light err{{ $item['id'] }}"></span>
                                 <div class="order-list mb-4">
                                     <div class="row">
                                         <div class="col-md-2 col-sm-2 col-auto d-flex justify-content-center item-img-none">
@@ -129,7 +129,7 @@
                                                     class="btn btn-primary bg-primary border-0 ms-2">{{ trans('labels.apply') }}</button>
                                             </div>
                                             @error('offer_code')
-                                                <small class="text-danger">{{ $message }}</small>
+                                                <small class="text-light">{{ $message }}</small>
                                             @enderror
                                         </form>
                                     @endif
@@ -214,7 +214,7 @@
                                                 </label>
                                             </div>
                                             <span
-                                                class="d-flex justify-content-center mt-3 holderror text-danger d-none">{{ trans('messages.order_type_selection_required') }}</span>
+                                                class="d-flex justify-content-center mt-3 holderror text-light d-none">{{ trans('messages.order_type_selection_required') }}</span>
                                         </div>
                                         <div class="modal-footer checkout-btn justify-content-center">
                                             <a href="javascript:void(0)" onclick="holduser(this)"
@@ -304,5 +304,5 @@
     <!-- MODAL-PROMOCOE---END -->
 @endsection
 @section('scripts')
-    <script src="{{ url('/resources/views/web/cart/cart.js') }}"></script>
+    <script src="{{ url('/web-assets/js/cart/cart.js') }}"></script>
 @endsection

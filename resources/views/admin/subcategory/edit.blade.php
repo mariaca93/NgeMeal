@@ -12,19 +12,19 @@
 <div class="row">
                                     <div class="col-md-6">
                             <div class="form-group">
-                                <label class="col-form-label" for="">{{trans('labels.subcuisine')}} <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="">{{trans('labels.subcuisine')}} <span class="text-light">*</span> </label>
                                     <input type="text" class="form-control" name="name" placeholder="{{trans('labels.subcuisine')}}" value="{{$subcatdata->subcuisine_name}}">
-                                    @error('name') <span class="text-danger">{{$message}}</span> @enderror
+                                    @error('name') <span class="text-light">{{$message}}</span> @enderror
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label" for="">{{trans('labels.cuisine')}} <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="">{{trans('labels.cuisine')}} <span class="text-light">*</span> </label>
                                     <select class="form-select" name="cuisine">
                                         <option value="" selected>{{trans('labels.select')}}</option>
                                         @foreach ($getcuisine as $cuisine)
                                             <option value="{{$cuisine->id}}" {{$subcatdata->cuisine_id == $cuisine->id ? 'selected' : ''}}>{{$cuisine->cuisine_name}}</option>
                                         @endforeach
                                     </select>
-                                    @error('cuisine') <span class="text-danger">{{$message}}</span> @enderror
+                                    @error('cuisine') <span class="text-light">{{$message}}</span> @enderror
                             </div>
 </div>
                                 </div>

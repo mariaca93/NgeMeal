@@ -14,70 +14,70 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.title') }} <span
-                                                    class="text-danger">*</span> </label>
+                                                    class="text-light">*</span> </label>
                                             <input type="text" class="form-control" name="title"
                                                 value="{{ $teamdata->title }}" placeholder="{{ trans('labels.title') }}">
                                             @error('title')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.subtitle') }}
-                                                <span class="text-danger">*</span> </label>
+                                                <span class="text-light">*</span> </label>
                                             <input type="text" class="form-control" name="subtitle"
                                                 value="{{ $teamdata->subtitle }}"
                                                 placeholder="{{ trans('labels.subtitle') }}">
                                             @error('subtitle')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.facebook_link') }}
-                                                <span class="text-danger">*</span> </label>
+                                                <span class="text-light">*</span> </label>
                                             <input type="text" class="form-control" name="fb"
                                                 value="{{ $teamdata->fb }}"
                                                 placeholder="{{ trans('labels.facebook_link') }}">
                                             @error('fb')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.youtube_link') }}
-                                                <span class="text-danger">*</span> </label>
+                                                <span class="text-light">*</span> </label>
                                             <input type="text" class="form-control" name="youtube"
                                                 value="{{ $teamdata->youtube }}"
                                                 placeholder="{{ trans('labels.youtube_link') }}">
                                             @error('youtube')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="col-form-label"
                                                 for="">{{ trans('labels.instagram_link') }} <span
-                                                    class="text-danger">*</span> </label>
+                                                    class="text-light">*</span> </label>
                                             <input type="text" class="form-control" name="insta"
                                                 value="{{ $teamdata->insta }}"
                                                 placeholder="{{ trans('labels.instagram_link') }}">
                                             @error('insta')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.description') }}
-                                                <span class="text-danger">*</span> </label>
+                                                <span class="text-light">*</span> </label>
                                             <textarea class="form-control" name="description" rows="5" placeholder="{{ trans('labels.description') }}">{{ $teamdata->description }}</textarea>
                                             @error('description')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.image') }}
-                                                (250x250) <span class="text-danger">*</span> </label>
+                                                (250x250) <span class="text-light">*</span> </label>
                                             <input type="file" class="form-control" name="image" accept="image/*">
                                             @error('image')
-                                                <span class="text-danger">{{ $message }}</span> <br>
+                                                <span class="text-light">{{ $message }}</span> <br>
                                             @enderror
                                             <img src="{{ Helper::image_path($teamdata->image) }}" alt=""
                                                 class="img-fluid rounded hw-50 mt-1">

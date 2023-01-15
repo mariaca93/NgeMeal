@@ -33,7 +33,7 @@
                                 $total_item_qty = 0;
                             ?>
                             <?php $__currentLoopData = $getcartlist; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <span class="text-danger err<?php echo e($item['id']); ?>"></span>
+                                <span class="text-light err<?php echo e($item['id']); ?>"></span>
                                 <div class="order-list mb-4">
                                     <div class="row">
                                         <div class="col-md-2 col-sm-2 col-auto d-flex justify-content-center item-img-none">
@@ -135,7 +135,7 @@ $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                                <small class="text-danger"><?php echo e($message); ?></small>
+                                                <small class="text-light"><?php echo e($message); ?></small>
                                             <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
@@ -226,7 +226,7 @@ unset($__errorArgs, $__bag); ?>
                                                 </label>
                                             </div>
                                             <span
-                                                class="d-flex justify-content-center mt-3 holderror text-danger d-none"><?php echo e(trans('messages.order_type_selection_required')); ?></span>
+                                                class="d-flex justify-content-center mt-3 holderror text-light d-none"><?php echo e(trans('messages.order_type_selection_required')); ?></span>
                                         </div>
                                         <div class="modal-footer checkout-btn justify-content-center">
                                             <a href="javascript:void(0)" onclick="holduser(this)"
@@ -317,7 +317,7 @@ unset($__errorArgs, $__bag); ?>
     <!-- MODAL-PROMOCOE---END -->
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('scripts'); ?>
-    <script src="<?php echo e(url('/resources/views/web/cart/cart.js')); ?>"></script>
+    <script src="<?php echo e(url('/web-assets/js/cart/cart.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('web.layout.default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/user/Downloads/NgeMeal-master/resources/views/web/cart/cart.blade.php ENDPATH**/ ?>

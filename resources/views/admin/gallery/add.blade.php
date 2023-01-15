@@ -12,9 +12,9 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="col-form-label" for="">{{trans('labels.image')}}  (1024x1024) <span class="text-danger">*</span> </label>
+                                        <label class="col-form-label" for="">{{trans('labels.image')}}  (1024x1024) <span class="text-light">*</span> </label>
                                         <input type="file" class="form-control" name="image[]" accept="image/*" multiple>
-                                        @error('image') <span class="text-danger">{{$message}}</span> @enderror
+                                        @error('image') <span class="text-light">{{$message}}</span> @enderror
                                     </div>
                                 </div>
                             </div>

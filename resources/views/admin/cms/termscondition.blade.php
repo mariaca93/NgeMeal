@@ -10,7 +10,7 @@
                         <form action="{{URL::to('admin/termscondition/update')}}" method="post">
                             @csrf
                             <textarea class="form-control" id="ckeditor" name="termscondition">{{@$gettermscondition->termscondition_content}}</textarea>
-                            @error('termscondition') <span class="text-danger">{{$message}}</span><br> @enderror
+                            @error('termscondition') <span class="text-light">{{$message}}</span><br> @enderror
 
                             <div class="form-group text-end">
                                 <a href="{{URL::to('admin/home')}}" class="btn btn-outline-danger">{{trans('labels.cancel')}}</a>

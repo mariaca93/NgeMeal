@@ -13,13 +13,13 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.offer_name') }}
-                                                <span class="text-danger">*</span> </label>
+                                                <span class="text-light">*</span> </label>
 
                                             <input type="text" class="form-control" name="offer_name"
                                                 value="{{ old('offer_name') }}" id="offer_name"
                                                 placeholder="{{ trans('labels.offer_name') }}">
                                             @error('offer_name')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
 
                                         </div>
@@ -29,7 +29,7 @@
                                                 <div class="col-md-6">
                                                     <label class="col-form-label"
                                                     for="">{{ trans('labels.offer_type') }} <span
-                                                        class="text-danger">*</span> </label>
+                                                        class="text-light">*</span> </label>
                                                 <select class="form-select" name="offer_type">
                                                     <option value="" selected>{{ trans('labels.select') }}
                                                     </option>
@@ -41,18 +41,18 @@
                                                         {{ trans('labels.percentage') }}</option>
                                                 </select>
                                                 @error('offer_type')
-                                                    <span class="text-danger">{{ $message }}</span>
+                                                    <span class="text-light">{{ $message }}</span>
                                                 @enderror
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="col-form-label" for="">{{ trans('labels.amount') }} <span
-                                                        class="text-danger">*</span> </label>
+                                                        class="text-light">*</span> </label>
     
                                                 <input type="text" class="form-control" name="offer_amount"
                                                     value="{{ old('offer_amount') }}" id="price"
                                                     placeholder="{{ trans('labels.amount') }}">
                                                 @error('offer_amount')
-                                                    <span class="text-danger">{{ $message }}</span>
+                                                    <span class="text-light">{{ $message }}</span>
                                                 @enderror
                                                 </div>
                                             </div>
@@ -60,12 +60,12 @@
 
                                         <div class="form-group">
                                             <label class="col-form-label" for="">{{ trans('labels.min_amount') }}
-                                                <span class="text-danger">*</span> </label>
+                                                <span class="text-light">*</span> </label>
                                             <input type="text" class="form-control" name="min_amount"
                                                 value="{{ old('min_amount') }}" id="min_amount"
                                                 placeholder="{{ trans('labels.min_amount') }}">
                                             @error('min_amount')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
@@ -74,19 +74,19 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                         <label class="col-form-label" for="">{{ trans('labels.offer_code') }}
-                                                            <span class="text-danger">*</span> </label>
+                                                            <span class="text-light">*</span> </label>
             
                                                         <input type="text" class="form-control" name="offer_code"
                                                             value="{{ old('offer_code') }}" id="offer_code"
                                                             placeholder="{{ trans('labels.offer_code') }}">
                                                         @error('offer_code')
-                                                            <span class="text-danger">{{ $message }}</span>
+                                                            <span class="text-light">{{ $message }}</span>
                                                         @enderror
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="col-form-label"
                                                         for="">{{ trans('labels.usage_type') }} <span
-                                                            class="text-danger">*</span> </label>
+                                                            class="text-light">*</span> </label>
                                                     <select class="form-select" name="usage_type">
                                                         <option value="" selected>{{ trans('labels.select') }}
                                                         </option>
@@ -98,7 +98,7 @@
                                                             {{ trans('labels.multiple_times') }}</option>
                                                     </select>
                                                     @error('usage_type')
-                                                        <span class="text-danger">{{ $message }}</span>
+                                                        <span class="text-light">{{ $message }}</span>
                                                     @enderror
                                                 </div>
                                             </div>
@@ -109,21 +109,21 @@
                                                 <div class="col-md-6">
                                                     <label class="col-form-label"
                                                         for="">{{ trans('labels.start_date') }} <span
-                                                            class="text-danger">*</span> </label>
+                                                            class="text-light">*</span> </label>
                                                     <input type="date" class="form-control" name="start_date"
                                                         value="{{ old('start_date') }}" id="start_date" min="@php echo date('Y-m-d') @endphp">
                                                     @error('start_date')
-                                                        <span class="text-danger">{{ $message }}</span>
+                                                        <span class="text-light">{{ $message }}</span>
                                                     @enderror
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="col-form-label"
                                                         for="">{{ trans('labels.end_date') }} <span
-                                                            class="text-danger">*</span> </label>
+                                                            class="text-light">*</span> </label>
                                                     <input type="date" class="form-control" name="expire_date"
                                                         value="{{ old('expire_date') }}" id="expire_date" min="@php echo date('Y-m-d') @endphp" disabled>
                                                     @error('expire_date')
-                                                        <span class="text-danger">{{ $message }}</span>
+                                                        <span class="text-light">{{ $message }}</span>
                                                     @enderror
                                                 </div>
                                             </div>
@@ -132,11 +132,11 @@
                                         <div class="form-group">
                                             <label class="col-form-label"
                                                 for="">{{ trans('labels.description') }} <span
-                                                    class="text-danger">*</span> </label>
+                                                    class="text-light">*</span> </label>
                                             <textarea class="form-control" name="description" rows="4" id="description"
                                                 placeholder="{{ trans('labels.description') }}">{{ old('description') }}</textarea>
                                             @error('description')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>

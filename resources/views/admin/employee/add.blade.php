@@ -23,11 +23,11 @@
                                     <div class="col-md-6">
                             <div class="form-group">
 
-                                <label class="col-form-label" for="name">{{trans('labels.name')}} <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="name">{{trans('labels.name')}} <span class="text-light">*</span> </label>
 
                                     <input type="text" class="form-control" name="name" value="{{old('name')}}" id="name" placeholder="{{trans('labels.name')}}">
 
-                                    @error('name') <span class="text-danger">{{ $message }}</span> @enderror
+                                    @error('name') <span class="text-light">{{ $message }}</span> @enderror
 
                                 
 
@@ -36,11 +36,11 @@
                             <div class="col-md-6">
                             <div class="form-group">
 
-                                <label class="col-form-label" for="mobile">{{trans('labels.mobile')}} <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="mobile">{{trans('labels.mobile')}} <span class="text-light">*</span> </label>
 
                                     <input type="tel" class="form-control" name="mobile" value="{{old('mobile')}}" id="mobile" placeholder="{{trans('labels.mobile')}}">
 
-                                    @error('mobile') <span class="text-danger">{{ $message }}</span> @enderror
+                                    @error('mobile') <span class="text-light">{{ $message }}</span> @enderror
 
                                 
 
@@ -49,11 +49,11 @@
                             <div class="col-md-6">
                             <div class="form-group">
 
-                                <label class="col-form-label" for="email">{{trans('labels.email')}} <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="email">{{trans('labels.email')}} <span class="text-light">*</span> </label>
 
                                     <input type="email" class="form-control" name="email" value="{{old('email')}}" id="email" placeholder="{{trans('labels.email')}}">
 
-                                    @error('email') <span class="text-danger">{{ $message }}</span> @enderror   
+                                    @error('email') <span class="text-light">{{ $message }}</span> @enderror   
 
                                 
 
@@ -62,11 +62,11 @@
                             <div class="col-md-6">
                             <div class="form-group">
 
-                                <label class="col-form-label" for="password">{{trans('labels.password')}} <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="password">{{trans('labels.password')}} <span class="text-light">*</span> </label>
 
                                     <input type="password" class="form-control" name="password" value="{{old('password')}}" id="password" placeholder="{{trans('labels.password')}}">
 
-                                    @error('password') <span class="text-danger">{{ $message }}</span> @enderror
+                                    @error('password') <span class="text-light">{{ $message }}</span> @enderror
 
                                 
 
@@ -75,7 +75,7 @@
                             <div class="col-md-6">
                             <div class="form-group">
 
-                                <label class="col-form-label" for="role">{{trans('labels.role')}} <span class="text-danger">*</span> </label>
+                                <label class="col-form-label" for="role">{{trans('labels.role')}} <span class="text-light">*</span> </label>
 
                                     <select name="role" class="form-select" data-live-search="true" id="type">
 
@@ -88,7 +88,7 @@
                                         @endforeach
 
                                     </select>
-                                    @error('role') <span class="text-danger">{{ $message }}</span> @enderror
+                                    @error('role') <span class="text-light">{{ $message }}</span> @enderror
 
                             </div>
                         </div>

@@ -48,7 +48,7 @@
                                         @else
                                             <input type="text" class="form-control custom-input rounded mb-3" name="name" value="{{ old('name') }}"  placeholder="{{trans('labels.full_name')}}">    
                                         @endif
-                                        @error('name')<span class="text-danger">{{ $message }}</span>@enderror
+                                        @error('name')<span class="text-light">{{ $message }}</span>@enderror
                                     </div>
                                     <div class="form-group">
                                         <label class="text-white form-label" for="email">{{trans('labels.email')}}</label>
@@ -57,16 +57,16 @@
                                         @else
                                         <input type="email" class="form-control custom-input rounded mb-3" name="email" value="{{ old('email') }}" id="email" placeholder="{{trans('labels.email')}}">
                                         @endif
-                                        @error('email')<span class="text-danger">{{ $message }}</span>@enderror
+                                        @error('email')<span class="text-light">{{ $message }}</span>@enderror
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md">
                                                 <label class="text-white form-label" for="mobile">{{trans('labels.mobile')}}</label>
                                                 <div class="input-group">
-                                                    <input type="hidden" name="country" id="country" value="91">
+                                                    <input type="hidden" name="country" id="country" value="62">
                                                     <input type="tel" id="mobile" name="mobile" class="form-control custom-input rounded mb-3" placeholder="{{trans('labels.mobile')}}" value="{{old('mobile')}}">
-                                                    @error('mobile')<div class="text-danger">{{ $message }}</div>@enderror
+                                                    @error('mobile')<div class="text-light">{{ $message }}</div>@enderror
                                                 </div>
                                             </div>
                                             <div class="col-md">
@@ -75,30 +75,30 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @if (!session()->has('social_login'))
+                                    <!-- @if (!session()->has('social_login'))
                                         @if (\App\SystemAddons::where('unique_identifier', 'otp')->first() != null && \App\SystemAddons::where('unique_identifier', 'otp')->first()->activated)
-                                        @else
+                                        @else -->
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-md">
                                                     <label class="text-white form-label" for="password">{{trans('labels.password')}}</label>
                                                         <input type="password" class="form-control custom-input rounded mb-3" id="password" name="password" placeholder="{{trans('labels.password')}}" value="{{old('password')}}">
-                                                        @error('password')<div class="text-danger">{{ $message }}</div>@enderror
+                                                        @error('password')<div class="text-light">{{ $message }}</div>@enderror
                                                     </div>
                                                     <div class="col-md">
                                                         <label class="text-white form-label" for="confirm_password">{{trans('labels.confirm_password')}}</label>
                                                         <input type="password" class="form-control custom-input rounded mb-3" id="confirm_password" name="password_confirmation" placeholder="{{trans('labels.confirm_password')}}" value="{{old('password_confirmation')}}">
-                                                        @error('password_confirmation')<div class="text-danger">{{ $message }}</div>@enderror
+                                                        @error('password_confirmation')<div class="text-light">{{ $message }}</div>@enderror
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endif
-                                    @endif
+                                        <!-- @endif
+                                    @endif -->
                                     <div class="form-group">
                                         <input type="checkbox" name="checkbox" id="checkbox" value="1" class="form-check-input me-1" {{old('checkbox') == 1 ? 'checked' : ''}}>
                                         <label for="checkbox" class="text-white form-check-label m-auto">
                                         {{ trans('labels.i_accepts_the') }} <a href="{{URL::to('terms-conditions')}}" class="text-primary text-decoration-none fw-bold">{{ trans('labels.terms_conditions') }}</a></label>
-                                        @error('checkbox') <br> <span class="text-danger">{{ $message }}</span> @enderror
+                                        @error('checkbox') <br> <span class="text-light">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="form-group mt-2">
                                         <button type="submit" class="btn btn-primary w-100">{{trans('labels.signup')}}</button>

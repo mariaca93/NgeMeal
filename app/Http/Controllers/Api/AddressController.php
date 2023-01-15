@@ -45,10 +45,7 @@ class AddressController extends Controller
         if($request->house_no == ""){
             return response()->json(["status"=>0,"message"=>trans('messages.house_no_required')],200);
         }
-        $checkzone = helper::checkzone($request->lat,$request->lang);
-        if(!$checkzone){
-            return response()->json(['status'=>2,'message'=>trans('messages.delivery_not_available')],200);
-        }
+
         try {
             $address = new Address;
             $address->user_id = $request->user_id;
@@ -87,9 +84,7 @@ class AddressController extends Controller
                 return response()->json(["status"=>0,"message"=>trans('messages.house_no_required')],200);
             }
             $checkzone = helper::checkzone($request->lat,$request->lang);
-            if(!$checkzone){
-                return response()->json(['status'=>2,'message'=>trans('messages.delivery_not_available')],200);
-            }
+            
             try {
                 $checkaddress->address_type = $request->address_type;
                 $checkaddress->address = $request->address;

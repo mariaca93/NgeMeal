@@ -42,7 +42,7 @@
                                         <div
                                             class="form-group 1 gravity @if ($errors->has('cuisine_id')) @else @if ($errors->has('item_id')) dn @else @if ($getbanner->type == 1) @else dn @endif @endif @endif">
                                             <label class="col-form-label" for="">{{ trans('labels.cuisine') }}
-                                                <span class="text-danger">*</span> </label>
+                                                <span class="text-light">*</span> </label>
                                             <select name="cuisine_id" class="form-select selectpicker" data-live-search="true"
                                                 id="cuisine_id">
                                                 <option value="" selected>{{ trans('labels.select') }}</option>
@@ -53,13 +53,13 @@
                                                 @endforeach
                                             </select>
                                             @error('cuisine_id')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div
                                             class="form-group 2 gravity @if ($errors->has('item_id')) @else @if ($errors->has('cuisine_id')) dn @else @if ($getbanner->type == 2) @else dn @endif @endif @endif">
                                             <label class="col-form-label" for="">{{ trans('labels.item') }} <span
-                                                    class="text-danger">*</span> </label>
+                                                    class="text-light">*</span> </label>
                                             <select name="item_id" class="form-select selectpicker" data-live-search="true"
                                                 id="item_id">
                                                 <option value="" selected>{{ trans('labels.select') }}</option>
@@ -70,7 +70,7 @@
                                                 @endforeach
                                             </select>
                                             @error('item_id')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-light">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
@@ -78,7 +78,7 @@
                                                 {{ $img_size }} </label>
                                             <input type="file" class="form-control" name="image" accept="image/*">
                                             @error('image')
-                                                <span class="text-danger">{{ $message }}</span> <br>
+                                                <span class="text-light">{{ $message }}</span> <br>
                                             @enderror
                                             <img src="{{ Helper::image_path($getbanner->image) }}" alt=""
                                                 class="img-fluid rounded hw-50 mt-1">

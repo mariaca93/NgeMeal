@@ -1,5 +1,5 @@
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-auto mb-3">
-    <div class="card rounded mx-1">
+    <div class="card rounded mx-1 border-light">
         <a href="{{ URL::to('item-' . $itemdata->slug) }}">
             <div class="card-image">
                 <img src="{{ asset('admin-assets/images/item/'.$itemdata->image) }}"
@@ -48,25 +48,25 @@
                 @if (Auth::user() && Auth::user()->type == 2)
                     @if ($itemdata->is_cart == 1)
                         <div class="item-quantity">
-                            <button type="button" class="btn btn-sm green_color fw-500" onclick="removefromcart('{{ URL::to('/cart') }}','{{ trans('messages.remove_cartitem_note') }}','{{ trans('labels.goto_cart') }}')">-</button>
-                            <input class="green_color fw-500 item-total-qty-{{$itemdata->slug}}" type="text" value="{{ Helper::get_item_cart($itemdata->id) }}" disabled/>
+                            <button type="button" class="btn btn-sm pastel_purple_color fw-500" onclick="removefromcart('{{ URL::to('/cart') }}','{{ trans('messages.remove_cartitem_note') }}','{{ trans('labels.goto_cart') }}')">-</button>
+                            <input class="pastel_purple_color fw-500 item-total-qty-{{$itemdata->slug}}" type="text" value="{{ Helper::get_item_cart($itemdata->id) }}" disabled/>
                             @if ($itemdata->addons_id != '' || count($itemdata->variation) > 0)
-                                <a class="btn btn-sm green_color fw-500" onclick="showitem('{{ $itemdata->slug }}','{{ URL::to('/show-item') }}')">+</a>
+                                <a class="btn btn-sm pastel_purple_color fw-500" onclick="showitem('{{ $itemdata->slug }}','{{ URL::to('/show-item') }}')">+</a>
                             @else
-                                <a class="btn btn-sm green_color fw-500" onclick="calladdtocart('{{ $itemdata->slug }}','{{ $itemdata->item_name }}','{{ $itemdata->item_type }}','{{ $itemdata['item_image']->image_name }}','{{ $itemdata->tax }}','{{ $itemdata->price }}','','','','','','{{ URL::to('addtocart') }}')">+</a>
+                                <a class="btn btn-sm pastel_purple_color fw-500" onclick="calladdtocart('{{ $itemdata->slug }}','{{ $itemdata->item_name }}','{{ $itemdata->item_type }}','{{ $itemdata['item_image']->image_name }}','{{ $itemdata->tax }}','{{ $itemdata->price }}','','','','','','{{ URL::to('addtocart') }}')">+</a>
                             @endif
                         </div>
                     @else
                         @if ($itemdata->addons_id != '' || count($itemdata->variation) > 0)
-                            <a class="btn btn-sm border green_color fw-500"
+                            <a class="btn btn-sm border pastel_purple_color fw-500"
                                 onclick="showitem('{{ $itemdata->slug }}','{{ URL::to('/show-item') }}')">{{ trans('labels.add') }}</a>
                         @else
-                            <a class="btn btn-sm border green_color fw-500"
+                            <a class="btn btn-sm border pastel_purple_color fw-500"
                                 onclick="calladdtocart('{{ $itemdata->slug }}','{{ $itemdata->item_name }}','{{ $itemdata->item_type }}','{{ $itemdata['item_image']->image_name }}','{{ $itemdata->tax }}','{{ $itemdata->price }}','','','','','','{{ URL::to('addtocart') }}')">{{ trans('labels.add') }}</a>
                         @endif
                     @endif
                 @else
-                    <a class="btn btn-sm border green_color fw-500"
+                    <a class="btn btn-sm border pastel_purple_color fw-500"
                         href="{{ URL::to('/login') }}">{{ trans('labels.add') }}</a>
                 @endif
             </div>

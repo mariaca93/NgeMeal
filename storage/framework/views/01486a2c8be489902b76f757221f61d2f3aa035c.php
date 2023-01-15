@@ -1,5 +1,5 @@
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-auto mb-3">
-    <div class="card rounded mx-1">
+    <div class="card rounded mx-1 border-light">
         <a href="<?php echo e(URL::to('subscription-' . $subscriptiondata->slug)); ?>">
             <div class="card-image">
                 <img src="<?php echo e(asset('admin-assets/images/item/'.$subscriptiondata->image)); ?>"
@@ -37,16 +37,16 @@
                 <?php if(Auth::user() && Auth::user()->type == 2): ?>
                     <?php if($subscriptiondata->is_cart == 1): ?>
                         <div class="item-quantity">
-                            <button type="button" class="btn btn-sm green_color fw-500" onclick="removefromcart('<?php echo e(URL::to('/cart')); ?>','<?php echo e(trans('messages.remove_cartitem_note')); ?>','<?php echo e(trans('labels.goto_cart')); ?>')">-</button>
-                            <input class="green_color fw-500 item-total-qty-<?php echo e($subscriptiondata->slug); ?>" type="text" value="<?php echo e(Helper::get_item_cart($subscriptiondata->id)); ?>" disabled/>
-                            <a class="btn btn-sm green_color fw-500" onclick="showsubscription('<?php echo e($subscriptiondata->slug); ?>','<?php echo e(URL::to('/show-subscription')); ?>')">+</a>
+                            <button type="button" class="btn btn-sm pastel_purple_color fw-500" onclick="removefromcart('<?php echo e(URL::to('/cart')); ?>','<?php echo e(trans('messages.remove_cartitem_note')); ?>','<?php echo e(trans('labels.goto_cart')); ?>')">-</button>
+                            <input class="pastel_purple_color fw-500 item-total-qty-<?php echo e($subscriptiondata->slug); ?>" type="text" value="<?php echo e(Helper::get_item_cart($subscriptiondata->id)); ?>" disabled/>
+                            <a class="btn btn-sm pastel_purple_color fw-500" onclick="showsubscription('<?php echo e($subscriptiondata->slug); ?>','<?php echo e(URL::to('/show-subscription')); ?>')">+</a>
                         </div>
                     <?php else: ?>
-                        <a class="btn btn-sm border green_color fw-500"
+                        <a class="btn btn-sm border pastel_purple_color fw-500"
                         onclick="showsubscription('<?php echo e($subscriptiondata->slug); ?>','<?php echo e(URL::to('/show-subscription')); ?>')"><?php echo e(trans('labels.add')); ?></a>
                     <?php endif; ?>
                 <?php else: ?>
-                    <a class="btn btn-sm border green_color fw-500"
+                    <a class="btn btn-sm border pastel_purple_color fw-500"
                         href="<?php echo e(URL::to('/login')); ?>"><?php echo e(trans('labels.add')); ?></a>
                 <?php endif; ?>
             </div>
