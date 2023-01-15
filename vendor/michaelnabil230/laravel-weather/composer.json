@@ -1,0 +1,69 @@
+{
+    "name": "michaelnabil230/laravel-weather",
+    "description": "Package for get the weather data",
+    "keywords": [
+        "MichaelNabil230",
+        "laravel",
+        "laravel-weather"
+    ],
+    "homepage": "https://github.com/michaelnabil230/laravel-weather",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Nabil",
+            "email": "46572405+michaelnabil230@users.noreply.github.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "guzzlehttp/guzzle": "^7.5",
+        "illuminate/contracts": "^9.0",
+        "spatie/laravel-package-tools": "^1.13.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^6.0",
+        "nunomaduro/larastan": "^2.0.1",
+        "orchestra/testbench": "^7.0",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "MichaelNabil230\\Weather\\": "src",
+            "MichaelNabil230\\Weather\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MichaelNabil230\\Weather\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MichaelNabil230\\Weather\\WeatherServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
