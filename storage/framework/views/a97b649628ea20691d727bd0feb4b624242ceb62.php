@@ -95,10 +95,10 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
                                 <div class="row m-3 text-center social_icon">
                                     <div class="col">
-                                        <a href="<?php echo e(URL::to('login/google')); ?>" class="p-4">
+                                        <a class="p-4">
                                             <img src="<?php echo e(Helper::web_image_path('google.svg')); ?>" alt="social-icon">
                                         </a>
-                                        <a href="<?php echo e(URL::to('login/facebook')); ?>" class="p-4">
+                                        <a class="p-4">
                                             <img src="<?php echo e(Helper::web_image_path('facebook.svg')); ?>" alt="social-icon">
                                         </a>
                                     </div>

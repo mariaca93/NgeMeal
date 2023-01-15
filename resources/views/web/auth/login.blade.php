@@ -74,10 +74,10 @@
                                 </div>
                                 <div class="row m-3 text-center social_icon">
                                     <div class="col">
-                                        <a href="{{ URL::to('login/google') }}" class="p-4">
+                                        <a class="p-4">
                                             <img src="{{Helper::web_image_path('google.svg')}}" alt="social-icon">
                                         </a>
-                                        <a href="{{ URL::to('login/facebook') }}" class="p-4">
+                                        <a class="p-4">
                                             <img src="{{Helper::web_image_path('facebook.svg')}}" alt="social-icon">
                                         </a>
                                     </div>

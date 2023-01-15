@@ -156,12 +156,12 @@
                                         <div class="wishlist">
                                             <?php if($getitemdata->is_favorite == 1): ?>
                                                 <a class="btn btn-lg w-100 wishlist-btn heart-red"
-                                                    <?php if(Auth::user() && Auth::user()->type == 2): ?> href="javascript:void(0)" onclick="managefavorite('<?php echo e($getitemdata->id); ?>',0)" <?php else: ?> href="<?php echo e(URL::to('/login')); ?>" <?php endif; ?>><?php echo e(trans('labels.remove_wishlist')); ?>
+                                                    <?php if(Auth::user() && Auth::user()->type == 2): ?> href="javascript:void(0)" onclick="managefavorite('<?php echo e($getitemdata->id); ?>',0, '<?php echo e(URL::to('/managefavorite')); ?>')" <?php else: ?> href="<?php echo e(URL::to('/login')); ?>" <?php endif; ?>><?php echo e(trans('labels.remove_wishlist')); ?>
 
                                                 </a>
                                             <?php else: ?>
                                                 <a class="btn btn-lg w-100 wishlist-btn border-success"
-                                                    <?php if(Auth::user() && Auth::user()->type == 2): ?> href="javascript:void(0)" onclick="managefavorite('<?php echo e($getitemdata->id); ?>',1)" <?php else: ?> href="<?php echo e(URL::to('/login')); ?>" <?php endif; ?>><?php echo e(trans('labels.add_wishlist')); ?>
+                                                    <?php if(Auth::user() && Auth::user()->type == 2): ?> href="javascript:void(0)" onclick="managefavorite('<?php echo e($getitemdata->id); ?>',1, '<?php echo e(URL::to('/managefavorite')); ?>')" <?php else: ?> href="<?php echo e(URL::to('/login')); ?>" <?php endif; ?>><?php echo e(trans('labels.add_wishlist')); ?>
 
                                                 </a>
                                             <?php endif; ?>

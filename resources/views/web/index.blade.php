@@ -422,7 +422,7 @@
                     <p>{{ trans('labels.make_reservation') }}</p>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <a href="{{ route('reservation') }}" class="btn btn-primary btn-sm" role="button">{{ trans('labels.book_now') }}</a>
+                    <a class="btn btn-primary btn-sm" role="button">{{ trans('labels.book_now') }}</a>
                 </div>
             </div>
         </div>

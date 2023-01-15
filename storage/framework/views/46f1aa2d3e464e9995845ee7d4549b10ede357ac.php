@@ -15,24 +15,11 @@
                 <?php echo e(ucfirst($paymentname)); ?>
 
                 <?php if(in_array($transaction_type, [3, 4, 5, 6])): ?>
-                    <?php if($transaction_type == 3): ?>
-                        <input type="hidden" name="razorpaykey" id="razorpaykey" value="<?php echo e($pmdata->public_key); ?>">
-                    <?php endif; ?>
                     <?php if($transaction_type == 4): ?>
                         <input type="hidden" name="stripekey" id="stripekey" value="<?php echo e($pmdata->public_key); ?>">
                     <?php endif; ?>
-                    <?php if($transaction_type == 5): ?>
-                        <input type="hidden" name="flutterwavekey" id="flutterwavekey" value="<?php echo e($pmdata->public_key); ?>">
-                    <?php endif; ?>
-                    <?php if($transaction_type == 6): ?>
-                        <input type="hidden" name="paystackkey" id="paystackkey" value="<?php echo e($pmdata->public_key); ?>">
-                    <?php endif; ?>
                 <?php endif; ?>
             </div>
-            <?php if($transaction_type == 2): ?>
-                <small
-                    class="walleterror text-light d-none"><?php echo e(trans('messages.insufficient_wallet')); ?></small>
-            <?php endif; ?>
         </label>
         <?php if($transaction_type == 4): ?>
             <form action="" method="" id="payment-form">

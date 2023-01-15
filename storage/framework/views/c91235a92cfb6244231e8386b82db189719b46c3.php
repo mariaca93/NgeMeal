@@ -423,7 +423,7 @@
                     <p><?php echo e(trans('labels.make_reservation')); ?></p>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <a href="<?php echo e(route('reservation')); ?>" class="btn btn-primary btn-sm" role="button"><?php echo e(trans('labels.book_now')); ?></a>
+                    <a class="btn btn-primary btn-sm" role="button"><?php echo e(trans('labels.book_now')); ?></a>
                 </div>
             </div>
         </div>

@@ -396,37 +396,37 @@ class ItemIngredientSeeder extends Seeder
             
             //indonesian fried rice
             [
-                'item_id' => 19,
+                'item_id' => 10,
                 'ingredient_id' => 1,
                 'quantity' => '200'
             ],
             [
-                'item_id' => 19,
+                'item_id' => 10,
                 'ingredient_id' => 25,
                 'quantity' => '1'
             ],
             [
-                'item_id' => 19,
+                'item_id' => 10,
                 'ingredient_id' => 3,
                 'quantity' => '1'
             ],
             [
-                'item_id' => 19,
+                'item_id' => 10,
                 'ingredient_id' => 4,
                 'quantity' => '2'
             ],
             [
-                'item_id' => 19,
+                'item_id' => 10,
                 'ingredient_id' => 5,
                 'quantity' => '2'
             ],
             [
-                'item_id' => 19,
+                'item_id' => 10,
                 'ingredient_id' => 6,
                 'quantity' => '1/2'
             ],
             [
-                'item_id' => 19,
+                'item_id' => 10,
                 'ingredient_id' => 7,
                 'quantity' => '100'
             ],
@@ -434,37 +434,37 @@ class ItemIngredientSeeder extends Seeder
 
             //margharita pizza
             [
-                'item_id' => 25,
+                'item_id' => 11,
                 'ingredient_id' => 8,
                 'quantity' => '1'
             ],
             [
-                'item_id' => 25,
+                'item_id' => 11,
                 'ingredient_id' => 9,
                 'quantity' => '500'
             ],
             [
-                'item_id' => 25,
+                'item_id' => 11,
                 'ingredient_id' => 10,
                 'quantity' => '200'
             ],
             [
-                'item_id' => 25,
+                'item_id' => 11,
                 'ingredient_id' => 11,
                 'quantity' => '10'
             ],
             [
-                'item_id' => 25,
+                'item_id' => 11,
                 'ingredient_id' => 12,
                 'quantity' => '2'
             ],
             [
-                'item_id' => 25,
+                'item_id' => 11,
                 'ingredient_id' => 5,
                 'quantity' => '2'
             ],
             [
-                'item_id' => 25,
+                'item_id' => 11,
                 'ingredient_id' => 6,
                 'quantity' => '2'
             ]

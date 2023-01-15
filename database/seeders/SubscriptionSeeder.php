@@ -17,13 +17,13 @@ class SubscriptionSeeder extends Seeder
     {
         DB::table('subscription')->insert([
             [
-                'id' => 'SUB001',
-                'subscription_name' => '5 Meal Vegetarian Pack',
-                'price' => '100000',
+                'id' => 'SUB002',
+                'subscription_name' => '4 Meal Vegetarian Pack',
+                'price' => '800000',
                 'image' => 'subscription-1.jpg',
                 'subscription_type' => 1,
-                'item_id' => '1,2',
-                'slug' => 'sub1'
+                'item_id' => '3,8,9,10',
+                'slug' => 'sub2'
             ]
             ]);
     }

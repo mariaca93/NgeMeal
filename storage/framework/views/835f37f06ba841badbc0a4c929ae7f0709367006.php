@@ -43,8 +43,6 @@
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </li>
-                    <a class="nav-link text-white <?php echo e(request()->is('reservation') ? 'active' : ''); ?>"
-                        href="<?php echo e(route('reservation')); ?>"><?php echo e(trans('labels.book_table')); ?></a>
                     <a class="nav-link text-white <?php echo e(request()->is('contactus') ? 'active' : ''); ?>"
                         href="<?php echo e(route('contact-us')); ?> "><?php echo e(trans('labels.help_contact_us')); ?></a>
                     <?php if(Auth::user()): ?>
@@ -129,8 +127,6 @@
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </li>
-                    <a class="nav-link px-3 <?php echo e(request()->is('reservation') ? 'active' : ''); ?>"
-                        href="<?php echo e(URL::to('reservation')); ?>"><?php echo e(trans('labels.book_table')); ?></a>
                     <a class="nav-link px-3 <?php echo e(request()->is('contactus') ? 'active' : ''); ?>"
                         href="<?php echo e(route('contact-us')); ?> "><?php echo e(trans('labels.help_contact_us')); ?></a>
                 </div>

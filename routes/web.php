@@ -79,9 +79,6 @@ Route::group(['namespace' => 'front', 'middleware' => 'MaintenanceMiddleware'], 
 	Route::get('/ourteam', [WebOtherPagesController::class, 'ourteam'])->name('ourteam');
 	Route::get('/blogs', [WebOtherPagesController::class, 'blogs'])->name('blogs');
 	Route::get('/blogs-{slug}', [WebOtherPagesController::class, 'showblog'])->name('blogdetails');
-	// reservation
-	Route::get('/reservation', [WebBookingsController::class, 'index'])->name('reservation');
-	Route::post('/reservation/store', [WebBookingsController::class, 'store']);
 	if (\App\SystemAddons::where('unique_identifier', 'otp')->first() != null && \App\SystemAddons::where('unique_identifier', 'otp')->first()->activated) {
 	    Route::group(['middleware'=>'NoUserAuthMiddleware'],function(){
 		// auth
@@ -157,10 +154,6 @@ Route::group(['namespace' => 'front', 'middleware' => 'MaintenanceMiddleware'], 
 			Route::post('/placeorder', [CheckoutController::class, 'placeorder']);
 			Route::post('/checkdeliveryzone', [CheckoutController::class, 'checkdeliveryzone']);
 		}
-		// wallet
-		Route::get('/wallet', [WalletController::class, 'index'])->name('user-wallet');
-		Route::get('/wallet/addmoney', [WalletController::class, 'addform'])->name('add-money');
-		Route::post('/wallet/recharge', [WalletController::class, 'addwallet']);
 		// address
 		Route::get('/address', [AddressController::class, 'index'])->name('address');
 		Route::get('/address/add', [AddressController::class, 'add'])->name('add-address');
@@ -176,9 +169,6 @@ Route::group(['namespace' => 'front', 'middleware' => 'MaintenanceMiddleware'], 
 		Route::post('addtocart', [CartController::class,'addtocart']);
 		Route::post('/cart/deleteitem', [CartController::class, 'deletecartitem']);
 		Route::post('/cart/qtyupdate', [CartController::class, 'qtyupdate']);
-		// promocode
-		Route::post('/promocodes/apply', [WebPromocodeController::class, 'checkpromocode']);
-		Route::post('/promocodes/remove', [WebPromocodeController::class, 'removepromocode']);
 		// reviews
 		Route::post('/add-review', [WebRattingController::class, 'addreview']);
 	});

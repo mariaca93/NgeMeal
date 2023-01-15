@@ -42,10 +42,10 @@
                                                     <a href="{{ URL::to('item-' . $itemdata->slug) }}"
                                                         class="fw-500 dark_color text-break">
                                                         @if ($itemdata->item_type == 1)
-                                                            <img src="{{ Helper::image_path('veg.svg') }}" class="me-1"
+                                                            <img style="width:20px" src="{{ Helper::image_path('veg.svg') }}" class="me-1"
                                                                 alt="">
                                                         @else
-                                                            <img src="{{ Helper::image_path('nonveg.svg') }}"
+                                                            <img style="width:20px" src="{{ Helper::image_path('nonveg.svg') }}"
                                                                 class="me-1" alt="">
                                                         @endif
                                                         {{ $itemdata->item_name }}
@@ -62,8 +62,8 @@
                                                 </div>
                                                 <div class="row align-items-center justify-content-between gx-0">
                                                     <div class="col-auto">
-                                                        <span
-                                                            class="white_color fs-8">{{ $itemdata['cuisine_info']->cuisine_name }}</span>
+                                                        <span style= "color:black"
+                                                            class="fs-8">{{ $itemdata['cuisine_info']->cuisine_name }}</span>
                                                         @php
                                                             if ($itemdata->has_variation == 1) {
                                                                 foreach ($itemdata['variation'] as $key => $value) {
@@ -76,7 +76,7 @@
                                                                 $price = $itemdata->price;
                                                             }
                                                         @endphp
-                                                        <div class="fw-600">{{ Helper::currency_format($price) }}</div>
+                                                        <div style= "color:black" class="fw-600">{{ Helper::currency_format($price) }}</div>
                                                     </div>
                                                     <div class="col-auto">
                                                         @if (Auth::user() && Auth::user()->type == 2)

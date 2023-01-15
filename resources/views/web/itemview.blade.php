@@ -20,12 +20,12 @@
         <div class="img-overlay set-fav-{{ $itemdata->id }}">
             @if ($itemdata->is_favorite == 1)
                 <a class="heart-icon btn btn-wishlist"
-                    @if (Auth::user() && Auth::user()->type == 2) href="javascript:void(0)" onclick="managefavorite('{{ $itemdata->id }}',0,'{{ URL::to('/managefavorite') }}')" title="{{ trans('labels.remove_wishlist') }}"
+                    @if (Auth::user()) href="javascript:void(0)" onclick="managefavorite('{{ $itemdata->id }}',0,'{{ URL::to('/managefavorite') }}')" title="{{ trans('labels.remove_wishlist') }}"
                 @else href="{{ URL::to('/login') }}" @endif>
                     <i class="fa-solid fa-bookmark fs-5"></i> </a>
             @else
                 <a class="heart-icon btn btn-wishlist"
-                    @if (Auth::user() && Auth::user()->type == 2) href="javascript:void(0)" onclick="managefavorite('{{ $itemdata->id }}',1,'{{ URL::to('/managefavorite') }}')" title="{{ trans('labels.add_wishlist') }}"
+                    @if (Auth::user()) href="javascript:void(0)" onclick="managefavorite('{{ $itemdata->id }}',1,'{{ URL::to('/managefavorite') }}')" title="{{ trans('labels.add_wishlist') }}"
                 @else href="{{ URL::to('/login') }}" @endif>
                     <i class="fa-regular fa-bookmark fs-5"></i> </a>
             @endif

@@ -14,24 +14,11 @@
                 <img src="{{ Helper::image_path($pmdata->image) }}" alt="">
                 {{ ucfirst($paymentname) }}
                 @if (in_array($transaction_type, [3, 4, 5, 6]))
-                    @if ($transaction_type == 3)
-                        <input type="hidden" name="razorpaykey" id="razorpaykey" value="{{ $pmdata->public_key }}">
-                    @endif
                     @if ($transaction_type == 4)
                         <input type="hidden" name="stripekey" id="stripekey" value="{{ $pmdata->public_key }}">
                     @endif
-                    @if ($transaction_type == 5)
-                        <input type="hidden" name="flutterwavekey" id="flutterwavekey" value="{{ $pmdata->public_key }}">
-                    @endif
-                    @if ($transaction_type == 6)
-                        <input type="hidden" name="paystackkey" id="paystackkey" value="{{ $pmdata->public_key }}">
-                    @endif
                 @endif
             </div>
-            @if ($transaction_type == 2)
-                <small
-                    class="walleterror text-light d-none">{{ trans('messages.insufficient_wallet') }}</small>
-            @endif
         </label>
         @if ($transaction_type == 4)
             <form action="" method="" id="payment-form">

@@ -21,14 +21,6 @@
             <i class="mx-2 fa-regular fa-map"></i><?php echo e(trans('labels.my_addresses')); ?> </a>
     </li>
     <li>
-        <a class="<?php echo e(request()->is('wallet*') ? 'active' : ''); ?>" href="<?php echo e(route('user-wallet')); ?>">
-            <i class="mx-2 fa-solid fa-wallet"></i><?php echo e(trans('labels.my_wallet')); ?> </a>
-    </li>
-    <li>
-        <a class="<?php echo e(request()->is('refer-earn') ? 'active' : ''); ?>" href="<?php echo e(route('refer-earn')); ?>">
-            <i class="mx-2 fa-solid fa-share-nodes"></i><?php echo e(trans('labels.refer_earn')); ?> </a>
-    </li>
-    <li>
         <a href="javascript:void(0)" onclick="logout('<?php echo e(route('logout')); ?>','<?php echo e(trans('messages.are_you_sure_logout')); ?>','<?php echo e(trans('labels.logout')); ?>')">
             <i class="mx-2 fa fa-arrow-right-from-bracket"></i><?php echo e(trans('labels.logout')); ?> </a>
     </li>

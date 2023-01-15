@@ -52,7 +52,7 @@
                     }
 
                      //2. data yang ditunjukin dbwh jd sesuai dengan data yang ada diatas
-
+                     $id = $(".show-small-img-item[alt='now']").attr('id')
                     var items = {!! json_encode($getsubscriptiondata['items']) !!}
                     generateImages(items[$id])
                     var item_type = document.getElementById("item-type")
@@ -244,7 +244,7 @@
                         }
                     }
                     $('.form-check-addon').remove()
-                    
+
                     var keyAddon = 'sub'+'{{ $getsubscriptiondata->id}}'+'_item'+$id;
                     if(localStorage[keyAddon]){
                         document.getElementById('item-variation-addon').innerHTML=''

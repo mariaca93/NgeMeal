@@ -309,7 +309,7 @@ return [
     "referral_code_o" => "Referral Code (Optional)",
     "mobile" => "Mobile",
     "confirm_password" => "Confirm Passwod",
-    "i_accepts_the" => "I accepts the",
+    "i_accepts_the" => "I accept the",
     "terms_conditions" => "Terms & Conditions",
     "already_account" => "Already have an account?",
     // web --> forgot password page

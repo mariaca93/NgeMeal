@@ -43,8 +43,6 @@
                             @endforeach
                         </ul>
                     </li>
-                    <a class="nav-link text-white {{ request()->is('reservation') ? 'active' : '' }}"
-                        href="{{ route('reservation') }}">{{ trans('labels.book_table') }}</a>
                     <a class="nav-link text-white {{ request()->is('contactus') ? 'active' : '' }}"
                         href="{{ route('contact-us') }} ">{{ trans('labels.help_contact_us') }}</a>
                     @if (Auth::user())
@@ -128,8 +126,6 @@
                             @endforeach
                         </ul>
                     </li>
-                    <a class="nav-link px-3 {{ request()->is('reservation') ? 'active' : '' }}"
-                        href="{{ URL::to('reservation') }}">{{ trans('labels.book_table') }}</a>
                     <a class="nav-link px-3 {{ request()->is('contactus') ? 'active' : '' }}"
                         href="{{ route('contact-us') }} ">{{ trans('labels.help_contact_us') }}</a>
                 </div>

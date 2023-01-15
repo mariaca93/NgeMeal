@@ -21,12 +21,12 @@
         <div class="img-overlay set-fav-<?php echo e($itemdata->id); ?>">
             <?php if($itemdata->is_favorite == 1): ?>
                 <a class="heart-icon btn btn-wishlist"
-                    <?php if(Auth::user() && Auth::user()->type == 2): ?> href="javascript:void(0)" onclick="managefavorite('<?php echo e($itemdata->id); ?>',0,'<?php echo e(URL::to('/managefavorite')); ?>')" title="<?php echo e(trans('labels.remove_wishlist')); ?>"
+                    <?php if(Auth::user()): ?> href="javascript:void(0)" onclick="managefavorite('<?php echo e($itemdata->id); ?>',0,'<?php echo e(URL::to('/managefavorite')); ?>')" title="<?php echo e(trans('labels.remove_wishlist')); ?>"
                 <?php else: ?> href="<?php echo e(URL::to('/login')); ?>" <?php endif; ?>>
                     <i class="fa-solid fa-bookmark fs-5"></i> </a>
             <?php else: ?>
                 <a class="heart-icon btn btn-wishlist"
-                    <?php if(Auth::user() && Auth::user()->type == 2): ?> href="javascript:void(0)" onclick="managefavorite('<?php echo e($itemdata->id); ?>',1,'<?php echo e(URL::to('/managefavorite')); ?>')" title="<?php echo e(trans('labels.add_wishlist')); ?>"
+                    <?php if(Auth::user()): ?> href="javascript:void(0)" onclick="managefavorite('<?php echo e($itemdata->id); ?>',1,'<?php echo e(URL::to('/managefavorite')); ?>')" title="<?php echo e(trans('labels.add_wishlist')); ?>"
                 <?php else: ?> href="<?php echo e(URL::to('/login')); ?>" <?php endif; ?>>
                     <i class="fa-regular fa-bookmark fs-5"></i> </a>
             <?php endif; ?>
