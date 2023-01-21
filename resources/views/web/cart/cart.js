@@ -18,7 +18,6 @@ function isopenclose(opencloseurl, qty, order_amount) {
             } else if (response.status == 2) {
                 toastr.error(response.message);
             } else {
-                restaurantclosed();
                 return false;
             }
         },

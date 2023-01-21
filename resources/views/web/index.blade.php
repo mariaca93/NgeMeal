@@ -111,7 +111,7 @@
 </script>
 
 @if (count(Helper::get_cuisines()) > 0)
-<section class="cuisine">
+<section class="cuisine" style="padding-top:20px">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -339,45 +339,6 @@
 </section>
 @endif
 <!-- Promotional bannersection3 End Here -->
-<!-- Testimonials Section Start Here -->
-@if (count($testimonials) > 0)
-<section>
-    <div class="testimonials py-5" style="background: url('{{Helper::image_path(@Helper::appdata()->reviews_bg_image)}}') center center/cover no-repeat #f3f0e7 !important;">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-auto d-flex justify-content-center">
-                    <div id="testimonial4" class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x" data-bs-ride="carousel" data-pause="hover" data-interval="1000" data-duration="1000">
-                        <div class="carousel-inner" role="listbox">
-                            @foreach ($testimonials as $key => $testimonialdata)
-                            <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                                <div class="testimonial4_slide">
-                                    <img src="{{ $testimonialdata['user_info']->profile_image }}" class="img-circle img-responsive mx-auto" />
-                                    <h4>{{ $testimonialdata['user_info']->name }}</h4>
-                                    <div class="review-star">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                    </div>
-                                    <span>{{ number_format($testimonialdata->ratting, 1) }}/5.0
-                                        {{ trans('labels.reviews') }}</span>
-                                    <p>
-                                        <span class="text-primary">"</span>
-                                        {{ Str::limit($testimonialdata->comment, 100) }}
-                                        <span class="text-primary">"</span>
-                                    </p>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-@endif
 <!-- Testimonials Section End Here -->
 <!-- App Download Section Start Here -->
 @if (!empty(@Helper::appdata()->mobile_app_image))
@@ -414,44 +375,22 @@
 <!-- App Download Section End Here -->
 <!-- Table Resrvation Section Start Here -->
 <section class="res">
-    <div class="reservation" style="background: url('{{Helper::image_path(@Helper::appdata()->booknow_bg_image)}}') center center/cover no-repeat #f3f0e7 !important;">
+    <div class="order-now" style="background: url('{{Helper::image_path(@Helper::appdata()->booknow_bg_image)}}') center center/cover no-repeat #f2f0f5 !important;">
         <div class="container">
             <div class="reservation-content px-3">
                 <div class="row text-center">
-                    <h1>{{ trans('labels.book_table') }}</h1>
-                    <p>{{ trans('labels.make_reservation') }}</p>
+                    <h1>Order Your First Meal</h1>
+                    <p>Take a look at today's special</p>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <a class="btn btn-primary btn-sm" role="button">{{ trans('labels.book_now') }}</a>
+                    <a class="btn btn-primary btn-sm" role="button">{{ trans('labels.order_now') }}</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!-- Table Resrvation Section End Here -->
-<!-- Blog Section Start Here -->
-@if (count($getblogs) > 0)
-<section>
-    <div class="blog-wrapper mb-3">
-        <div class="container">
-            <div class="row align-items-center justify-content-between my-2">
-                <div class="col-auto blog-heading">
-                    <h1>{{ trans('labels.latest_blogs') }}</h1>
-                </div>
-                <div class="col-auto">
-                    <a href="{{ route('blogs') }}" class="btn btn-sm btn-outline-primary">{{ trans('labels.view_all') }}</a>
-                </div>
-            </div>
-            <div class="row">
-                @foreach ($getblogs as $bloglist)
-                @include('web.blogs.blogview')
-                @endforeach
-            </div>
-        </div>
-    </div>
-</section>
-@endif
-<!-- Blog Section End Here -->
+
 @endsection
 @section('scripts')
 <script

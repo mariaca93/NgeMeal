@@ -1,34 +1,4 @@
-function isopenclose(opencloseurl, qty, order_amount) {
-    "use strict";
-    $("#preload").show();
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        url: opencloseurl,
-        data: {
-            qty: qty,
-            order_amount: order_amount
-        },
-        method: 'post',
-        success: function (response) {
-            $("#preload").hide();
-            if (response.status == 1) {
-                $('#deliveryoption').modal('show');
-            } else if (response.status == 2) {
-                toastr.error(response.message);
-            } else {
-                restaurantclosed();
-                return false;
-            }
-        },
-        error: function (e) {
-            $("#preload").hide();
-            toastr.error(wrong);
-            return false;
-        }
-    });
-}
+
 function deletecartitem(id, deleteurl) {
     "use strict";
     swalWithBootstrapButtons.fire({
@@ -97,41 +67,7 @@ function qtyupdate(id, type, qtyurl) {
         }
     });
 }
-function holduser(x) {
-    "use strict";
-    var order_type = $("input:radio[name=order_type]:checked").val();
-    if (order_type == null) {
-        $('.holderror').removeClass('d-none');
-        return false;
-    } else {
-        $('.holderror').addClass('d-none');
-        $('#preload').show();
-    }
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        url: $(x).attr('data-url'),
-        data: {
-            order_type: order_type
-        },
-        method: 'POST',
-        success: function (response) {
-            if (response.status == 1) {
-                location.href = $(x).attr('data-next-url');
-            } else {
-                $('#preload').hide();
-                $('.holderror').removeClass('d-none').html(response.message);
-                return false;
-            }
-        },
-        error: function (e) {
-            $('#preload').hide();
-            $('.holderror').removeClass('d-none').html(e.message);
-            return false;
-        }
-    });
-}
+
 function getoffercode(code) {
     "use strict";
     $('#offer_code').val(code);

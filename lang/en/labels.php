@@ -288,7 +288,6 @@ return [
     // web --> auth pages
     "login_now" => "Login now?",
     "remember_me" => "Remember me",
-    "forgot_password" => "Forgot password",
     "verify_proceed" => "Verify & Proceed",
     // web --> Contact us page
     "to" => "To",
@@ -407,8 +406,7 @@ return [
     // web --> header section
     "home" => "Home",
     "menu" => "Menu",
-    "book_table" => "Book a Table",
-    "help_contact_us" => " Help & Contact us",
+    "help_contact_us" => "Contact us",
     "cart" => "Cart",
     "search" => "Search",
     "logout" => "Logout",
@@ -417,15 +415,15 @@ return [
     // web --> homepage
     "reviews" => "Testimonials",
     "explore" => "Explore",
-    "cuisines" => "Categories",
+    "cuisines" => "Cuisines",
     "view_all"=> "View All",
     "trending"=> "Trending",
     "todays_special"=> "Today's Special",
     "subscription_menu"=> "Subscription Menu",
-    "recommended"=> "Recommended", 
-    "make_reservation" => "Make a Reservation",
+    "recommended"=> "Recommended",
     "person" => "Person",
     "book_now" => "Book Now",
+    "order_now" => "Order Now",
     "next" => "Next",
     "previous" => "Previous",
     "contactus_heading" => "Drop us a line",

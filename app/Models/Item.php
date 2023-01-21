@@ -7,9 +7,7 @@ class Item extends Model
 {
     protected $table='item';
     protected $fillable=['cuisine_id','item_name','item_description','item_price','delivery_time'];
-    public function variation(){
-        return $this->hasMany('App\Models\Variation','item_id','id')->select('variation.id','variation.item_id','variation.variation','variation.product_price','variation.sale_price');
-    }
+    
     public function subcuisine_info(){
         return $this->hasOne('App\Models\Subcuisine','id','subcuisine_id')->select('subcuisines.id','subcuisines.subcuisine_name','subcuisines.slug');
     }

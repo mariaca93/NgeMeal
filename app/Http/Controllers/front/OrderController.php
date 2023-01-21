@@ -13,7 +13,7 @@ class OrderController extends Controller
 {
     public function index(Request $request)
     {   
-        $getorders=Order::select('order.id','order.order_from','order.order_type','order.order_number','order.grand_total','order.status','order.transaction_type', 'order.created_at')
+        $getorders=Order::select('order.id','order.order_from','order.order_number','order.grand_total','order.status','order.transaction_type', 'order.created_at')
                 ->where('order.user_id',Auth::user()->id);
             if($request->has('type') && $request->type == "completed"){
                 $getorders = $getorders->where('status',5);

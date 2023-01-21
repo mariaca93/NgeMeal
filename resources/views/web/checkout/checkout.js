@@ -25,7 +25,6 @@ var delivery_charge_per_km = parseFloat($('#delivery_charge_per_km').val());
 var order_type = $('#order_type').val();
 var delivery_charge = parseFloat($('#delivery_charge').val());
 var grand_total = parseFloat($('#grand_total').val());
-var tax_amount = parseFloat($('#totaltaxamount').val());
 var address_type = "";
 var address = "";
 var house_no = "";
@@ -146,7 +145,6 @@ function isopenclose(opencloseurl, qty, order_amount) {
             } else if (response.status == 2) {
                 toastr.error(response.message);
             } else {
-                restaurantclosed();
                 return false;
             }
         },
@@ -195,7 +193,6 @@ function validatedata() {
                 order_type: order_type,
                 delivery_charge: delivery_charge,
                 grand_total: grand_total,
-                tax_amount: tax_amount,
                 address_type: address_type,
                 address: address,
                 house_no: house_no,
@@ -248,7 +245,6 @@ function validatedata() {
                         order_type: order_type,
                         delivery_charge: delivery_charge,
                         grand_total: grand_total,
-                        tax_amount: tax_amount,
                         address_type: address_type,
                         address: address,
                         house_no: house_no,
@@ -308,7 +304,6 @@ function validatedata() {
                         order_type: order_type,
                         delivery_charge: delivery_charge,
                         grand_total: grand_total,
-                        tax_amount: tax_amount,
                         address_type: address_type,
                         address: address,
                         house_no: house_no,
@@ -369,7 +364,6 @@ function validatedata() {
                         order_type: order_type,
                         delivery_charge: delivery_charge,
                         grand_total: grand_total,
-                        tax_amount: tax_amount,
                         address_type: address_type,
                         address: address,
                         house_no: house_no,
@@ -432,7 +426,6 @@ function validatedata() {
                         order_type: order_type,
                         delivery_charge: delivery_charge,
                         grand_total: grand_total,
-                        tax_amount: tax_amount,
                         address_type: address_type,
                         address: address,
                         house_no: house_no,

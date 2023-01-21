@@ -7,7 +7,7 @@
 <!-- Back to Top Button End Here -->
 <!-- Footer Start Here -->
 <footer>
-    <div class="container">
+    <div class="container" style="padding:15px 0px">
         <div class="row justify-content-center mb-4">
             <?php $__currentLoopData = Helper::footer_features(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $feature): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="col-lg-4 col-md-4 col-sm-6 mb-2">
@@ -35,41 +35,41 @@
                         <img src="<?php echo e(Helper::image_path(@Helper::appdata()->logo)); ?>" width="75" class="my-3" alt="footer_logo">
                     </a>
                     <h1><?php echo e(@Helper::appdata()->footer_title); ?></h1>
-                    <p><?php echo e(@Helper::appdata()->footer_description); ?></p>
+                    <p style="color:white!important"><?php echo e(@Helper::appdata()->footer_description); ?></p>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-8 col-auto right-side">
                     <div class="row">
                         <div class="col-md-4 col-sm-4 col-auto mb-2">
                             <h4><?php echo e(trans('labels.about_us')); ?></h4>
                             <ul>
-                                <li><a href="<?php echo e(route('about-us')); ?>" class="text-white"><?php echo e(trans('labels.about')); ?></a></li>
-                                <li><a href="<?php echo e(route('ourteam')); ?>" class="text-white"><?php echo e(trans('labels.our_team')); ?></a></li>
-                                <li><a href="<?php echo e(route('testimonials')); ?>" class="text-white"><?php echo e(trans('labels.testimonials')); ?></a></li>
-                                <li><a href="<?php echo e(URL::to('/view-all?type=todayspecial')); ?>" class="text-white"><?php echo e(trans('labels.todays_special')); ?></a></li>
+                                <li><a href="" class="text-white"><?php echo e(trans('labels.about')); ?></a></li>
+                                <li><a href="" class="text-white"><?php echo e(trans('labels.our_team')); ?></a></li>
+                                <li><a href="" class="text-white"><?php echo e(trans('labels.testimonials')); ?></a></li>
+                                <li><a href="" class="text-white"><?php echo e(trans('labels.todays_special')); ?></a></li>
                             </ul>
                         </div>
                         <div class="col-md-4 col-sm-4 col-auto mb-2">
                             <h4><?php echo e(trans('labels.legal')); ?></h4>
                             <ul>
-                                <li><a href="<?php echo e(route('privacy-policy')); ?>" class="text-white"><?php echo e(trans('labels.privacy_policy')); ?></a></li>
-                                <li><a href="<?php echo e(route('terms-conditions')); ?>" class="text-white"><?php echo e(trans('labels.terms_condition')); ?></a></li>
+                                <li><a href="" class="text-white"><?php echo e(trans('labels.privacy_policy')); ?></a></li>
+                                <li><a href="" class="text-white"><?php echo e(trans('labels.terms_condition')); ?></a></li>
                             </ul>
                         </div>
                         <div class="col-md-4 col-sm-4 col-auto mb-2">
                             <h4><?php echo e(trans('labels.other_pages')); ?></h4>
                             <ul>
                                 <li>
-                                    <a href="<?php echo e(route('faq')); ?>" class="text-white"><?php echo e(trans('labels.faq')); ?></a>
+                                    <a href="" class="text-white"><?php echo e(trans('labels.faq')); ?></a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo e(route('gallery')); ?>" class="text-white"><?php echo e(trans('labels.gallery')); ?></a>
+                                    <a href="" class="text-white"><?php echo e(trans('labels.gallery')); ?></a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo e(route('contact-us')); ?>" class="text-white"><?php echo e(trans('labels.help_contact_us')); ?></a>
+                                    <a href="" class="text-white"><?php echo e(trans('labels.help_contact_us')); ?></a>
                                 </li>
                                 </li>
                                 <li>
-                                    <a href="<?php echo e(route('blogs')); ?>" class="text-white"><?php echo e(trans('labels.blogs')); ?></a>
+                                    <a href="" class="text-white"><?php echo e(trans('labels.blogs')); ?></a>
                                 </li>
                             </ul>
                         </div>

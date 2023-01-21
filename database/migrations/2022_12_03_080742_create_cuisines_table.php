@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('slug');
             $table->string('image');
             $table->integer('is_available')->default(1)->comment('1 = Yes , 2 = No');
-            $table->integer('is_deleted')->default(2)->comment('1 = Yes , 2 = No');
             $table->timestamps();
         });
     }

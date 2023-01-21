@@ -25,7 +25,6 @@ class ItemSeeder extends Seeder
                 'addons_id' => '1,5,6',
                 'slug' => 'beef-burger',
                 'item_type' => 2,
-                'has_variation' => 2,
                 'price' => '16000',
                 'item_description' => '1. Heat the olive oil in a frying pan, add the onion and cook for 5 minutes until softened and starting to turn golden. Set aside.
                 <br/>2. In a bowl, combine the beef mince with the herbs and the egg. Season, add the onions and mix well. Using your hands, shape into 4 patties.
@@ -43,7 +42,6 @@ class ItemSeeder extends Seeder
                 'addons_id' => '1,4,7',
                 'slug' => 'chicken-burger',
                 'item_type' => 2,
-                'has_variation' => 2,
                 'price' => '12000',
                 'item_description' => '1. In a medium bowl, add ground chicken, breadcrumbs, mayonnaise, onions, parsley, garlic, paprika, salt and pepper. Use your hands to combine all the ingredients together until blended, but don’t over mix.
                 <br/>2. Preheat grill to medium-high heat and oil the grates.
@@ -62,7 +60,6 @@ class ItemSeeder extends Seeder
                 'addons_id' => '1,2,5',
                 'slug' => 'black-bean-burger',
                 'item_type' => 1,
-                'has_variation' => 2,
                 'price' => '10000',
                 'item_description' => '1. Preheat an outdoor grill for high heat. Lightly oil a sheet of aluminum foil with cooking spray.
                 <br/>2. Mash black beans in a medium bowl with a fork until thick and pasty.
@@ -81,7 +78,6 @@ class ItemSeeder extends Seeder
                 'addons_id' => '1,2,4',
                 'slug' => 'fried-chicken',
                 'item_type' => 2,
-                'has_variation' => 2,
                 'price' => '15000',
                 'item_description' => '1. In a large shallow dish, combine 2-2/3 cups flour, garlic salt, paprika, 2-1/2 teaspoons pepper and poultry seasoning. 
                 <br/>2. In another shallow dish, beat eggs and 1-1/2 cups water; add salt and the remaining 1-1/3 cups flour and 1/2 teaspoon pepper. 
@@ -99,7 +95,6 @@ class ItemSeeder extends Seeder
                 'addons_id' => '1,2,4',
                 'slug' => 'chicken-noodle-soup',
                 'item_type' => 2,
-                'has_variation' => 2,
                 'price' => '13000',
                 'item_description' => '1. Melt butter in a large pot or Dutch oven over medium heat. Add the onions, carrots, and celery. Cook, stirring every few minutes until the vegetables begin to soften; 5 to 6 minutes.
                 <br/>2. Stir in the garlic, bay leaves, and thyme. Cook, while stirring the garlic around the pan, for about 1 minute.
@@ -120,7 +115,6 @@ class ItemSeeder extends Seeder
                 'addons_id' => '1,2,4',
                 'slug' => 'chicken-pot-pie',
                 'item_type' => 2,
-                'has_variation' => 2,
                 'price' => '15000',
                 'item_description' => '1. Preheat the oven to 425 degrees F (220 degrees C.)
                 <br/>2. Combine chicken, carrots, peas, and celery in a saucepan; add water to cover and bring to a boil. Boil for 15 minutes, then remove from the heat and drain.
@@ -139,7 +133,6 @@ class ItemSeeder extends Seeder
                 'addons_id' => '2,3',
                 'slug' => 'dan-dan-mian',
                 'item_type' => 2,
-                'has_variation' => 2,
                 'price' => '18000',
                 'item_description' => '1. Whisk the sesame paste and light soy sauce together in a bowl until fully incorporated. Add the Chinkiang vinegar. Continue stirring until mixed. Then mix in the garlic, green onion, honey, and Sichuan peppercorns.
                 <br/>2. Heat the oil in a large nonstick skillet over medium-high heat until hot. Add the pork. Cook and stir until the surface is lightly browned.
@@ -160,7 +153,6 @@ class ItemSeeder extends Seeder
                 'addons_id' => '2,3,9',
                 'slug' => 'chow-mein',
                 'item_type' => 1,
-                'has_variation' => 2,
                 'price' => '15000',
                 'item_description' => '1. In a small mixing bowl, use a whisk to combine oyster sauce, granulated sugar, sesame oil, soy sauce, chicken broth and cornstarch. Set aside.
                 <br/>2. Cook your noodles according to package instructions then drain, rinse with cold water and set aside.
@@ -180,7 +172,6 @@ class ItemSeeder extends Seeder
                 'addons_id' => '2,3,10',
                 'slug' => 'mee-hoon',
                 'item_type' => 1,
-                'has_variation' => 2,
                 'price' => '16000',
                 'item_description' => '1. Place Broth ingredients in a saucepan over high heat. Place lid on, bring to simmer then reduce to medium and simmer for 8 – 10 minutes to allow the flavours to infuse.
                 <br/>2. Meanwhile, cook noodles according to packet directions.
@@ -200,7 +191,6 @@ class ItemSeeder extends Seeder
                 'addons_id' => '1,2',
                 'slug' => 'ind-fried-rice',
                 'item_type' => 1,
-                'has_variation' => 2,
                 'price' => '12000',
                 'item_description' => '1. Heat oil in a large skillet or wok over high heat.<br/>2. Add chilli and garlic, stir for 10 seconds.<br/>3. Add onion, cook for 1 minute.<br/>4. Add chicken, cook until it mostly turns white, then add 1 tbsp kecap manis and cook for a further 1 minute or until chicken is mostly cooked through and a bit caramelised.<br/>5. Add rice, 2 tbsp kecap manis and shrimp paste, if using. Cook, stirring constantly, for 2 minutes until sauce reduces down and rice grains start to caramelise (key for flavour!).<br/>6. Serve, garnished with garnishes of choice (green onions, red chilli, fried shallots).',
                 'preparation_time' => '15',
@@ -215,7 +205,6 @@ class ItemSeeder extends Seeder
                 'addons_id' => '1,4,5',
                 'slug' => 'marghariza-pizza',
                 'item_type' => 2,
-                'has_variation' => 2,
                 'price' => '20000',
                 'item_description' => '1. Preheat the oven to 500 degrees Fahrenheit with a rack in the upper third of the oven. If you’re using a baking stone or baking steel, place it on the upper rack. Prepare dough through step 5.
                 <br/>2. Place a medium mixing bowl in the sink and pour the canned tomatoes into the bowl, juices and all. Crush the tomatoes by hand. Spread about ¾ cup of the tomato sauce evenly over each pizza, leaving about 1 inch bare around the edges.

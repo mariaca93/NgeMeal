@@ -19,17 +19,13 @@ return new class extends Migration
             $table->string('order_number', 100);
             $table->unsignedBigInteger('user_id')->nullable();
             $table->integer('driver_id')->nullable();
-            $table->string('order_type', 11)->default('1')->comment('1 = Delivery , 2 = Pickup');
             $table->string('address_type', 10)->nullable()->comment('1- Home, 2-Office, 3-Other');
             $table->string('address')->nullable();
             $table->string('house_no')->nullable();
             $table->text('area')->nullable();
             $table->text('lat')->nullable();
             $table->text('lang')->nullable();
-            $table->string('offer_code', 50)->nullable();
-            $table->string('discount_amount', 50)->nullable()->default('0.00');
             $table->string('delivery_charge', 50)->nullable()->default('0.00');
-            $table->string('tax_amount', 50)->nullable()->default('0.00');
             $table->string('grand_total');
             $table->string('transaction_id')->nullable();
             $table->string('transaction_type')->comment('1 = cod, 2=wallet,3=razorpay,4=stripe/5=flutterwave,6=paystack');

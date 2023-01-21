@@ -26,10 +26,7 @@ return new class extends Migration
             $table->string('addons_name')->nullable();
             $table->string('addons_price')->nullable();
             $table->integer('addons_total_price')->nullable();
-            $table->string('variation_id')->nullable();
-            $table->string('variation')->nullable();
             $table->string('item_price');
-            $table->double('tax')->nullable();
             $table->string('qty')->nullable();
             $table->timestamps();
         });

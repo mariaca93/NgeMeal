@@ -13,7 +13,7 @@ class NoUserAuthMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() && Auth::user()->type == 2) {
+        if (Auth::user()) {
             return redirect('profile');
         }
         return $next($request);

@@ -24,27 +24,21 @@ class FooterFeaturesTableSeeder extends Seeder
                 'id' => 1,
                 'icon' => '<i class="fa-solid fa-truck-fast"></i>',
                 'title' => 'Free Shipping',
-                'description' => 'Lorem ipsum dolor sit amet, consectetur',
-                'created_at' => '2022-11-15 15:00:49',
-                'updated_at' => '2022-11-15 15:00:49',
+                'description' => 'We provide free & reliable shipping.'
             ),
             1 => 
             array (
                 'id' => 2,
                 'icon' => '<i class="fa-solid fa-map-location-dot"></i>',
                 'title' => 'Live Order Tracking',
-                'description' => 'Lorem ipsum dolor sit amet, consectetur',
-                'created_at' => '2022-11-15 15:00:49',
-                'updated_at' => '2022-11-15 15:00:49',
+                'description' => 'Track your order real-time.'
             ),
             2 => 
             array (
                 'id' => 3,
                 'icon' => '<i class="fa-solid fa-stopwatch-20"></i>',
                 'title' => 'Quick Delivery',
-                'description' => 'Lorem ipsum dolor sit amet, consectetur',
-                'created_at' => '2022-11-15 15:00:49',
-                'updated_at' => '2022-11-15 15:00:49',
+                'description' => 'Fast delivery right to your doorstep.'
             ),
         ));
         

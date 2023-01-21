@@ -25,11 +25,8 @@ return new class extends Migration
             $table->string('addons_name')->nullable();
             $table->string('addons_price')->nullable();
             $table->float('addons_total_price', 10, 0)->nullable()->default(0);
-            $table->string('variation_id')->nullable();
-            $table->string('variation')->nullable();
             $table->integer('qty');
             $table->string('item_price');
-            $table->string('tax');
             $table->integer('is_available')->default(1)->comment('1 = Yes . 2 = No');
             $table->timestamps();
         });

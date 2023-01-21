@@ -307,7 +307,7 @@ class helper
     }
     public static function get_cuisines()
     {
-        return Cuisine::select('id','cuisine_name','slug','image')->where('is_available','=','1')->where('is_deleted','2')->get();
+        return Cuisine::select('id','cuisine_name','slug','image')->where('is_available','=','1')->get();
     }
     public static function get_item_cart($item_id)
     {

@@ -129,7 +129,7 @@
                             </ul>
                         </div>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" style="color:black">
                                 <thead>
                                     <tr>
                                         <th>{{ trans('labels.image') }}</th>
@@ -150,9 +150,7 @@
                                         <td><img src="{{ URL::to('admin-assets/images/item/'. $orders->item_image) }}" class="rounded hw-50" alt=""></td>
                                         <td>
                                             <img @if ($orders['item_type']==1) src="{{ Helper::image_path('veg.svg') }}" @else src="{{ Helper::image_path('nonveg.svg') }}" @endif class="item-type-img" alt="" style="width:20px">
-                                            {{ $orders->item_name }} @if ($orders->variation != '')
-                                            [{{ $orders->variation }}]
-                                            @endif <br>
+                                            {{ $orders->item_name }}
                                             <?php
                                             $addons_id = explode(',', $orders->addons_id);
                                             $addons_name = explode(',', $orders->addons_name);
@@ -192,14 +190,8 @@
                                     </li>
                                     <li class="list-group-item px-0 d-flex justify-content-between">
                                         <span class="fw-600"> {{ trans('labels.tax') }} </span>
-                                        <span class="text-break">{{ Helper::currency_format($orderdata->tax_amount) }}</span>
+                                        <span class="text-break">0</span>
                                     </li>
-                                    @if ($orderdata->discount_amount > 0)   
-                                    <li class="list-group-item px-0 d-flex justify-content-between">
-                                        <span class="fw-600"> {{ trans('labels.discount') }} {{ $orderdata->offer_code != '' ? '(' . $orderdata->offer_code . ')' : '' }} </span>
-                                        <span class="text-break">- {{ Helper::currency_format($orderdata->discount_amount) }}</span>
-                                    </li>
-                                    @endif
                                     @if ($orderdata->order_type == 1)   
                                     <li class="list-group-item px-0 d-flex justify-content-between">
                                         <span class="fw-600"> {{ trans('labels.delivery_charge') }} </span>

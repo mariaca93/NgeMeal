@@ -125,27 +125,27 @@ class ItemImagesSeeder extends Seeder
                 'image' => 'mee-hoon-3.jpg',
             ],
             [
-                'item_id' => 19,
+                'item_id' => 10,
                 'image' => 'fried-rice-1.jpg',
             ],
             [
-                'item_id' => 19,
+                'item_id' => 10,
                 'image' => 'fried-rice-2.jpg',
             ],
             [
-                'item_id' => 19,
+                'item_id' => 10,
                 'image' => 'fried-rice-3.jpg',
             ],
             [
-                'item_id' => 25,
+                'item_id' => 11,
                 'image' => 'pizza-1.jpg',
             ],
             [
-                'item_id' => 25,
+                'item_id' => 11,
                 'image' => 'pizza-2.jpg',
             ],
             [
-                'item_id' => 25,
+                'item_id' => 11,
                 'image' => 'pizza-3.jpg',
             ]
             ]);

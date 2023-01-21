@@ -34,37 +34,19 @@
         <div class="item-card-footer">
             <div class="d-flex justify-content-between align-items-center">
                 <?php
-                    if ($itemdata->has_variation == 1) {
-                        foreach ($itemdata['variation'] as $key => $value) {
-                            $price = $value->product_price;
-                            if ($key == 0) {
-                                break;
-                            }
-                        }
-                    } else {
-                        $price = $itemdata->item_price;
-                    }
+                    $price = $itemdata->item_price;
                 ?>
                 <span><?php echo e(Helper::currency_format($price)); ?></span>
-                <?php if(Auth::user() && Auth::user()->type == 2): ?>
+                <?php if(Auth::user()): ?>
                     <?php if($itemdata->is_cart == 1): ?>
                         <div class="item-quantity">
                             <button type="button" class="btn btn-sm pastel_purple_color fw-500" onclick="removefromcart('<?php echo e(URL::to('/cart')); ?>','<?php echo e(trans('messages.remove_cartitem_note')); ?>','<?php echo e(trans('labels.goto_cart')); ?>')">-</button>
                             <input class="pastel_purple_color fw-500 item-total-qty-<?php echo e($itemdata->slug); ?>" type="text" value="<?php echo e(Helper::get_item_cart($itemdata->id)); ?>" disabled/>
-                            <?php if($itemdata->addons_id != '' || count($itemdata->variation) > 0): ?>
                                 <a class="btn btn-sm pastel_purple_color fw-500" onclick="showitem('<?php echo e($itemdata->slug); ?>','<?php echo e(URL::to('/show-item')); ?>')">+</a>
-                            <?php else: ?>
-                                <a class="btn btn-sm pastel_purple_color fw-500" onclick="calladdtocart('<?php echo e($itemdata->slug); ?>','<?php echo e($itemdata->item_name); ?>','<?php echo e($itemdata->item_type); ?>','<?php echo e($itemdata['item_image']->image_name); ?>','<?php echo e($itemdata->tax); ?>','<?php echo e($itemdata->price); ?>','','','','','','<?php echo e(URL::to('addtocart')); ?>')">+</a>
-                            <?php endif; ?>
                         </div>
                     <?php else: ?>
-                        <?php if($itemdata->addons_id != '' || count($itemdata->variation) > 0): ?>
-                            <a class="btn btn-sm border pastel_purple_color fw-500"
-                                onclick="showitem('<?php echo e($itemdata->slug); ?>','<?php echo e(URL::to('/show-item')); ?>')"><?php echo e(trans('labels.add')); ?></a>
-                        <?php else: ?>
-                            <a class="btn btn-sm border pastel_purple_color fw-500"
-                                onclick="calladdtocart('<?php echo e($itemdata->slug); ?>','<?php echo e($itemdata->item_name); ?>','<?php echo e($itemdata->item_type); ?>','<?php echo e($itemdata['item_image']->image_name); ?>','<?php echo e($itemdata->tax); ?>','<?php echo e($itemdata->price); ?>','','','','','','<?php echo e(URL::to('addtocart')); ?>')"><?php echo e(trans('labels.add')); ?></a>
-                        <?php endif; ?>
+                        <a class="btn btn-sm border pastel_purple_color fw-500"
+                            onclick="showitem('<?php echo e($itemdata->slug); ?>','<?php echo e(URL::to('/show-item')); ?>')"><?php echo e(trans('labels.add')); ?></a>
                     <?php endif; ?>
                 <?php else: ?>
                     <a class="btn btn-sm border pastel_purple_color fw-500"

@@ -15,8 +15,8 @@ class CartController extends Controller
     public function index(Request $request)
     {
         $getcartlist = Cart::where('user_id',Auth::user()->id)->orderByDesc('id')->get();
-        $getpromocodelist=Promocode::select('offer_name','offer_code','offer_type','offer_amount','min_amount','usage_type','start_date','expire_date','description')->where('is_available',1)->get();
-        return view('web.cart.cart',compact('getcartlist','getpromocodelist'));
+        
+        return view('web.cart.cart',compact('getcartlist'));
     }
     public function addtocart(Request $request)
     {
@@ -43,10 +43,7 @@ class CartController extends Controller
                     $cart->item_name = $request->item_name;
                     $cart->item_type = $request->item_type;
                     $cart->item_image = $request->image_name;
-                    $cart->tax = helper::number_format(0);
                     $cart->item_price = helper::number_format($request->item_price);
-                    $cart->variation_id = $request->variation_id == "" ? "" : $request->variation_id;
-                    $cart->variation = $request->variation_name == "" ? "" : $request->variation_name;
                     $cart->addons_id = $request->addons_id == "" ? "" : $request->addons_id;
                     $cart->addons_name = $request->addons_name == "" ? "" : $request->addons_name;
                     $cart->addons_price = $request->addons_price == "" ? "" : $request->addons_price;

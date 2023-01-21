@@ -70,13 +70,10 @@ class HomeController extends Controller
                 );
             }
         }
-        $getblogs = Blogs::orderBydesc('id')->take('3')->get();
-        $testimonials = Ratting::with('user_info')->orderByDesc('ratting.id')->take('5')->get();
-
         $basedonweather=[];
         $weathermessage='';
 
-        $sunny = array(0,1,2,3,45,48);
+        $sunny = array(0,1,2,3,45,48,80);
         $lat = '';
         $long = '';
         if($request->input('latitude') && $request->input('longitude')){
@@ -93,8 +90,9 @@ class HomeController extends Controller
             $weather = \MichaelNabil230\Weather\Weather::location($lat, $long)
             ->current()
             ->get();
-            error_log('nyampe 1');
+            
             $weathercode = $weather->current_weather->weathercode;
+            error_log($weathercode);
             if(in_array($weathercode, $sunny)){
                 $weatherid = 1;
                 $weathermessage = "Our Sunny Weather Reccomendation";
@@ -104,7 +102,7 @@ class HomeController extends Controller
             }
 
             error_log('nyampe 2');
-            $basedonweather = Item::with('cuisine_info','subcuisine_info','variation','item_images')->select('item.*',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
+            $basedonweather = Item::with('cuisine_info','subcuisine_info','item_images')->select('item.*',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
             ->where('weather_id', $weatherid)
             ->leftJoin('favorite', function($query) use($user_id) {
                 $query->on('favorite.item_id','=','item.id')
@@ -118,7 +116,7 @@ class HomeController extends Controller
             error_log('nyampe 3');
         }
 
-        $todayspecial = Item::with('cuisine_info','subcuisine_info','variation','item_image')->select('item.*',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
+        $todayspecial = Item::with('cuisine_info','subcuisine_info','item_image')->select('item.*',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
                     ->leftJoin('favorite', function($query) use($user_id) {
                         $query->on('favorite.item_id','=','item.id')
                         ->where('favorite.user_id', '=', $user_id);
@@ -128,8 +126,8 @@ class HomeController extends Controller
                         ->where('cart.user_id', '=', $user_id);
                     })
                     ->groupBy('item.id','cart.item_id')
-                    ->where('item.is_featured','1')->where('item.item_status','1')->where('item.is_deleted',2)->orderByDesc('item.id')->take(8)->get();
-        $topitemlist = Item::with('cuisine_info','subcuisine_info','variation','item_image')->select('item.*','order_details.qty as order_details_qty',DB::raw('count(order_details.item_id) as item_order_counter'),DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
+                    ->where('item.is_featured','1')->where('item.item_status','1')->orderByDesc('item.id')->take(8)->get();
+        $topitemlist = Item::with('cuisine_info','subcuisine_info','item_image')->select('item.*','order_details.qty as order_details_qty',DB::raw('count(order_details.item_id) as item_order_counter'),DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
                     ->leftJoin('order_details','order_details.item_id','item.id')
                     ->leftJoin('favorite', function($query) use($user_id) {
                         $query->on('favorite.item_id','=','item.id')
@@ -141,8 +139,8 @@ class HomeController extends Controller
                     })
                     ->groupBy('order_details.item_id','item.id','cart.item_id')
                     ->orderByDesc('item_order_counter')
-                    ->where('item.item_status','1')->where('item.is_deleted',2)->take(8)->get();
-        $recommended = Item::with('cuisine_info','subcuisine_info','variation','item_image')->select('item.*',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
+                    ->where('item.item_status','1')->take(8)->get();
+        $recommended = Item::with('cuisine_info','subcuisine_info','item_image')->select('item.*',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
                     ->leftJoin('favorite', function($query) use($user_id) {
                         $query->on('favorite.item_id','=','item.id')
                         ->where('favorite.user_id', '=', $user_id);
@@ -153,7 +151,7 @@ class HomeController extends Controller
                     })
                     ->groupBy('item.id','cart.item_id')
                     ->inRandomOrder()
-                    ->where('item.item_status','1')->where('item.is_deleted',2)->take(8)->get();
+                    ->where('item.item_status','1')->take(8)->get();
         $subscriptions = Subscription::select('subscription.*',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when subscription.price is null then 0 else subscription.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
                     ->leftJoin('favorite', function($query) use($user_id) {
                         $query->on('favorite.item_id','=','subscription.id')
@@ -166,7 +164,7 @@ class HomeController extends Controller
                     ->groupBy('subscription.id','cart.item_id')
                     ->inRandomOrder()
                     ->take(8)->get();
-        return view('web.index',compact('sliders','banners','todayspecial', 'topitemlist','testimonials', 'getblogs', 'recommended', 'subscriptions', 'basedonweather', 'weathermessage'));
+        return view('web.index',compact('sliders','banners','todayspecial', 'topitemlist', 'recommended', 'subscriptions', 'basedonweather', 'weathermessage'));
     }
     public function cuisines(Request $request)
     {

@@ -57,27 +57,12 @@
                                             class="white_color">{{ $getitemdata['cuisine_info']->cuisine_name }}</span>
                                     </div>
                                     <div class="col-auto">
-                                        @if ($getitemdata->tax > 0)
-                                            <span class="text-light float-end">+ {{ $getitemdata->tax }}%
-                                                {{ trans('labels.additional_taxes') }}</span>
-                                        @else
-                                            <span
-                                                class="text-light float-end">{{ trans('labels.inclusive_taxes') }}</span>
-                                        @endif
+                                        <span class="text-light float-end">{{ trans('labels.inclusive_taxes') }}</span>
                                     </div>
                                 </div>
                                 <div class="row pb-2 mb-3 border-bottom align-items-center">
                                     @php
-                                        if ($getitemdata->has_variation == 1) {
-                                            foreach ($getitemdata['variation'] as $key => $value) {
-                                                $price = $value->product_price;
-                                                if ($key == 0) {
-                                                    break;
-                                                }
-                                            }
-                                        } else {
-                                            $price = $getitemdata->price;
-                                        }
+                                        $price = $getitemdata->price;
                                     @endphp
                                     <p class="item-price item_price m-0">{{ Helper::currency_format($price) }}</p>
                                 </div>
@@ -133,8 +118,6 @@
                                     value="{{ $getitemdata->item_type }}">
                                 <!-- <br> image_name -->
                                 <input type="hidden" name="image_name" id="image_name" value="{{ $image_name }}">
-                                <!-- <br> tax -->
-                                <input type="hidden" name="tax" id="item_tax" value="{{ $getitemdata->tax }}">
                                 <!-- <br> item_price -->
                                 <input type="hidden" name="item_price" id="item_price" value="{{ $price }}">
                                 <!-- <br> addonstotal -->
@@ -143,7 +126,7 @@
                                 <input type="hidden" name="subtotal" id="subtotal" value="{{ $price }}">
                                 <div class="row align-items-center justify-content-center">
                                     <div class="col-md-6 col-sm-6 col-auto">
-                                        @if (Auth::user() && Auth::user()->type == 2)
+                                        @if (Auth::user())
                                             <a class="btn btn-success btn-lg w-100 m-0 text-uppercase fs-6"
                                                 onclick="addtocart('{{ URL::to('addtocart') }}')">{{ trans('labels.add_to_cart') }}</a>
                                         @else
@@ -155,11 +138,11 @@
                                         <div class="wishlist">
                                             @if ($getitemdata->is_favorite == 1)
                                                 <a class="btn btn-lg w-100 wishlist-btn heart-red"
-                                                    @if (Auth::user() && Auth::user()->type == 2) href="javascript:void(0)" onclick="managefavorite('{{ $getitemdata->id }}',0, '{{ URL::to('/managefavorite') }}')" @else href="{{ URL::to('/login') }}" @endif>{{ trans('labels.remove_wishlist') }}
+                                                    @if (Auth::user()) href="javascript:void(0)" onclick="managefavorite('{{ $getitemdata->id }}',0, '{{ URL::to('/managefavorite') }}')" @else href="{{ URL::to('/login') }}" @endif>{{ trans('labels.remove_wishlist') }}
                                                 </a>
                                             @else
                                                 <a class="btn btn-lg w-100 wishlist-btn border-success"
-                                                    @if (Auth::user() && Auth::user()->type == 2) href="javascript:void(0)" onclick="managefavorite('{{ $getitemdata->id }}',1, '{{ URL::to('/managefavorite') }}')" @else href="{{ URL::to('/login') }}" @endif>{{ trans('labels.add_wishlist') }}
+                                                    @if (Auth::user()) href="javascript:void(0)" onclick="managefavorite('{{ $getitemdata->id }}',1, '{{ URL::to('/managefavorite') }}')" @else href="{{ URL::to('/login') }}" @endif>{{ trans('labels.add_wishlist') }}
                                                 </a>
                                             @endif
                                         </div>

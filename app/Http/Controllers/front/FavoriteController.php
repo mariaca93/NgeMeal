@@ -13,7 +13,7 @@ class FavoriteController extends Controller
     public function index(Request $request)
     {
         $user_id = @Auth::user()->id;
-        $getfavoritelist = Item::with('cuisine_info','subcuisine_info','variation','item_image')->select('item.*','favorite.id as favorite_id',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
+        $getfavoritelist = Item::with('cuisine_info','subcuisine_info','item_image')->select('item.*','favorite.id as favorite_id',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
         ->join('favorite', function($query) use($user_id) {
             $query->on('favorite.item_id','=','item.id')
             ->where('favorite.user_id', '=', $user_id);
@@ -24,7 +24,6 @@ class FavoriteController extends Controller
         })
         ->groupBy('item.id','cart.item_id','favorite.item_id')
         ->where('item.item_status','1')
-        ->where('item.is_deleted','2')
         ->where('favorite.user_id',$user_id)
         ->orderByDesc('favorite.id')->paginate(10);
         return view('web.favoritelist',compact('getfavoritelist'));

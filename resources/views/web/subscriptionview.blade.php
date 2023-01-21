@@ -20,12 +20,12 @@
         <div class="img-overlay set-fav-{{ $subscriptiondata->id }}">
             @if ($subscriptiondata->is_favorite == 1)
                 <a class="heart-icon btn btn-wishlist"
-                    @if (Auth::user() && Auth::user()->type == 2) href="javascript:void(0)" onclick="managefavorite('{{ $subscriptiondata->id }}',0,'{{ URL::to('/managefavorite') }}')" title="{{ trans('labels.remove_wishlist') }}"
+                    @if (Auth::user()) href="javascript:void(0)" onclick="managefavorite('{{ $subscriptiondata->id }}',0,'{{ URL::to('/managefavorite') }}')" title="{{ trans('labels.remove_wishlist') }}"
                 @else href="{{ URL::to('/login') }}" @endif>
                     <i class="fa-solid fa-bookmark fs-5"></i> </a>
             @else
                 <a class="heart-icon btn btn-wishlist"
-                    @if (Auth::user() && Auth::user()->type == 2) href="javascript:void(0)" onclick="managefavorite('{{ $subscriptiondata->id }}',1,'{{ URL::to('/managefavorite') }}')" title="{{ trans('labels.add_wishlist') }}"
+                    @if (Auth::user()) href="javascript:void(0)" onclick="managefavorite('{{ $subscriptiondata->id }}',1,'{{ URL::to('/managefavorite') }}')" title="{{ trans('labels.add_wishlist') }}"
                 @else href="{{ URL::to('/login') }}" @endif>
                     <i class="fa-regular fa-bookmark fs-5"></i> </a>
             @endif
@@ -33,7 +33,7 @@
         <div class="item-card-footer">
             <div class="d-flex justify-content-between align-items-center">
                 <span>{{ Helper::currency_format($subscriptiondata->price) }}</span>
-                @if (Auth::user() && Auth::user()->type == 2)
+                @if (Auth::user())
                     @if ($subscriptiondata->is_cart == 1)
                         <div class="item-quantity">
                             <button type="button" class="btn btn-sm pastel_purple_color fw-500" onclick="removefromcart('{{ URL::to('/cart') }}','{{ trans('messages.remove_cartitem_note') }}','{{ trans('labels.goto_cart') }}')">-</button>

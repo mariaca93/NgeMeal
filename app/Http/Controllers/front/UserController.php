@@ -35,20 +35,6 @@ class UserController extends Controller
         $email = "";
         $password = "";
         $login_type = "";
-        // $google_id = "";
-        // $facebook_id = "";
-        // if(session()->has('social_login')){
-        //     if(session()->get('social_login')['google_id'] != ""){
-        //         $login_type = "google";
-        //         $google_id = session()->get('social_login')['google_id'];
-        //         $email = session()->get('social_login')['email'];
-        //     }
-        //     if(session()->get('social_login')['facebook_id'] != ""){
-        //         $login_type = "facebook";
-        //         $facebook_id = session()->get('social_login')['facebook_id'];
-        //         $email = session()->get('social_login')['email'];
-        //     }
-        // }else{
             $email = $request->email;
             $data = $request->validate([
                 'password' => 'required',
@@ -60,20 +46,12 @@ class UserController extends Controller
             ]);
             $login_type = "email";
             $password = Hash::make($request->password);
-        // }
-        // $otp = rand(100000, 999999);
-        // $checkreferral = User::select('id', 'name', 'referral_code', 'wallet', 'email', 'token')->where('referral_code', $request->referral_code)->where('is_available',1)->first();
-        // if ($request->has('referral_code') && $request->referral_code != "") {
-        //     if(empty($checkreferral)){
-        //         return redirect()->back()->with('error', trans('messages.invalid_referral_code'));
-        //     }
-        // }
+        
         $checkmobile = User::where('mobile', '+'.$request->country.''.$request->mobile)->first();
         if(!empty($checkmobile)){
             return redirect()->back()->with('error', trans('messages.mobile_exist'));
         }
-        // $verification = helper::verificationemail($email, $otp);
-        // if ($verification == 1) {
+
             $user = new User;
             $user->name = $request->name;
             $user->mobile = '+'.$request->country.''.$request->mobile;
@@ -81,108 +59,21 @@ class UserController extends Controller
             $user->profile_image = 'unknown.png';
             $user->password = $password;
             $user->login_type = $login_type;
-            // $user->google_id = $google_id;
-            // $user->facebook_id = $facebook_id;
-            // $user->referral_code = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz'), 0, 10);
-            // $user->otp = $otp;
             $user->type = 2;
             $user->is_available = 1;
-            // if ($request->has('referral_code') && $request->referral_code != "" && !empty($checkreferral)) {
-            //     $user->user_id = $checkreferral->id;
-            //     $user->referral_amount = helper::appdata()->referral_amount;
-            // }
             $user->token = "f-LadU5sQKSINz_D7JgVtW:APA91bGpXy0_4bDKavbGoc0xZeFLddyeIYETg33UVxBfBc-JQtNSyxRq8AykHCHIK2hhIPbz6uzA9pTSGJ8UaaKGyOXnCYidXmESus79gIbuwTpcgn-1eNIFFTocaOqXvQUwqOxoTbBK";
             $user->remember_token = "0dEuopnHovMOfHbA82q9ohAvX2zWfXZnZCGYo93JiFpkuyeJ9Os4jtfSosOj";
             $user->is_verified = 2;
             $user->save();
-            // session()->forget('social_login');
+
             session()->put('verification_email',$email);
-            // if (env('Environment') == 'sendbox') {
-            //     session()->put('verification_otp',$otp);
-            // }
             return redirect(route('login'))->with('success', trans('messages.success'));
-        // } else {
-        //     return redirect()->back()->with('error', trans('messages.email_error'));
-        // }
     }
     public function verification(Request $request)
     {
         return view('web.auth.verification');
     }
-    public function verifyotp(Request $request)
-    {
-        $request->validate([
-            'otp' => 'required',
-        ], [
-            'otp.required' => trans('messages.otp_required'),
-        ]);
-        $email = session()->get('verification_email');
-        $checkuser = User::where('email',$email)->where('is_verified',2)->first();
-        if(!empty($checkuser)){
-            if($checkuser->otp == $request->otp){
-                $checkuser->otp = null;
-                $checkuser->is_verified = 1;
-                $checkuser->save();
-                session()->forget('verification_email');
-                session()->forget('social_login');
-                session()->forget('verification_otp');
-
-                // CHECK_USER_HAS_REFFERAL_USER
-                if ($checkuser->user_id > 0) {
-                    // ---- for referral user ------
-                    $checkreferral = User::find($checkuser->user_id);
-                    $checkreferral->wallet += $checkuser->referral_amount;
-                    $checkreferral->save();
-                    $referral_tr = new Transaction;
-                    $referral_tr->user_id = $checkreferral->id;
-                    $referral_tr->amount = $checkuser->referral_amount;
-                    $referral_tr->transaction_type = 7;
-                    $referral_tr->username = $checkuser->name;
-                    $referral_tr->save();
-                    // ---- for new user ------
-                    $checkuser->wallet = $checkuser->referral_amount;
-                    $checkuser->user_id = "";
-                    $checkuser->referral_amount = 0;
-                    $checkuser->save();
-                    $new_user_tr = new Transaction;
-                    $new_user_tr->user_id = $checkuser->id;
-                    $new_user_tr->amount = $checkuser->referral_amount;
-                    $new_user_tr->transaction_type = 7;
-                    $new_user_tr->username = $checkreferral->name;
-                    $new_user_tr->save();
-                    $title = trans('labels.referral_earning');
-                    $body = 'Your friend "' . $checkuser->name . '" has used your referral code to register with Our Restaurant. You have earned "' . helper::currency_format(helper::appdata()->referral_amount) . '" referral amount in your wallet.';
-                    helper::push_notification($checkreferral->token, $title, $body, "wallet", "");
-                    $referralmessage = 'Your friend "' . $checkuser->name . '" has used your referral code to register with Restaurant User. You have earned "' . helper::appdata()->currency . '' . number_format(helper::appdata()->referral_amount, 2) . '" referral amount in your wallet.';
-                    helper::referral($checkreferral->email, $checkuser->name, $checkreferral->name, $referralmessage);
-                }
-
-                return redirect(route('login'))->with('success', trans('messages.success'));
-            }else{
-                return redirect()->back()->with('otp_error', trans('messages.invalid_otp'));
-            }
-        }else{
-            return redirect()->back()->with('error', trans('messages.invalid_user'));
-        }
-    }
-    public function resendotp()
-    {
-        $otp = rand ( 100000 , 999999 );
-        $email = session()->get('verification_email');
-        $checkuser = User::where('email',$email)->first();
-        $verification = helper::verificationemail($email,$otp);
-        if($verification == 1){
-            $checkuser->otp = $otp;
-            $checkuser->is_verified = 2;
-            $checkuser->save();
-            if (env('Environment') == 'sendbox') {
-                session()->put('verification_otp',$otp);
-            }
-            return redirect()->back()->with('success', trans('messages.email_sent'));
-        }else{
-            return redirect()->back()->with('error', trans('messages.email_error'));
-        }
-    }
+    
     public function login(Request $request)
     {
         return view('web.auth.login');
@@ -198,62 +89,12 @@ class UserController extends Controller
             'password.required' => trans('messages.password_required'),
         ]);
         if (Auth::attempt($request->only('email', 'password'))) {
-            if (Auth::user()->type == 2) {
-                if(Auth::user()->is_available == 1){
-                    if(Auth::user()->is_verified == 1){
-                        return redirect(route('home'));
-                    }else{
-                        $otp = rand ( 100000 , 999999 );
-                        $verification = helper::verificationemail($request->email,$otp);
-                        if($verification == 1){
-                            $checkuser = User::where('email',$request->email)->where('type',2)->where('is_available',1)->first();
-                            $checkuser->otp = $otp;
-                            $checkuser->save();
-                            if (env('Environment') == 'sendbox') {
-                                session()->put('verification_otp',$otp);
-                            }
-                            return redirect(route('verification'))->with('success', trans('messages.email_sent'));
-                        }else{
-                            return redirect()->back()->with('error', trans('messages.email_error'));
-                        }
-                    }
-                }else{
-                    return redirect()->back()->with('error', trans('messages.blocked'));
-                }
-            } else {
-                return redirect(route('login'))->with('error', trans('messages.email_pass_invalid'));
-            }
+            return redirect(route('home'));    
         } else {
             return redirect(route('login'))->with('error', trans('messages.email_pass_invalid'));
         }
     }
-    public function forgotpassword(Request $request)
-    {
-        return view('web.auth.forgot_password');
-    }
-    public function sendpass(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email'
-        ],[
-            'email.required' => trans('messages.email_required'),
-            'email.email' => trans('messages.valid_email'),
-        ]);
-        $checkuser = User::where('email',$request->email)->where('type',2)->where('is_available',1)->first();
-        if(!empty($checkuser)){
-            $password = substr(str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789') , 0 , 8 );
-            $pass = Helper::send_pass($checkuser->email, $checkuser->name, $password);
-            if($pass == 1){
-                $checkuser->password = Hash::make($password);
-                $checkuser->save();
-                return redirect(route('login'))->with('success', trans('messages.password_sent'));
-            }else{
-                return redirect()->back()->with('error', trans('messages.email_error'));
-            }
-        }else{
-            return redirect()->back()->with('error', trans('messages.invalid_email'));
-        }
-    }
+    
     public function getprofile(Request $request)
     {
         return view('web.profile.profile');
@@ -295,10 +136,7 @@ class UserController extends Controller
             return redirect()->back()->with('success',trans('messages.success'));
         }
     }
-    public function referearn(Request $request)
-    {
-        return view('web.referearn.referearn');
-    }
+
     public function changepassword(Request $request)
     {
         return view('web.changepassword');
@@ -332,124 +170,5 @@ class UserController extends Controller
         Auth::logout();
         session()->flush();
         return redirect(route('home'));
-    }
-    // ----------------------> SOCIAL LOGIN <-------------------------- // 
-    // google login
-    public function redirectToGoogle()
-    {
-        return Socialite::driver('google')->redirect();
-    }
-    public function handleGoogleCallback()
-    {
-        try {
-            $googleuserdata = Socialite::driver('google')->user();
-            $findgoogleuser = User::where('google_id', $googleuserdata->id)->first();
-            $checkuser=User::where('email','=',$googleuserdata->email)->where('login_type','!=','google')->first();
-            if (!empty($checkuser)) {
-                return redirect(route('login'))->with('error', trans('messages.email_exist'));
-            }
-            $socialdata = array(
-                'name' => $googleuserdata->name,
-                'email' => $googleuserdata->email,
-                'google_id' => $googleuserdata->id,
-                'facebook_id' => "",
-            );
-            session()->put('social_login',$socialdata);
-            if(!empty($findgoogleuser)){
-                if($findgoogleuser->mobile == ""){
-                    return redirect(route('register'));
-                }else{
-                    session()->forget('social_login');
-                    if($findgoogleuser->is_verified == '1') 
-                    {
-                        if($findgoogleuser->is_available == '1') {
-                            Auth::login($findgoogleuser);
-                            return redirect(route('home'));
-                        }else {
-                            return redirect()->back()->with('error',trans('messages.blocked'));
-                        }
-                    }else {
-                        $otp = rand ( 100000 , 999999 );
-                        $verification = helper::verificationemail($findgoogleuser->email,$otp);
-                        if($verification == 1){
-                            $findgoogleuser->otp = $otp;
-                            $findgoogleuser->is_verified = 2;
-                            $findgoogleuser->save();
-                            session()->put('verification_email',$googleuserdata->email);
-                            if (env('Environment') == 'sendbox') {
-                                session()->put('verification_otp',$otp);
-                            }
-                            return redirect(route('verification'))->with('success',trans('messages.email_sent'));
-                        }else{
-                            return redirect()->back()->with('error',trans('messages.email_error'));
-                        }
-                    }
-                }
-            }else{
-                return redirect(route('register'));
-            }
-        } catch (Exception $e) {
-            // return redirect()->back()->with('error',$e->getMessage());
-            return redirect()->back()->with('error',trans('messages.wrong'));
-        }
-    }
-    // for facebook
-    public function redirectToFacebook()
-    {
-        return Socialite::driver('facebook')->redirect();
-    }
-    public function handleFacebookCallback()
-    {
-        try {
-            $facebookuserdata = Socialite::driver('facebook')->user();
-            $findfacebookuser = User::where('facebook_id', $facebookuserdata->id)->first();
-            $checkuser=User::where('email','=',$facebookuserdata->email)->where('login_type','!=','facebook')->first();
-            if (!empty($checkuser)) {
-                return redirect(route('login'))->with('error', trans('messages.email_exist'));
-            }
-            $socialdata = array(
-                'name' => $facebookuserdata->name,
-                'email' => $facebookuserdata->email,
-                'google_id' => "",
-                'facebook_id' => $facebookuserdata->id,
-            );
-            session()->put('social_login',$socialdata);
-            if($findfacebookuser){
-                if($findfacebookuser->mobile == ""){
-                    return redirect(route('register'));
-                }else{
-                    session()->forget('social_login');
-                    if($findfacebookuser->is_verified == '1') 
-                    {
-                        if($findfacebookuser->is_available == '1') {
-                            Auth::login($findfacebookuser);
-                            return redirect(route('home'));
-                        }else {
-                            return redirect()->back()->with('error',trans('messages.blocked'));
-                        }
-                    }else {
-                        $otp = rand ( 100000 , 999999 );
-                        $verification = helper::verificationemail($findfacebookuser->email,$otp);
-                        if($verification == 1){
-                            $findfacebookuser->otp = $otp;
-                            $findfacebookuser->is_verified = 2;
-                            $findfacebookuser->save();
-                            session()->put('verification_email',$facebookuserdata->email);
-                            if (env('Environment') == 'sendbox') {
-                                session()->put('verification_otp',$otp);
-                            }
-                            return redirect(route('verification'))->with('success',trans('messages.email_sent'));
-                        }else{
-                            return redirect()->back()->with('error',trans('messages.email_error'));
-                        }
-                    }
-                }
-            }else{
-                return redirect(route('register'));
-            }
-        } catch (Exception $e) {
-            // return redirect()->back()->with('error',$e->getMessage());
-            return redirect()->back()->with('error',trans('messages.wrong'));
-        }
     }
 }

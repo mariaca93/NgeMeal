@@ -27,8 +27,6 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-8 col-md-8 col-sm-12">
                             @php
-                                $totaltax = 0;
-                                $totaltaxamount = 0;
                                 $order_total = 0;
                                 $total_item_qty = 0;
                             @endphp
@@ -55,7 +53,6 @@
                                                         width="20" height="20" alt="" class="me-1">
                                                         {{ $item->item_name }}
                                                     </div>
-                                                        <p class="mb-0"><small>{{ $item->variation != '' ? $item->variation : '-' }}</small></p>
                                                         <p class="mb-0">
                                                             @if ($item['addons_id'] != '')
                                                             <small><a class="text-muted" href="javascript:void(0)" onclick="showaddons('{{$item['addons_name']}}','{{$item['addons_price']}}')" data-bs-toggle="modal" data-bs-target="#modal_selected_addons">{{ trans('labels.addons') }} <i class="fa-solid fa-angles-right"></i></a></small>
@@ -65,9 +62,7 @@
                                                         </p>
                                                         <p class="item-price text-start">{{ Helper::currency_format($item['item_price'] + $item['addons_total_price']) }}</p>
                                                     @php
-                                                        $tax = ($item['item_price'] * $item['qty'] * $item['tax']) / 100;
                                                         $total_price = ($item['item_price'] + $item['addons_total_price']) * $item['qty'];
-                                                        $totaltaxamount += (float) $tax;
                                                         $order_total += (float) $total_price;
                                                         $total_item_qty += $item['qty'];
                                                     @endphp
@@ -97,54 +92,29 @@
                                 <div class="row justify-content-between align-items-center mb-2">
                                     <div class="col-auto"><label for="offer_code">{{ trans('labels.promocode') }}</label>
                                     </div>
-                                    @if (!session()->get('discount_data'))
-                                        <div class="col-auto"><a href="javascript:void(0)" class="text-uppercase"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#promocodemodal">{{ trans('labels.select_promocode') }}</a></div>
-                                    @endif
                                 </div>
                                 <div class="row justify-content-between align-items-center">
-                                    @if (session()->get('discount_data'))
-                                        <form action="{{ URL::to('/promocodes/remove') }}" method="post">
-                                            @csrf
-                                            <div class="d-flex">
-                                                <input type="text" class="form-control" name="offer_code"
-                                                    value="{{ session()->get('discount_data')['offer_code'] }}"
-                                                    id="offer_code" placeholder="{{ trans('labels.have_promocode') }}"
-                                                    disabled>
-                                                <button type="submit"
-                                                    class="btn btn-primary bg-primary border-0 ms-2">{{ trans('labels.remove') }}
-                                                </button>
-                                            </div>
-                                        </form>
-                                    @else
-                                        <form action="{{ URL::to('/promocodes/apply') }}" method="post">
-                                            @csrf
-                                            <div class="d-flex">
-                                                <input type="hidden" name="order_amount" value="{{ $order_total }}">
-                                                <input type="text" class="form-control" name="offer_code"
-                                                    value="{{ old('offer_code') }}" id="offer_code"
-                                                    placeholder="{{ trans('labels.have_promocode') }}" readonly>
-                                                <button type="submit"
-                                                    class="btn btn-primary bg-primary border-0 ms-2">{{ trans('labels.apply') }}</button>
-                                            </div>
-                                            @error('offer_code')
-                                                <small class="text-light">{{ $message }}</small>
-                                            @enderror
-                                        </form>
-                                    @endif
+                                    <form action="" method="post">
+                                        @csrf
+                                        <div class="d-flex">
+                                            <input type="hidden" name="order_amount" value="{{ $order_total }}">
+                                            <input type="text" class="form-control" name="offer_code"
+                                                value="{{ old('offer_code') }}" id="offer_code"
+                                                placeholder="{{ trans('labels.have_promocode') }}" readonly>
+                                            <button type="submit"
+                                                class="btn btn-primary bg-primary border-0 ms-2">{{ trans('labels.apply') }}</button>
+                                        </div>
+                                        @error('offer_code')
+                                            <small class="text-light">{{ $message }}</small>
+                                        @enderror
+                                    </form>
                                 </div>
                             </div>
                             <div class="summary py-3 mb-4">
                                 <h2 class="border-bottom">{{ trans('labels.bill_details') }}</h2>
                                 <div class="bill-details border-bottom">
                                     @php
-                                        if (session()->has('discount_data')) {
-                                            $discount_amount = session()->get('discount_data')['offer_amount'];
-                                        } else {
-                                            $discount_amount = 0;
-                                        }
-                                        $grand_total = $order_total - $discount_amount + $totaltaxamount;
+                                        $grand_total = $order_total;
                                     @endphp
                                     <div class="row justify-content-between align-items-center">
                                         <div class="col-auto"><span>{{ trans('labels.order_total') }}</span></div>
@@ -155,19 +125,9 @@
                                     <div class="row justify-content-between align-items-center">
                                         <div class="col-auto"><span>{{ trans('labels.tax') }}</span></div>
                                         <div class="col-auto">
-                                            <p>{{ Helper::currency_format($totaltaxamount) }}</p>
+                                            <p>0</p>
                                         </div>
                                     </div>
-                                    @if (session()->has('discount_data'))
-                                        <div class="row justify-content-between align-items-center">
-                                            <div class="col-auto"><span>{{ trans('labels.discount') }}
-                                                    {{ session()->has('discount_data') == true ? '(' . session()->get('discount_data')['offer_code'] . ')' : '' }}
-                                                </span></div>
-                                            <div class="col-auto">
-                                                <p>- {{ Helper::currency_format($discount_amount) }}</p>
-                                            </div>
-                                        </div>
-                                    @endif
                                 </div>
                                 <div class="bill-total mt-2">
                                     <div class="row justify-content-between align-items-center">
@@ -177,55 +137,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-success w-100"
-                                onclick="isopenclose('{{ URL::to('/isopenclose') }}','{{$total_item_qty}}','{{$order_total}}')">{{ trans('labels.continue') }}</button>
-                            <!-- MODAL_ORDER_TYPE_SELECTION--START -->
-                            <div class="modal fade" id="deliveryoption" tabindex="-1"
-                                aria-labelledby="deliveryoptionLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="deliveryoptionLabel">
-                                                {{ trans('labels.delivery_option') }}</h5>
-                                            <button type="button" class="btn-close m-0" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="order-option">
-                                                <label class="form-check-label" for="delivery">
-                                                    <input class="form-check-input" type="radio" name="order_type"
-                                                        value="1" checked id="delivery">
-                                                    <div class="home-delivery-img">
-                                                        <img src="{{ Helper::web_image_path('delivery.png') }}"
-                                                            alt="">
-                                                        <span>{{ trans('labels.delivery') }}</span>
-                                                    </div>
-                                                </label>
-                                                <label class="form-check-label" for="pickup">
-                                                    <input class="form-check-input" type="radio" name="order_type"
-                                                        value="2"
-                                                        {{ session()->get('order_type') == 2 ? 'checked' : '' }}
-                                                        id="pickup">
-                                                    <div class="home-delivery-img">
-                                                        <img src="{{ Helper::web_image_path('takeaway.png') }}"
-                                                            alt="">
-                                                        <span>{{ trans('labels.take_away') }}</span>
-                                                    </div>
-                                                </label>
-                                            </div>
-                                            <span
-                                                class="d-flex justify-content-center mt-3 holderror text-light d-none">{{ trans('messages.order_type_selection_required') }}</span>
-                                        </div>
-                                        <div class="modal-footer checkout-btn justify-content-center">
-                                            <a href="javascript:void(0)" onclick="holduser(this)"
-                                                data-url="{{ URL::to('/holduser') }}"
-                                                data-next-url="{{ route('checkout') }}" type="submit"
-                                                class="btn btn-primary bg-success border-0">{{ trans('labels.continue') }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- MODAL-ORDER-TYPE-SELECTION--END -->
+                            <button type="submit" class="btn btn-success w-100">
+                                <a style="color:white!important" href="{{URL::to('checkout')}}" class="text-muted fs-8 fw-500">
+                                    {{ trans('labels.continue') }}
+                                </a></button>
                         </div>
                     </div>
                     @else
@@ -253,55 +168,6 @@
             </div>
         </div>
         <!-- MODAL_SELECTED_ADDONS--END -->
-
-    <!-- MODAL-PROMOCOE---START -->
-    <div class="modal fade" id="promocodemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0">
-                <div class="modal-body py-0 px-4 rounded">
-                    <div class="modal-header border-0 px-0 pb-0">
-                        <h5 class="modal-title" id="exampleModalLabel">{{ trans('labels.apply_promo') }}</h5>
-                        <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    @foreach ($getpromocodelist as $promocode)
-                        <div class="card my-4 border-0">
-                            <div class="card-body p-0 ps-3">
-                                <div class="coupon bg-white rounded d-flex justify-content-between">
-                                    <div class="left-side py-3 d-flex w-100 justify-content-start">
-                                        <div>
-                                            <h5>{{ $promocode->offer_name }}</h5>
-                                            <p class="dark_color mb-0 fw-600 fs-7 dark_color">
-                                                {{ trans('labels.promocode') }} :
-                                                <span
-                                                    class="fw-normal text-decoration-underline text-uppercase text-primary">{{ $promocode->offer_code }}</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="right-side">
-                                        <div class="info m-3 d-flex align-items-center">
-                                            <div class="w-100 d-flex flex-column align-items-center">
-                                                <div class="block">
-                                                    <span class="time font-weight-light">
-                                                        <span>{{ $promocode->offer_type == 1 ? Helper::currency_format($promocode->offer_amount) : $promocode->offer_amount . '%' }}
-                                                        </span>
-                                                    </span>
-                                                </div>
-                                                <button class="btn btn-sm btn-outline-primary btn-block"
-                                                    onclick="getoffercode('{{ $promocode->offer_code }}')"
-                                                    data-bs-dismiss="modal">{{ trans('labels.copy') }}</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- MODAL-PROMOCOE---END -->
 @endsection
 @section('scripts')
     <script src="{{ url('/web-assets/js/cart/cart.js') }}"></script>

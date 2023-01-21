@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('subcuisine_name');
             $table->text('slug');
             $table->boolean('is_available')->default(true)->comment('1=yes,2=no');
-            $table->boolean('is_deleted')->default(false)->comment('1=yes,2=no');
             $table->timestamps();
         });
     }

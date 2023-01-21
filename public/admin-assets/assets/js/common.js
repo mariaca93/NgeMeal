@@ -44,7 +44,7 @@ var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggl
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl)
 })
-$('#tax, #amount, #min_order_amount, #max_order_qty, #max_order_amount, #lat, #lang, #referral_amount, #price, #product_price, #sale_price, #delivery_charge, #mobile').keyup(function () {
+$('#amount, #min_order_amount, #max_order_qty, #max_order_amount, #lat, #lang, #referral_amount, #price, #product_price, #sale_price, #delivery_charge, #mobile').keyup(function () {
     "use strict";
     var val = $(this).val();
     if (isNaN(val)) {

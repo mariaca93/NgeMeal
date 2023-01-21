@@ -44,7 +44,7 @@
                         </ul>
                     </li>
                     <a class="nav-link text-white <?php echo e(request()->is('contactus') ? 'active' : ''); ?>"
-                        href="<?php echo e(route('contact-us')); ?> "><?php echo e(trans('labels.help_contact_us')); ?></a>
+                        href=""><?php echo e(trans('labels.help_contact_us')); ?></a>
                     <?php if(Auth::user()): ?>
                         <a class="nav-link text-white <?php echo e(request()->is('cart') ? 'active' : ''); ?>"
                             href="<?php echo e(route('cart')); ?>"><?php echo e(trans('labels.cart')); ?></a>
@@ -52,14 +52,8 @@
                         <a class="nav-link text-white" href="<?php echo e(route('login')); ?>"><?php echo e(trans('labels.cart')); ?></a>
                     <?php endif; ?>
                     <a class="nav-link text-white" href="<?php echo e(route('search')); ?>"><?php echo e(trans('labels.search')); ?></a>
-                    <?php if(session()->get('direction') == ''): ?>
-                        <a href="<?php echo e(URL::to('/direction?dir=rtl')); ?>" class="btn btn-sm btn-primary px-3 mx-3"><?php echo e(trans('labels.rtl')); ?></a>
-                    <?php elseif(session()->get('direction') == 'rtl'): ?>
-                        <a href="<?php echo e(URL::to('/direction?dir=ltr')); ?>" class="btn btn-sm btn-primary px-3 mx-3"><?php echo e(trans('labels.ltr')); ?></a>
-                    <?php else: ?>
-                        <a href="<?php echo e(URL::to('/direction?dir=rtl')); ?>" class="btn btn-sm btn-primary px-3 mx-3"><?php echo e(trans('labels.rtl')); ?></a>
-                    <?php endif; ?>
-                    <?php if(Auth::user() && Auth::user()->type == 2): ?>
+                    
+                    <?php if(Auth::user()): ?>
                         <div class="sidebar-login border-top">
                             <ul class="navbar-nav my-3 px-3">
                                 <li class="nav-item dropdown">
@@ -128,7 +122,7 @@
                         </ul>
                     </li>
                     <a class="nav-link px-3 <?php echo e(request()->is('contactus') ? 'active' : ''); ?>"
-                        href="<?php echo e(route('contact-us')); ?> "><?php echo e(trans('labels.help_contact_us')); ?></a>
+                        href=""><?php echo e(trans('labels.help_contact_us')); ?></a>
                 </div>
                 <div class="d-flex align-items-center nav-sidebar-d-none">
                     <div class="header-search mx-2">
@@ -154,7 +148,7 @@
                                 class="cart-badge"><?php echo e(Helper::get_user_cart()); ?></span></a>
                     </div>
                     <div class="mx-3">
-                        <?php if(Auth::user() && Auth::user()->type == 2): ?>
+                        <?php if(Auth::user()): ?>
                             <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                                 <ul class="navbar-nav">
                                     <li class="nav-item dropdown">
@@ -192,16 +186,6 @@
                             </div>
                         <?php endif; ?>
                     </div>
-                    <?php if(session()->get('direction') == ''): ?>
-                        <a href="<?php echo e(URL::to('/direction?dir=rtl')); ?>"
-                            class="btn btn-sm btn-primary border-0"><?php echo e(trans('labels.rtl')); ?></a>
-                    <?php elseif(session()->get('direction') == 'rtl'): ?>
-                        <a href="<?php echo e(URL::to('/direction?dir=ltr')); ?>"
-                            class="btn btn-sm btn-primary border-0"><?php echo e(trans('labels.ltr')); ?></a>
-                    <?php else: ?>
-                        <a href="<?php echo e(URL::to('/direction?dir=rtl')); ?>"
-                            class="btn btn-sm btn-primary border-0"><?php echo e(trans('labels.rtl')); ?></a>
-                    <?php endif; ?>
                 </div>
             </div>
     </div>

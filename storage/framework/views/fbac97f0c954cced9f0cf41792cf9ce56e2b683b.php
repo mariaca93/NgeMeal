@@ -22,16 +22,12 @@
     </div>
     <?php if(count($getcartlist) > 0): ?>
         <?php
-            $totaltax = 0;
-            $totaltaxamount = 0;
             $order_total = 0;
             $total_item_qty = 0;
         ?>
         <?php $__currentLoopData = $getcartlist; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <?php
-                $tax = ($item['item_price'] * $item['qty'] * $item['tax']) / 100;
                 $total_price = ($item['item_price'] + $item['addons_total_price']) * $item['qty'];
-                $totaltaxamount += (float) $tax;
                 $order_total += (float) $total_price;
                 $total_item_qty += $item['qty'];
             ?>
@@ -42,7 +38,6 @@
                     <div class="row">
                         
                         <div class="col-lg-8 order-md2">
-                            <?php if(session()->get('order_type') == 1): ?>
                                 <div class="checkout-view p-4 mb-3">
                                     <div class="heading mb-2">
                                         <h2><?php echo e(trans('labels.select_address')); ?></h2>
@@ -92,7 +87,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            <?php endif; ?>
                             <div class="payment-option mb-3">
                                 <div class="heading mb-2">
                                     <h2><?php echo e(trans('labels.choose_payment')); ?></h2>
@@ -101,7 +95,7 @@
                                 <?php echo $__env->make('web.paymentmethodsview', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                                 <div class="d-flex justify-content-center mt-4">
                                     <button class="btn btn-primary"
-                                        onclick="isopenclose('<?php echo e(URL::to('/isopenclose')); ?>','<?php echo e($total_item_qty); ?>','<?php echo e($order_total); ?>')"><?php echo e(trans('labels.proceed_pay')); ?></button>
+                                        onclick="validatedata()"><?php echo e(trans('labels.proceed_pay')); ?></button>
                                 </div>
                             </div>
                         </div>
@@ -111,12 +105,7 @@
                                 <h2 class="border-bottom"><?php echo e(trans('labels.payment_summary')); ?></h2>
                                 <div class="bill-details border-bottom">
                                     <?php
-                                        if (session()->has('discount_data')) {
-                                            $discount_amount = session()->get('discount_data')['offer_amount'];
-                                        } else {
-                                            $discount_amount = 0;
-                                        }
-                                        $grand_total = $order_total - $discount_amount + $totaltaxamount;
+                                        $grand_total = $order_total ;
                                     ?>
                                     <div class="row justify-content-between align-items-center">
                                         <div class="col-auto"><span><?php echo e(trans('labels.subtotal')); ?></span></div>
@@ -127,33 +116,10 @@
                                     <div class="row justify-content-between align-items-center">
                                         <div class="col-auto"><span><?php echo e(trans('labels.tax')); ?></span></div>
                                         <div class="col-auto">
-                                            <p><?php echo e(Helper::currency_format($totaltaxamount)); ?></p>
+                                            <p>0</p>
                                         </div>
                                     </div>
-                                    <?php if(session()->has('discount_data')): ?>
-                                        <div class="row justify-content-between align-items-center">
-                                            <div class="col-auto"><span><?php echo e(trans('labels.discount')); ?>
-
-                                                <?php echo e(session()->has('discount_data') == true ? '(' . session()->get('discount_data')['offer_code'] . ')' : ''); ?>
-
-                                            </span></div>
-                                            <div class="col-auto">
-                                                <p>- <?php echo e(Helper::currency_format($discount_amount)); ?></p>
-                                            </div>
-                                        </div>
-                                    <?php endif; ?>
-                                    <?php if(session()->get('order_type') == 1): ?>
                                         <?php $delivery_charge = 0; ?>
-                                        <div class="row justify-content-between align-items-center">
-                                            <div class="col-auto"><span><?php echo e(trans('labels.delivery_charge')); ?></span>
-                                            </div>
-                                            <div class="col-auto">
-                                                <p class="delivery_charge"><?php echo e(Helper::currency_format($delivery_charge)); ?></p>
-                                            </div>
-                                        </div>
-                                    <?php else: ?>
-                                        <?php $delivery_charge = 0; ?>
-                                    <?php endif; ?>
                                 </div>
                                 <div class="bill-total mt-2">
                                     <div class="row justify-content-between align-items-center">
@@ -177,8 +143,6 @@
                     <input type="hidden" name="order_type" id="order_type" value="<?php echo e(session()->get('order_type')); ?>">
                     
                     <input type="hidden" name="grand_total" id="grand_total" value="<?php echo e($grand_total); ?>">
-                    
-                    <input type="hidden" name="totaltaxamount" id="totaltaxamount" value="<?php echo e($totaltaxamount); ?>">
                     
                     <input type="hidden" name="delivery_charge" id="delivery_charge" value="<?php echo e($delivery_charge); ?>">
                     <input type="hidden" name="user_name" id="user_name" value="<?php echo e(Auth::user()->name); ?>">

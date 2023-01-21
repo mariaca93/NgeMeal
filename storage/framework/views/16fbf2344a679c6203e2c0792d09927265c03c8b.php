@@ -43,32 +43,24 @@
                                 <div class="form-body mt-3">
                                     <div class="form-group">
                                         <label class="text-white form-label" for="name"><?php echo e(trans('labels.full_name')); ?></label>
-                                        <?php if(session()->has('social_login')): ?>
-                                            <input type="text" class="form-control custom-input rounded mb-3" name="name" value="<?php echo e(session()->get('social_login')['name']); ?>"  placeholder="<?php echo e(trans('labels.full_name')); ?>">
-                                        <?php else: ?>
                                             <input type="text" class="form-control custom-input rounded mb-3" name="name" value="<?php echo e(old('name')); ?>"  placeholder="<?php echo e(trans('labels.full_name')); ?>">    
-                                        <?php endif; ?>
                                         <?php $__errorArgs = ['name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?><span class="text-light"><?php echo e($message); ?></span><?php unset($message);
+$message = $__bag->first($__errorArgs[0]); ?><span class="red_color"><?php echo e($message); ?></span><?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                                     </div>
                                     <div class="form-group">
                                         <label class="text-white form-label" for="email"><?php echo e(trans('labels.email')); ?></label>
-                                        <?php if(session()->has('social_login')): ?>
-                                            <input type="email" class="form-control custom-input rounded mb-3" name="email" value="<?php echo e(session()->get('social_login')['email']); ?>" id="email" placeholder="<?php echo e(trans('labels.email')); ?>">
-                                        <?php else: ?>
-                                        <input type="email" class="form-control custom-input rounded mb-3" name="email" value="<?php echo e(old('email')); ?>" id="email" placeholder="<?php echo e(trans('labels.email')); ?>">
-                                        <?php endif; ?>
+                                            <input type="email" class="form-control custom-input rounded mb-3" name="email" value="<?php echo e(old('email')); ?>" id="email" placeholder="<?php echo e(trans('labels.email')); ?>">
                                         <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?><span class="text-light"><?php echo e($message); ?></span><?php unset($message);
+$message = $__bag->first($__errorArgs[0]); ?><span class="red_color"><?php echo e($message); ?></span><?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
@@ -84,27 +76,32 @@ unset($__errorArgs, $__bag); ?>
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?><div class="text-light"><?php echo e($message); ?></div><?php unset($message);
+$message = $__bag->first($__errorArgs[0]); ?><div class="red_color"><?php echo e($message); ?></div><?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                                                 </div>
-                                            </div>
-                                            <div class="col-md">
-                                                <label class="text-white form-label" for="referral_code"><?php echo e(trans('labels.referral_code')); ?> </label>
-                                                <input type="text" class="form-control custom-input rounded mb-3" id="referral_code_o" name="referral_code" placeholder="<?php echo e(trans('labels.referral_code_o')); ?>" <?php if(isset($_GET['referral'])): ?> value="<?php echo e($_GET['referral']); ?>" <?php endif; ?>>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <?php if(!session()->has('social_login')): ?>
-                                        <?php if(\App\SystemAddons::where('unique_identifier', 'otp')->first() != null && \App\SystemAddons::where('unique_identifier', 'otp')->first()->activated): ?>
-                                        <?php else: ?> -->
-                                        <div class="form-group">
-                                            <div class="row">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md">
+                                                <label class="text-white form-label" for="password"><?php echo e(trans('labels.password')); ?></label>
+                                                    <input type="password" class="form-control custom-input rounded mb-3" id="password" name="password" placeholder="<?php echo e(trans('labels.password')); ?>" value="<?php echo e(old('password')); ?>">
+                                                    <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?><div class="text-light"><?php echo e($message); ?></div><?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                </div>
                                                 <div class="col-md">
-                                                    <label class="text-white form-label" for="password"><?php echo e(trans('labels.password')); ?></label>
-                                                        <input type="password" class="form-control custom-input rounded mb-3" id="password" name="password" placeholder="<?php echo e(trans('labels.password')); ?>" value="<?php echo e(old('password')); ?>">
-                                                        <?php $__errorArgs = ['password'];
+                                                    <label class="text-white form-label" for="confirm_password"><?php echo e(trans('labels.confirm_password')); ?></label>
+                                                    <input type="password" class="form-control custom-input rounded mb-3" id="confirm_password" name="password_confirmation" placeholder="<?php echo e(trans('labels.confirm_password')); ?>" value="<?php echo e(old('password_confirmation')); ?>">
+                                                    <?php $__errorArgs = ['password_confirmation'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -112,32 +109,18 @@ $message = $__bag->first($__errorArgs[0]); ?><div class="text-light"><?php echo 
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                                    </div>
-                                                    <div class="col-md">
-                                                        <label class="text-white form-label" for="confirm_password"><?php echo e(trans('labels.confirm_password')); ?></label>
-                                                        <input type="password" class="form-control custom-input rounded mb-3" id="confirm_password" name="password_confirmation" placeholder="<?php echo e(trans('labels.confirm_password')); ?>" value="<?php echo e(old('password_confirmation')); ?>">
-                                                        <?php $__errorArgs = ['password_confirmation'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?><div class="text-light"><?php echo e($message); ?></div><?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                                    </div>
                                                 </div>
                                             </div>
-                                        <!-- <?php endif; ?>
-                                    <?php endif; ?> -->
+                                        </div>
                                     <div class="form-group">
                                         <input type="checkbox" name="checkbox" id="checkbox" value="1" class="form-check-input me-1" <?php echo e(old('checkbox') == 1 ? 'checked' : ''); ?>>
                                         <label for="checkbox" class="text-white form-check-label m-auto">
-                                        <?php echo e(trans('labels.i_accepts_the')); ?> <a href="<?php echo e(URL::to('terms-conditions')); ?>" class="text-primary text-decoration-none fw-bold"><?php echo e(trans('labels.terms_conditions')); ?></a></label>
+                                        <?php echo e(trans('labels.i_accepts_the')); ?> <a href="" class="text-primary text-decoration-none fw-bold"><?php echo e(trans('labels.terms_conditions')); ?></a></label>
                                         <?php $__errorArgs = ['checkbox'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> <br> <span class="text-light"><?php echo e($message); ?></span> <?php unset($message);
+$message = $__bag->first($__errorArgs[0]); ?> <br> <span class="red_color"><?php echo e($message); ?></span> <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
@@ -187,7 +170,7 @@ unset($__errorArgs, $__bag); ?>
     <script>
         var input = $('#mobile');
         var iti = intlTelInput(input.get(0))
-        iti.setCountry("in");
+        iti.setCountry("id");
         input.on('countrychange', function(e) {
             $('#country').val(iti.getSelectedCountryData().dialCode);
         });

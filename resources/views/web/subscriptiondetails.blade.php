@@ -394,27 +394,13 @@
                                                 class="white_color" id="cuisine-info">{{ $item['cuisine_info']->cuisine_name }}</span>
                                         </div>
                                         <div class="col-auto">
-                                            @if ($item->tax > 0)
-                                                <span class="text-light float-end">+ {{ $item->tax }}%
-                                                    {{ trans('labels.additional_taxes') }}</span>
-                                            @else
                                                 <span
                                                     class="text-light float-end">{{ trans('labels.inclusive_taxes') }}</span>
-                                            @endif
                                         </div>
                                     </div>
                                     <div class="row pb-2 mb-3 border-bottom align-items-center">
                                         @php
-                                            if ($item->has_variation == 1) {
-                                                foreach ($item['variation'] as $key => $value) {
-                                                    $price = $value->product_price;
-                                                    if ($key == 0) {
-                                                        break;
-                                                    }
-                                                }
-                                            } else {
-                                                $price = $item->price;
-                                            }
+                                            $price = $item->price;
                                         @endphp
                                         <p class="item-price item_price m-0" id ="price">{{ Helper::currency_format($price) }}</p>
                                     </div>
@@ -482,8 +468,6 @@
                                     @endif
                                     <!-- <br> image_name -->
                                     <input type="hidden" name="image_name" id="image_name" value="{{ $getsubscriptiondata->image }}">
-                                    <!-- <br> tax -->
-                                    <input type="hidden" name="tax" id="item_tax" value="{{ $getsubscriptiondata->tax }}">
                                     <!-- <br> item_price -->
                                     <input type="hidden" name="item_price" id="item_price" value="{{ $getsubscriptiondata->price }}">
                                     <!-- <br> addonstotal -->
@@ -504,11 +488,11 @@
                                             <div class="wishlist">
                                                 @if ($item->is_favorite == 1)
                                                     <a class="btn btn-lg w-100 wishlist-btn heart-red"
-                                                        @if (Auth::user() && Auth::user()->type == 2) href="javascript:void(0)" onclick="managefavorite('{{ $item->id }}',0)" @else href="{{ URL::to('/login') }}" @endif>{{ trans('labels.remove_wishlist') }}
+                                                        @if (Auth::user()) href="javascript:void(0)" onclick="managefavorite('{{ $item->id }}',0)" @else href="{{ URL::to('/login') }}" @endif>{{ trans('labels.remove_wishlist') }}
                                                     </a>
                                                 @else
                                                     <a class="btn btn-lg w-100 wishlist-btn border-success"
-                                                        @if (Auth::user() && Auth::user()->type == 2) href="javascript:void(0)" onclick="managefavorite('{{ $item->id }}',1)" @else href="{{ URL::to('/login') }}" @endif>{{ trans('labels.add_wishlist') }}
+                                                        @if (Auth::user()) href="javascript:void(0)" onclick="managefavorite('{{ $item->id }}',1)" @else href="{{ URL::to('/login') }}" @endif>{{ trans('labels.add_wishlist') }}
                                                     </a>
                                                 @endif
                                             </div>

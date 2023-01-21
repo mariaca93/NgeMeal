@@ -463,7 +463,7 @@
                                     <input type="hidden" name="subtotal" id="subtotal" value="<?php echo e($price); ?>">
                                     <div class="row align-items-center justify-content-center">
                                         <div class="col-md-6 col-sm-6 col-auto">
-                                            <?php if(Auth::user() && Auth::user()->type == 2): ?>
+                                            <?php if(Auth::user()): ?>
                                                 <a class="btn btn-success btn-lg w-100 m-0 text-uppercase fs-6"
                                                     onclick="addtocart('<?php echo e(URL::to('addtocart')); ?>')"><?php echo e(trans('labels.add_to_cart')); ?></a>
                                             <?php else: ?>
@@ -475,12 +475,12 @@
                                             <div class="wishlist">
                                                 <?php if($item->is_favorite == 1): ?>
                                                     <a class="btn btn-lg w-100 wishlist-btn heart-red"
-                                                        <?php if(Auth::user() && Auth::user()->type == 2): ?> href="javascript:void(0)" onclick="managefavorite('<?php echo e($item->id); ?>',0)" <?php else: ?> href="<?php echo e(URL::to('/login')); ?>" <?php endif; ?>><?php echo e(trans('labels.remove_wishlist')); ?>
+                                                        <?php if(Auth::user()): ?> href="javascript:void(0)" onclick="managefavorite('<?php echo e($item->id); ?>',0)" <?php else: ?> href="<?php echo e(URL::to('/login')); ?>" <?php endif; ?>><?php echo e(trans('labels.remove_wishlist')); ?>
 
                                                     </a>
                                                 <?php else: ?>
                                                     <a class="btn btn-lg w-100 wishlist-btn border-success"
-                                                        <?php if(Auth::user() && Auth::user()->type == 2): ?> href="javascript:void(0)" onclick="managefavorite('<?php echo e($item->id); ?>',1)" <?php else: ?> href="<?php echo e(URL::to('/login')); ?>" <?php endif; ?>><?php echo e(trans('labels.add_wishlist')); ?>
+                                                        <?php if(Auth::user()): ?> href="javascript:void(0)" onclick="managefavorite('<?php echo e($item->id); ?>',1)" <?php else: ?> href="<?php echo e(URL::to('/login')); ?>" <?php endif; ?>><?php echo e(trans('labels.add_wishlist')); ?>
 
                                                     </a>
                                                 <?php endif; ?>

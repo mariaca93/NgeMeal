@@ -22,10 +22,8 @@ var continueurl = $('#continueurl').val();
 var rest_lat = parseFloat($('#rest_lat').val());
 var rest_lang = parseFloat($('#rest_lang').val());
 var delivery_charge_per_km = parseFloat($('#delivery_charge_per_km').val());
-var order_type = $('#order_type').val();
 var delivery_charge = parseFloat($('#delivery_charge').val());
 var grand_total = parseFloat($('#grand_total').val());
-var tax_amount = parseFloat($('#totaltaxamount').val());
 var address_type = "";
 var address = "";
 var house_no = "";
@@ -146,7 +144,6 @@ function isopenclose(opencloseurl, qty, order_amount) {
             } else if (response.status == 2) {
                 toastr.error(response.message);
             } else {
-                restaurantclosed();
                 return false;
             }
         },
@@ -158,6 +155,7 @@ function isopenclose(opencloseurl, qty, order_amount) {
     });
 }
 function validatedata() {
+    $("#preload").hide();
     "use strict";
     // common-variables
     var order_notes = $('#order_notes').val();
@@ -169,16 +167,16 @@ function validatedata() {
     house_no = $("input:radio[name=myaddress]:checked").attr('house_no');
     lat = parseFloat($("input:radio[name=myaddress]:checked").attr('lat'));
     lang = parseFloat($("input:radio[name=myaddress]:checked").attr('lang'));
+    console.log("nyampe check address");
     // TO-CHECK-ADDRESS-IS-SELECTED-OR-NOT
-    if (order_type == 1) {
-        var address_type = $("input:radio[name=myaddress]:checked").val();
-        if (address_type == null) {
-            $('.addresserror').removeClass('d-none');
-            return false;
-        } else {
-            $('.addresserror').addClass('d-none');
-        }
+    var address_type = $("input:radio[name=myaddress]:checked").val();
+    if (address_type == null) {
+        $('.addresserror').removeClass('d-none');
+        return false;
+    } else {
+        $('.addresserror').addClass('d-none');
     }
+    console.log("nyampe check payment");
     // TO-CHECK-PAYMENT-TYPE-IS-SELECTED-OR-NOT
     if (transaction_type == null) {
         $('.paymenterror').removeClass('d-none');
@@ -187,8 +185,9 @@ function validatedata() {
         $('.paymenterror').addClass('d-none');
         $('.walleterror').addClass('d-none');
     }
+    console.log("nyampe payment");
     // COD || Wallet
-    if (transaction_type == 1 || transaction_type == 2) {
+    if (transaction_type == 1) {
         $("#preload").show();
         $.ajax({
             headers: {
@@ -196,10 +195,8 @@ function validatedata() {
             },
             url: orderurl,
             data: {
-                order_type: order_type,
                 delivery_charge: delivery_charge,
                 grand_total: grand_total,
-                tax_amount: tax_amount,
                 address_type: address_type,
                 address: address,
                 house_no: house_no,
@@ -212,8 +209,10 @@ function validatedata() {
             success: function (response) {
                 $('#preload').hide();
                 if (response.status == 1) {
+                    console.log("sukses");
                     ordersuccess(successurl, response.order_id, continueurl);
                 } else {
+                    console.log("gagal");
                     $('.paymenterror').removeClass('d-none').html(response.message);
                     setTimeout(function () {
                         $(".paymenterror").addClass('d-none');
@@ -249,10 +248,8 @@ function validatedata() {
                     type: 'post',
                     dataType: 'json',
                     data: {
-                        order_type: order_type,
                         delivery_charge: delivery_charge,
                         grand_total: grand_total,
-                        tax_amount: tax_amount,
                         address_type: address_type,
                         address: address,
                         house_no: house_no,
@@ -309,10 +306,8 @@ function validatedata() {
                     },
                     url: orderurl,
                     data: {
-                        order_type: order_type,
                         delivery_charge: delivery_charge,
                         grand_total: grand_total,
-                        tax_amount: tax_amount,
                         address_type: address_type,
                         address: address,
                         house_no: house_no,
@@ -370,10 +365,8 @@ function validatedata() {
                     method: 'POST',
                     dataType: 'json',
                     data: {
-                        order_type: order_type,
                         delivery_charge: delivery_charge,
                         grand_total: grand_total,
-                        tax_amount: tax_amount,
                         address_type: address_type,
                         address: address,
                         house_no: house_no,
@@ -433,10 +426,8 @@ function validatedata() {
                     },
                     url: orderurl,
                     data: {
-                        order_type: order_type,
                         delivery_charge: delivery_charge,
                         grand_total: grand_total,
-                        tax_amount: tax_amount,
                         address_type: address_type,
                         address: address,
                         house_no: house_no,

@@ -61,7 +61,7 @@
                     <?php else: ?>
                         <a href="<?php echo e(URL::to('/direction?dir=rtl')); ?>" class="btn btn-sm btn-primary px-3 mx-3"><?php echo e(trans('labels.rtl')); ?></a>
                     <?php endif; ?>
-                    <?php if(Auth::user() && Auth::user()->type == 2): ?>
+                    <?php if(Auth::user()): ?>
                         <div class="sidebar-login border-top">
                             <ul class="navbar-nav my-3 px-3">
                                 <li class="nav-item dropdown">
@@ -158,7 +158,7 @@
                                 class="cart-badge"><?php echo e(Helper::get_user_cart()); ?></span></a>
                     </div>
                     <div class="mx-3">
-                        <?php if(Auth::user() && Auth::user()->type == 2): ?>
+                        <?php if(Auth::user()): ?>
                             <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                                 <ul class="navbar-nav">
                                     <li class="nav-item dropdown">

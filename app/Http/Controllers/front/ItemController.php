@@ -14,7 +14,7 @@ class ItemController extends Controller
 {
     public function showitem(Request $request)
     {
-        $iteminfo = Item::with(['variation','subcuisine_info','cuisine_info','item_image', 'ingredients'])->where('item.slug','=',$request->slug)->where('item.item_status','1')->where('item.is_deleted','2')->first();
+        $iteminfo = Item::with(['subcuisine_info','cuisine_info','item_image', 'ingredients'])->where('item.slug','=',$request->slug)->where('item.item_status','1')->first();
         $itemdata = array(
             "id"=>$iteminfo->id,
             "slug"=>$iteminfo->slug,
@@ -25,14 +25,11 @@ class ItemController extends Controller
             "price"=>$iteminfo->price,
             "is_featured"=>$iteminfo->is_featured,
             "ingredients"=>$iteminfo['ingredients'],
-            "tax"=>$iteminfo->tax,
             "image_name"=>$iteminfo['item_image']->image_name,
             "item_description"=>$iteminfo->item_description,
             "cuisine_info"=>$iteminfo->cuisine_info,
             "subcuisine_info"=>$iteminfo->subcuisine_info,
-            "has_variation"=>$iteminfo->has_variation,
             "attribute"=>ucfirst($iteminfo->attribute),
-            "variation"=>$iteminfo->variation,
             "addons"=>Addons::select('id','name','price')->whereIn('id',explode(',',$iteminfo->addons_id))->get()
         );
         error_log('test');
@@ -42,7 +39,7 @@ class ItemController extends Controller
     public function itemdetails(Request $request)
     {
         $user_id = @Auth::user()->id;
-        $getitemdata = Item::with('cuisine_info','subcuisine_info','variation','item_images')->select('item.*',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
+        $getitemdata = Item::with('cuisine_info','subcuisine_info','item_images')->select('item.*',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
             ->leftJoin('favorite', function($query) use($user_id) {
                 $query->on('favorite.item_id','=','item.id')
                 ->where('favorite.user_id', '=', $user_id);
@@ -53,11 +50,11 @@ class ItemController extends Controller
             })
             ->groupBy('item.id','cart.item_id')
             ->where('item.slug','=',$request->slug)
-            ->where('item.item_status','1')->where('item.is_deleted','2')
+            ->where('item.item_status','1')
             ->first();
         $getitemdata['ingredients'] = $getitemdata->ingredients;
-        $getitemdata['addons'] = Addons::whereIn('id',explode(',',@$getitemdata->addons_id))->where('is_available',1)->where('is_deleted',2)->get();
-        $getrelateditems = Item::with('cuisine_info','subcuisine_info','variation','item_image')->select('item.*',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
+        $getitemdata['addons'] = Addons::whereIn('id',explode(',',@$getitemdata->addons_id))->where('is_available',1)->get();
+        $getrelateditems = Item::with('cuisine_info','subcuisine_info','item_image')->select('item.*',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
             ->leftJoin('favorite', function($query) use($user_id) {
                 $query->on('favorite.item_id','=','item.id')
                 ->where('favorite.user_id', '=', $user_id);
@@ -70,7 +67,7 @@ class ItemController extends Controller
             ->orderByDesc('item.id')
             ->where('item.id','!=',@$getitemdata->id)
             ->where('item.cuisine_id','=',@$getitemdata->cuisine_id)
-            ->where('item.item_status','1')->where('item.is_deleted','2')
+            ->where('item.item_status','1')
             ->take(4)->get();
 
             error_log($getitemdata['ingredients']);
@@ -80,7 +77,7 @@ class ItemController extends Controller
     static public function itemDetailsWithSlug($slug)
     {
         $user_id = @Auth::user()->id;
-        $getitemdata = Item::with('cuisine_info','subcuisine_info','variation','item_images')->select('item.*',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
+        $getitemdata = Item::with('cuisine_info','subcuisine_info','item_images')->select('item.*',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
             ->leftJoin('favorite', function($query) use($user_id) {
                 $query->on('favorite.item_id','=','item.id')
                 ->where('favorite.user_id', '=', $user_id);
@@ -91,10 +88,10 @@ class ItemController extends Controller
             })
             ->groupBy('item.id','cart.item_id')
             ->where('item.slug','=',$slug)
-            ->where('item.item_status','1')->where('item.is_deleted','2')
+            ->where('item.item_status','1')
             ->first();
         $getitemdata['ingredients'] = $getitemdata->ingredients;
-        $getitemdata['addons'] = Addons::whereIn('id',explode(',',@$getitemdata->addons_id))->where('is_available',1)->where('is_deleted',2)->get();
+        $getitemdata['addons'] = Addons::whereIn('id',explode(',',@$getitemdata->addons_id))->where('is_available',1)->get();
 
             error_log($getitemdata['ingredients']);
         return $getitemdata;
@@ -104,7 +101,7 @@ class ItemController extends Controller
         $user_id = @Auth::user()->id;
         $getsearchitems = array();
         if($request->has('itemname') && $request->itemname != ""){
-            $getsearchitems = Item::with('cuisine_info','subcuisine_info','variation','item_image')->select('item.*',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
+            $getsearchitems = Item::with('cuisine_info','subcuisine_info','item_image')->select('item.*',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
                 ->leftJoin('order_details','order_details.item_id','item.id')
                 ->leftJoin('favorite', function($query) use($user_id) {
                     $query->on('favorite.item_id','=','item.id')
@@ -116,7 +113,7 @@ class ItemController extends Controller
                 })
                 ->groupBy('order_details.item_id','item.id','cart.item_id')
                 ->where('item.item_name','like', '%' . $request->itemname . '%')
-                ->where('item.item_status','1')->where('item.is_deleted','2')
+                ->where('item.item_status','1')
                 ->orderByDesc('item.id')->paginate(16);
         }else if($request->has('ingredient_name')){
             //search by ingredient
@@ -124,7 +121,7 @@ class ItemController extends Controller
             foreach ( $request->ingredient_name as $ingredient ) {
                 array_push($ingredients,$ingredient);
             }
-            $getsearchitems = Item::with('cuisine_info','subcuisine_info','variation','item_image')->select('item.*',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
+            $getsearchitems = Item::with('cuisine_info','subcuisine_info','item_image')->select('item.*',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
             ->whereHas('ingredients', function($q) use ($ingredients) {
             // $q->whereIn('ingredient_name', $ingredients);
             $q->where('ingredient_name', $ingredients);
@@ -155,7 +152,7 @@ class ItemController extends Controller
         $user_id = @Auth::user()->id;
         $getsearchitems = array();
         if($request->has('type') && $request->type != "" && in_array($request->type,array('todayspecial','topitems','recommended'))){
-            $getsearchitems = Item::with('cuisine_info','subcuisine_info','variation','item_image')->select('item.*',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'),DB::raw('count(order_details.item_id) as item_order_counter'))
+            $getsearchitems = Item::with('cuisine_info','subcuisine_info','item_image')->select('item.*',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'),DB::raw('count(order_details.item_id) as item_order_counter'))
                 ->leftJoin('order_details','order_details.item_id','item.id')
                 ->leftJoin('favorite', function($query) use($user_id) {
                     $query->on('favorite.item_id','=','item.id')
@@ -165,7 +162,7 @@ class ItemController extends Controller
                     $query->on('cart.item_id','=','item.id')
                     ->where('cart.user_id', '=', $user_id);
                 })
-                ->groupBy('item.id','cart.item_id')->where('item.item_status','1')->where('item.is_deleted','2');
+                ->groupBy('item.id','cart.item_id')->where('item.item_status','1');
             if($request->has('type') && $request->type != ""){
                 if($request->type == "todayspecial"){
                     $getsearchitems = $getsearchitems->where('item.is_featured','1')->orderByDesc('item.id');

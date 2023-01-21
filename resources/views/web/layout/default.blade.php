@@ -96,8 +96,6 @@
                                 <input type="hidden" name="item_type" id="item_type">
                                 {{-- <br> image_name --}}
                                 <input type="hidden" name="image_name" id="image_name">
-                                {{-- <br> tax --}}
-                                <input type="hidden" name="tax" id="item_tax">
                                 {{-- <br> item_price --}}
                                 <input type="hidden" name="item_price" id="item_price">
                                 {{-- <br> addonstotal --}}

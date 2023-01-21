@@ -244,7 +244,7 @@ input::placeholder {
 .auth_form {
     padding: 2rem;
     background: rgba(0, 0, 0, .1);
-    backdrop-filter: blur(0.2rem);
+    backdrop-filter: blur(0.1rem);
     border-radius: 12px;
     box-shadow: 0 0 10px #000;
     margin: auto
@@ -753,9 +753,9 @@ input::placeholder {
 .modalitemdetails .btn:focus {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .07), 0 0 8px var(--bs-success)
 }
-.reservation,
+.order-now,
 .testimonials {
-    background: url(../images/section_bg.png) center center/cover no-repeat #f3f0e7;
+    background: url(../images/section_bg.png) center center/cover no-repeat #f2f0f5;
     max-width: 100%;
     overflow: hidden
 }
@@ -849,7 +849,7 @@ input::placeholder {
 .reservation-content {
     margin: 100px 0 150px
 }
-.reservation h1 {
+.order-now h1 {
     font-family: 'Oleo Script', cursive;
     font-style: normal;
     font-weight: 400;
@@ -857,7 +857,7 @@ input::placeholder {
     line-height: 89px;
     color: var(--bs-primary)
 }
-.reservation p {
+.order-now p {
     font-weight: 600;
     font-size: 64px;
     line-height: 96px;
@@ -873,7 +873,7 @@ input::placeholder {
 }
 .footer .left-side h1,
 .footer .left-side p {
-    color: var(--pale_black)
+    color: var(--pastel_purple)
 }
 .contact-us .contact-content .left-side,
 .contact-us .contact-content .right-side {

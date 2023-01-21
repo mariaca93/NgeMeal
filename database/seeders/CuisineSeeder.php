@@ -19,44 +19,37 @@ class CuisineSeeder extends Seeder
             [
                 'cuisine_name' => 'American',
                 'image' => 'american.jpg',
-                'is_available' => 1,
-                'is_deleted' => 2
+                'is_available' => 1
             ],
             [
                 'cuisine_name' => 'Chinese',
                 'image' => 'chinese.jpg',
-                'is_available' => 1,
-                'is_deleted' => 2
+                'is_available' => 1
             ],
             [
                 'cuisine_name' => 'Indian',
                 'image' => '',
-                'is_available' => 1,
-                'is_deleted' => 2
+                'is_available' => 1
             ],
             [
                 'cuisine_name' => 'Indonesian',
                 'image' => '',
-                'is_available' => 1,
-                'is_deleted' => 2
+                'is_available' => 1
             ],
             [
                 'cuisine_name' => 'Italian',
                 'image' => '',
-                'is_available' => 1,
-                'is_deleted' => 2
+                'is_available' => 1
             ],
             [
                 'cuisine_name' => 'Japanese',
                 'image' => '',
-                'is_available' => 1,
-                'is_deleted' => 2
+                'is_available' => 1
             ],
             [
                 'cuisine_name' => 'Korean',
                 'image' => '',
-                'is_available' => 1,
-                'is_deleted' => 2
+                'is_available' => 1
             ]
             ]);
     }

@@ -140,7 +140,7 @@
                             </ul>
                         </div>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" style="color:black">
                                 <thead>
                                     <tr>
                                         <th><?php echo e(trans('labels.image')); ?></th>
@@ -161,9 +161,8 @@
                                         <td><img src="<?php echo e(URL::to('admin-assets/images/item/'. $orders->item_image)); ?>" class="rounded hw-50" alt=""></td>
                                         <td>
                                             <img <?php if($orders['item_type']==1): ?> src="<?php echo e(Helper::image_path('veg.svg')); ?>" <?php else: ?> src="<?php echo e(Helper::image_path('nonveg.svg')); ?>" <?php endif; ?> class="item-type-img" alt="" style="width:20px">
-                                            <?php echo e($orders->item_name); ?> <?php if($orders->variation != ''): ?>
-                                            [<?php echo e($orders->variation); ?>]
-                                            <?php endif; ?> <br>
+                                            <?php echo e($orders->item_name); ?>
+
                                             <?php
                                             $addons_id = explode(',', $orders->addons_id);
                                             $addons_name = explode(',', $orders->addons_name);
@@ -206,14 +205,8 @@
                                     </li>
                                     <li class="list-group-item px-0 d-flex justify-content-between">
                                         <span class="fw-600"> <?php echo e(trans('labels.tax')); ?> </span>
-                                        <span class="text-break"><?php echo e(Helper::currency_format($orderdata->tax_amount)); ?></span>
+                                        <span class="text-break">0</span>
                                     </li>
-                                    <?php if($orderdata->discount_amount > 0): ?>   
-                                    <li class="list-group-item px-0 d-flex justify-content-between">
-                                        <span class="fw-600"> <?php echo e(trans('labels.discount')); ?> <?php echo e($orderdata->offer_code != '' ? '(' . $orderdata->offer_code . ')' : ''); ?> </span>
-                                        <span class="text-break">- <?php echo e(Helper::currency_format($orderdata->discount_amount)); ?></span>
-                                    </li>
-                                    <?php endif; ?>
                                     <?php if($orderdata->order_type == 1): ?>   
                                     <li class="list-group-item px-0 d-flex justify-content-between">
                                         <span class="fw-600"> <?php echo e(trans('labels.delivery_charge')); ?> </span>

@@ -87,18 +87,7 @@ function swal_cancelled(issettitle) {
     }
     swalWithBootstrapButtons.fire('Cancelled', title, 'error')
 };
-function restaurantclosed() {
-    "use strict";
-    swalWithBootstrapButtons.fire({
-        icon: 'error',
-        title: restaurant_closed,
-        showCancelButton: false,
-        confirmButtonText: okay,
-        reverseButtons: true
-    }).then((result) => {
-        result.dismiss === Swal.DismissReason.cancel
-    })
-}
+
 function ordersuccess(trackurl,order_id,continueurl) {
     "use strict";
     swalWithBootstrapButtons.fire({
@@ -282,10 +271,7 @@ function addtocart(addcarturl) {
     // var item_name = $('#item_name').val();
     var item_type = $('#item_type').val();
     var image_name = $('#image_name').val();
-    var item_tax = $('#item_tax').val();
     var item_price = $('#item_price').val();
-    var variation_id = $("input[name='variation']:checked").attr('data-variation-id');
-    var variation_name = $("input[name='variation']:checked").attr('data-variation-name');
     var addons_id = $('.addons-checkbox:checked').map(function() {
         return $(this).attr('data-addons-id');
     }).get().join(',');
@@ -295,19 +281,16 @@ function addtocart(addcarturl) {
     var addons_price = ($('.addons-checkbox:checked').map(function() {
         return $(this).attr('data-addons-price');
     }).get().join(','));
-    calladdtocart(slug, item_name, item_type, image_name, item_tax, item_price, variation_id, variation_name,
+    calladdtocart(slug, item_name, item_type, image_name, item_price,
         addons_id, addons_name, addons_price, addcarturl);
 };
 
-function calladdtocart(slug, item_name, item_type, image_name, item_tax, item_price, variation_id, variation_name,addons_id, addons_name, addons_price, addcarturl) {
+function calladdtocart(slug, item_name, item_type, image_name, item_price,addons_id, addons_name, addons_price, addcarturl) {
     "use strict";
     console.log('slug: ' +slug);
     console.log('item_name: ' +item_name);
     console.log('image_name: ' +image_name);
-    console.log('item_tax: ' +item_tax);
     console.log('item_price: ' +item_price);
-    console.log('variation_id: ' +variation_id);
-    console.log('variation_name: ' +variation_name);
     console.log('addons_id: ' +addons_id);
     console.log('addons_name: ' +addons_name);
     console.log('addons_price: ' +addons_price);
@@ -325,10 +308,7 @@ function calladdtocart(slug, item_name, item_type, image_name, item_tax, item_pr
             item_name: item_name,
             item_type: item_type,
             image_name: image_name,
-            tax: item_tax,
             item_price: item_price,
-            variation_id: variation_id,
-            variation_name: variation_name,
             addons_id: addons_id,
             addons_name: addons_name,
             addons_price: addons_price,
@@ -396,7 +376,6 @@ function showitem(slug, showurl) {
             $('#slug').val(response.itemdata.slug);
             $('#item_name').val(response.itemdata.item_name);
             $('#item_type').val(response.itemdata.item_type);
-            $('#item_tax').val(response.itemdata.tax);
             $('#image_name').val(response.itemdata.image_name);
             $('.attribute').text(response.itemdata.attribute);
             $('.item_name').text(response.itemdata.item_name);
@@ -430,38 +409,7 @@ function showitem(slug, showurl) {
             } else {
                 $('#addons').hide();
             }
-            if (response.itemdata.has_variation == 2) {
-                var itemprice = response.itemdata.price;
-                $('#variation').hide();
-            } else {
-                $('#variation').show();
-                let variationhtml = '';
-                var itemprice = 0;
-                for (let i in response.itemdata.variation) {
-                    var select = "";
-                    var variation_id = "";
-                    var variation_name = "";
-                    if (i == 0) {
-                        select = "checked";
-                        itemprice = response.itemdata.variation[i].product_price;
-                        variation_id = response.itemdata.variation[i].id;
-                        variation_name = response.itemdata.variation[i].variation;
-                    }
-                    variationhtml +=
-                        '<div class="form-check '+classforview+'"><input class="form-check-input cursor-pointer '+classforcheckbox+'" type="radio" data-variation-id="' +
-                        response.itemdata.variation[i].id + '" data-variation-name="' + response
-                        .itemdata.variation[i].variation + '" data-variation-price="' + response
-                        .itemdata.variation[i].product_price + '" name="variation" id="variation-' + i +
-                        '-' + response.itemdata.variation[i].id + '" value="' + response.itemdata
-                        .variation[i].variation + '" ' + select +
-                        ' onchange="getvaraitions(this)"><label class="form-check-label cursor-pointer me-2" for="variation-' +
-                        i + '-' + response.itemdata.variation[i].id + '">' + response.itemdata
-                        .variation[i].variation + '</label> <label class="form-check-label cursor-pointer me-2" for="variation-' +
-                        i + '-' + response.itemdata.variation[i].id + '"> :- ' + currency_format(response.itemdata.variation[
-                            i].product_price) + '</label></div>';
-                }
-                $('.varition-listing').html(variationhtml);
-            }
+            var itemprice = response.itemdata.price;
             $('#item_price').val(itemprice);
             $('#subtotal').val(itemprice);
             $('.item_price').html(currency_format(itemprice)).addClass('mb-0');
@@ -505,16 +453,5 @@ function checkaddons(){
     // }
 console.log('test');
     $("input:checkbox").prop('checked', false);
-}
-
-function getvaraitions(x) {
-    "use strict";
-    var price = parseFloat($(x).attr('data-variation-price'));
-    var addonstotal = parseFloat($('#addonstotal').val());
-    $('#item_variants_name').val($(x).attr('data-variation-name'));
-    $('#item_price').val(price);
-    $('.item_price').html(currency_format(price));
-    $('#subtotal').val(addonstotal + price);
-    $('.subtotal').text(currency_format(addonstotal + price));
 }
 

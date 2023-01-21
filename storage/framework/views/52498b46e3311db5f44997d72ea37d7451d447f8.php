@@ -57,27 +57,12 @@
                                             class="white_color"><?php echo e($getitemdata['cuisine_info']->cuisine_name); ?></span>
                                     </div>
                                     <div class="col-auto">
-                                        <?php if($getitemdata->tax > 0): ?>
-                                            <span class="text-light float-end">+ <?php echo e($getitemdata->tax); ?>%
-                                                <?php echo e(trans('labels.additional_taxes')); ?></span>
-                                        <?php else: ?>
-                                            <span
-                                                class="text-light float-end"><?php echo e(trans('labels.inclusive_taxes')); ?></span>
-                                        <?php endif; ?>
+                                        <span class="text-light float-end"><?php echo e(trans('labels.inclusive_taxes')); ?></span>
                                     </div>
                                 </div>
                                 <div class="row pb-2 mb-3 border-bottom align-items-center">
                                     <?php
-                                        if ($getitemdata->has_variation == 1) {
-                                            foreach ($getitemdata['variation'] as $key => $value) {
-                                                $price = $value->product_price;
-                                                if ($key == 0) {
-                                                    break;
-                                                }
-                                            }
-                                        } else {
-                                            $price = $getitemdata->price;
-                                        }
+                                        $price = $getitemdata->price;
                                     ?>
                                     <p class="item-price item_price m-0"><?php echo e(Helper::currency_format($price)); ?></p>
                                 </div>
@@ -134,8 +119,6 @@
                                     value="<?php echo e($getitemdata->item_type); ?>">
                                 <!-- <br> image_name -->
                                 <input type="hidden" name="image_name" id="image_name" value="<?php echo e($image_name); ?>">
-                                <!-- <br> tax -->
-                                <input type="hidden" name="tax" id="item_tax" value="<?php echo e($getitemdata->tax); ?>">
                                 <!-- <br> item_price -->
                                 <input type="hidden" name="item_price" id="item_price" value="<?php echo e($price); ?>">
                                 <!-- <br> addonstotal -->
@@ -144,7 +127,7 @@
                                 <input type="hidden" name="subtotal" id="subtotal" value="<?php echo e($price); ?>">
                                 <div class="row align-items-center justify-content-center">
                                     <div class="col-md-6 col-sm-6 col-auto">
-                                        <?php if(Auth::user() && Auth::user()->type == 2): ?>
+                                        <?php if(Auth::user()): ?>
                                             <a class="btn btn-success btn-lg w-100 m-0 text-uppercase fs-6"
                                                 onclick="addtocart('<?php echo e(URL::to('addtocart')); ?>')"><?php echo e(trans('labels.add_to_cart')); ?></a>
                                         <?php else: ?>
@@ -156,12 +139,12 @@
                                         <div class="wishlist">
                                             <?php if($getitemdata->is_favorite == 1): ?>
                                                 <a class="btn btn-lg w-100 wishlist-btn heart-red"
-                                                    <?php if(Auth::user() && Auth::user()->type == 2): ?> href="javascript:void(0)" onclick="managefavorite('<?php echo e($getitemdata->id); ?>',0, '<?php echo e(URL::to('/managefavorite')); ?>')" <?php else: ?> href="<?php echo e(URL::to('/login')); ?>" <?php endif; ?>><?php echo e(trans('labels.remove_wishlist')); ?>
+                                                    <?php if(Auth::user()): ?> href="javascript:void(0)" onclick="managefavorite('<?php echo e($getitemdata->id); ?>',0, '<?php echo e(URL::to('/managefavorite')); ?>')" <?php else: ?> href="<?php echo e(URL::to('/login')); ?>" <?php endif; ?>><?php echo e(trans('labels.remove_wishlist')); ?>
 
                                                 </a>
                                             <?php else: ?>
                                                 <a class="btn btn-lg w-100 wishlist-btn border-success"
-                                                    <?php if(Auth::user() && Auth::user()->type == 2): ?> href="javascript:void(0)" onclick="managefavorite('<?php echo e($getitemdata->id); ?>',1, '<?php echo e(URL::to('/managefavorite')); ?>')" <?php else: ?> href="<?php echo e(URL::to('/login')); ?>" <?php endif; ?>><?php echo e(trans('labels.add_wishlist')); ?>
+                                                    <?php if(Auth::user()): ?> href="javascript:void(0)" onclick="managefavorite('<?php echo e($getitemdata->id); ?>',1, '<?php echo e(URL::to('/managefavorite')); ?>')" <?php else: ?> href="<?php echo e(URL::to('/login')); ?>" <?php endif; ?>><?php echo e(trans('labels.add_wishlist')); ?>
 
                                                 </a>
                                             <?php endif; ?>

@@ -111,7 +111,7 @@
 </script>
 
 <?php if(count(Helper::get_cuisines()) > 0): ?>
-<section class="cuisine">
+<section class="cuisine" style="padding-top:20px">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -339,46 +339,6 @@
 </section>
 <?php endif; ?>
 <!-- Promotional bannersection3 End Here -->
-<!-- Testimonials Section Start Here -->
-<?php if(count($testimonials) > 0): ?>
-<section>
-    <div class="testimonials py-5" style="background: url('<?php echo e(Helper::image_path(@Helper::appdata()->reviews_bg_image)); ?>') center center/cover no-repeat #f3f0e7 !important;">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-auto d-flex justify-content-center">
-                    <div id="testimonial4" class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x" data-bs-ride="carousel" data-pause="hover" data-interval="1000" data-duration="1000">
-                        <div class="carousel-inner" role="listbox">
-                            <?php $__currentLoopData = $testimonials; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $testimonialdata): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div class="carousel-item <?php echo e($key == 0 ? 'active' : ''); ?>">
-                                <div class="testimonial4_slide">
-                                    <img src="<?php echo e($testimonialdata['user_info']->profile_image); ?>" class="img-circle img-responsive mx-auto" />
-                                    <h4><?php echo e($testimonialdata['user_info']->name); ?></h4>
-                                    <div class="review-star">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                    </div>
-                                    <span><?php echo e(number_format($testimonialdata->ratting, 1)); ?>/5.0
-                                        <?php echo e(trans('labels.reviews')); ?></span>
-                                    <p>
-                                        <span class="text-primary">"</span>
-                                        <?php echo e(Str::limit($testimonialdata->comment, 100)); ?>
-
-                                        <span class="text-primary">"</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<?php endif; ?>
 <!-- Testimonials Section End Here -->
 <!-- App Download Section Start Here -->
 <?php if(!empty(@Helper::appdata()->mobile_app_image)): ?>
@@ -415,44 +375,22 @@
 <!-- App Download Section End Here -->
 <!-- Table Resrvation Section Start Here -->
 <section class="res">
-    <div class="reservation" style="background: url('<?php echo e(Helper::image_path(@Helper::appdata()->booknow_bg_image)); ?>') center center/cover no-repeat #f3f0e7 !important;">
+    <div class="order-now" style="background: url('<?php echo e(Helper::image_path(@Helper::appdata()->booknow_bg_image)); ?>') center center/cover no-repeat #f2f0f5 !important;">
         <div class="container">
             <div class="reservation-content px-3">
                 <div class="row text-center">
-                    <h1><?php echo e(trans('labels.book_table')); ?></h1>
-                    <p><?php echo e(trans('labels.make_reservation')); ?></p>
+                    <h1>Order Your First Meal</h1>
+                    <p>Take a look at today's special</p>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <a class="btn btn-primary btn-sm" role="button"><?php echo e(trans('labels.book_now')); ?></a>
+                    <a class="btn btn-primary btn-sm" role="button"><?php echo e(trans('labels.order_now')); ?></a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!-- Table Resrvation Section End Here -->
-<!-- Blog Section Start Here -->
-<?php if(count($getblogs) > 0): ?>
-<section>
-    <div class="blog-wrapper mb-3">
-        <div class="container">
-            <div class="row align-items-center justify-content-between my-2">
-                <div class="col-auto blog-heading">
-                    <h1><?php echo e(trans('labels.latest_blogs')); ?></h1>
-                </div>
-                <div class="col-auto">
-                    <a href="<?php echo e(route('blogs')); ?>" class="btn btn-sm btn-outline-primary"><?php echo e(trans('labels.view_all')); ?></a>
-                </div>
-            </div>
-            <div class="row">
-                <?php $__currentLoopData = $getblogs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bloglist): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <?php echo $__env->make('web.blogs.blogview', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </div>
-        </div>
-    </div>
-</section>
-<?php endif; ?>
-<!-- Blog Section End Here -->
+
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('scripts'); ?>
 <script
