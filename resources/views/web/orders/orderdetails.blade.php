@@ -98,16 +98,8 @@
                                     <span class="text-break">
                                         @if ($orderdata->transaction_type == 1)
                                             {{trans('labels.cash')}}
-                                        @elseif ($orderdata->transaction_type == 2)
-                                            {{trans('labels.wallet')}}
-                                        @elseif ($orderdata->transaction_type == 3)
-                                            {{trans('labels.razorpay')}}
                                         @elseif ($orderdata->transaction_type == 4)
-                                            {{trans('labels.stripe')}}
-                                        @elseif ($orderdata->transaction_type == 5)
-                                            {{trans('labels.flutterwave')}}
-                                        @elseif ($orderdata->transaction_type == 6)
-                                            {{trans('labels.paystack')}}
+                                            {{trans('labels.visa')}}
                                         @else
                                         --
                                         @endif

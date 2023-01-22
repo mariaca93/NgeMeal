@@ -17,11 +17,7 @@ class UserMiddleware
     public function handle($request, Closure $next)
     {
         if (Auth::user() ){
-            if(Auth::user()->type=="2") {
-                return $next($request);
-            }else{
-                return redirect()->back();
-            }
+            return $next($request);
         }
         Auth::logout();
         return redirect('home');

@@ -126,7 +126,7 @@ class ItemSeeder extends Seeder
             ],
             [
                 'cuisine_id' => 2,
-                'subcuisine_id' => 1,
+                'subcuisine_id' => 3,
                 'item_name' => 'Dan Dan Mian',
                 'image' => 'dan-dan-mian-1.jpeg',
                 'weather_id' => '1',
@@ -146,7 +146,7 @@ class ItemSeeder extends Seeder
             ],
             [
                 'cuisine_id' => 2,
-                'subcuisine_id' => 1,
+                'subcuisine_id' => 3,
                 'item_name' => 'Chow Mein',
                 'image' => 'chow-mein-1.jpg',
                 'weather_id' => '1',
@@ -165,7 +165,7 @@ class ItemSeeder extends Seeder
             ],
             [
                 'cuisine_id' => 2,
-                'subcuisine_id' => 1,
+                'subcuisine_id' => 3,
                 'item_name' => 'Chinese Mee Hoon',
                 'image' => 'mee-hoon-1.jpg',
                 'weather_id' => '2',

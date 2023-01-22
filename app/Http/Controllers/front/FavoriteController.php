@@ -26,6 +26,7 @@ class FavoriteController extends Controller
         ->where('item.item_status','1')
         ->where('favorite.user_id',$user_id)
         ->orderByDesc('favorite.id')->paginate(10);
+        error_log('nyampe sini pls');
         return view('web.favoritelist',compact('getfavoritelist'));
     }
     public function managefavorite(Request $request)

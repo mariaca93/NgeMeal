@@ -54,10 +54,8 @@ class CheckoutController extends Controller
     {
         try {
             date_default_timezone_set(helper::appdata()->timezone);
-            error_log("masuka awal");
             $checkuser = User::where('is_available',1)->where('id',Auth::user()->id)->first();
             if(!empty($checkuser)){
-                error_log("masuk cek user");
                 $cartdata = Cart::where('user_id',Auth::user()->id)->get();
                 if(count($cartdata)<=0){
                     return response()->json(['status'=>0,'message'=>trans('messages.cart_is_empty')],200);
@@ -72,7 +70,6 @@ class CheckoutController extends Controller
                         return response()->json(['status'=>0,'message'=>trans('messages.transaction_id_required')],200);
                     }
                 }
-                error_log("masuka sigh1");
                 $transaction_id = $request->transaction_id;
                 if($request->grand_total == ""){
                     return response()->json(["status"=>0,"message"=>trans('messages.grand_total_required')],200);

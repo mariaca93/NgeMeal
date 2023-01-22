@@ -37,8 +37,8 @@ class PaymentTableSeeder extends Seeder
             array (
                 'id' => 4,
                 'environment' => 1,
-                'payment_name' => 'Mastercard',
-                'image' => 'payment-mastercard.png',
+                'payment_name' => 'Visa',
+                'image' => 'payment-visa.png',
                 'currency' => 'USD',
                 'public_key' => 'pk_test_51IjNgIJwZppK21ZQa6e7ZVOImwJ2auI54TD6xHici94u7DD5mhGf1oaBiDyL9mX7PbN5nt6Weap4tmGWLRIrslCu00d8QgQ3nI',
                 'secret_key' => 'sk_test_51IjNgIJwZppK21ZQK85uLARMdhtuuhA81PB24VDfiqSW8SXQZKrZzvbpIkigEb27zZPBMF4UEG7PK9587Xresuc000x8CdE22A',

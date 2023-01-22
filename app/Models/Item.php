@@ -2,9 +2,12 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Item extends Model
 {
+
+    use HasFactory;
     protected $table='item';
     protected $fillable=['cuisine_id','item_name','item_description','item_price','delivery_time'];
     

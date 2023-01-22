@@ -8,6 +8,7 @@ use App\Models\Item;
 use App\Models\OrderDetails;
 use App\Models\Banner;
 use App\Models\Blogs;
+use App\Models\Faq;
 use App\Models\Ratting;
 use App\Models\Subscription;
 use App\Models\Weather;
@@ -79,8 +80,8 @@ class HomeController extends Controller
         if($request->input('latitude') && $request->input('longitude')){
             $lat = $request->input('latitude');
             $long = $request->input('longitude');
-            Cache::put('lat', $lat, 1800);
-            Cache::put('long', $long, 1800);
+            Cache::put('lat', $lat, 1800); //30 min
+            Cache::put('long', $long, 1800); // 30 min
         }
         else if(Cache::get('lat') || Cache::get('long')){
             $lat = Cache::get('lat');
@@ -178,5 +179,10 @@ class HomeController extends Controller
     {
         session()->put('direction', $request->dir);
         return redirect()->back();
+    }
+    public function faq(Request $request)
+    {
+        $getfaqs = Faq::select("id","title","description")->orderBydesc('id')->get();
+        return view('web.faq', compact('getfaqs'));
     }
 }

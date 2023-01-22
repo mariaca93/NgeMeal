@@ -12,8 +12,8 @@
             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                 <img src="{{ Helper::web_image_path($sliderdata->image) }}" class="d-block img-fluid" alt="slider">
                 <div class="carousel-caption d-flex h-100 align-items-center justify-content-center flex-column">
-                    <h5>{{ $sliderdata->title }}</h5>
-                    <p>{{ $sliderdata->description }}</p>
+                    <h5 style="font-size:10rem;font-family:'bebas neue', cursive">{{ $sliderdata->title }}</h5>
+                    <p style="position: absolute;z-index:100;font-family:'homemade apple', cursive">{{ $sliderdata->description }}</p>
                     @if ($sliderdata['item_info'] != '')
                     <a href="{{ URL::to('/item-' . $sliderdata['item_info']->slug) }}" class="btn btn-primary fw-bold">{{ trans('labels.explore') }} <i class="fa-solid fa-circle-arrow-right"></i> </a>
                     @endif
@@ -78,7 +78,7 @@
         if(document.cookie.indexOf('weather') == -1 ){
             var lat = document.getElementById('latitude').value;
             var long = document.getElementById('longitude').value;
-            document.cookie = 'weather=loaded';
+            document.cookie = 'weather=loaded;max-age=600';
             var text = "Allow location access for weather reccomendation?";
             if (confirm(text) == true) {
                 document.getElementById('btnSubmit').click();

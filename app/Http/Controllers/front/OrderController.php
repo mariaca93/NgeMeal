@@ -15,15 +15,20 @@ class OrderController extends Controller
     {   
         $getorders=Order::select('order.id','order.order_from','order.order_number','order.grand_total','order.status','order.transaction_type', 'order.created_at')
                 ->where('order.user_id',Auth::user()->id);
+                // error_log("ordernya 0 : " . json_encode($getorders));
+                // error_log("user id d controller : " . Auth::user()->id);
             if($request->has('type') && $request->type == "completed"){
                 $getorders = $getorders->where('status',5);
             }else if($request->has('type') && $request->type == "cancelled"){
                 $getorders = $getorders->whereIn('status',array(6,7));
             }else{
                 // processing
+                // error_log("processing");
                 $getorders = $getorders->whereIn('status',array(1,2,3,4));
+                // error_log("ordernya 1 : " . json_encode($getorders));
             }
         $getorders = $getorders->where('order.order_from','!=','pos')->orderByDesc('id')->paginate(10);
+        // error_log("ordernya : " .$getorders);
         $totalprocessing = Order::whereIn('status',array(1,2,3,4))->where('order_from','!=','pos')->where('user_id',Auth::user()->id)->count();
         $totalcompleted = Order::where('status',5)->where('order_from','!=','pos')->where('user_id',Auth::user()->id)->count();
         $totalcancelled = Order::whereIn('status',array(6,7))->where('order_from','!=','pos')->where('user_id',Auth::user()->id)->count();
@@ -34,20 +39,6 @@ class OrderController extends Controller
         $orderdata = Order::where('order_number',$request->id)->first();
         $user_info = User::find(Auth::user()->id);
         if(!empty($orderdata) && $orderdata->status == 1){
-            if($request->transaction_type == 2){
-                $user_info->wallet += $orderdata->grand_total;
-                $transaction = new Transaction;
-                $transaction->user_id = $orderdata->user_id;
-                $transaction->order_id = $orderdata->id;
-                $transaction->order_number = $orderdata->order_number;
-                $transaction->amount = $orderdata->grand_total;
-                $transaction->transaction_id = $orderdata->transaction_id;
-                $transaction->transaction_type = '2';
-                if($transaction->save()){
-                    $user_info->save();
-                }
-            }
-            
             $orderdata->status = 7;
             if ($orderdata->save()) {
                 return 1;
@@ -60,11 +51,13 @@ class OrderController extends Controller
     }
     public function orderdetails(Request $request)
     {
-        $orderdata = Order::with('driver_info')->where('order_number', $request->order_number)->first();
+        $orderdata = Order::where('order_number', $request->order_number)->first();
         if(!empty($orderdata)){
+            error_log('lewat sini ');
             $ordersdetails = OrderDetails::where('order_id',$orderdata->id)->get();
             return view('web.orders.orderdetails',compact('orderdata','ordersdetails'));
         }else{
+            error_log('malah error');
             return redirect()->back()->with('error',trans('messages.wrong'));
         }
     }

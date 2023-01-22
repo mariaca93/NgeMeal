@@ -396,6 +396,7 @@ return [
     "order_type" => "Order Type",
     "order_amount" => "Order Amount",
     "payment_type" => "Payment Type",
+    "visa" => "Visa",
     "action" => "Action",
     "status" => "Status",
     "preparing" => "Preparing",

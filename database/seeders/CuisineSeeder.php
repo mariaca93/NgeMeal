@@ -18,38 +18,45 @@ class CuisineSeeder extends Seeder
         DB::table('cuisines')->insert([
             [
                 'cuisine_name' => 'American',
-                'image' => 'american.jpg',
-                'is_available' => 1
+                'image' => 'us-flag.jpg',
+                'is_available' => 1,
+                'slug' => 'american'
             ],
             [
                 'cuisine_name' => 'Chinese',
-                'image' => 'chinese.jpg',
-                'is_available' => 1
+                'image' => 'cn-flag.jpeg',
+                'is_available' => 1,
+                'slug' => 'chinese'
             ],
             [
                 'cuisine_name' => 'Indian',
-                'image' => '',
-                'is_available' => 1
+                'image' => 'in-flag.jpeg',
+                'is_available' => 1,
+                'slug' => 'indian'
             ],
             [
                 'cuisine_name' => 'Indonesian',
-                'image' => '',
-                'is_available' => 1
+                'image' => 'id-flag.png',
+                'is_available' => 1,
+                'slug' => 'indonesian'
             ],
             [
                 'cuisine_name' => 'Italian',
-                'image' => '',
-                'is_available' => 1
+                'image' => 'it-flag.jpeg',
+                'is_available' => 1,
+                'slug' => 'italian'
             ],
             [
                 'cuisine_name' => 'Japanese',
-                'image' => '',
-                'is_available' => 1
+                'image' => 'jp-flag.png',
+                'is_available' => 1,
+                'slug' => 'japanese'
             ],
             [
                 'cuisine_name' => 'Korean',
-                'image' => '',
-                'is_available' => 1
+                'image' => 'kr-flag.jpeg',
+                'is_available' => 1,
+                'slug' => 'korean'
             ]
             ]);
     }

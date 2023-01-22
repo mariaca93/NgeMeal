@@ -65,7 +65,6 @@ class CartController extends Controller
         $checkcart = Cart::find($request->id);
         if (!empty($checkcart)) {
             $checkcart->delete();
-            session()->forget('discount_data');
             return 1;
         } else {
             return 0;

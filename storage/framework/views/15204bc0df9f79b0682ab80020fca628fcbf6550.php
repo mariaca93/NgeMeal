@@ -30,7 +30,7 @@
                     <div class="cuisine-wrapper mx-2">
                         <a href="<?php echo e(URL::to('/menu/?cuisine=' . $cuisinedata->slug)); ?>">
                             <div class="cat rounded-circle mx-auto">
-                                <img src="<?php echo e(Helper::image_path($cuisinedata->image)); ?>" class="rounded-circle"
+                                <img src="<?php echo e(url('/admin-assets/images/cuisines/'.$cuisinedata->image)); ?>" class="rounded-circle"
                                     alt="cuisine">
                             </div>
                         </a>

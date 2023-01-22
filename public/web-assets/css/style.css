@@ -466,7 +466,7 @@ input::placeholder {
 .menu-heading h1 {
     font-weight: 400 !important;
     font-size: 3.5rem;
-    font-family: 'Oleo Script', cursive
+    font-family: 'bebas neue', cursive;
 }
 .header-search .search-form {
     display: none;
@@ -812,7 +812,7 @@ input::placeholder {
     border-radius: 50%
 }
 .testimonial4_slide p {
-    font-family: 'Oleo Script', cursive;
+    font-family: 'bebas neue', cursive;;
     color: var(--dark);
     font-size: 20px;
     line-height: 1.4;
@@ -837,7 +837,7 @@ input::placeholder {
 }
 .app_download .app_content h1 {
     color: var(--pastel_purple);
-    font-family: 'Oleo Script', cursive;
+    font-family: 'bebas neue', cursive;;
     font-size: 5.5rem;
     line-height: 5.5rem;
     margin-bottom: 2rem
@@ -850,7 +850,7 @@ input::placeholder {
     margin: 100px 0 150px
 }
 .order-now h1 {
-    font-family: 'Oleo Script', cursive;
+    font-family: 'bebas neue', cursive;;
     font-style: normal;
     font-weight: 400;
     font-size: 64px;
@@ -864,7 +864,7 @@ input::placeholder {
     color: var(--pastel_purple)
 }
 .contact-us .contact-content h1 {
-    font-family: 'Oleo Script', cursive;
+    font-family: 'bebas neue', cursive;;
     font-weight: 400;
     color: var(--pastel_purple);
     margin-bottom: 30px;
@@ -1013,7 +1013,7 @@ input::placeholder {
     border-bottom: 1px solid var(--light_primary)
 }
 .footer .left-side h1 {
-    font-family: 'Oleo Script', cursive;
+    font-family: 'bebas neue', cursive;;
     font-size: 50px;
     line-height: 55px;
     margin-bottom: 20px
@@ -1516,7 +1516,7 @@ input::placeholder {
     border-radius: 50%
 }
 .testimonials-wrapper .review p {
-    font-family: 'Oleo Script', cursive;
+    font-family: 'bebas neue', cursive;;
     color: var(--dark);
     font-size: 18px;
     line-height: 1.4;

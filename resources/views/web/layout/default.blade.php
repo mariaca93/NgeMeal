@@ -1,11 +1,10 @@
 <!doctype html>
-<html lang="en" dir="{{ session()->get('direction') }}">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta property="og:title" content="{{@Helper::appdata()->og_title}}" />
-	<meta property="og:description" content="{{@Helper::appdata()->og_description}}" />
 	<meta property="og:image" content='{{ Helper::image_path(@Helper::appdata()->og_image)}}' />
     <title> {{ @Helper::appdata()->title }} @yield('page_title')</title>
 
@@ -15,6 +14,12 @@
     <script src="{{asset('web-assets/js/multiple-select/chosen.jquery.min.js') }}"></script>
     <!-- end dependency for autocompplete ingredient -->
 
+    <!-- font dependency -->
+    {{-- bebas neue --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=bebas neue&family=Homemade+Apple&family=League+Script&family=Petit+Formal+Script&family=Unica+One&family=WindSong:wght@500&display=swap" rel="stylesheet">
+    <!-- end font dependency -->
     <link rel="icon" href="{{ Helper::image_path(@Helper::appdata()->favicon) }}"><!-- Favicon -->
     <link rel="stylesheet" href="{{asset('web-assets/css/bootstrap.min.css') }}">
     <!-- Bootstrap CSS -->

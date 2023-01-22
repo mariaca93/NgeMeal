@@ -400,27 +400,13 @@
                                                 class="white_color" id="cuisine-info"><?php echo e($item['cuisine_info']->cuisine_name); ?></span>
                                         </div>
                                         <div class="col-auto">
-                                            <?php if($item->tax > 0): ?>
-                                                <span class="text-light float-end">+ <?php echo e($item->tax); ?>%
-                                                    <?php echo e(trans('labels.additional_taxes')); ?></span>
-                                            <?php else: ?>
                                                 <span
                                                     class="text-light float-end"><?php echo e(trans('labels.inclusive_taxes')); ?></span>
-                                            <?php endif; ?>
                                         </div>
                                     </div>
                                     <div class="row pb-2 mb-3 border-bottom align-items-center">
                                         <?php
-                                            if ($item->has_variation == 1) {
-                                                foreach ($item['variation'] as $key => $value) {
-                                                    $price = $value->product_price;
-                                                    if ($key == 0) {
-                                                        break;
-                                                    }
-                                                }
-                                            } else {
-                                                $price = $item->price;
-                                            }
+                                            $price = $item->price;
                                         ?>
                                         <p class="item-price item_price m-0" id ="price"><?php echo e(Helper::currency_format($price)); ?></p>
                                     </div>
@@ -489,8 +475,6 @@
                                     <?php endif; ?>
                                     <!-- <br> image_name -->
                                     <input type="hidden" name="image_name" id="image_name" value="<?php echo e($getsubscriptiondata->image); ?>">
-                                    <!-- <br> tax -->
-                                    <input type="hidden" name="tax" id="item_tax" value="<?php echo e($getsubscriptiondata->tax); ?>">
                                     <!-- <br> item_price -->
                                     <input type="hidden" name="item_price" id="item_price" value="<?php echo e($getsubscriptiondata->price); ?>">
                                     <!-- <br> addonstotal -->

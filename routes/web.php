@@ -27,8 +27,9 @@ Route::group(['namespace' => 'front', 'middleware' => 'MaintenanceMiddleware'], 
 	Route::get('/home', [HomeController::class, 'index'])->name('home');
 	Route::get('/direction', [HomeController::class, 'change_dir'])->name('change_dir');
 	Route::get('/cuisines', [HomeController::class, 'cuisines'])->name('cuisines');
+	Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 	// item
-	Route::get('/menu', [MenuController::class, 'index'])->name('menu');
+	Route::get('/menu', [WebItemController::class, 'getbycuisine'])->name('menu');
 	Route::get('/show-item', [WebItemController::class, 'showitem']);
 	Route::get('/show-subscription', [WebSubscriptionController::class, 'showsubscription'])->name('showsubscription');
 	Route::get('/item-{slug}', [WebItemController::class, 'itemdetails'])->name('itemdetails');
@@ -60,28 +61,28 @@ Route::group(['namespace' => 'front', 'middleware' => 'MaintenanceMiddleware'], 
 		// orders
 		Route::get('/orders', [WebOrderController::class, 'index'])->name('order-history');
 		Route::get('/orders-{order_number}', [WebOrderController::class, 'orderdetails'])->name('order-details');
-		Route::post('/orders/cancel', [WebOrderController::class, 'statusupdate']);
+		Route::post('/orders/cancel', [WebOrderController::class, 'statusupdate'])->name('cancelorder');
 		// checkout
 		Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 		Route::post('/isopenclose', [CheckoutController::class, 'isopenclose']);
 		Route::post('/holduser', [CheckoutController::class, 'holduser']);
-		Route::post('/placeorder', [CheckoutController::class, 'placeorder']);
+		Route::post('/placeorder', [CheckoutController::class, 'placeorder'])->name('placeorder');
 		Route::post('/checkdeliveryzone', [CheckoutController::class, 'checkdeliveryzone']);
 		
 		// address
 		Route::get('/address', [AddressController::class, 'index'])->name('address');
 		Route::get('/address/add', [AddressController::class, 'add'])->name('add-address');
-		Route::post('/address/store', [AddressController::class, 'store']);
+		Route::post('/address/store', [AddressController::class, 'store'])->name('store-address');
 		Route::get('/address-{id}', [AddressController::class, 'show'])->name('update-address');
 		Route::post('/address/update-{id}', [AddressController::class, 'update']);
 		Route::post('/address/delete', [AddressController::class, 'deleteaddress']);
 		// favorite
 		Route::get('/favouritelist', [FavoriteController::class, 'index'])->name('user-favouritelist');
-		Route::post('/managefavorite', [FavoriteController::class, 'managefavorite']);
+		Route::post('/managefavorite', [FavoriteController::class, 'managefavorite'])->name('managefavorites');
 		// cart
 		Route::get('/cart', [CartController::class, 'index'])->name('cart');
-		Route::post('addtocart', [CartController::class,'addtocart']);
-		Route::post('/cart/deleteitem', [CartController::class, 'deletecartitem']);
+		Route::post('addtocart', [CartController::class,'addtocart'])->name('additemtocart');
+		Route::post('/cart/deleteitem', [CartController::class, 'deletecartitem'])->name('deletecartitem');
 		Route::post('/cart/qtyupdate', [CartController::class, 'qtyupdate']);
 	});
 });

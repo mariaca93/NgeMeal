@@ -29,5 +29,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ItemIngredientSeeder::class);
         $this->call(SubscriptionSeeder::class);
         $this->call(WeatherSeeder::class);
+        $this->call(FaqSeeder::class);
     }
 }

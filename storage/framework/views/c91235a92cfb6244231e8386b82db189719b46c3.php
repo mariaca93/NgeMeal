@@ -12,8 +12,8 @@
             <div class="carousel-item <?php echo e($key == 0 ? 'active' : ''); ?>">
                 <img src="<?php echo e(Helper::web_image_path($sliderdata->image)); ?>" class="d-block img-fluid" alt="slider">
                 <div class="carousel-caption d-flex h-100 align-items-center justify-content-center flex-column">
-                    <h5><?php echo e($sliderdata->title); ?></h5>
-                    <p><?php echo e($sliderdata->description); ?></p>
+                    <h5 style="font-size:10rem;font-family:'bebas neue', cursive"><?php echo e($sliderdata->title); ?></h5>
+                    <p style="position: absolute;z-index:100;font-family:'homemade apple', cursive"><?php echo e($sliderdata->description); ?></p>
                     <?php if($sliderdata['item_info'] != ''): ?>
                     <a href="<?php echo e(URL::to('/item-' . $sliderdata['item_info']->slug)); ?>" class="btn btn-primary fw-bold"><?php echo e(trans('labels.explore')); ?> <i class="fa-solid fa-circle-arrow-right"></i> </a>
                     <?php endif; ?>
@@ -78,7 +78,7 @@
         if(document.cookie.indexOf('weather') == -1 ){
             var lat = document.getElementById('latitude').value;
             var long = document.getElementById('longitude').value;
-            document.cookie = 'weather=loaded';
+            document.cookie = 'weather=loaded;max-age=600';
             var text = "Allow location access for weather reccomendation?";
             if (confirm(text) == true) {
                 document.getElementById('btnSubmit').click();

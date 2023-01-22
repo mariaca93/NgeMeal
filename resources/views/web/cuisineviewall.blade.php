@@ -29,7 +29,7 @@
                     <div class="cuisine-wrapper mx-2">
                         <a href="{{ URL::to('/menu/?cuisine=' . $cuisinedata->slug) }}">
                             <div class="cat rounded-circle mx-auto">
-                                <img src="{{ Helper::image_path($cuisinedata->image) }}" class="rounded-circle"
+                                <img src="{{ url('/admin-assets/images/cuisines/'.$cuisinedata->image) }}" class="rounded-circle"
                                     alt="cuisine">
                             </div>
                         </a>

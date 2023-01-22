@@ -27,7 +27,8 @@
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
     </div>
-    <div class="footer" style="background : url('<?php echo e(Helper::image_path(@Helper::appdata()->footer_bg_image)); ?>') center center/cover no-repeat rgba(0, 0, 0, .6) !important;">
+    <div class="footer" style="background : linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('<?php echo e(Helper::image_path(@Helper::appdata()->footer_bg_image)); ?>')
+     center center/cover no-repeat rgba(0, 0, 0, .6) !important;">
         <div class="container">
             <div class="row footer-area border-bottom-primary">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-auto left-side mt-3">
@@ -59,7 +60,7 @@
                             <h4><?php echo e(trans('labels.other_pages')); ?></h4>
                             <ul>
                                 <li>
-                                    <a href="" class="text-white"><?php echo e(trans('labels.faq')); ?></a>
+                                    <a href="<?php echo e(route('faq')); ?>" class="text-white"><?php echo e(trans('labels.faq')); ?></a>
                                 </li>
                                 <li>
                                     <a href="" class="text-white"><?php echo e(trans('labels.gallery')); ?></a>
