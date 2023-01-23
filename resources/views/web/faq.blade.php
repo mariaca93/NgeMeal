@@ -39,7 +39,7 @@
                                 </h2>
                                 <div id="faqs{{$key}}" class="accordion-collapse collapse {{$key==0 ? 'show' : ''}}" aria-labelledby="faq{{$key}}"
                                     data-bs-parent="#faqleft">
-                                    <div class="accordion-body">{{$faqdata->description}}</div>
+                                    <div class="accordion-body" style="white-space: pre-line">{{$faqdata->description}}</div>
                                 </div>
                             </div>
                             @endforeach

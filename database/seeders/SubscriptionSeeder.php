@@ -19,7 +19,7 @@ class SubscriptionSeeder extends Seeder
             [
                 'id' => 'SUB002',
                 'subscription_name' => '4 Meal Vegetarian Pack',
-                'price' => '800000',
+                'price' => '53000',
                 'image' => 'subscription-1.jpg',
                 'subscription_type' => 1,
                 'item_id' => '3,8,9,10',

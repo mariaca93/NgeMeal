@@ -40,7 +40,7 @@
                                 </h2>
                                 <div id="faqs<?php echo e($key); ?>" class="accordion-collapse collapse <?php echo e($key==0 ? 'show' : ''); ?>" aria-labelledby="faq<?php echo e($key); ?>"
                                     data-bs-parent="#faqleft">
-                                    <div class="accordion-body"><?php echo e($faqdata->description); ?></div>
+                                    <div class="accordion-body" style="white-space: pre-line"><?php echo e($faqdata->description); ?></div>
                                 </div>
                             </div>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

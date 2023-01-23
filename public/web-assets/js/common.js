@@ -285,6 +285,42 @@ function addtocart(addcarturl) {
         addons_id, addons_name, addons_price, addcarturl);
 };
 
+function addtocartsub(addcarturl) {
+    "use strict";
+    var slug = $('#slug').val();
+    if($('#item_name').val() != "") {
+        var item_name = $('#item_name').val();
+    } else {
+        var item_name = $('#subscription_name').val();
+    }
+
+    if($('#item_type').val() != "") {
+        var item_type = $('#item_type').val();
+    } else {
+        var item_type = $('#subscription_type').val();
+    }
+
+    // var item_name = $('#item_name').val();
+    var item_type = $('#item_type').val();
+
+    var image_name = $('#image_name').val();
+
+    var item_price = $('#item_price').val();
+
+    var addons_id = $('.x-addons-checkbox .addons-checkbox:checked').map(function() {
+        return $(this).attr('data-addons-id');
+    }).get().join(',');
+    var addons_name = ($('.x-addons-checkbox .addons-checkbox:checked').map(function() {
+        return $(this).attr('data-addons-name');
+    }).get().join(','));
+    var addons_price = ($('.x-addons-checkbox .addons-checkbox:checked').map(function() {
+        return $(this).attr('data-addons-price');
+    }).get().join(','));
+    localStorage.clear();
+    calladdtocart(slug, item_name, item_type, image_name, item_price,
+        addons_id, addons_name, addons_price, addcarturl);
+};
+
 function calladdtocart(slug, item_name, item_type, image_name, item_price,addons_id, addons_name, addons_price, addcarturl) {
     "use strict";
     console.log('slug: ' +slug);

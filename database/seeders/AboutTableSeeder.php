@@ -41,7 +41,7 @@ It was popularised in the 1960s with the release of Letraset sheets containing L
                 'copyright' => 'Copyright © 2023. Designed by NgeMeal Team',
                 'title' => 'NgeMeal',
                 'short_title' => 'NgeMeal',
-                'og_title' => 'NgeMeal food ordering Website and Mobile App with Admin Panel',
+                'og_title' => 'NgeMeal food ordering Website',
             'og_description' => 'Restaurant Website is a catalyst for the food industry. The website lets you (a restaurateur) connect with the customers who wish to either get food delivered or pick-up food. The website lets you track customers’ order till the food delivery. With this website you can easily manage the entire restaurant food business to achieve maximum growth.',
                 'mobile' => '+62345678910',
                 'email' => 'ngemeal@gmail.com',

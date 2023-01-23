@@ -27,16 +27,34 @@
             <script>
                 function getNextItem() {
 
-                    //save current item addone checkboxes to local storage
+                    //save current item addone checkboxes to local storage when click next item
                     $id = $(".show-small-img-item[alt='now']").attr('id')
                     var addonKey = 'sub'+'{{ $getsubscriptiondata->id}}'+'_item'+$id;
                     localStorage[addonKey]=document.getElementById("item-variation-addon").innerHTML
+                    //add hidden addon element on currently clicked addon when click next item
+                    document.getElementById("div-hidden-addons-checkbox").innerHTML = ""
+                    var values = [],
+                    keys = Object.keys(localStorage),
+                    i = keys.length;
 
-                    //show-img utk show large img
-                    //show-small-img utk show image kecil yang di slider dan arrow
+                    while ( i-- ) {
+                        
+                        var parser = new DOMParser();
+                        var str = localStorage.getItem(keys[i]).split('</h5>').pop().trim();
+                        const arr = str.split('</div>');
+                        arr.pop();
+                        console.log(arr);
+                        arr.forEach(splitFunc);
 
-                    //ketika click next di slider atas maka what i want to happen is :
-                    //1. slider atas pindah image jd rounded red border
+                        function splitFunc(value) {
+                            var str = value.substring(0, value.indexOf("<label")).split('<input').pop().trim();
+                            str = "<input " + str;
+                            console.log(str);
+                            var newNode = parser.parseFromString(str, "text/html");
+                            newNode.documentElement.setAttribute("class", "x-addons-checkbox");
+                            document.getElementById("div-hidden-addons-checkbox").appendChild(newNode.documentElement);
+                        }
+                    }
 
                     $('#show-img').attr('src', $(".show-small-img-item[alt='now']").next().attr('src'))
                     $(".show-small-img-item[alt='now']").next().css({'border': 'solid 1px #951b25', 'padding': '2px'}).siblings().css({'border': 'none', 'padding': '0'})
@@ -151,12 +169,6 @@
                         document.getElementById("item-variation-addon").appendChild(div)
                     }
 
-                    // console.log($(".show-small-img-item[alt='now']").next().attr('src'))
-
-                    // var items = {!! json_encode($getsubscriptiondata['items']) !!}
-
-                    // console.log(items)
-                    // document.getElementById("item-name").innerHTML = "New text!"
                 }
 
                 function getPrevItem() {
@@ -164,7 +176,30 @@
                     $id = $(".show-small-img-item[alt='now']").attr('id')
                     var addonKey = 'sub'+'{{ $getsubscriptiondata->id}}'+'_item'+$id;
                     localStorage[addonKey]=document.getElementById("item-variation-addon").innerHTML
+                    //add hidden addon element on currently clicked addon when click prev item
+                    document.getElementById("div-hidden-addons-checkbox").innerHTML = ""
+                    var values = [],
+                    keys = Object.keys(localStorage),
+                    i = keys.length;
 
+                    while ( i-- ) {
+                        
+                        var parser = new DOMParser();
+                        var str = localStorage.getItem(keys[i]).split('</h5>').pop().trim();
+                        const arr = str.split('</div>');
+                        arr.pop();
+                        console.log(arr);
+                        arr.forEach(splitFunc);
+
+                        function splitFunc(value) {
+                            var str = value.substring(0, value.indexOf("<label")).split('<input').pop().trim();
+                            str = "<input " + str;
+                            console.log(str);
+                            var newNode = parser.parseFromString(str, "text/html");
+                            newNode.documentElement.setAttribute("class", "x-addons-checkbox");
+                            document.getElementById("div-hidden-addons-checkbox").appendChild(newNode.documentElement);
+                        }
+                    }
                     //show-img utk show large img
                     //show-small-img utk show image kecil yang di slider dan arrow
 
@@ -423,6 +458,10 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div style="display:none" id="div-hidden-addons-checkbox">
+                                            <input class="x-addons-checkbox" type="checkbox" value="5'" data-addons-id="5" data-addons-price="15" data-addons-name="Olive Oil" onclick="getaddons(this)" name="Olive Oil" id="addons5" checked="checked"><parsererror style="display: block; white-space: pre; border: 2px solid #c77; padding: 0 1em 0 1em; margin: 1em; background-color: #fdd; color: black"><h3>This page contains the following errors:</h3><div style="font-family:monospace;font-size:12px">error on line 1 at column 237: Extra content at the end of the document
+                                            </div><h3>Below is a rendering of the page up to the first error.</h3></parsererror></input>
+                                        </div>
                                         @if (!empty($item->addons) && count($item->addons) > 0)
                                             <div class="col-md-6 item-detail-wrapper" id="style-3">
                                                 <div class="item-variation-list" id="item-variation-addon">
@@ -437,7 +476,6 @@
                                                                 onclick="getaddons(this)"
                                                                 name="{!! $addonsdata->name !!}"
                                                                 id="addons{{ $addonsdata->id }}">
-                                                                <!-- id="{{ $item->item_name }}{{ $addonsdata->id }}"> -->
                                                             <label class="form-check-label cursor-pointer me-3"
                                                                 for="addons{{ $addonsdata->id }}" id ="addon-name">{{ $addonsdata->name }}
                                                                 : <span
@@ -478,7 +516,7 @@
                                         <div class="col-md-6 col-sm-6 col-auto">
                                             @if (Auth::user())
                                                 <a class="btn btn-success btn-lg w-100 m-0 text-uppercase fs-6"
-                                                    onclick="addtocart('{{ URL::to('addtocart') }}')">{{ trans('labels.add_to_cart') }}</a>
+                                                    onclick="addtocartsub('{{ URL::to('addtocart') }}')">{{ trans('labels.add_to_cart') }}</a>
                                             @else
                                                 <a class="btn btn-success btn-lg w-100 m-0 text-uppercase fs-6"
                                                     href="{{ URL::to('/login') }}">{{ trans('labels.add_to_cart') }}</a>
