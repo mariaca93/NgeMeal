@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('page_title'); ?>
     | <?php echo e(trans('labels.my_cart')); ?>
 
@@ -90,35 +89,7 @@
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12">
-                            <div class="promocode mb-4 py-4">
-                                <div class="row justify-content-between align-items-center mb-2">
-                                    <div class="col-auto"><label for="offer_code"><?php echo e(trans('labels.promocode')); ?></label>
-                                    </div>
-                                </div>
-                                <div class="row justify-content-between align-items-center">
-                                    <form action="" method="post">
-                                        <?php echo csrf_field(); ?>
-                                        <div class="d-flex">
-                                            <input type="hidden" name="order_amount" value="<?php echo e($order_total); ?>">
-                                            <input type="text" class="form-control" name="offer_code"
-                                                value="<?php echo e(old('offer_code')); ?>" id="offer_code"
-                                                placeholder="<?php echo e(trans('labels.have_promocode')); ?>" readonly>
-                                            <button type="submit"
-                                                class="btn btn-primary bg-primary border-0 ms-2"><?php echo e(trans('labels.apply')); ?></button>
-                                        </div>
-                                        <?php $__errorArgs = ['offer_code'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                            <small class="text-light"><?php echo e($message); ?></small>
-                                        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                    </form>
-                                </div>
-                            </div>
+                            
                             <div class="summary py-3 mb-4">
                                 <h2 class="border-bottom"><?php echo e(trans('labels.bill_details')); ?></h2>
                                 <div class="bill-details border-bottom">

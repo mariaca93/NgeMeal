@@ -102,20 +102,8 @@
                                                     <?php if($orderdata->transaction_type == 1): ?>
                                                         <?php echo e(trans('labels.cash')); ?>
 
-                                                    <?php elseif($orderdata->transaction_type == 2): ?>
-                                                        <?php echo e(trans('labels.wallet')); ?>
-
-                                                    <?php elseif($orderdata->transaction_type == 3): ?>
-                                                        <?php echo e(trans('labels.razorpay')); ?>
-
                                                     <?php elseif($orderdata->transaction_type == 4): ?>
-                                                        <?php echo e(trans('labels.stripe')); ?>
-
-                                                    <?php elseif($orderdata->transaction_type == 5): ?>
-                                                        <?php echo e(trans('labels.flutterwave')); ?>
-
-                                                    <?php elseif($orderdata->transaction_type == 6): ?>
-                                                        <?php echo e(trans('labels.paystack')); ?>
+                                                        <?php echo e(trans('labels.visa')); ?>
 
                                                     <?php else: ?>
                                                     --

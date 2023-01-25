@@ -88,28 +88,6 @@
                             @endforeach
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12">
-                            <div class="promocode mb-4 py-4">
-                                <div class="row justify-content-between align-items-center mb-2">
-                                    <div class="col-auto"><label for="offer_code">{{ trans('labels.promocode') }}</label>
-                                    </div>
-                                </div>
-                                <div class="row justify-content-between align-items-center">
-                                    <form action="" method="post">
-                                        @csrf
-                                        <div class="d-flex">
-                                            <input type="hidden" name="order_amount" value="{{ $order_total }}">
-                                            <input type="text" class="form-control" name="offer_code"
-                                                value="{{ old('offer_code') }}" id="offer_code"
-                                                placeholder="{{ trans('labels.have_promocode') }}" readonly>
-                                            <button type="submit"
-                                                class="btn btn-primary bg-primary border-0 ms-2">{{ trans('labels.apply') }}</button>
-                                        </div>
-                                        @error('offer_code')
-                                            <small class="text-light">{{ $message }}</small>
-                                        @enderror
-                                    </form>
-                                </div>
-                            </div>
                             <div class="summary py-3 mb-4">
                                 <h2 class="border-bottom">{{ trans('labels.bill_details') }}</h2>
                                 <div class="bill-details border-bottom">

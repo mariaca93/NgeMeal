@@ -85,7 +85,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @if (!empty($getitemdata->addons) && count($getitemdata->addons) > 0)
+                                    {{-- @if (!empty($getitemdata->addons) && count($getitemdata->addons) > 0)
                                         <div class="col-md-6 item-detail-wrapper" id="style-3">
                                             <div class="item-variation-list">
                                                 <h5 class="dark_color">{{ trans('labels.addons') }}</h5>
@@ -106,7 +106,7 @@
                                                 @endforeach
                                             </div>
                                         </div>
-                                    @endif
+                                    @endif --}}
                                 </div>
                                 <!-- <br> slug -->
                                 <input type="hidden" name="slug" id="slug" value="{{ $getitemdata->slug }}">

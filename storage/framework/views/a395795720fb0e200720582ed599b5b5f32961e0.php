@@ -7,7 +7,6 @@
 <!-- Back to Top Button End Here -->
 <!-- Footer Start Here -->
 <footer>
-    
     <div class="footer" style="background : linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('<?php echo e(Helper::image_path(@Helper::appdata()->footer_bg_image)); ?>')
      center center/cover no-repeat rgba(0, 0, 0, .6) !important;">
         <div class="container">

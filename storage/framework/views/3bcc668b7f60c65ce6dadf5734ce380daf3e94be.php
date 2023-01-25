@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="<?php echo e(asset('admin-assets/assets/css/sweetalert/sweetalert2.min.css')); ?>"><!-- Sweetalert CSS -->
     <link rel="stylesheet" href="<?php echo e(asset('web-assets/css/style.css')); ?>"><!-- Custom CSS -->
     <link rel="stylesheet" href="<?php echo e(asset('web-assets/css/responsive.css')); ?>"><!-- Media Query Resposive CSS -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script> 
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>" />
     <style>
         .breadcrumb-sec{
@@ -89,10 +89,7 @@
                                     <h5 class="attribute"></h5>
                                     <div class="varition-listing"></div>
                                 </div>
-                                <div class="item-addons-list mb-4" id="addons">
-                                    <h5><?php echo e(trans('labels.addons')); ?></h5>
-                                    <div class="addons-listing"></div>
-                                </div>
+                                
                                 
                                 <input type="hidden" name="slug" id="slug">
                                 
