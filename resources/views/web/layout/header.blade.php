@@ -43,8 +43,9 @@
                             @endforeach
                         </ul>
                     </li>
-                    <a class="nav-link text-white {{ request()->is('contactus') ? 'active' : '' }}"
-                        href="">{{ trans('labels.help_contact_us') }}</a>
+                    <a class="nav-link text-white {{ request()->is('faq') ? 'active' : '' }}"
+                        href="{{ route('faq') }}">{{ trans('labels.faq') }}</a>
+
                     @if (Auth::user())
                         <a class="nav-link text-white {{ request()->is('cart') ? 'active' : '' }}"
                             href="{{ route('cart') }}">{{ trans('labels.cart') }}</a>
@@ -52,7 +53,7 @@
                         <a class="nav-link text-white" href="{{ route('login') }}">{{ trans('labels.cart') }}</a>
                     @endif
                     <a class="nav-link text-white" href="{{ route('search') }}">{{ trans('labels.search') }}</a>
-                    
+
                     @if (Auth::user())
                         <div class="sidebar-login border-top">
                             <ul class="navbar-nav my-3 px-3">
@@ -120,8 +121,8 @@
                             @endforeach
                         </ul>
                     </li>
-                    <a class="nav-link px-3 {{ request()->is('contactus') ? 'active' : '' }}"
-                        href="">{{ trans('labels.help_contact_us') }}</a>
+                    <a class="nav-link px-3 {{ request()->is('faq') ? 'active' : '' }}"
+                        href="{{ route('faq') }}">{{ trans('labels.faq') }}</a>
                 </div>
                 <div class="d-flex align-items-center nav-sidebar-d-none">
                     <div class="header-search mx-2">

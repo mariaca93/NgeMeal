@@ -52,12 +52,12 @@
                                         <div class="form-group">
                                             <label class="text-white form-label">{{trans('labels.email')}}</label>
                                             <input type="email" name="email" class="form-control custom-input mb-3" placeholder="{{trans('labels.email')}}" @if (env('Environment') == 'sendbox') value="user@gmail.com" @endif>
-                                            @error('email')<span class="text-light">{{ $message }}</span>@enderror
+                                            @error('email')<span class="p-3 red_color bottom-line fw-bold w-auto">{{ $message }}</span>@enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="text-white form-label">{{trans('labels.password')}}</label>
                                             <input type="password" name="password" class="form-control custom-input mb-3" placeholder="{{trans('labels.password')}}" @if (env('Environment') == 'sendbox') value="123456" @endif>
-                                            @error('password')<span class="text-light">{{ $message }}</span>@enderror
+                                            @error('password')<span class="p-3 red_color bottom-line fw-bold w-auto">{{ $message }}</span>@enderror
                                         </div>
                                         <div class="form-group d-flex justify-content-end">
                                             <a href="{{ URL::to('forgot-password') }}" class="text-primary fw-bold float-end">{{trans('labels.forgot_password_q')}}</a>
@@ -71,16 +71,6 @@
                                     <div class="line ms-4"></div>
                                     <p class="mb-0 text-white fw-light">{{ trans('labels.or') }}</p>
                                     <div class="line me-4"></div>
-                                </div>
-                                <div class="row m-3 text-center social_icon">
-                                    <div class="col">
-                                        <a class="p-4">
-                                            <img src="{{Helper::web_image_path('google.svg')}}" alt="social-icon">
-                                        </a>
-                                        <a class="p-4">
-                                            <img src="{{Helper::web_image_path('facebook.svg')}}" alt="social-icon">
-                                        </a>
-                                    </div>
                                 </div>
                                 <div class="m-3 text-center">
                                     <p class="text-white fw-lighter mb-0">

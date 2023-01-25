@@ -6,13 +6,10 @@ use App\Http\Controllers\front\AddToCartController as AddToCartController;
 use App\Http\Controllers\front\SubscriptionController as WebSubscriptionController;
 use App\Http\Controllers\front\OrderController as WebOrderController;
 use App\Http\Controllers\front\HomeController;
-use App\Http\Controllers\front\MenuController;
 use App\Http\Controllers\front\FavoriteController;
 use App\Http\Controllers\front\CartController;
 use App\Http\Controllers\front\CheckoutController;
-use App\Http\Controllers\front\CheckoutotpController;
 use App\Http\Controllers\front\AddressController;
-use App\Http\Controllers\front\WalletController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,7 +35,7 @@ Route::group(['namespace' => 'front', 'middleware' => 'MaintenanceMiddleware'], 
 	Route::get('/ingredient', [WebItemController::class, 'searchByIngredient'])->name('searchByIngredient');
 	Route::get('/view-all', [WebItemController::class, 'viewall'])->name('viewall');
 	Route::get('/addtocart', [AddToCartController::class, 'addtocart'])->name('addtocart');
-	
+
 	Route::group(['middleware'=>'NoUserAuthMiddleware'],function(){
 	// auth
 	Route::get('/register', [WebUserController::class, 'register'])->name('register');
@@ -49,7 +46,7 @@ Route::group(['namespace' => 'front', 'middleware' => 'MaintenanceMiddleware'], 
 	Route::get('/login', [WebUserController::class, 'login'])->name('login');
 	Route::post('/checklogin', [WebUserController::class, 'checklogin'])->name('checklogin');
 	});
-	
+
 	Route::group(['middleware'=>'UserMiddleware'],function(){
 		// user
 		Route::get('/profile', [WebUserController::class, 'getprofile'])->name('user-profile');
@@ -68,7 +65,7 @@ Route::group(['namespace' => 'front', 'middleware' => 'MaintenanceMiddleware'], 
 		Route::post('/holduser', [CheckoutController::class, 'holduser']);
 		Route::post('/placeorder', [CheckoutController::class, 'placeorder'])->name('placeorder');
 		Route::post('/checkdeliveryzone', [CheckoutController::class, 'checkdeliveryzone']);
-		
+
 		// address
 		Route::get('/address', [AddressController::class, 'index'])->name('address');
 		Route::get('/address/add', [AddressController::class, 'add'])->name('add-address');

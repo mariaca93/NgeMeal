@@ -1,71 +1,71 @@
-@extends('web.layout.default')
-@section('page_title')
-| {{ trans('labels.home') }}
-@endsection
-@section('content')
+<?php $__env->startSection('page_title'); ?>
+| <?php echo e(trans('labels.home')); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 <!-- Slider Area Start Here -->
-@if (count($sliders)>0)
+<?php if(count($sliders)>0): ?>
 <section class="slider-area">
     <div id="slidercarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            @foreach ($sliders as $key => $sliderdata)
-            <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                <img src="{{ Helper::web_image_path($sliderdata->image) }}" class="d-block img-fluid" alt="slider">
+            <?php $__currentLoopData = $sliders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $sliderdata): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <div class="carousel-item <?php echo e($key == 0 ? 'active' : ''); ?>">
+                <img src="<?php echo e(Helper::web_image_path($sliderdata->image)); ?>" class="d-block img-fluid" alt="slider">
                 <div class="carousel-caption d-flex h-100 align-items-center justify-content-center flex-column">
-                    <h5 style="font-size:10rem;font-family:'bebas neue', cursive">{{ $sliderdata->title }}</h5>
-                    <p style="position: absolute;z-index:100;font-family:'homemade apple', cursive">{{ $sliderdata->description }}</p>
-                    @if ($sliderdata['item_info'] != '')
-                    <a href="{{ URL::to('/item-' . $sliderdata['item_info']->slug) }}" class="btn btn-primary fw-bold">{{ trans('labels.explore') }} <i class="fa-solid fa-circle-arrow-right"></i> </a>
-                    @endif
-                    @if ($sliderdata['cuisine_info'] != '')
-                    <a href="{{ URL::to('/menu/?cuisine=' . $sliderdata['cuisine_info']->slug) }}" class="btn btn-primary fw-bold">{{ trans('labels.explore') }} <i class="fa-solid fa-circle-arrow-right"></i> </a>
-                    @endif
+                    <h5 style="font-size:10rem;font-family:'bebas neue', cursive"><?php echo e($sliderdata->title); ?></h5>
+                    <p style="position: absolute;z-index:100;font-family:'homemade apple', cursive"><?php echo e($sliderdata->description); ?></p>
+                    <?php if($sliderdata['item_info'] != ''): ?>
+                    <a href="<?php echo e(URL::to('/item-' . $sliderdata['item_info']->slug)); ?>" class="btn btn-primary fw-bold"><?php echo e(trans('labels.explore')); ?> <i class="fa-solid fa-circle-arrow-right"></i> </a>
+                    <?php endif; ?>
+                    <?php if($sliderdata['cuisine_info'] != ''): ?>
+                    <a href="<?php echo e(URL::to('/menu/?cuisine=' . $sliderdata['cuisine_info']->slug)); ?>" class="btn btn-primary fw-bold"><?php echo e(trans('labels.explore')); ?> <i class="fa-solid fa-circle-arrow-right"></i> </a>
+                    <?php endif; ?>
                 </div>
             </div>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
-        <button class="carousel-control-prev {{ count($sliders) == 1 ? 'd-none' : '' }}" type="button" data-bs-target="#slidercarousel" data-bs-slide="prev">
+        <button class="carousel-control-prev <?php echo e(count($sliders) == 1 ? 'd-none' : ''); ?>" type="button" data-bs-target="#slidercarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         </button>
-        <button class="carousel-control-next {{ count($sliders) == 1 ? 'd-none' : '' }}" type="button" data-bs-target="#slidercarousel" data-bs-slide="next">
+        <button class="carousel-control-next <?php echo e(count($sliders) == 1 ? 'd-none' : ''); ?>" type="button" data-bs-target="#slidercarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
         </button>
     </div>
 </section>
-@endif
+<?php endif; ?>
 <!-- Slider Area End Here -->
 <!-- Promotional topbanners Start Here -->
-@if (count($banners['topbanners']) > 0)
+<?php if(count($banners['topbanners']) > 0): ?>
 <section class="banner1">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div id="news-slider" class="owl-carousel">
-                    @foreach ($banners['topbanners'] as $bannerdata)
+                    <?php $__currentLoopData = $banners['topbanners']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bannerdata): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="post-slide">
                         <div class="post-img">
-                            @if ($bannerdata['item_info'] != '')
-                            <a href="{{ URL::to('/item-' . $bannerdata['item_info']->slug) }}">
-                                @elseif($bannerdata['cuisine_info'] != '')
-                                <a href="{{ URL::to('/menu/?cuisine=' . $bannerdata['cuisine_info']->slug) }}">
-                                    @else
+                            <?php if($bannerdata['item_info'] != ''): ?>
+                            <a href="<?php echo e(URL::to('/item-' . $bannerdata['item_info']->slug)); ?>">
+                                <?php elseif($bannerdata['cuisine_info'] != ''): ?>
+                                <a href="<?php echo e(URL::to('/menu/?cuisine=' . $bannerdata['cuisine_info']->slug)); ?>">
+                                    <?php else: ?>
                                     <a href="javascript:void(0);">
-                                        @endif
-                                        <img src="{{ $bannerdata['image'] }}" alt="banner">
+                                        <?php endif; ?>
+                                        <img src="<?php echo e($bannerdata['image']); ?>" alt="banner">
                                     </a>
                         </div>
                     </div>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>
         </div>
     </div>
 </section>
-@endif
+<?php endif; ?>
 <!-- Promotional topbanners End Here -->
 <!-- Cuisine Section Start Here -->
 
-<form hidden name="formSubmit" method="GET" action="{{ URL::to('home') }}">
+<form hidden name="formSubmit" method="GET" action="<?php echo e(URL::to('home')); ?>">
     <input hidden name="longitude" id="longitude" value="">
     <input hidden name="latitude" id="latitude" value="">
 <button hidden id="btnSubmit" type="submit"></button>
@@ -110,239 +110,239 @@
     }
 </script>
 
-@if (count(Helper::get_cuisines()) > 0)
+<?php if(count(Helper::get_cuisines()) > 0): ?>
 <section class="cuisine" style="padding-top:20px">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto">
-                        <h1 class="text-capitalize fw-bold">{{ trans('labels.cuisines') }}</h1>
+                        <h1 class="text-capitalize fw-bold"><?php echo e(trans('labels.cuisines')); ?></h1>
                     </div>
                     <div class="col-auto text-end align-center">
-                        <a href="{{route('cuisines')}}" class="btn btn-sm btn-outline-primary">{{ trans('labels.view_all') }}</a>
+                        <a href="<?php echo e(route('cuisines')); ?>" class="btn btn-sm btn-outline-primary"><?php echo e(trans('labels.view_all')); ?></a>
                     </div>
                 </div>
                 <div id="cuisine" class="owl-carousel mt-2">
-                    @foreach (Helper::get_cuisines() as $cuisinedata)
+                    <?php $__currentLoopData = Helper::get_cuisines(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cuisinedata): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="cuisine-wrapper mx-2">
-                        <a href="{{ URL::to('/menu/?cuisine=' . $cuisinedata->slug) }}">
+                        <a href="<?php echo e(URL::to('/menu/?cuisine=' . $cuisinedata->slug)); ?>">
                             <div class="cat rounded-circle">
-                                <img src="{{ url('/admin-assets/images/cuisines/'.$cuisinedata->image) }}" class="rounded-circle" alt="cuisine">
+                                <img src="<?php echo e(url('/admin-assets/images/cuisines/'.$cuisinedata->image)); ?>" class="rounded-circle" alt="cuisine">
                             </div>
                         </a>
-                        <p class="text-center my-2">{{ $cuisinedata->cuisine_name }}</p>
+                        <p class="text-center my-2"><?php echo e($cuisinedata->cuisine_name); ?></p>
                     </div>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>
         </div>
     </div>
 </section>
-@endif
+<?php endif; ?>
 <!-- Cuisine Section End Here -->
 
 <!-- food based on weather section starts here-->
-@if (count($basedonweather) > 0)
+<?php if(count($basedonweather) > 0): ?>
 <section class="menu">
     <div class="container">
         <div class="row align-items-center justify-content-between my-2">
             <div class="col-auto menu-heading">
-                <h1>{{$weathermessage}}</h1>
+                <h1><?php echo e($weathermessage); ?></h1>
             </div>
             <div class="col-auto">
-                <a href="{{ URL::to('/view-all?type=topitems') }}" class="btn btn-sm btn-outline-primary">{{ trans('labels.view_all') }}</a>
+                <a href="<?php echo e(URL::to('/view-all?type=topitems')); ?>" class="btn btn-sm btn-outline-primary"><?php echo e(trans('labels.view_all')); ?></a>
             </div>
         </div>
         <div class="row">
-            @foreach ($basedonweather as $itemdata)
-                @include('web.itemview')
-            @endforeach
+            <?php $__currentLoopData = $basedonweather; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $itemdata): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php echo $__env->make('web.itemview', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
     </div>
 </section>
-@endif
+<?php endif; ?>
 <!-- food based on weather section ends here-->
 
 <!-- topitemlist dishes Section Start Here -->
-@if (count($topitemlist) > 0)
+<?php if(count($topitemlist) > 0): ?>
 <section class="menu">
     <div class="container">
         <div class="row align-items-center justify-content-between my-2">
             <div class="col-auto menu-heading">
-                <h1>{{ trans('labels.trending') }}</h1>
+                <h1><?php echo e(trans('labels.trending')); ?></h1>
             </div>
             <div class="col-auto">
-                <a href="{{ URL::to('/view-all?type=topitems') }}" class="btn btn-sm btn-outline-primary">{{ trans('labels.view_all') }}</a>
+                <a href="<?php echo e(URL::to('/view-all?type=topitems')); ?>" class="btn btn-sm btn-outline-primary"><?php echo e(trans('labels.view_all')); ?></a>
             </div>
         </div>
         <div class="row">
-            @foreach ($topitemlist as $itemdata)
-                @include('web.itemview')
-            @endforeach
+            <?php $__currentLoopData = $topitemlist; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $itemdata): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php echo $__env->make('web.itemview', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
     </div>
 </section>
-@endif
+<?php endif; ?>
 <!-- topitemlist dishes Section End Here -->
 <!-- Promotional bannersection1 Start Here -->
-@if (count($banners['bannersection1']) > 0)
+<?php if(count($banners['bannersection1']) > 0): ?>
 <section class="banner2 my-md-5 my-sm-3">
     <div id="banner1" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
-            @foreach ($banners['bannersection1'] as $key => $bannerdata)
-            <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                @if ($bannerdata['item_info'] != '')
-                <a href="{{ URL::to('/item-' . $bannerdata['item_info']->slug) }}">
-                    @elseif($bannerdata['cuisine_info'] != '')
-                    <a href=" {{ URL::to('/menu/?cuisine=' . $bannerdata['cuisine_info']->slug) }} ">
-                        @else
+            <?php $__currentLoopData = $banners['bannersection1']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $bannerdata): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <div class="carousel-item <?php echo e($key == 0 ? 'active' : ''); ?>">
+                <?php if($bannerdata['item_info'] != ''): ?>
+                <a href="<?php echo e(URL::to('/item-' . $bannerdata['item_info']->slug)); ?>">
+                    <?php elseif($bannerdata['cuisine_info'] != ''): ?>
+                    <a href=" <?php echo e(URL::to('/menu/?cuisine=' . $bannerdata['cuisine_info']->slug)); ?> ">
+                        <?php else: ?>
                         <a href="javascript:void(0)">
-                            @endif
-                            <img src="{{ $bannerdata['image'] }}" height="400" alt="banner2">
+                            <?php endif; ?>
+                            <img src="<?php echo e($bannerdata['image']); ?>" height="400" alt="banner2">
                         </a>
             </div>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
-        <button class="carousel-control-prev {{ count($banners['bannersection1']) == 1 ? 'd-none' : '' }}" type="button" data-bs-target="#banner1" data-bs-slide="prev">
+        <button class="carousel-control-prev <?php echo e(count($banners['bannersection1']) == 1 ? 'd-none' : ''); ?>" type="button" data-bs-target="#banner1" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next {{ count($banners['bannersection1']) == 1 ? 'd-none' : '' }}" type="button" data-bs-target="#banner1" data-bs-slide="next">
+        <button class="carousel-control-next <?php echo e(count($banners['bannersection1']) == 1 ? 'd-none' : ''); ?>" type="button" data-bs-target="#banner1" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
 </section>
-@endif
+<?php endif; ?>
 <!-- Promotional bannersection1 End Here -->
 <!-- todayspecial Dishes Section Start Here -->
-@if (count($todayspecial) > 0)
+<?php if(count($todayspecial) > 0): ?>
 <section class="menu">
     <div class="container">
         <div class="row align-items-center justify-content-between my-2">
             <div class="col-auto menu-heading">
-                <h1>{{ trans('labels.todays_special') }}</h1>
+                <h1><?php echo e(trans('labels.todays_special')); ?></h1>
             </div>
             <div class="col-auto">
-                <a href="{{ URL::to('/view-all?type=todayspecial') }}" class="btn btn-sm btn-outline-primary">{{ trans('labels.view_all') }}</a>
+                <a href="<?php echo e(URL::to('/view-all?type=todayspecial')); ?>" class="btn btn-sm btn-outline-primary"><?php echo e(trans('labels.view_all')); ?></a>
             </div>
         </div>
         <div class="row">
-            @foreach ($todayspecial as $itemdata)
-            @include('web.itemview')
-            @endforeach
+            <?php $__currentLoopData = $todayspecial; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $itemdata): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php echo $__env->make('web.itemview', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
     </div>
 </section>
-@endif
+<?php endif; ?>
 <!-- todayspecial Dishes Section End Here -->
 <!-- todayspecial Dishes Section Start Here -->
-@if (count($subscriptions) > 0)
+<?php if(count($subscriptions) > 0): ?>
 <section class="menu">
     <div class="container">
         <div class="row align-items-center justify-content-between my-2">
             <div class="col-auto menu-heading">
-                <h1>{{ trans('labels.subscription_menu') }}</h1>
+                <h1><?php echo e(trans('labels.subscription_menu')); ?></h1>
             </div>
             <div class="col-auto">
-                <a href="{{ URL::to('/view-all?type=subscription') }}" class="btn btn-sm btn-outline-primary">{{ trans('labels.view_all') }}</a>
+                <a href="<?php echo e(URL::to('/view-all?type=subscription')); ?>" class="btn btn-sm btn-outline-primary"><?php echo e(trans('labels.view_all')); ?></a>
             </div>
         </div>
         <div class="row">
-            @foreach ($subscriptions as $subscriptiondata)
-            @include('web.subscriptionview')
-            @endforeach
+            <?php $__currentLoopData = $subscriptions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subscriptiondata): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php echo $__env->make('web.subscriptionview', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
     </div>
 </section>
-@endif
+<?php endif; ?>
 <!-- todayspecial Dishes Section End Here -->
 <!-- Promotional bannersection2 Start Here -->
-@if (count($banners['bannersection2']) > 0)
+<?php if(count($banners['bannersection2']) > 0): ?>
 <section class="banner1">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div id="bannersection2" class="owl-carousel">
-                    @foreach ($banners['bannersection2'] as $bannerdata)
+                    <?php $__currentLoopData = $banners['bannersection2']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bannerdata): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="post-slide">
                         <div class="post-img">
-                            @if ($bannerdata['item_info'] != '')
-                            <a href="{{ URL::to('/item-' . $bannerdata['item_info']->slug) }}">
-                                @elseif($bannerdata['cuisine_info'] != '')
-                                <a href="{{ URL::to('/menu/?cuisine=' . $bannerdata['cuisine_info']->slug) }}">
-                                    @else
+                            <?php if($bannerdata['item_info'] != ''): ?>
+                            <a href="<?php echo e(URL::to('/item-' . $bannerdata['item_info']->slug)); ?>">
+                                <?php elseif($bannerdata['cuisine_info'] != ''): ?>
+                                <a href="<?php echo e(URL::to('/menu/?cuisine=' . $bannerdata['cuisine_info']->slug)); ?>">
+                                    <?php else: ?>
                                     <a href="javascript:void(0);">
-                                        @endif
-                                        <img src="{{ $bannerdata['image'] }}" alt="banner">
+                                        <?php endif; ?>
+                                        <img src="<?php echo e($bannerdata['image']); ?>" alt="banner">
                                     </a>
                         </div>
                     </div>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>
         </div>
     </div>
 </section>
-@endif
+<?php endif; ?>
 <!-- Promotional bannersection2 End Here -->
 <!-- recommended Section Start Here -->
-@if (count($recommended) > 0)
+<?php if(count($recommended) > 0): ?>
 <section class="menu">
     <div class="container">
         <div class="row align-items-center justify-content-between my-2">
             <div class="col-auto menu-heading">
-                <h1>{{ trans('labels.recommended') }}</h1>
+                <h1><?php echo e(trans('labels.recommended')); ?></h1>
             </div>
             <div class="col-auto">
-                <a href="{{ URL::to('/view-all?type=recommended') }}" class="btn btn-sm btn-outline-primary">{{ trans('labels.view_all') }}</a>
+                <a href="<?php echo e(URL::to('/view-all?type=recommended')); ?>" class="btn btn-sm btn-outline-primary"><?php echo e(trans('labels.view_all')); ?></a>
             </div>
         </div>
         <div class="row">
-            @foreach ($recommended as $itemdata)
-            @include('web.itemview')
-            @endforeach
+            <?php $__currentLoopData = $recommended; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $itemdata): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php echo $__env->make('web.itemview', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
     </div>
 </section>
-@endif
+<?php endif; ?>
 <!-- recommended Section End Here -->
 <!-- Promotional bannersection3 Start Here -->
-@if (count($banners['bannersection3']) > 0)
+<?php if(count($banners['bannersection3']) > 0): ?>
 <section class="banner2 mt-md-5 mt-sm-3 mb-0">
     <div id="banner3" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
-            @foreach ($banners['bannersection3'] as $key => $bannerdata)
-            <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                @if ($bannerdata['item_info'] != '')
-                <a href="{{ URL::to('/item-' . $bannerdata['item_info']->slug) }}">
-                    @elseif($bannerdata['cuisine_info'] != '')
-                    <a href=" {{ URL::to('/menu/?cuisine=' . $bannerdata['cuisine_info']->slug) }} ">
-                        @else
+            <?php $__currentLoopData = $banners['bannersection3']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $bannerdata): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <div class="carousel-item <?php echo e($key == 0 ? 'active' : ''); ?>">
+                <?php if($bannerdata['item_info'] != ''): ?>
+                <a href="<?php echo e(URL::to('/item-' . $bannerdata['item_info']->slug)); ?>">
+                    <?php elseif($bannerdata['cuisine_info'] != ''): ?>
+                    <a href=" <?php echo e(URL::to('/menu/?cuisine=' . $bannerdata['cuisine_info']->slug)); ?> ">
+                        <?php else: ?>
                         <a href="javascript:void(0)">
-                            @endif
-                            <img src="{{ $bannerdata['image'] }}" height="400" alt="banner3">
+                            <?php endif; ?>
+                            <img src="<?php echo e($bannerdata['image']); ?>" height="400" alt="banner3">
                         </a>
             </div>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
-        <button class="carousel-control-prev {{ count($banners['bannersection3']) == 1 ? 'd-none' : '' }}" type="button" data-bs-target="#banner3" data-bs-slide="prev">
+        <button class="carousel-control-prev <?php echo e(count($banners['bannersection3']) == 1 ? 'd-none' : ''); ?>" type="button" data-bs-target="#banner3" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">{{ trans('labels.previous') }}</span>
+            <span class="visually-hidden"><?php echo e(trans('labels.previous')); ?></span>
         </button>
-        <button class="carousel-control-next {{ count($banners['bannersection3']) == 1 ? 'd-none' : '' }}" type="button" data-bs-target="#banner3" data-bs-slide="next">
+        <button class="carousel-control-next <?php echo e(count($banners['bannersection3']) == 1 ? 'd-none' : ''); ?>" type="button" data-bs-target="#banner3" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">{{ trans('labels.next') }}</span>
+            <span class="visually-hidden"><?php echo e(trans('labels.next')); ?></span>
         </button>
     </div>
 </section>
-@endif
+<?php endif; ?>
 
-@endsection
-@section('scripts')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('scripts'); ?>
 <script
-        src="https://maps.googleapis.com/maps/api/js?libraries=places&{{ @Helper::appdata()->map != 'map_key' ? 'key=' . @Helper::appdata()->map : '' }}">
+        src="https://maps.googleapis.com/maps/api/js?libraries=places&<?php echo e(@Helper::appdata()->map != 'map_key' ? 'key=' . @Helper::appdata()->map : ''); ?>">
     </script>
 
     <script>
@@ -394,7 +394,7 @@
                 draggable: true,
                 position: latlng
             });
-            if ("{{ env('Environment') }}" != "sendbox") {
+            if ("<?php echo e(env('Environment')); ?>" != "sendbox") {
                 google.maps.event.addListener(marker, 'dragend', function() {
                     $('#lat').val(this.getPosition().lat());
                     $('#lang').val(this.getPosition().lng());
@@ -439,11 +439,11 @@
     <script>
         $(document).ready(function() {
             $("#news-slider ").owlCarousel({
-                rtl: @if (session()->get('direction') == 'rtl')
+                rtl: <?php if(session()->get('direction') == 'rtl'): ?>
                     true
-                @else
+                <?php else: ?>
                     false
-                @endif ,
+                <?php endif; ?> ,
                 loop: true,
                 responsiveClass: true,
                 responsive: {
@@ -509,11 +509,11 @@
     <script>
         $(document).ready(function() {
             $("#cuisine").owlCarousel({
-                rtl: @if (session()->get('direction') == 'rtl')
+                rtl: <?php if(session()->get('direction') == 'rtl'): ?>
                     true
-                @else
+                <?php else: ?>
                     false
-                @endif ,
+                <?php endif; ?> ,
                 loop: true,
                 responsiveClass: true,
                 responsive: {
@@ -559,11 +559,11 @@
     <script>
         $(document).ready(function() {
             $("#bannersection2").owlCarousel({
-                rtl: @if (session()->get('direction') == 'rtl')
+                rtl: <?php if(session()->get('direction') == 'rtl'): ?>
                     true
-                @else
+                <?php else: ?>
                     false
-                @endif ,
+                <?php endif; ?> ,
                 loop: true,
                 responsiveClass: true,
                 responsive: {
@@ -625,4 +625,6 @@
             });
         });
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('web.layout.default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Christanto\Desktop\Materi\Project Skripsi\NgeMeal\resources\views/web/index.blade.php ENDPATH**/ ?>
