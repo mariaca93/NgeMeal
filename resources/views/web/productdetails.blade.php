@@ -85,28 +85,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- @if (!empty($getitemdata->addons) && count($getitemdata->addons) > 0)
-                                        <div class="col-md-6 item-detail-wrapper" id="style-3">
-                                            <div class="item-variation-list">
-                                                <h5 class="dark_color">{{ trans('labels.addons') }}</h5>
-                                                @foreach ($getitemdata->addons as $addonsdata)
-                                                    <div class="form-check {{ session()->get('direction') == 'rtl' ? 'd-flex' : '' }}">
-                                                        <input class="form-check-input cursor-pointer addons-checkbox {{ session()->get('direction') == 'rtl' ? 'ms-0' : '' }}"
-                                                            type="checkbox" value="{{ $addonsdata->id }}'"
-                                                            data-addons-id="{{ $addonsdata->id }}"
-                                                            data-addons-price="{{ $addonsdata->price }}"
-                                                            data-addons-name="{{ $addonsdata->name }}"
-                                                            onclick="getaddons(this)"
-                                                            id="addons{{ $addonsdata->id }}">
-                                                        <label class="form-check-label cursor-pointer me-3"
-                                                            for="addons{{ $addonsdata->id }}">{{ $addonsdata->name }}
-                                                            : <span
-                                                                class="text-muted">{{ Helper::currency_format($addonsdata->price) }}</span></label>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    @endif --}}
                                 </div>
                                 <!-- <br> slug -->
                                 <input type="hidden" name="slug" id="slug" value="{{ $getitemdata->slug }}">
@@ -155,7 +133,7 @@
                         <div class="row mt-2">
                             <div class="col-auto">
                                 <div class="item-description">
-                                    <h4>{{ trans('labels.description') }}</h4>
+                                    <h4>{{ trans('labels.tutorial') }}</h4>
                                     <p class="text-justify">{!! $getitemdata->item_description !!}</p>
                                 </div>
                             </div>
@@ -167,27 +145,6 @@
             </div>
         </div>
     </section>
-    <!-- RELATED PRODUCTS Section Start Here -->
-    @if (count($getrelateditems) > 0)
-        <section class="menu mt-3">
-            <div class="container">
-                <div class="row align-items-center justify-content-between my-2 px-2">
-                    <div class="col-auto menu-heading">
-                        <h1 class="text-capitalize">{{ trans('labels.related_items') }}</h1>
-                    </div>
-                    <div class="col-auto"><a
-                            href="{{ URL::to('menu?cuisine=' . $getitemdata['cuisine_info']->slug) }}"
-                            class="btn btn-sm btn-outline-primary">{{ trans('labels.view_all') }}</a></div>
-                </div>
-                <div class="row">
-                    @foreach ($getrelateditems as $itemdata)
-                        @include('web.itemview')
-                    @endforeach
-                </div>
-            </div>
-        </section>
-    @endif
-    <!-- RELATED PRODUCTS Section End Here -->
 @endsection
 @section('scripts')
     <script src="{{ asset('web-assets/js/item-image-carousel/main.js') }}"></script>

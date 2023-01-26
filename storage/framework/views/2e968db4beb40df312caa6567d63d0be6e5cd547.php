@@ -93,7 +93,6 @@ unset($__errorArgs, $__bag); ?>
                                     <p class="mb-0 text-white fw-light"><?php echo e(trans('labels.or')); ?></p>
                                     <div class="line me-4"></div>
                                 </div>
-                                
                                 <div class="m-3 text-center">
                                     <p class="text-white fw-lighter mb-0">
                                         <?php echo e(trans('labels.dont_account')); ?>

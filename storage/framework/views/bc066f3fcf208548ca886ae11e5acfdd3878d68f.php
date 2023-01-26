@@ -85,7 +85,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
                                 </div>
                                 <!-- <br> slug -->
                                 <input type="hidden" name="slug" id="slug" value="<?php echo e($getitemdata->slug); ?>">
@@ -136,7 +135,7 @@
                         <div class="row mt-2">
                             <div class="col-auto">
                                 <div class="item-description">
-                                    <h4><?php echo e(trans('labels.description')); ?></h4>
+                                    <h4><?php echo e(trans('labels.tutorial')); ?></h4>
                                     <p class="text-justify"><?php echo $getitemdata->item_description; ?></p>
                                 </div>
                             </div>
@@ -148,27 +147,6 @@
             </div>
         </div>
     </section>
-    <!-- RELATED PRODUCTS Section Start Here -->
-    <?php if(count($getrelateditems) > 0): ?>
-        <section class="menu mt-3">
-            <div class="container">
-                <div class="row align-items-center justify-content-between my-2 px-2">
-                    <div class="col-auto menu-heading">
-                        <h1 class="text-capitalize"><?php echo e(trans('labels.related_items')); ?></h1>
-                    </div>
-                    <div class="col-auto"><a
-                            href="<?php echo e(URL::to('menu?cuisine=' . $getitemdata['cuisine_info']->slug)); ?>"
-                            class="btn btn-sm btn-outline-primary"><?php echo e(trans('labels.view_all')); ?></a></div>
-                </div>
-                <div class="row">
-                    <?php $__currentLoopData = $getrelateditems; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $itemdata): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <?php echo $__env->make('web.itemview', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </div>
-            </div>
-        </section>
-    <?php endif; ?>
-    <!-- RELATED PRODUCTS Section End Here -->
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('scripts'); ?>
     <script src="<?php echo e(asset('web-assets/js/item-image-carousel/main.js')); ?>"></script>

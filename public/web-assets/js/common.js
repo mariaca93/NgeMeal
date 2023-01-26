@@ -256,6 +256,8 @@ function managefavorite(slug, type, manageurl) {
 function addtocart(addcarturl) {
     "use strict";
     var slug = $('#slug').val();
+    console.log("slug addtocart: " +slug);
+
     if($('#item_name').val() != "") {
         var item_name = $('#item_name').val();
     } else {
@@ -268,7 +270,6 @@ function addtocart(addcarturl) {
         var item_type = $('#subscription_type').val();
     }
 
-    // var item_name = $('#item_name').val();
     var item_type = $('#item_type').val();
     var image_name = $('#image_name').val();
     var item_price = $('#item_price').val();
@@ -352,7 +353,7 @@ function calladdtocart(slug, item_name, item_type, image_name, item_price,addons
         method: 'POST',
         dataType: 'json',
         success: function(response) {
-            // console.log(response);
+            console.log(response);
             // console.log(response.total_item_count)
             if (response.total_item_count == 1) {
                 location.reload();
@@ -381,7 +382,6 @@ function calladdtocart(slug, item_name, item_type, image_name, item_price,addons
             $("#modalitemdetails").modal('hide');
         }
     })
-    // console.log($('#data'));
 }
 function showaddons(name,price){
     $('#modal_selected_addons').find('.list-group-flush').html('<div class="text-center"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div></div>');
@@ -392,7 +392,7 @@ function showaddons(name,price){
     $('#modal_selected_addons').find('.list-group-flush').html(response);
 }
 
-function showitem(slug, showurl) {
+function showitem(slug, showurl, urladdcart) {
     "use strict";
     $("#preload").show();
     $.ajax({
@@ -408,7 +408,7 @@ function showitem(slug, showurl) {
         success: function(response) {
             $("#preload").hide();
             $("input:checkbox").prop('checked', false);
-            $("#modalitemdetails").modal('show');
+            // $("#modalitemdetails").modal('show');
             $('#slug').val(response.itemdata.slug);
             $('#item_name').val(response.itemdata.item_name);
             $('#item_type').val(response.itemdata.item_type);
@@ -450,6 +450,7 @@ function showitem(slug, showurl) {
             $('#subtotal').val(itemprice);
             $('.item_price').html(currency_format(itemprice)).addClass('mb-0');
             $('.subtotal').html(currency_format(itemprice));
+            addtocart(urladdcart);
         },
         error: function(error) {
             $("#preload").hide();

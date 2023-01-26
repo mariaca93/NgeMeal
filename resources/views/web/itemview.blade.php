@@ -37,16 +37,22 @@
                 @endphp
                 <span>{{ Helper::currency_format($price) }}</span>
                 @if (Auth::user())
-                    @if ($itemdata->is_cart == 1)
-                        <div class="item-quantity">
-                            <button type="button" class="btn btn-sm pastel_purple_color fw-500" onclick="removefromcart('{{ URL::to('/cart') }}','{{ trans('messages.remove_cartitem_note') }}','{{ trans('labels.goto_cart') }}')">-</button>
-                            <input class="pastel_purple_color fw-500 item-total-qty-{{$itemdata->slug}}" type="text" value="{{ Helper::get_item_cart($itemdata->id) }}" disabled/>
-                                <a class="btn btn-sm pastel_purple_color fw-500" onclick="showitem('{{ $itemdata->slug }}','{{ URL::to('/show-item') }}')">+</a>
-                        </div>
-                    @else
-                        <a class="btn btn-sm border pastel_purple_color fw-500"
-                            onclick="showitem('{{ $itemdata->slug }}','{{ URL::to('/show-item') }}')">{{ trans('labels.add') }}</a>
-                    @endif
+                <div class="item-details">
+                    {{-- <br> slug --}}
+                    <input type="hidden" name="slug" id="slug" value="{{$itemdata->slug}}">
+                    {{-- <br> item_name --}}
+                    <input type="hidden" name="item_name" id="item_name" value="{{$itemdata->item_name}}">
+                    {{-- <br> item_type --}}
+                    <input type="hidden" name="item_type" id="item_type" value="{{$itemdata->item_type}}">
+                    {{-- <br> image_name --}}
+                    <input type="hidden" name="image_name" id="image_name" value="{{$itemdata->image}}">
+                    {{-- <br> item_price --}}
+                    <input type="hidden" name="item_price" id="item_price" value="{{$itemdata->item_price}}">
+                    {{-- <br> subtotal --}}
+                    <input type="hidden" name="subtotal" id="subtotal" value="0">
+                </div>
+                    <a class="btn btn-sm border pastel_purple_color fw-500"
+                        onclick="showitem('{{ $itemdata->slug }}','{{ URL::to('/show-item') }}', '{{URL::to('addtocart')}}')">{{ trans('labels.add') }}</a>
                 @else
                     <a class="btn btn-sm border pastel_purple_color fw-500"
                         href="{{ URL::to('/login') }}">{{ trans('labels.add') }}</a>

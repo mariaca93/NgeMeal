@@ -38,16 +38,22 @@
                 ?>
                 <span><?php echo e(Helper::currency_format($price)); ?></span>
                 <?php if(Auth::user()): ?>
-                    <?php if($itemdata->is_cart == 1): ?>
-                        <div class="item-quantity">
-                            <button type="button" class="btn btn-sm pastel_purple_color fw-500" onclick="removefromcart('<?php echo e(URL::to('/cart')); ?>','<?php echo e(trans('messages.remove_cartitem_note')); ?>','<?php echo e(trans('labels.goto_cart')); ?>')">-</button>
-                            <input class="pastel_purple_color fw-500 item-total-qty-<?php echo e($itemdata->slug); ?>" type="text" value="<?php echo e(Helper::get_item_cart($itemdata->id)); ?>" disabled/>
-                                <a class="btn btn-sm pastel_purple_color fw-500" onclick="showitem('<?php echo e($itemdata->slug); ?>','<?php echo e(URL::to('/show-item')); ?>')">+</a>
-                        </div>
-                    <?php else: ?>
-                        <a class="btn btn-sm border pastel_purple_color fw-500"
-                            onclick="showitem('<?php echo e($itemdata->slug); ?>','<?php echo e(URL::to('/show-item')); ?>')"><?php echo e(trans('labels.add')); ?></a>
-                    <?php endif; ?>
+                <div class="item-details">
+                    
+                    <input type="hidden" name="slug" id="slug" value="<?php echo e($itemdata->slug); ?>">
+                    
+                    <input type="hidden" name="item_name" id="item_name" value="<?php echo e($itemdata->item_name); ?>">
+                    
+                    <input type="hidden" name="item_type" id="item_type" value="<?php echo e($itemdata->item_type); ?>">
+                    
+                    <input type="hidden" name="image_name" id="image_name" value="<?php echo e($itemdata->image); ?>">
+                    
+                    <input type="hidden" name="item_price" id="item_price" value="<?php echo e($itemdata->item_price); ?>">
+                    
+                    <input type="hidden" name="subtotal" id="subtotal" value="0">
+                </div>
+                    <a class="btn btn-sm border pastel_purple_color fw-500"
+                        onclick="showitem('<?php echo e($itemdata->slug); ?>','<?php echo e(URL::to('/show-item')); ?>', '<?php echo e(URL::to('addtocart')); ?>')"><?php echo e(trans('labels.add')); ?></a>
                 <?php else: ?>
                     <a class="btn btn-sm border pastel_purple_color fw-500"
                         href="<?php echo e(URL::to('/login')); ?>"><?php echo e(trans('labels.add')); ?></a>

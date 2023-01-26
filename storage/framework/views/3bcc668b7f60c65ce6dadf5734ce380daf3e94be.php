@@ -90,7 +90,6 @@
                                     <div class="varition-listing"></div>
                                 </div>
                                 
-                                
                                 <input type="hidden" name="slug" id="slug">
                                 
                                 <input type="hidden" name="item_name" id="item_name">
@@ -100,8 +99,6 @@
                                 <input type="hidden" name="image_name" id="image_name">
                                 
                                 <input type="hidden" name="item_price" id="item_price">
-                                
-                                <input type="hidden" name="addonstotal" id="addonstotal" value="0">
                                 
                                 <input type="hidden" name="subtotal" id="subtotal" value="0">
                                 <div class="modal-footer px-0">

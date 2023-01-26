@@ -89,10 +89,6 @@
                                     <h5 class="attribute"></h5>
                                     <div class="varition-listing"></div>
                                 </div>
-                                {{-- <div class="item-addons-list mb-4" id="addons">
-                                    <h5>{{ trans('labels.addons') }}</h5>
-                                    <div class="addons-listing"></div>
-                                </div> --}}
                                 {{-- <br> slug --}}
                                 <input type="hidden" name="slug" id="slug">
                                 {{-- <br> item_name --}}
@@ -103,8 +99,6 @@
                                 <input type="hidden" name="image_name" id="image_name">
                                 {{-- <br> item_price --}}
                                 <input type="hidden" name="item_price" id="item_price">
-                                {{-- <br> addonstotal --}}
-                                <input type="hidden" name="addonstotal" id="addonstotal" value="0">
                                 {{-- <br> subtotal --}}
                                 <input type="hidden" name="subtotal" id="subtotal" value="0">
                                 <div class="modal-footer px-0">

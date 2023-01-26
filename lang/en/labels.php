@@ -9,6 +9,7 @@ return [
     //WEBSITE
     "okay" => "Okay",
     "privacy_policy" => "Privacy Policy",
+    "tutorial" => "Tutorial",
     "description" => "Description",
     "favourite_list" => "Favourite List",
     "manage_wallet" => "Manage Wallet",
@@ -307,7 +308,7 @@ return [
     "referral_code" => "Referral Code",
     "referral_code_o" => "Referral Code (Optional)",
     "mobile" => "Mobile",
-    "confirm_password" => "Confirm Passwod",
+    "confirm_password" => "Confirm Password",
     "i_accepts_the" => "I accept the",
     "terms_conditions" => "Terms & Conditions",
     "already_account" => "Already have an account?",
@@ -335,8 +336,8 @@ return [
     "my_wallet" => "My Wallet",
     "refer_earn" => "Refer & Earn",
     // web --> change password page
-    "old_password" => "Old passwod",
-    "new_password" => "New passwod",
+    "old_password" => "Old password",
+    "new_password" => "New password",
     "reset" => "Reset",
     // web --> my address page
     "my_addresses" => "My Addresses",

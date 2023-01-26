@@ -36,53 +36,6 @@
                                 </a>
                             @endif
                         </p>
-                        <div class="progress-barrr">
-                            @if (in_array($orderdata->status, [6, 7]))
-                            <div class="progress-step is-active">
-                                <div class="step-count"><i class="fa fa-close"></i></div>
-                                <div class="step-description">
-                                    {{ $orderdata->status == '6' ? trans('labels.cancel_by_admin') : trans('labels.cancel_by_you') }}
-                                </div>
-                            </div>
-                            @else
-                            @if (!in_array($orderdata->status, [1, 2, 3, 4, 5]))
-                            <div class="progress-step {{ session()->get('direction') == 'rtl' ? 'progress-step-rtl' : '' }} is-active">
-                                <div class="step-count"><i class="fa fa-exclamation-triangle"></i></div>
-                                <div class="step-description">{{ trans('messages.wrong') }}</div>
-                            </div>
-                            @else
-                            <div class="progress-step {{ session()->get('direction') == 'rtl' ? 'progress-step-rtl' : '' }} @if ($orderdata->status == '1') is-active @endif">
-                                <div class="step-count"><i class="fa fa-bell"></i></div>
-                                <div class="step-description">{{ trans('labels.placed') }}</div>
-                            </div>
-                            <div class="progress-step {{ session()->get('direction') == 'rtl' ? 'progress-step-rtl' : '' }} @if ($orderdata->status == '2') is-active @endif">
-                                <div class="step-count"><i class="fa fa-tasks"></i></div>
-                                <div class="step-description">{{ trans('labels.preparing') }}</div>
-                            </div>
-                            @if ($orderdata->order_from != 'pos')
-                            <div class="progress-step {{ session()->get('direction') == 'rtl' ? 'progress-step-rtl' : '' }} @if ($orderdata->status == '3') is-active @endif">
-                                <div class="step-count"><i class="fa fa-thumbs-up"></i></div>
-                                <div class="step-description">{{ trans('labels.ready') }}</div>
-                            </div>
-                            <div class="progress-step {{ session()->get('direction') == 'rtl' ? 'progress-step-rtl' : '' }} @if ($orderdata->status == '4') is-active @endif">
-                                @if ($orderdata->order_type == 2)
-                                <div class="step-count"><i class="fa fa-hourglass"></i></div>
-                                <div class="step-description">{{ trans('labels.waiting_pickup') }}</div>
-                                @else
-                                <div class="step-count"><i class="fa fa-user"></i></div>
-                                <div class="step-description">{{ trans('labels.on_the_way') }}
-                                    <br>{{ $orderdata['driver_info'] != '' ? '[' . $orderdata['driver_info']->name . ']' : '' }}
-                                </div>
-                                @endif
-                            </div>
-                            @endif
-                            <div class="progress-step {{ session()->get('direction') == 'rtl' ? 'progress-step-rtl' : '' }} @if ($orderdata->status == '5') is-active @endif">
-                                <div class="step-count"><i class="fa fa-check"></i></div>
-                                <div class="step-description">{{ trans('labels.completed') }}</div>
-                            </div>
-                            @endif
-                            @endif
-                        </div>
                         <div class="d-flex justify-content-start mb-3">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item px-0">
@@ -184,7 +137,7 @@
                                         <span class="fw-600"> {{ trans('labels.tax') }} </span>
                                         <span class="text-break">0</span>
                                     </li>
-                                    @if ($orderdata->order_type == 1)   
+                                    @if ($orderdata->order_type == 1)
                                     <li class="list-group-item px-0 d-flex justify-content-between">
                                         <span class="fw-600"> {{ trans('labels.delivery_charge') }} </span>
                                         <span class="text-break">{{ Helper::currency_format($orderdata->delivery_charge) }}</span>

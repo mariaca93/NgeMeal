@@ -89,7 +89,6 @@
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12">
-                            
                             <div class="summary py-3 mb-4">
                                 <h2 class="border-bottom"><?php echo e(trans('labels.bill_details')); ?></h2>
                                 <div class="bill-details border-bottom">
