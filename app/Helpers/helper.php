@@ -20,7 +20,7 @@ use DateTime;
 class helper
 {
     public static function push_notification($token,$title,$body,$type,$order_id)
-    {   
+    {
         $customdata = array(
             "type" => $type,
             'sub_type'=> "",
@@ -69,7 +69,7 @@ class helper
         if(Str::contains($image, 'cuisine')){
             $path = url('/admin-assets/images/cuisine/'.$image);
         }
-        if(Str::contains($image, 'profile') || Str::contains($image, 'unknown') || Str::contains($image, 'identity') ){
+        if(Str::contains($image, 'profile') || Str::contains($image, 'unknown') || Str::contains($image, 'identity') || Str::contains($image, 'check-list') || Str::contains($image, 'favorite') || Str::contains($image, 'change-pass') || Str::contains($image, 'change-address') || Str::contains($image, 'myprofile')){
             $path = url('/admin-assets/images/profile/'.$image);
         }
         if(Str::contains($image, 'item')){
@@ -81,7 +81,7 @@ class helper
         if(Str::contains($image, 'slider')){
             $path = url('/admin-assets/images/slider/'.$image);
         }
-        if(Str::contains($image, 'mobile_app_bg_image') || Str::contains($image, 'booknow_bg_image') || Str::contains($image, 'reviews_bg_image') || Str::contains($image, 'footer_bg_image') || Str::contains($image, 'auth_bg_image') || Str::contains($image, 'breadcrumb_bg_image') || Str::contains($image, 'authformbgimage') || Str::contains($image, 'payment-') || Str::contains($image, 'app_bottom_image') || Str::contains($image, 'mobile_app_image') || Str::contains($image, 'blog') || Str::contains($image, 'veg') || Str::contains($image, 'gallery') || Str::contains($image, 'tutorial') || Str::contains($image, 'team') || Str::contains($image, 'default') || Str::contains($image, 'about') || Str::contains($image, 'footer') || Str::contains($image, 'logo') || Str::contains($image, 'favicon') || Str::contains($image, 'og_image' )){
+        if(Str::contains($image, 'mobile_app_bg_image') || Str::contains($image, 'booknow_bg_image') || Str::contains($image, 'reviews_bg_image') || Str::contains($image, 'footer_bg_image') || Str::contains($image, 'auth_bg_image') || Str::contains($image, 'breadcrumb_bg_image') || Str::contains($image, 'authformbgimage') || Str::contains($image, 'payment-') || Str::contains($image, 'app_bottom_image') || Str::contains($image, 'mobile_app_image') || Str::contains($image, 'blog') || Str::contains($image, 'veg') || Str::contains($image, 'gallery') || Str::contains($image, 'tutorial') || Str::contains($image, 'team') || Str::contains($image, 'default') || Str::contains($image, 'about') || Str::contains($image, 'footer') || Str::contains($image, 'logo') || Str::contains($image, 'favicon') || Str::contains($image, 'og_image' ) || Str::contains($image, 'search-all') || Str::contains($image, 'cart') || Str::contains($image, 'user') || Str::contains($image, 'profile-black') || Str::contains($image, 'logout') || Str::contains($image, 'ongoing') || Str::contains($image, 'completed') || Str::contains($image, 'cancelled-bar') || Str::contains($image, 'cancelled-button') || Str::contains($image, 'view') || Str::contains($image, 'delete') || Str::contains($image, 'bookmark') || Str::contains($image, 'office') || Str::contains($image, 'edit') || Str::contains($image, 'home') || Str::contains($image, 'search-button') || Str::contains($image, 'trash') || Str::contains($image, 'right-arrow') || Str::contains($image, 'left-arrow')){
             $path = url('/admin-assets/images/about/'.$image);
         }
         return $path;
@@ -298,8 +298,8 @@ class helper
         return 0;
     }
 
-    
-    
+
+
     // front
     public static function footer_features()
     {

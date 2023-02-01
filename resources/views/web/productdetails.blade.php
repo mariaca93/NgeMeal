@@ -114,11 +114,7 @@
                                     </div>
                                     <div class="col-md-6 col-sm-6 col-auto">
                                         <div class="wishlist">
-                                            @if ($getitemdata->is_favorite == 1)
-                                                <a class="btn btn-lg w-100 wishlist-btn heart-red"
-                                                    @if (Auth::user()) href="javascript:void(0)" onclick="managefavorite('{{ $getitemdata->id }}',0, '{{ URL::to('/managefavorite') }}')" @else href="{{ URL::to('/login') }}" @endif>{{ trans('labels.remove_wishlist') }}
-                                                </a>
-                                            @else
+                                            @if ($getitemdata->is_favorite == 0)
                                                 <a class="btn btn-lg w-100 wishlist-btn border-success"
                                                     @if (Auth::user()) href="javascript:void(0)" onclick="managefavorite('{{ $getitemdata->id }}',1, '{{ URL::to('/managefavorite') }}')" @else href="{{ URL::to('/login') }}" @endif>{{ trans('labels.add_wishlist') }}
                                                 </a>
@@ -134,6 +130,7 @@
                             <div class="col-auto">
                                 <div class="item-description">
                                     <h4>{{ trans('labels.tutorial') }}</h4>
+                                    <h5>Preparation time : {{$getitemdata->preparation_time}} minute(s)</h5>
                                     <p class="text-justify">{!! $getitemdata->item_description !!}</p>
                                 </div>
                             </div>

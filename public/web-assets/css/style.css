@@ -1928,3 +1928,7 @@ input::placeholder {
     text-shadow: 1px 1px #c60;
 }
 /*add-rattings-end*/
+
+.search-button img {
+    background-color: #000;
+}

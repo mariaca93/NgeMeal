@@ -110,38 +110,6 @@
     }
 </script>
 
-<?php if(count(Helper::get_cuisines()) > 0): ?>
-<section class="cuisine" style="padding-top:20px">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="row align-items-center justify-content-between">
-                    <div class="col-auto">
-                        <h1 class="text-capitalize fw-bold"><?php echo e(trans('labels.cuisines')); ?></h1>
-                    </div>
-                    <div class="col-auto text-end align-center">
-                        <a href="<?php echo e(route('cuisines')); ?>" class="btn btn-sm btn-outline-primary"><?php echo e(trans('labels.view_all')); ?></a>
-                    </div>
-                </div>
-                <div id="cuisine" class="owl-carousel mt-2">
-                    <?php $__currentLoopData = Helper::get_cuisines(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cuisinedata): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="cuisine-wrapper mx-2">
-                        <a href="<?php echo e(URL::to('/menu/?cuisine=' . $cuisinedata->slug)); ?>">
-                            <div class="cat rounded-circle">
-                                <img src="<?php echo e(url('/admin-assets/images/cuisines/'.$cuisinedata->image)); ?>" class="rounded-circle" alt="cuisine">
-                            </div>
-                        </a>
-                        <p class="text-center my-2"><?php echo e($cuisinedata->cuisine_name); ?></p>
-                    </div>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<?php endif; ?>
-<!-- Cuisine Section End Here -->
-
 <!-- food based on weather section starts here-->
 <?php if(count($basedonweather) > 0): ?>
 <section class="menu">
@@ -170,10 +138,10 @@
     <div class="container">
         <div class="row align-items-center justify-content-between my-2">
             <div class="col-auto menu-heading">
-                <h1><?php echo e(trans('labels.trending')); ?></h1>
+                <h1><?php echo e(trans('labels.alacarte')); ?></h1>
             </div>
             <div class="col-auto">
-                <a href="<?php echo e(URL::to('/view-all?type=topitems')); ?>" class="btn btn-sm btn-outline-primary"><?php echo e(trans('labels.view_all')); ?></a>
+                <a href="<?php echo e(URL::to('/view-all?type=alacarte')); ?>" class="btn btn-sm btn-outline-primary"><?php echo e(trans('labels.view_all')); ?></a>
             </div>
         </div>
         <div class="row">
@@ -217,27 +185,6 @@
 <?php endif; ?>
 <!-- Promotional bannersection1 End Here -->
 <!-- todayspecial Dishes Section Start Here -->
-<?php if(count($todayspecial) > 0): ?>
-<section class="menu">
-    <div class="container">
-        <div class="row align-items-center justify-content-between my-2">
-            <div class="col-auto menu-heading">
-                <h1><?php echo e(trans('labels.todays_special')); ?></h1>
-            </div>
-            <div class="col-auto">
-                <a href="<?php echo e(URL::to('/view-all?type=todayspecial')); ?>" class="btn btn-sm btn-outline-primary"><?php echo e(trans('labels.view_all')); ?></a>
-            </div>
-        </div>
-        <div class="row">
-            <?php $__currentLoopData = $todayspecial; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $itemdata): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <?php echo $__env->make('web.itemview', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        </div>
-    </div>
-</section>
-<?php endif; ?>
-<!-- todayspecial Dishes Section End Here -->
-<!-- todayspecial Dishes Section Start Here -->
 <?php if(count($subscriptions) > 0): ?>
 <section class="menu">
     <div class="container">
@@ -258,56 +205,6 @@
 </section>
 <?php endif; ?>
 <!-- todayspecial Dishes Section End Here -->
-<!-- Promotional bannersection2 Start Here -->
-<?php if(count($banners['bannersection2']) > 0): ?>
-<section class="banner1">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <div id="bannersection2" class="owl-carousel">
-                    <?php $__currentLoopData = $banners['bannersection2']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bannerdata): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="post-slide">
-                        <div class="post-img">
-                            <?php if($bannerdata['item_info'] != ''): ?>
-                            <a href="<?php echo e(URL::to('/item-' . $bannerdata['item_info']->slug)); ?>">
-                                <?php elseif($bannerdata['cuisine_info'] != ''): ?>
-                                <a href="<?php echo e(URL::to('/menu/?cuisine=' . $bannerdata['cuisine_info']->slug)); ?>">
-                                    <?php else: ?>
-                                    <a href="javascript:void(0);">
-                                        <?php endif; ?>
-                                        <img src="<?php echo e($bannerdata['image']); ?>" alt="banner">
-                                    </a>
-                        </div>
-                    </div>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<?php endif; ?>
-<!-- Promotional bannersection2 End Here -->
-<!-- recommended Section Start Here -->
-<?php if(count($recommended) > 0): ?>
-<section class="menu">
-    <div class="container">
-        <div class="row align-items-center justify-content-between my-2">
-            <div class="col-auto menu-heading">
-                <h1><?php echo e(trans('labels.recommended')); ?></h1>
-            </div>
-            <div class="col-auto">
-                <a href="<?php echo e(URL::to('/view-all?type=recommended')); ?>" class="btn btn-sm btn-outline-primary"><?php echo e(trans('labels.view_all')); ?></a>
-            </div>
-        </div>
-        <div class="row">
-            <?php $__currentLoopData = $recommended; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $itemdata): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <?php echo $__env->make('web.itemview', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        </div>
-    </div>
-</section>
-<?php endif; ?>
-<!-- recommended Section End Here -->
 <!-- Promotional bannersection3 Start Here -->
 <?php if(count($banners['bannersection3']) > 0): ?>
 <section class="banner2 mt-md-5 mt-sm-3 mb-0">

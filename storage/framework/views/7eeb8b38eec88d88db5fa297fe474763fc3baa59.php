@@ -43,7 +43,7 @@
                                 <div class="form-body mt-3">
                                     <div class="form-group">
                                         <label class="text-white form-label" for="name"><?php echo e(trans('labels.full_name')); ?></label>
-                                            <input type="text" class="form-control custom-input rounded mb-3" name="name" value="<?php echo e(old('name')); ?>"  placeholder="<?php echo e(trans('labels.full_name')); ?>">    
+                                            <input type="text" class="form-control custom-input rounded mb-3" name="name" value="<?php echo e(old('name')); ?>"  placeholder="<?php echo e(trans('labels.full_name')); ?>">
                                         <?php $__errorArgs = ['name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -131,7 +131,8 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
                                 <div class="form-group text-center mt-3">
                                     <p class="text-white mb-0">
-                                        <?php echo e(trans('labels.already_account')); ?> 
+                                        <?php echo e(trans('labels.already_account')); ?>
+
                                         <a href="<?php echo e('login'); ?>" class="text-primary fw-bold text-decoration-none"><?php echo e(trans('labels.signin')); ?></a>
                                     </p>
                                 </div>
@@ -168,13 +169,14 @@ unset($__errorArgs, $__bag); ?>
     <link rel="stylesheet" href="<?php echo e(asset('/web-assets/js/intl-tel-input/17.0.8.intlTelInput.min.css')); ?>">
     <script src="<?php echo e(asset('/web-assets/js/intl-tel-input/17.0.8.utils.js')); ?>"></script>
     <script>
-        var input = $('#mobile');
-        var iti = intlTelInput(input.get(0))
-        iti.setCountry("id");
-        input.on('countrychange', function(e) {
-            $('#country').val(iti.getSelectedCountryData().dialCode);
-        });
-        $('.iti--allow-dropdown').addClass('w-100');
+        // var input = $('#mobile');
+        // var iti = intlTelInput(input.get(0))
+        // iti.setCountry("id");
+        // input.on('countrychange', function(e) {
+        //     $('#country').val(iti.getSelectedCountryData().dialCode);
+        // });
+        // $('.iti--allow-dropdown').addClass('w-100');
     </script>
 </body>
-</html><?php /**PATH C:\Users\Christanto\Desktop\Materi\Project Skripsi\NgeMeal\resources\views/web/auth/register.blade.php ENDPATH**/ ?>
+</html>
+<?php /**PATH C:\Users\Christanto\Desktop\Materi\Project Skripsi\NgeMeal\resources\views/web/auth/register.blade.php ENDPATH**/ ?>

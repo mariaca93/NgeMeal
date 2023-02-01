@@ -18,39 +18,8 @@
                 <div class="pb-2 cat-span border-bottom"><span>Subscription</span></div>
             </div>
         </a>
-        <div class="img-overlay set-fav-<?php echo e($subscriptiondata->id); ?>">
-            <?php if($subscriptiondata->is_favorite == 1): ?>
-                <a class="heart-icon btn btn-wishlist"
-                    <?php if(Auth::user()): ?> href="javascript:void(0)" onclick="managefavorite('<?php echo e($subscriptiondata->id); ?>',0,'<?php echo e(URL::to('/managefavorite')); ?>')" title="<?php echo e(trans('labels.remove_wishlist')); ?>"
-                <?php else: ?> href="<?php echo e(URL::to('/login')); ?>" <?php endif; ?>>
-                    <i class="fa-solid fa-bookmark fs-5"></i> </a>
-            <?php else: ?>
-                <a class="heart-icon btn btn-wishlist"
-                    <?php if(Auth::user()): ?> href="javascript:void(0)" onclick="managefavorite('<?php echo e($subscriptiondata->id); ?>',1,'<?php echo e(URL::to('/managefavorite')); ?>')" title="<?php echo e(trans('labels.add_wishlist')); ?>"
-                <?php else: ?> href="<?php echo e(URL::to('/login')); ?>" <?php endif; ?>>
-                    <i class="fa-regular fa-bookmark fs-5"></i> </a>
-            <?php endif; ?>
-        </div>
-        <div class="item-card-footer">
-            <div class="d-flex justify-content-between align-items-center">
-                <span><?php echo e(Helper::currency_format($subscriptiondata->price)); ?></span>
-                <?php if(Auth::user()): ?>
-                    <?php if($subscriptiondata->is_cart == 1): ?>
-                        <div class="item-quantity">
-                            <button type="button" class="btn btn-sm pastel_purple_color fw-500" onclick="removefromcart('<?php echo e(URL::to('/cart')); ?>','<?php echo e(trans('messages.remove_cartitem_note')); ?>','<?php echo e(trans('labels.goto_cart')); ?>')">-</button>
-                            <input class="pastel_purple_color fw-500 item-total-qty-<?php echo e($subscriptiondata->slug); ?>" type="text" value="<?php echo e(Helper::get_item_cart($subscriptiondata->id)); ?>" disabled/>
-                            <a class="btn btn-sm pastel_purple_color fw-500" onclick="showsubscription('<?php echo e($subscriptiondata->slug); ?>','<?php echo e(URL::to('/show-subscription')); ?>')">+</a>
-                        </div>
-                    <?php else: ?>
-                        <a class="btn btn-sm border pastel_purple_color fw-500"
-                        onclick="showsubscription('<?php echo e($subscriptiondata->slug); ?>','<?php echo e(URL::to('/show-subscription')); ?>')"><?php echo e(trans('labels.add')); ?></a>
-                    <?php endif; ?>
-                <?php else: ?>
-                    <a class="btn btn-sm border pastel_purple_color fw-500"
-                        href="<?php echo e(URL::to('/login')); ?>"><?php echo e(trans('labels.add')); ?></a>
-                <?php endif; ?>
-            </div>
-        </div>
+        
+        
     </div>
 </div>
 <?php /**PATH C:\Users\Christanto\Desktop\Materi\Project Skripsi\NgeMeal\resources\views/web/subscriptionview.blade.php ENDPATH**/ ?>

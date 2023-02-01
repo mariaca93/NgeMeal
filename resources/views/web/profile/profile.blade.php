@@ -35,7 +35,9 @@
                                 <div class="avatar-upload">
                                     <div class="avatar-edit {{ session()->get('direction') == 'rtl' ? 'avatar-edit-rtl' : '' }}">
                                         <input type='file' name="profile_image" id="imageupload" accept=".png, .jpg, .jpeg" />
-                                        <label for="imageupload"></label>
+                                        <label for="imageupload">
+                                            <img src="{{ Helper::image_path('user.png') }}" width="18" height="18" alt="">
+                                        </label>
                                     </div>
                                     <div class="avatar-preview">
                                         <div id="imagepreview">

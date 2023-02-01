@@ -482,13 +482,4 @@ function getaddons(x) {
 
 }
 
-function checkaddons(){
-    // var itemName = $('#item-name').html();
-    // var addons = $('#addons1').is(':checked');
-    // if(addons){
-    //     $('#addons1').prop('checked', false);
-    // }
-console.log('test');
-    $("input:checkbox").prop('checked', false);
-}
 

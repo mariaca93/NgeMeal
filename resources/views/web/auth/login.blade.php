@@ -59,9 +59,9 @@
                                             <input type="password" name="password" class="form-control custom-input mb-3" placeholder="{{trans('labels.password')}}" @if (env('Environment') == 'sendbox') value="123456" @endif>
                                             @error('password')<span class="p-3 red_color bottom-line fw-bold w-auto">{{ $message }}</span>@enderror
                                         </div>
-                                        <div class="form-group d-flex justify-content-end">
+                                        {{-- <div class="form-group d-flex justify-content-end">
                                             <a href="{{ URL::to('forgot-password') }}" class="text-primary fw-bold float-end">{{trans('labels.forgot_password_q')}}</a>
-                                        </div>
+                                        </div> --}}
                                     @endif
                                     <div class="form-group mt-2">
                                         <button type="submit" class="btn btn-primary w-100">{{trans('labels.signin')}}</button>

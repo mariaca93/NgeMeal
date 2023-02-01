@@ -39,10 +39,12 @@
                                     <div class="address-card w-100">
                                         <div class="col-2 address-icon">
                                             @if ($addressdata->address_type == 1)
-                                                <i class="fa-solid fa-house-chimney"></i>
+                                                {{-- <i class="fa-solid fa-house-chimney"></i> --}}
+                                                <img src="{{ Helper::image_path('home.png') }}" width="20" height="20" alt="">
                                                 @php $address_type_text = trans('labels.home'); @endphp
                                             @elseif ($addressdata->address_type == 2)
-                                                <i class="fa-solid fa-briefcase"></i>
+                                                {{-- <i class="fa-solid fa-briefcase"></i> --}}
+                                                <img src="{{ Helper::image_path('office.png') }}" width="30" height="30" alt="">
                                                 @php $address_type_text = trans('labels.office'); @endphp
                                             @else
                                                 <i class="fa-solid fa-map-location-dot"></i>
@@ -53,7 +55,10 @@
                                             <h4 class="d-flex justify-content-between">{{ $address_type_text }}
                                                 <div class="px-3">
                                                     <a class="text-light" href="javascript:void(0)" onclick="deleteaddress('{{ $addressdata->id }}','{{ URL::to('/address/delete') }} ') "><i class="fa-solid fa-trash-can"></i></a>
-                                                    <a class="text-info me-1" href="{{URL::to('/address-'.$addressdata->id)}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                    <a class="text-info me-1" href="{{URL::to('/address-'.$addressdata->id)}}">
+                                                        {{-- <i class="fa-solid fa-pen-to-square"></i> --}}
+                                                        <img src="{{ Helper::image_path('edit.png') }}" width="20" height="20" alt="">
+                                                    </a>
                                                 </div>
                                             </h4>
                                             <p class="mb-1">{{ $addressdata->address }}, </p>

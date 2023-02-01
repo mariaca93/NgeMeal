@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('page_title'); ?>
     | <?php echo e(trans('labels.checkout')); ?>
 
@@ -58,10 +57,12 @@
                                                 <div class="address-card w-100">
                                                     <div class="col-2 address-icon">
                                                         <?php if($addressdata->address_type == 1): ?>
-                                                            <i class="fa-solid fa-house-chimney"></i>
+                                                            
+                                                            <img src="<?php echo e(Helper::image_path('home.png')); ?>" width="20" height="20" alt="">
                                                             <?php $address_type_text = trans('labels.home'); ?>
                                                         <?php elseif($addressdata->address_type == 2): ?>
-                                                            <i class="fa-solid fa-briefcase"></i>
+                                                            
+                                                            <img src="<?php echo e(Helper::image_path('office.png')); ?>" width="30" height="30" alt="">
                                                             <?php $address_type_text = trans('labels.office'); ?>
                                                         <?php else: ?>
                                                             <i class="fa-solid fa-map-location-dot"></i>
@@ -76,16 +77,7 @@
                                                 </div>
                                             </div>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                        <div class="col-md-6">
-                                            <div
-                                                class="address-card border-dashed d-flex justify-content-center align-items-center text-center w-100">
-                                                <div class="address">
-                                                    <h4><?php echo e(trans('labels.add_new_address')); ?></h4>
-                                                    <a class="btn btn-outline-success text-uppercase btn-sm"
-                                                        href="<?php echo e(URL::to('/address/add')); ?>"><?php echo e(trans('labels.add_new')); ?></a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             <div class="payment-option mb-3">
@@ -137,7 +129,10 @@
                                 <textarea class="form-control" name="order_notes" id="order_notes" rows="3"
                                     placeholder="<?php echo e(trans('labels.special_instruction')); ?>"></textarea>
                             </div>
-                            <a href="<?php echo e(URL::to('/')); ?>" class="continue-shopping mb-3"><i class="fa-solid fa-circle-arrow-left me-2"></i><?php echo e(trans('labels.continue_shopping')); ?></a>
+                            <a href="<?php echo e(URL::to('/')); ?>" class="continue-shopping mb-3">
+                                
+                                <img src="<?php echo e(Helper::image_path('left-arrow.png')); ?>" width="18" height="18" alt="" style="margin-right: 10px">
+                                <?php echo e(trans('labels.continue_shopping')); ?></a>
                         </div>
                     </div>
                     

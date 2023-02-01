@@ -57,10 +57,12 @@
                                                 <div class="address-card w-100">
                                                     <div class="col-2 address-icon">
                                                         @if ($addressdata->address_type == 1)
-                                                            <i class="fa-solid fa-house-chimney"></i>
+                                                            {{-- <i class="fa-solid fa-house-chimney"></i> --}}
+                                                            <img src="{{ Helper::image_path('home.png') }}" width="20" height="20" alt="">
                                                             @php $address_type_text = trans('labels.home'); @endphp
                                                         @elseif ($addressdata->address_type == 2)
-                                                            <i class="fa-solid fa-briefcase"></i>
+                                                            {{-- <i class="fa-solid fa-briefcase"></i> --}}
+                                                            <img src="{{ Helper::image_path('office.png') }}" width="30" height="30" alt="">
                                                             @php $address_type_text = trans('labels.office'); @endphp
                                                         @else
                                                             <i class="fa-solid fa-map-location-dot"></i>
@@ -75,7 +77,7 @@
                                                 </div>
                                             </div>
                                         @endforeach
-                                        <div class="col-md-6">
+                                        {{-- <div class="col-md-6">
                                             <div
                                                 class="address-card border-dashed d-flex justify-content-center align-items-center text-center w-100">
                                                 <div class="address">
@@ -84,7 +86,7 @@
                                                         href="{{ URL::to('/address/add') }}">{{ trans('labels.add_new') }}</a>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             <div class="payment-option mb-3">
@@ -136,7 +138,10 @@
                                 <textarea class="form-control" name="order_notes" id="order_notes" rows="3"
                                     placeholder="{{ trans('labels.special_instruction') }}"></textarea>
                             </div>
-                            <a href="{{ URL::to('/') }}" class="continue-shopping mb-3"><i class="fa-solid fa-circle-arrow-left me-2"></i>{{ trans('labels.continue_shopping') }}</a>
+                            <a href="{{ URL::to('/') }}" class="continue-shopping mb-3">
+                                {{-- <i class="loginfa-solid fa-circle-arrow-left me-2"></i> --}}
+                                <img src="{{ Helper::image_path('left-arrow.png') }}" width="18" height="18" alt="" style="margin-right: 10px">
+                                {{ trans('labels.continue_shopping') }}</a>
                         </div>
                     </div>
                     {{-- <br> order_type --}}

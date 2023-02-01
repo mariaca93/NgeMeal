@@ -55,7 +55,10 @@
                                                     </div>
                                                         <p class="mb-0">
                                                             @if ($item['addons_id'] != '')
-                                                            <small><a class="text-muted" href="javascript:void(0)" onclick="showaddons('{{$item['addons_name']}}','{{$item['addons_price']}}')" data-bs-toggle="modal" data-bs-target="#modal_selected_addons">{{ trans('labels.addons') }} <i class="fa-solid fa-angles-right"></i></a></small>
+                                                            <small><a class="text-muted" href="javascript:void(0)" onclick="showaddons('{{$item['addons_name']}}','{{$item['addons_price']}}')" data-bs-toggle="modal" data-bs-target="#modal_selected_addons">{{ trans('labels.addons') }}
+                                                                {{-- <i class="fa-solid fa-angles-right"></i> --}}
+                                                                <img src="{{ Helper::image_path('right-arrow.png') }}" width="18" height="18" alt="">
+                                                            </a></small>
                                                             @else
                                                             <small>-</small>
                                                             @endif
@@ -71,7 +74,9 @@
                                                     class="col-md-2 col-sm-2 col-auto d-flex align-items-end justify-content-between flex-column quantity-column">
                                                     <a href="javascript:void(0)"
                                                         onclick="deletecartitem('{{ $item['id'] }}','{{ URL::to('/cart/deleteitem') }} ') ">
-                                                        <i class="fa-solid fa-trash-can text-primary mb-2"></i> </a>
+                                                        {{-- <i class="fa-solid fa-trash-can text-primary mb-2"></i> --}}
+                                                        <img src="{{ Helper::image_path('trash.png') }}" width="20" height="20" alt="">
+                                                    </a>
                                                     <div class="item-quantity">
                                                         <button class="btn btn-sm item-quantity-minus"
                                                             onclick="qtyupdate('{{ $item['id'] }}','minus','{{ URL::to('/cart/qtyupdate') }}')">-</button>

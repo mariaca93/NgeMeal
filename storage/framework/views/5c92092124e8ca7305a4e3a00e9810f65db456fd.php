@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('page_title'); ?>
     | <?php echo e(trans('labels.search')); ?>
 
@@ -45,8 +44,10 @@
                                 <option value="<?php echo e($ingredient->id); ?>"><?php echo e($ingredient->ingredient_name); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </select>
-                            <button class="input-group-text rounded submit-btn" type="submit" id="inputGroup-sizing-lg"><i
-                                    class="fa-solid fa-magnifying-glass"></i></button>
+                            <button class="input-group-text rounded submit-btn" type="submit" id="inputGroup-sizing-lg">
+                                
+                                <img src="<?php echo e(Helper::image_path('search-button.png')); ?>" width="20" height="20" alt="">
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -79,7 +80,7 @@
                     case "byIngredient" :
                         var item = document.getElementById("item_input");
                         $(item).attr("value", "");
-                        
+
                         var btn = document.getElementsByClassName("submit-btn");
                         $(btn).attr("type", "");
 
@@ -116,4 +117,5 @@
         </div>
     </section>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('web.layout.default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Christanto\Desktop\Materi\Project Skripsi\NgeMeal\resources\views/web/search.blade.php ENDPATH**/ ?>

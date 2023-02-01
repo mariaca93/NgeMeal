@@ -31,7 +31,8 @@
                         <p class="">{{ trans('labels.order_details') }}
                             @if ($orderdata->status == 1)
                                 <a class="btn btn-danger btn-sm mx-1 float-end" href="javascript:void(0)" onclick="cancelorder('{{$orderdata->order_number}}','{{URL::to('/orders/cancel')}}')">
-                                    <i class="fa-regular fa-trash-can"></i>
+                                    {{-- <i class="fa-regular fa-trash-can"></i> --}}
+                                    <img src="{{ Helper::image_path('delete.png') }}" width="15" height="15" alt="">
                                     {{ trans('labels.cancel_order') }}
                                 </a>
                             @endif

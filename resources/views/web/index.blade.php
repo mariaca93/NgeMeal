@@ -110,38 +110,6 @@
     }
 </script>
 
-@if (count(Helper::get_cuisines()) > 0)
-<section class="cuisine" style="padding-top:20px">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="row align-items-center justify-content-between">
-                    <div class="col-auto">
-                        <h1 class="text-capitalize fw-bold">{{ trans('labels.cuisines') }}</h1>
-                    </div>
-                    <div class="col-auto text-end align-center">
-                        <a href="{{route('cuisines')}}" class="btn btn-sm btn-outline-primary">{{ trans('labels.view_all') }}</a>
-                    </div>
-                </div>
-                <div id="cuisine" class="owl-carousel mt-2">
-                    @foreach (Helper::get_cuisines() as $cuisinedata)
-                    <div class="cuisine-wrapper mx-2">
-                        <a href="{{ URL::to('/menu/?cuisine=' . $cuisinedata->slug) }}">
-                            <div class="cat rounded-circle">
-                                <img src="{{ url('/admin-assets/images/cuisines/'.$cuisinedata->image) }}" class="rounded-circle" alt="cuisine">
-                            </div>
-                        </a>
-                        <p class="text-center my-2">{{ $cuisinedata->cuisine_name }}</p>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-@endif
-<!-- Cuisine Section End Here -->
-
 <!-- food based on weather section starts here-->
 @if (count($basedonweather) > 0)
 <section class="menu">
@@ -170,10 +138,10 @@
     <div class="container">
         <div class="row align-items-center justify-content-between my-2">
             <div class="col-auto menu-heading">
-                <h1>{{ trans('labels.trending') }}</h1>
+                <h1>{{ trans('labels.alacarte') }}</h1>
             </div>
             <div class="col-auto">
-                <a href="{{ URL::to('/view-all?type=topitems') }}" class="btn btn-sm btn-outline-primary">{{ trans('labels.view_all') }}</a>
+                <a href="{{ URL::to('/view-all?type=alacarte') }}" class="btn btn-sm btn-outline-primary">{{ trans('labels.view_all') }}</a>
             </div>
         </div>
         <div class="row">
@@ -217,27 +185,6 @@
 @endif
 <!-- Promotional bannersection1 End Here -->
 <!-- todayspecial Dishes Section Start Here -->
-@if (count($todayspecial) > 0)
-<section class="menu">
-    <div class="container">
-        <div class="row align-items-center justify-content-between my-2">
-            <div class="col-auto menu-heading">
-                <h1>{{ trans('labels.todays_special') }}</h1>
-            </div>
-            <div class="col-auto">
-                <a href="{{ URL::to('/view-all?type=todayspecial') }}" class="btn btn-sm btn-outline-primary">{{ trans('labels.view_all') }}</a>
-            </div>
-        </div>
-        <div class="row">
-            @foreach ($todayspecial as $itemdata)
-            @include('web.itemview')
-            @endforeach
-        </div>
-    </div>
-</section>
-@endif
-<!-- todayspecial Dishes Section End Here -->
-<!-- todayspecial Dishes Section Start Here -->
 @if (count($subscriptions) > 0)
 <section class="menu">
     <div class="container">
@@ -258,56 +205,6 @@
 </section>
 @endif
 <!-- todayspecial Dishes Section End Here -->
-<!-- Promotional bannersection2 Start Here -->
-@if (count($banners['bannersection2']) > 0)
-<section class="banner1">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <div id="bannersection2" class="owl-carousel">
-                    @foreach ($banners['bannersection2'] as $bannerdata)
-                    <div class="post-slide">
-                        <div class="post-img">
-                            @if ($bannerdata['item_info'] != '')
-                            <a href="{{ URL::to('/item-' . $bannerdata['item_info']->slug) }}">
-                                @elseif($bannerdata['cuisine_info'] != '')
-                                <a href="{{ URL::to('/menu/?cuisine=' . $bannerdata['cuisine_info']->slug) }}">
-                                    @else
-                                    <a href="javascript:void(0);">
-                                        @endif
-                                        <img src="{{ $bannerdata['image'] }}" alt="banner">
-                                    </a>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-@endif
-<!-- Promotional bannersection2 End Here -->
-<!-- recommended Section Start Here -->
-@if (count($recommended) > 0)
-<section class="menu">
-    <div class="container">
-        <div class="row align-items-center justify-content-between my-2">
-            <div class="col-auto menu-heading">
-                <h1>{{ trans('labels.recommended') }}</h1>
-            </div>
-            <div class="col-auto">
-                <a href="{{ URL::to('/view-all?type=recommended') }}" class="btn btn-sm btn-outline-primary">{{ trans('labels.view_all') }}</a>
-            </div>
-        </div>
-        <div class="row">
-            @foreach ($recommended as $itemdata)
-            @include('web.itemview')
-            @endforeach
-        </div>
-    </div>
-</section>
-@endif
-<!-- recommended Section End Here -->
 <!-- Promotional bannersection3 Start Here -->
 @if (count($banners['bannersection3']) > 0)
 <section class="banner2 mt-md-5 mt-sm-3 mb-0">

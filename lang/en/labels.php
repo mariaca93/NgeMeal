@@ -7,6 +7,7 @@ return [
     |
     */
     //WEBSITE
+    "alacarte" => "A La Carte",
     "okay" => "Okay",
     "privacy_policy" => "Privacy Policy",
     "tutorial" => "Tutorial",
@@ -134,6 +135,7 @@ return [
     "accept" => "Accept",
     "reject" => "Reject",
     "processing" => "Processing",
+    "ongoing" => "Ongoing",
     "waiting_pickup" => "Waiting pickup",
     "complete" => "Complete",
     //Cuisine

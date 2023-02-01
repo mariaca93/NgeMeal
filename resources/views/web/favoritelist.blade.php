@@ -53,11 +53,15 @@
                                                     @if ($itemdata->is_favorite == 1)
                                                         <a class="heart-icon heart-red {{ session()->get('direction') == 'rtl' ? 'text-start' : 'text-end' }}"
                                                             @if (Auth::user()) href="javascript:void(0)" onclick="managefavorite('{{ $itemdata->id }}',0,'{{ URL::to('/managefavorite') }}')" title="{{ trans('labels.remove_wishlist') }}" @else href="{{ URL::to('/login') }}" @endif>
-                                                            <i class="fa-solid fa-bookmark fs-5"></i> </a>
+                                                            {{-- <i class="fa-solid fa-bookmark fs-5"></i> --}}
+                                                            <img src="{{ Helper::image_path('bookmark.png') }}" width="15" height="15" alt="">
+                                                        </a>
                                                     @else
                                                         <a class="heart-icon {{ session()->get('direction') == 'rtl' ? 'text-start' : 'text-end' }}"
                                                             @if (Auth::user()) href="javascript:void(0)" onclick="managefavorite('{{ $itemdata->id }}',1,'{{ URL::to('/managefavorite') }}')" title="{{ trans('labels.add_wishlist') }}" @else href="{{ URL::to('/login') }}" @endif>
-                                                            <i class="fa-regular fa-bookmark fs-5"></i> </a>
+                                                            {{-- <i class="fa-regular fa-bookmark fs-5"></i> --}}
+                                                            <img src="{{ Helper::image_path('bookmark.png') }}" width="15" height="15" alt="">
+                                                        </a>
                                                     @endif
                                                 </div>
                                                 <div class="row align-items-center justify-content-between gx-0">
@@ -68,29 +72,6 @@
                                                             $price = $itemdata->price;
                                                         @endphp
                                                         <div style= "color:black" class="fw-600">{{ Helper::currency_format($price) }}</div>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        @if (Auth::user())
-                                                            @if ($itemdata->is_cart == 1)
-                                                                <div class="item-quantity">
-                                                                    <button class="btn btn-sm pastel_purple_color fw-500"
-                                                                        onclick="removefromcart('{{ URL::to('/cart') }}','{{ trans('messages.remove_cartitem_note') }}','{{ trans('labels.goto_cart') }}')">-</button>
-                                                                    <input
-                                                                        class="pastel_purple_color fw-500 item-total-qty-{{ $itemdata->slug }}"
-                                                                        type="text"
-                                                                        value="{{ Helper::get_item_cart($itemdata->id) }}"
-                                                                        disabled />
-                                                                        <a class="btn btn-sm pastel_purple_color fw-500"
-                                                                            onclick="showitem('{{ $itemdata->slug }}','{{ URL::to('/show-item') }}')">+</a>
-                                                                </div>
-                                                            @else
-                                                                    <a class="btn btn-sm border pastel_purple_color fw-500 fs-7 text-end"
-                                                                        onclick="showitem('{{ $itemdata->slug }}','{{ URL::to('/show-item') }}')">{{ trans('labels.add') }}</a>
-                                                            @endif
-                                                        @else
-                                                            <a class="btn btn-sm border pastel_purple_color fw-500 fs-7 text-end"
-                                                                href="{{ URL::to('/login') }}">{{ trans('labels.add') }}</a>
-                                                        @endif
                                                     </div>
                                                 </div>
                                             </td>

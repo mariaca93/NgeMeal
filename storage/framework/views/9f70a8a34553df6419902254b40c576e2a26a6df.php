@@ -32,7 +32,8 @@
 
                             <?php if($orderdata->status == 1): ?>
                                 <a class="btn btn-danger btn-sm mx-1 float-end" href="javascript:void(0)" onclick="cancelorder('<?php echo e($orderdata->order_number); ?>','<?php echo e(URL::to('/orders/cancel')); ?>')">
-                                    <i class="fa-regular fa-trash-can"></i>
+                                    
+                                    <img src="<?php echo e(Helper::image_path('delete.png')); ?>" width="15" height="15" alt="">
                                     <?php echo e(trans('labels.cancel_order')); ?>
 
                                 </a>

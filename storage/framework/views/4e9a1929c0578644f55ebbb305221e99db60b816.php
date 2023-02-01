@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('page_title'); ?>
     | <?php echo e(trans('labels.my_orders')); ?>
 
@@ -35,10 +34,11 @@
                                 <a href="<?php echo e(URL::to('/orders?type=processing')); ?>"
                                     class="order-status-card <?php echo e(isset($_GET['type']) == true ? ($_GET['type'] == 'processing' || $_GET['type'] == '' ? 'border-warning' : '') : (!isset($_GET['type']) == true ? 'border-warning' : '')); ?>">
                                     <div class="icon bg-light-warning">
-                                        <i class="fs-5 fa-solid fa-hourglass-empty"></i>
+                                        
+                                        <img src="<?php echo e(Helper::image_path('ongoing.png')); ?>" width="30" height="30" alt="">
                                     </div>
                                     <div class="status-card-content px-3">
-                                        <p class="text-warning"><?php echo e(trans('labels.processing')); ?></p>
+                                        <p class="text-warning"><?php echo e(trans('labels.ongoing')); ?></p>
                                         <h5 class="mb-0 fw-600"><?php echo e($totalprocessing); ?></h5>
                                     </div>
                                 </a>
@@ -47,7 +47,8 @@
                                 <a href="<?php echo e(URL::to('/orders?type=completed')); ?>"
                                     class="order-status-card <?php echo e(isset($_GET['type']) == true ? ($_GET['type'] == 'completed' ? 'border-green' : '') : ''); ?>">
                                     <div class="icon bg-light-green">
-                                        <i class="fs-5 fa-solid fa-check"></i>
+                                        
+                                        <img src="<?php echo e(Helper::image_path('completed.png')); ?>" width="30" height="30" alt="">
                                     </div>
                                     <div class="status-card-content px-3">
                                         <p class="green_color"><?php echo e(trans('labels.completed')); ?></p>
@@ -59,7 +60,8 @@
                                 <a href="<?php echo e(URL::to('/orders?type=cancelled')); ?>"
                                     class="order-status-card <?php echo e(isset($_GET['type']) == true ? ($_GET['type'] == 'cancelled' ? 'border-danger' : '') : ''); ?>">
                                     <div class="icon bg-light-danger">
-                                        <i class="fs-5 fa-solid fa-xmark"></i>
+                                        
+                                        <img src="<?php echo e(Helper::image_path('cancelled-bar.png')); ?>" width="30" height="30" alt="">
                                     </div>
                                     <div class="status-card-content px-3">
                                         <p class="red_color"><?php echo e(trans('labels.cancelled')); ?></p>
@@ -139,13 +141,16 @@
                                                 </td>
                                                 <td class="fs-7">
                                                     <a href="<?php echo e(URL::to('orders-' . $orderdata->order_number)); ?>"
-                                                        class="btn btn-outline-info btn-sm mx-1 mb-1"><i
-                                                            class="fa-regular fa-eye"></i></a>
+                                                        class="btn btn-outline-info btn-sm mx-1 mb-1">
+                                                        
+                                                        <img src="<?php echo e(Helper::image_path('view.png')); ?>" width="15" height="15" alt="">
+                                                    </a>
                                                     <?php if($orderdata->status == 1): ?>
                                                         <a href="javascript:void(0)"
                                                             onclick="cancelorder('<?php echo e($orderdata->order_number); ?>','<?php echo e(URL::to('/orders/cancel')); ?>')"
                                                             class="btn btn-danger btn-sm mx-1 mb-1">
-                                                            <i class="fa-solid fa-xmark"></i>
+                                                            
+                                                            <img src="<?php echo e(Helper::image_path('cancelled-button.png')); ?>" width="15" height="15" alt="">
                                                         </a>
                                                     <?php endif; ?>
                                                 </td>

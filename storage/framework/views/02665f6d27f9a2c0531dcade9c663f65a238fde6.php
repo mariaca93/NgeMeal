@@ -61,14 +61,18 @@
                                     <div class="dropup">
                                         <a class="nav-link dropdown-toggle" href="javascript:void(0)"
                                             id="profiledropdown" role="button" data-bs-toggle="dropdown"
-                                            aria-expanded="true"><i class="mx-2 fa-regular fa-user"></i>
+                                            aria-expanded="true">
+                                            
+                                            <img src="<?php echo e(Helper::image_path('user.png')); ?>" width="18" height="18" alt="">
                                             <?php echo e(Str::limit(Auth::user()->name, 10)); ?>
 
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="profiledropdown">
                                             <li><a class="dropdown-item text-dark"
-                                                    href="<?php echo e(route('user-profile')); ?>"><i
-                                                        class="me-2 fa-regular fa-user"></i><?php echo e(trans('labels.my_profile')); ?></a>
+                                                    href="<?php echo e(route('user-profile')); ?>">
+                                                    
+                                                    <img src="<?php echo e(Helper::image_path('profile-black.png')); ?>" width="15" height="15" alt="">
+                                                    <?php echo e(trans('labels.my_profile')); ?></a>
                                             </li>
                                             <li><a class="dropdown-item text-dark"
                                                     href="<?php echo e(route('order-history')); ?>"><i
@@ -89,8 +93,10 @@
                                                         class="me-2 fa fa-wallet"></i><?php echo e(trans('labels.my_wallet')); ?></a>
                                             </li>
                                             <li><a class="dropdown-item text-dark" href="javascript:void(0)"
-                                                    onclick="logout('<?php echo e(route('logout')); ?>','<?php echo e(trans('messages.are_you_sure_logout')); ?>','<?php echo e(trans('labels.logout')); ?>')"><i
-                                                        class="me-2 fa fa-arrow-right-from-bracket"></i><?php echo e(trans('labels.logout')); ?></a>
+                                                    onclick="logout('<?php echo e(route('logout')); ?>','<?php echo e(trans('messages.are_you_sure_logout')); ?>','<?php echo e(trans('labels.logout')); ?>')">
+                                                    
+                                                    <img src="<?php echo e(Helper::image_path('logout.png')); ?>" width="15" height="15" alt="">
+                                                        <?php echo e(trans('labels.logout')); ?></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -131,22 +137,27 @@
                             placeholder="<?php echo e(trans('labels.search_here')); ?>"required>
                         <?php if(session()->get('direction') == ''): ?>
                             <a href="<?php echo e(route('search')); ?>" class="search-button border-end pe-3">
-                                <i class="fa-solid fa-magnifying-glass"></i>
+                                
+                                <img src="<?php echo e(Helper::image_path('search-all.png')); ?>" width="20" height="20" alt="">
                             </a>
-                        <?php elseif(session()->get('direction') == 'rtl'): ?>
+                            <?php elseif(session()->get('direction') == 'rtl'): ?>
                             <a href="<?php echo e(route('search')); ?>" class="search-button border-start ps-3">
-                                <i class="fa-solid fa-magnifying-glass"></i>
+                                
+                                <img src="<?php echo e(Helper::image_path('search.png')); ?>" width="20" height="20" alt="">
                             </a>
-                        <?php else: ?>
+                            <?php else: ?>
                             <a href="<?php echo e(route('search')); ?>" class="search-button border-end pe-3">
-                                <i class="fa-solid fa-magnifying-glass"></i>
+                                
+                                <img src="<?php echo e(Helper::image_path('search.png')); ?>" width="20" height="20" alt="">
                             </a>
                         <?php endif; ?>
                     </div>
                     <div class="cart-area mx-2 d-block">
                         <a <?php if(Auth::user()): ?> href="<?php echo e(route('cart')); ?>" <?php else: ?> href="<?php echo e(route('login')); ?>" <?php endif; ?>
-                            class="text-white"><i class="fa-solid fa-cart-shopping"></i><span
-                                class="cart-badge"><?php echo e(Helper::get_user_cart()); ?></span></a>
+                            class="text-white">
+                            
+                            <img src="<?php echo e(Helper::image_path('shopping-cart.png')); ?>" width="20" height="20" alt="">
+                            <span class="cart-badge"><?php echo e(Helper::get_user_cart()); ?></span></a>
                     </div>
                     <div class="mx-3">
                         <?php if(Auth::user()): ?>
@@ -156,7 +167,8 @@
                                         <a class="nav-link px-3" href="<?php echo e(route('user-profile')); ?>"
                                             id="profiledropdown" role="button" data-bs-toggle="dropdown"
                                             aria-expanded="false">
-                                            <i class="fa-regular fa-user"></i>
+                                            
+                                            <img src="<?php echo e(Helper::image_path('user.png')); ?>" width="18" height="18" alt="">
                                             <?php echo e(Str::limit(Auth::user()->name, 6)); ?>
 
                                         </a>
@@ -164,15 +176,18 @@
                                             <li>
                                                 <a class="dropdown-item text-dark"
                                                     href="<?php echo e(route('user-profile')); ?>">
-                                                    <i class="mx-2 fa-regular fa-user"></i><?php echo e(trans('labels.my_profile')); ?>
+                                                    
+                                                    <img src="<?php echo e(Helper::image_path('profile-black.png')); ?>" width="15" height="15" alt="">
+                                                    <?php echo e(trans('labels.my_profile')); ?>
 
                                                 </a>
                                             </li>
                                             <li>
                                                 <a class="dropdown-item text-dark" href="javascript:void(0)"
                                                     onclick="logout('<?php echo e(route('logout')); ?>','<?php echo e(trans('messages.are_you_sure_logout')); ?>','<?php echo e(trans('labels.logout')); ?>')">
-                                                    <i
-                                                        class="mx-2 fa fa-arrow-right-from-bracket"></i><?php echo e(trans('labels.logout')); ?>
+                                                    
+                                                    <img src="<?php echo e(Helper::image_path('logout.png')); ?>" width="15" height="15" alt="">
+                                                    <?php echo e(trans('labels.logout')); ?>
 
                                                 </a>
                                             </li>

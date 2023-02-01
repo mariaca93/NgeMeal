@@ -44,8 +44,10 @@
                                 <option value="{{$ingredient->id}}">{{$ingredient->ingredient_name}}</option>
                                 @endforeach
                             </select>
-                            <button class="input-group-text rounded submit-btn" type="submit" id="inputGroup-sizing-lg"><i
-                                    class="fa-solid fa-magnifying-glass"></i></button>
+                            <button class="input-group-text rounded submit-btn" type="submit" id="inputGroup-sizing-lg">
+                                {{-- <i class="fa-solid fa-magnifying-glass"></i> --}}
+                                <img src="{{ Helper::image_path('search-button.png') }}" width="20" height="20" alt="">
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -78,7 +80,7 @@
                     case "byIngredient" :
                         var item = document.getElementById("item_input");
                         $(item).attr("value", "");
-                        
+
                         var btn = document.getElementsByClassName("submit-btn");
                         $(btn).attr("type", "");
 

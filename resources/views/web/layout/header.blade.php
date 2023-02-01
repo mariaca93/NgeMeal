@@ -61,13 +61,17 @@
                                     <div class="dropup">
                                         <a class="nav-link dropdown-toggle" href="javascript:void(0)"
                                             id="profiledropdown" role="button" data-bs-toggle="dropdown"
-                                            aria-expanded="true"><i class="mx-2 fa-regular fa-user"></i>
+                                            aria-expanded="true">
+                                            {{-- <i class="mx-2 fa-regular fa-user"></i> --}}
+                                            <img src="{{ Helper::image_path('user.png') }}" width="18" height="18" alt="">
                                             {{ Str::limit(Auth::user()->name, 10) }}
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="profiledropdown">
                                             <li><a class="dropdown-item text-dark"
-                                                    href="{{ route('user-profile') }}"><i
-                                                        class="me-2 fa-regular fa-user"></i>{{ trans('labels.my_profile') }}</a>
+                                                    href="{{ route('user-profile') }}">
+                                                    {{-- <i class="me-2 fa-regular fa-user"></i> --}}
+                                                    <img src="{{ Helper::image_path('profile-black.png') }}" width="15" height="15" alt="">
+                                                    {{ trans('labels.my_profile') }}</a>
                                             </li>
                                             <li><a class="dropdown-item text-dark"
                                                     href="{{ route('order-history') }}"><i
@@ -88,8 +92,10 @@
                                                         class="me-2 fa fa-wallet"></i>{{ trans('labels.my_wallet') }}</a>
                                             </li>
                                             <li><a class="dropdown-item text-dark" href="javascript:void(0)"
-                                                    onclick="logout('{{ route('logout') }}','{{ trans('messages.are_you_sure_logout') }}','{{ trans('labels.logout') }}')"><i
-                                                        class="me-2 fa fa-arrow-right-from-bracket"></i>{{ trans('labels.logout') }}</a>
+                                                    onclick="logout('{{ route('logout') }}','{{ trans('messages.are_you_sure_logout') }}','{{ trans('labels.logout') }}')">
+                                                    {{-- <i class="me-2 fa fa-arrow-right-from-bracket"></i> --}}
+                                                    <img src="{{ Helper::image_path('logout.png') }}" width="15" height="15" alt="">
+                                                        {{ trans('labels.logout') }}</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -130,22 +136,27 @@
                             placeholder="{{ trans('labels.search_here') }}"required>
                         @if (session()->get('direction') == '')
                             <a href="{{ route('search') }}" class="search-button border-end pe-3">
-                                <i class="fa-solid fa-magnifying-glass"></i>
+                                {{-- <i class="fa-solid fa-magnifying-glass"></i> --}}
+                                <img src="{{ Helper::image_path('search-all.png') }}" width="20" height="20" alt="">
                             </a>
-                        @elseif (session()->get('direction') == 'rtl')
+                            @elseif (session()->get('direction') == 'rtl')
                             <a href="{{ route('search') }}" class="search-button border-start ps-3">
-                                <i class="fa-solid fa-magnifying-glass"></i>
+                                {{-- <i class="fa-solid fa-magnifying-glass"></i> --}}
+                                <img src="{{ Helper::image_path('search.png') }}" width="20" height="20" alt="">
                             </a>
-                        @else
+                            @else
                             <a href="{{ route('search') }}" class="search-button border-end pe-3">
-                                <i class="fa-solid fa-magnifying-glass"></i>
+                                {{-- <i class="fa-solid fa-magnifying-glass"></i> --}}
+                                <img src="{{ Helper::image_path('search.png') }}" width="20" height="20" alt="">
                             </a>
                         @endif
                     </div>
                     <div class="cart-area mx-2 d-block">
                         <a @if (Auth::user()) href="{{ route('cart') }}" @else href="{{ route('login') }}" @endif
-                            class="text-white"><i class="fa-solid fa-cart-shopping"></i><span
-                                class="cart-badge">{{ Helper::get_user_cart() }}</span></a>
+                            class="text-white">
+                            {{-- <i class="fa-solid fa-cart-shopping"></i> --}}
+                            <img src="{{ Helper::image_path('shopping-cart.png') }}" width="20" height="20" alt="">
+                            <span class="cart-badge">{{ Helper::get_user_cart() }}</span></a>
                     </div>
                     <div class="mx-3">
                         @if (Auth::user())
@@ -155,21 +166,25 @@
                                         <a class="nav-link px-3" href="{{ route('user-profile') }}"
                                             id="profiledropdown" role="button" data-bs-toggle="dropdown"
                                             aria-expanded="false">
-                                            <i class="fa-regular fa-user"></i>
+                                            {{-- <i class="fa-regular fa-user"></i> --}}
+                                            <img src="{{ Helper::image_path('user.png') }}" width="18" height="18" alt="">
                                             {{ Str::limit(Auth::user()->name, 6) }}
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="profiledropdown">
                                             <li>
                                                 <a class="dropdown-item text-dark"
                                                     href="{{ route('user-profile') }}">
-                                                    <i class="mx-2 fa-regular fa-user"></i>{{ trans('labels.my_profile') }}
+                                                    {{-- <i class="mx-2 fa-regular fa-user"></i> --}}
+                                                    <img src="{{ Helper::image_path('profile-black.png') }}" width="15" height="15" alt="">
+                                                    {{ trans('labels.my_profile') }}
                                                 </a>
                                             </li>
                                             <li>
                                                 <a class="dropdown-item text-dark" href="javascript:void(0)"
                                                     onclick="logout('{{ route('logout') }}','{{ trans('messages.are_you_sure_logout') }}','{{ trans('labels.logout') }}')">
-                                                    <i
-                                                        class="mx-2 fa fa-arrow-right-from-bracket"></i>{{ trans('labels.logout') }}
+                                                    {{-- <i class="mx-2 fa fa-arrow-right-from-bracket"></i> --}}
+                                                    <img src="{{ Helper::image_path('logout.png') }}" width="15" height="15" alt="">
+                                                    {{ trans('labels.logout') }}
                                                 </a>
                                             </li>
                                         </ul>

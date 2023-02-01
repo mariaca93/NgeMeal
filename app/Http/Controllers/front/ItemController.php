@@ -8,6 +8,7 @@ use App\Helpers\helper;
 use App\Models\Ingredient;
 use App\Models\Cuisine;
 use App\Models\Subcuisine;
+use App\Models\Subscription;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use RakibDevs\Weather\Weather;
@@ -148,12 +149,12 @@ class ItemController extends Controller
         return view('web.search',compact('getsearchitems', 'getingredients'));
     }
 
-    
+
     public function viewall(Request $request)
     {
         $user_id = @Auth::user()->id;
         $getsearchitems = array();
-        if($request->has('type') && $request->type != "" && in_array($request->type,array('todayspecial','topitems','recommended'))){
+        if($request->has('type') && $request->type != "" && in_array($request->type,array('todayspecial','alacarte','recommended', 'subscription'))){
             $getsearchitems = Item::with('cuisine_info','subcuisine_info','item_image')->select('item.*',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when item.price is null then 0 else item.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'),DB::raw('count(order_details.item_id) as item_order_counter'))
                 ->leftJoin('order_details','order_details.item_id','item.id')
                 ->leftJoin('favorite', function($query) use($user_id) {
@@ -165,34 +166,52 @@ class ItemController extends Controller
                     ->where('cart.user_id', '=', $user_id);
                 })
                 ->groupBy('item.id','cart.item_id')->where('item.item_status','1');
+
+            $subscriptions = Subscription::select('subscription.*',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'),DB::raw('(case when subscription.price is null then 0 else subscription.price end) as item_price'),DB::raw('(case when cart.item_id is null then 0 else 1 end) as is_cart'))
+                ->leftJoin('favorite', function($query) use($user_id) {
+                    $query->on('favorite.item_id','=','subscription.id')
+                    ->where('favorite.user_id', '=', $user_id);
+                })
+                ->leftJoin('cart', function($query) use($user_id) {
+                    $query->on('cart.item_id','=','subscription.id')
+                    ->where('cart.user_id', '=', $user_id);
+                })
+                ->groupBy('subscription.id','cart.item_id');
+
             if($request->has('type') && $request->type != ""){
                 if($request->type == "todayspecial"){
                     $getsearchitems = $getsearchitems->where('item.is_featured','1')->orderByDesc('item.id');
                 }
-                if($request->type == "topitems"){
+                if($request->type == "alacarte"){
                     $getsearchitems = $getsearchitems->orderByDesc('item_order_counter');
                 }
                 if($request->type == "recommended"){
                     $getsearchitems = $getsearchitems->inRandomOrder();
                 }
+                if($request->type == "subscription"){
+                    $subscriptions = $subscriptions->get();
+                }
             }
             if($request->has('filter') && $request->filter != ""){
                 if($request->filter == "veg"){
                     $getsearchitems = $getsearchitems->where('item.item_type',1);
+                    $subscriptions = $subscriptions->where('subscription_type', 1);
                 }
                 if($request->filter == "nonveg"){
                     $getsearchitems = $getsearchitems->where('item.item_type',2);
+                    $subscriptions = $subscriptions->where('subscription_type', 2);
                 }
             }
             $getsearchitems = $getsearchitems->paginate(16);
+            // $subscriptions = $subscriptions->paginate(16);
         }
-        return view('web.viewall',compact('getsearchitems'));
+        return view('web.viewall',compact('getsearchitems', 'subscriptions'));
     }
 
     public function getItemByWeather(Request $request){
         $wt = new Weather();
 
-        $info = $wt->getCurrentByCity('jakarta'); 
+        $info = $wt->getCurrentByCity('jakarta');
         error_log($info);
 
     }

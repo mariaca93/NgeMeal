@@ -17,7 +17,7 @@
                 <div class="pb-2 cat-span border-bottom"><span>Subscription</span></div>
             </div>
         </a>
-        <div class="img-overlay set-fav-{{ $subscriptiondata->id }}">
+        {{-- <div class="img-overlay set-fav-{{ $subscriptiondata->id }}">
             @if ($subscriptiondata->is_favorite == 1)
                 <a class="heart-icon btn btn-wishlist"
                     @if (Auth::user()) href="javascript:void(0)" onclick="managefavorite('{{ $subscriptiondata->id }}',0,'{{ URL::to('/managefavorite') }}')" title="{{ trans('labels.remove_wishlist') }}"
@@ -29,8 +29,8 @@
                 @else href="{{ URL::to('/login') }}" @endif>
                     <i class="fa-regular fa-bookmark fs-5"></i> </a>
             @endif
-        </div>
-        <div class="item-card-footer">
+        </div> --}}
+        {{-- <div class="item-card-footer">
             <div class="d-flex justify-content-between align-items-center">
                 <span>{{ Helper::currency_format($subscriptiondata->price) }}</span>
                 @if (Auth::user())
@@ -49,6 +49,6 @@
                         href="{{ URL::to('/login') }}">{{ trans('labels.add') }}</a>
                 @endif
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>

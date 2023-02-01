@@ -56,7 +56,11 @@
                                                     </div>
                                                         <p class="mb-0">
                                                             <?php if($item['addons_id'] != ''): ?>
-                                                            <small><a class="text-muted" href="javascript:void(0)" onclick="showaddons('<?php echo e($item['addons_name']); ?>','<?php echo e($item['addons_price']); ?>')" data-bs-toggle="modal" data-bs-target="#modal_selected_addons"><?php echo e(trans('labels.addons')); ?> <i class="fa-solid fa-angles-right"></i></a></small>
+                                                            <small><a class="text-muted" href="javascript:void(0)" onclick="showaddons('<?php echo e($item['addons_name']); ?>','<?php echo e($item['addons_price']); ?>')" data-bs-toggle="modal" data-bs-target="#modal_selected_addons"><?php echo e(trans('labels.addons')); ?>
+
+                                                                
+                                                                <img src="<?php echo e(Helper::image_path('right-arrow.png')); ?>" width="18" height="18" alt="">
+                                                            </a></small>
                                                             <?php else: ?>
                                                             <small>-</small>
                                                             <?php endif; ?>
@@ -72,7 +76,9 @@
                                                     class="col-md-2 col-sm-2 col-auto d-flex align-items-end justify-content-between flex-column quantity-column">
                                                     <a href="javascript:void(0)"
                                                         onclick="deletecartitem('<?php echo e($item['id']); ?>','<?php echo e(URL::to('/cart/deleteitem')); ?> ') ">
-                                                        <i class="fa-solid fa-trash-can text-primary mb-2"></i> </a>
+                                                        
+                                                        <img src="<?php echo e(Helper::image_path('trash.png')); ?>" width="20" height="20" alt="">
+                                                    </a>
                                                     <div class="item-quantity">
                                                         <button class="btn btn-sm item-quantity-minus"
                                                             onclick="qtyupdate('<?php echo e($item['id']); ?>','minus','<?php echo e(URL::to('/cart/qtyupdate')); ?>')">-</button>

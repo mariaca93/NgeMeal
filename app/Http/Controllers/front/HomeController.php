@@ -91,7 +91,7 @@ class HomeController extends Controller
             $weather = \MichaelNabil230\Weather\Weather::location($lat, $long)
             ->current()
             ->get();
-            
+
             $weathercode = $weather->current_weather->weathercode;
             error_log($weathercode);
             if(in_array($weathercode, $sunny)){

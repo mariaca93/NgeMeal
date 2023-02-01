@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('page_title'); ?>
     | <?php echo e(trans('labels.my_addresses')); ?>
 
@@ -43,7 +42,8 @@
                                                 <i class="fa-solid fa-house-chimney"></i>
                                                 <?php $address_type_text = trans('labels.home'); ?>
                                             <?php elseif($addressdata->address_type == 2): ?>
-                                                <i class="fa-solid fa-briefcase"></i>
+                                                
+                                                <img src="<?php echo e(Helper::image_path('office.png')); ?>" width="30" height="30" alt="">
                                                 <?php $address_type_text = trans('labels.office'); ?>
                                             <?php else: ?>
                                                 <i class="fa-solid fa-map-location-dot"></i>
@@ -55,7 +55,10 @@
 
                                                 <div class="px-3">
                                                     <a class="text-light" href="javascript:void(0)" onclick="deleteaddress('<?php echo e($addressdata->id); ?>','<?php echo e(URL::to('/address/delete')); ?> ') "><i class="fa-solid fa-trash-can"></i></a>
-                                                    <a class="text-info me-1" href="<?php echo e(URL::to('/address-'.$addressdata->id)); ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                    <a class="text-info me-1" href="<?php echo e(URL::to('/address-'.$addressdata->id)); ?>">
+                                                        
+                                                        <img src="<?php echo e(Helper::image_path('edit.png')); ?>" width="20" height="20" alt="">
+                                                    </a>
                                                 </div>
                                             </h4>
                                             <p class="mb-1"><?php echo e($addressdata->address); ?>, </p>

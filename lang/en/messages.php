@@ -133,7 +133,7 @@ return [
     "privacypolicy_required" => "Please enter content",
     "termscondition_required" => "Please enter content",
     "settings_note" => "Click to set general settings",
-    // admin -> items 
+    // admin -> items
     "cuisine_required" => "Cuisine required",
     "subcuisine_required" => "Sub cuisine required",
     "preparation_time_required" => "Please select item preparation time",
@@ -166,11 +166,11 @@ return [
     "delivery_not_available" => "Sorry, currently we are not delivering in your address",
     "out_of_working_hours" => "You can not perform this operation due to out of working hours",
     //Alerts
-    "are_you_sure" => "Are you sure?",  
+    "are_you_sure" => "Are you sure?",
     "record_safe" => "Your data is safe :)",
     "yes" => "Yes",
     "no" => "Cancel",
-    "order_placed_note" => "Your order has been placed successfully & will be process by system.",
+    "order_placed_note" => "Your order has been placed successfully and will be process by system.",
     // web --> common
     "are_you_sure_logout" => "Are you sure to logout from this app?",
     "order_amount_must_between" => "Order amount must be between",

@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('page_title'); ?>
     | <?php echo e(trans('labels.favourite_list')); ?>
 
@@ -55,11 +54,15 @@
                                                     <?php if($itemdata->is_favorite == 1): ?>
                                                         <a class="heart-icon heart-red <?php echo e(session()->get('direction') == 'rtl' ? 'text-start' : 'text-end'); ?>"
                                                             <?php if(Auth::user()): ?> href="javascript:void(0)" onclick="managefavorite('<?php echo e($itemdata->id); ?>',0,'<?php echo e(URL::to('/managefavorite')); ?>')" title="<?php echo e(trans('labels.remove_wishlist')); ?>" <?php else: ?> href="<?php echo e(URL::to('/login')); ?>" <?php endif; ?>>
-                                                            <i class="fa-solid fa-bookmark fs-5"></i> </a>
+                                                            
+                                                            <img src="<?php echo e(Helper::image_path('bookmark.png')); ?>" width="15" height="15" alt="">
+                                                        </a>
                                                     <?php else: ?>
                                                         <a class="heart-icon <?php echo e(session()->get('direction') == 'rtl' ? 'text-start' : 'text-end'); ?>"
                                                             <?php if(Auth::user()): ?> href="javascript:void(0)" onclick="managefavorite('<?php echo e($itemdata->id); ?>',1,'<?php echo e(URL::to('/managefavorite')); ?>')" title="<?php echo e(trans('labels.add_wishlist')); ?>" <?php else: ?> href="<?php echo e(URL::to('/login')); ?>" <?php endif; ?>>
-                                                            <i class="fa-regular fa-bookmark fs-5"></i> </a>
+                                                            
+                                                            <img src="<?php echo e(Helper::image_path('bookmark.png')); ?>" width="15" height="15" alt="">
+                                                        </a>
                                                     <?php endif; ?>
                                                 </div>
                                                 <div class="row align-items-center justify-content-between gx-0">
@@ -70,29 +73,6 @@
                                                             $price = $itemdata->price;
                                                         ?>
                                                         <div style= "color:black" class="fw-600"><?php echo e(Helper::currency_format($price)); ?></div>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <?php if(Auth::user()): ?>
-                                                            <?php if($itemdata->is_cart == 1): ?>
-                                                                <div class="item-quantity">
-                                                                    <button class="btn btn-sm pastel_purple_color fw-500"
-                                                                        onclick="removefromcart('<?php echo e(URL::to('/cart')); ?>','<?php echo e(trans('messages.remove_cartitem_note')); ?>','<?php echo e(trans('labels.goto_cart')); ?>')">-</button>
-                                                                    <input
-                                                                        class="pastel_purple_color fw-500 item-total-qty-<?php echo e($itemdata->slug); ?>"
-                                                                        type="text"
-                                                                        value="<?php echo e(Helper::get_item_cart($itemdata->id)); ?>"
-                                                                        disabled />
-                                                                        <a class="btn btn-sm pastel_purple_color fw-500"
-                                                                            onclick="showitem('<?php echo e($itemdata->slug); ?>','<?php echo e(URL::to('/show-item')); ?>')">+</a>
-                                                                </div>
-                                                            <?php else: ?>
-                                                                    <a class="btn btn-sm border pastel_purple_color fw-500 fs-7 text-end"
-                                                                        onclick="showitem('<?php echo e($itemdata->slug); ?>','<?php echo e(URL::to('/show-item')); ?>')"><?php echo e(trans('labels.add')); ?></a>
-                                                            <?php endif; ?>
-                                                        <?php else: ?>
-                                                            <a class="btn btn-sm border pastel_purple_color fw-500 fs-7 text-end"
-                                                                href="<?php echo e(URL::to('/login')); ?>"><?php echo e(trans('labels.add')); ?></a>
-                                                        <?php endif; ?>
                                                     </div>
                                                 </div>
                                             </td>

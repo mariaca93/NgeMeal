@@ -43,7 +43,7 @@
                                 <div class="form-body mt-3">
                                     <div class="form-group">
                                         <label class="text-white form-label" for="name">{{trans('labels.full_name')}}</label>
-                                            <input type="text" class="form-control custom-input rounded mb-3" name="name" value="{{ old('name') }}"  placeholder="{{trans('labels.full_name')}}">    
+                                            <input type="text" class="form-control custom-input rounded mb-3" name="name" value="{{ old('name') }}"  placeholder="{{trans('labels.full_name')}}">
                                         @error('name')<span class="red_color">{{ $message }}</span>@enderror
                                     </div>
                                     <div class="form-group">
@@ -89,7 +89,7 @@
                                 </div>
                                 <div class="form-group text-center mt-3">
                                     <p class="text-white mb-0">
-                                        {{trans('labels.already_account')}} 
+                                        {{trans('labels.already_account')}}
                                         <a href="{{ 'login' }}" class="text-primary fw-bold text-decoration-none">{{trans('labels.signin')}}</a>
                                     </p>
                                 </div>
@@ -126,13 +126,13 @@
     <link rel="stylesheet" href="{{ asset('/web-assets/js/intl-tel-input/17.0.8.intlTelInput.min.css') }}">
     <script src="{{ asset('/web-assets/js/intl-tel-input/17.0.8.utils.js') }}"></script>
     <script>
-        var input = $('#mobile');
-        var iti = intlTelInput(input.get(0))
-        iti.setCountry("id");
-        input.on('countrychange', function(e) {
-            $('#country').val(iti.getSelectedCountryData().dialCode);
-        });
-        $('.iti--allow-dropdown').addClass('w-100');
+        // var input = $('#mobile');
+        // var iti = intlTelInput(input.get(0))
+        // iti.setCountry("id");
+        // input.on('countrychange', function(e) {
+        //     $('#country').val(iti.getSelectedCountryData().dialCode);
+        // });
+        // $('.iti--allow-dropdown').addClass('w-100');
     </script>
 </body>
 </html>

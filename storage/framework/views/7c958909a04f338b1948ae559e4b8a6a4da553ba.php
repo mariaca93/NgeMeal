@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('page_title'); ?>
     | <?php echo e(trans('labels.my_profile')); ?>
 
@@ -36,7 +35,9 @@
                                 <div class="avatar-upload">
                                     <div class="avatar-edit <?php echo e(session()->get('direction') == 'rtl' ? 'avatar-edit-rtl' : ''); ?>">
                                         <input type='file' name="profile_image" id="imageupload" accept=".png, .jpg, .jpeg" />
-                                        <label for="imageupload"></label>
+                                        <label for="imageupload">
+                                            <img src="<?php echo e(Helper::image_path('user.png')); ?>" width="18" height="18" alt="">
+                                        </label>
                                     </div>
                                     <div class="avatar-preview">
                                         <div id="imagepreview">

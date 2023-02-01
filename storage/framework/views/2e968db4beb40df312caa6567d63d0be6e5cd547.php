@@ -80,9 +80,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                                         </div>
-                                        <div class="form-group d-flex justify-content-end">
-                                            <a href="<?php echo e(URL::to('forgot-password')); ?>" class="text-primary fw-bold float-end"><?php echo e(trans('labels.forgot_password_q')); ?></a>
-                                        </div>
+                                        
                                     <?php endif; ?>
                                     <div class="form-group mt-2">
                                         <button type="submit" class="btn btn-primary w-100"><?php echo e(trans('labels.signin')); ?></button>

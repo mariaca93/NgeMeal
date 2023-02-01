@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('page_title'); ?>
     | <?php echo e(@$getsubscriptiondata->subscription_name); ?>
 
@@ -39,7 +38,7 @@
                     i = keys.length;
 
                     while ( i-- ) {
-                        
+
                         var parser = new DOMParser();
                         var str = localStorage.getItem(keys[i]).split('</h5>').pop().trim();
                         const arr = str.split('</div>');
@@ -186,7 +185,7 @@
                     i = keys.length;
 
                     while ( i-- ) {
-                        
+
                         var parser = new DOMParser();
                         var str = localStorage.getItem(keys[i]).split('</h5>').pop().trim();
                         const arr = str.split('</div>');
@@ -364,7 +363,6 @@
 
                                                 <script>
                                                     function generateImages(item) {
-                                                        // checkaddons();
                                                         const myElement = document.getElementById("small-img-roll");
                                                         myElement.innerHTML = '';
                                                         // console.log("please")
